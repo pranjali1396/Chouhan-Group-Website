@@ -34,7 +34,6 @@ const SINGAPORE_DATA: ProjectData = {
   description: "Now Selling – a self-sufficient integrated township inspired by the architecture and lifestyle of Singapore. Situated in Bhilai, featuring lush green landscapes, wide roads, and a plethora of amenities, Singapore Life City offers a global living experience. We encourage you to stay informed as this exciting new project begins to make its mark.",
   status: "Now Selling",
   address: "Singapore Life City, Bhilai, Chhattisgarh",
-  websiteUrl: "https://singapore-city.vercel.app/",
   presentationCentre: {
     address: "Ground Floor, Chouhan Estate, Beside Chandra Maurya Talkies, NH53, Bhilai, Chhattisgarh",
     hours: "Open Daily (Except Tuesdays) 10AM - 7PM"
@@ -52,7 +51,6 @@ const PARKVIEW_DATA: ProjectData = {
   description: "Now Selling – Premium high-rise apartments on Junwani Road. Experience elevated living with a Sky Lounge, modern clubhouse, and panoramic views of the city. Situated in the heart of Bhilai's educational hub featuring stunning architecture and a truly exceptional amenity offering.",
   status: "Now Selling",
   address: "Junwani Road, Bhilai, Chhattisgarh",
-  websiteUrl: "https://chouhan-park-view-xi.vercel.app/",
   presentationCentre: {
     address: "4th floor, beside Shankracharya Mahavidyalaya, Junwani Road, Bhilai",
     hours: "Open Daily 10AM - 7PM"
@@ -70,7 +68,6 @@ const BUSINESS_CENTER_DATA: ProjectData = {
   description: "Now Selling – A state-of-the-art commercial hub designed for modern businesses. Offering premium office spaces, retail outlets, and robust infrastructure to accelerate your business growth. Located centrally to provide maximum visibility and accessibility.",
   status: "Now Selling",
   address: "GE Road, Bhilai, Chhattisgarh",
-  websiteUrl: "https://chouhan-business-center.vercel.app/",
   presentationCentre: {
     address: "Ground Floor, Chouhan Estate, Beside Chandra Maurya Talkies, NH53, Bhilai",
     hours: "Open Daily 10AM - 8PM"
@@ -89,20 +86,20 @@ const App: React.FC = () => {
       <ScrollToTop />
       <div className="flex flex-col min-h-screen font-sans text-slate-900 bg-white selection:bg-amber-100 selection:text-amber-900">
         <Header navData={NAVIGATION_DATA} />
-
+        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/new-homes" element={<NewHomes />} />
-
+          
           {/* Specific Project Routes */}
           <Route path="/new-homes/singapore-life" element={<ProjectDetail data={SINGAPORE_DATA} />} />
           <Route path="/new-homes/parkview" element={<ProjectDetail data={PARKVIEW_DATA} />} />
           <Route path="/commercial/business-center" element={<ProjectDetail data={BUSINESS_CENTER_DATA} />} />
-
+          
           {/* Commercial / Custom Pages */}
           <Route path="/commercial/city-center" element={<CityCenter />} />
           <Route path="/new-homes/sunrisecity" element={<SunriseLanding />} />
-
+          
           <Route path="/about/group" element={<AboutGroup />} />
           <Route path="/about/founder" element={<Founder />} />
           <Route path="/about/capital" element={<CapitalDivision />} />
@@ -111,7 +108,7 @@ const App: React.FC = () => {
           <Route path="/about/sustainable" element={<SustainableDesign />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/care/:category" element={<CustomerCare />} />
-
+          
           {/* Generic routes for others */}
           <Route path="/:category/:sub" element={<GenericPage />} />
           <Route path="/:category" element={<GenericPage />} />
