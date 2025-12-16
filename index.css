@@ -11,23 +11,32 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
-  h1, h2, h3, h4, h5, h6, .font-heading {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .font-heading {
     font-family: var(--font-heading);
   }
 }
 
 @layer utilities {
+
   /* Custom scrollbar for menu if needed */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
-  
+
   .no-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
   }
-  
+
   .text-gold-gradient {
     background: linear-gradient(to right, #fbbf24, #d97706);
     -webkit-background-clip: text;
@@ -35,7 +44,7 @@
     -webkit-text-fill-color: transparent;
     color: transparent;
   }
-  
+
   .bg-gold-gradient {
     background: linear-gradient(to right, #fbbf24, #d97706);
   }

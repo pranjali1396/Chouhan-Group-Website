@@ -58,22 +58,19 @@ const PROJECTS = [
     title: "Chouhan Park View",
     desc: "A prestigious project by Chouhan Group, is located on Junwani Road, Bhilai",
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800&fit=crop",
-    link: "https://chouhan-park-view-xi.vercel.app/",
-    external: true
+    link: "/new-homes/parkview"
   },
   {
-    title: "Singapore Life City",
+    title: "Chouhan Green Valley",
+    desc: "One of the popular residential developments in Bhilai.",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&fit=crop",
+    link: "/new-homes/green-valley"
+  },
+  {
+    title: "Singapore Life City I",
     desc: "A well-planned modern and smart layout city inspired by Singapore, is at Bhilai.",
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&fit=crop",
-    link: "https://singapore-city.vercel.app/",
-    external: true
-  },
-  {
-    title: "Chouhan Business Center",
-    desc: "A state-of-the-art commercial hub designed for modern businesses in Bhilai.",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&fit=crop",
-    link: "https://chouhan-business-center.vercel.app/",
-    external: true
+    link: "/new-homes/singapore-life"
   }
 ];
 
@@ -270,15 +267,9 @@ const Home: React.FC = () => {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-amber-600 transition-colors">{project.title}</h3>
                 <p className="text-slate-500 text-sm leading-relaxed mb-6">{project.desc}</p>
-                {project.external ? (
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-slate-900 font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all hover:text-amber-600">
-                    View Project <ArrowRight size={14} />
-                  </a>
-                ) : (
-                  <Link to={project.link} className="text-slate-900 font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all hover:text-amber-600">
-                    View Project <ArrowRight size={14} />
-                  </Link>
-                )}
+                <Link to={project.link} className="text-slate-900 font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all hover:text-amber-600">
+                  View Project <ArrowRight size={14} />
+                </Link>
               </div>
             ))}
           </div>

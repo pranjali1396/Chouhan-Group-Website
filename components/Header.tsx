@@ -48,79 +48,70 @@ const MobileNavItem = React.memo(({
         <Link
           to={item.path || '#'}
           onClick={onLinkClick}
-          className="w-full flex justify-between items-center py-5 px-6 text-white hover:text-amber-400 transition-colors bg-[#002b49]"
+          className="block py-5 px-6 text-white hover:text-amber-400 transition-colors font-heading font-bold uppercase text-[13px] tracking-widest bg-[#002b49]"
         >
-          <span className="font-heading font-bold uppercase text-[13px] tracking-widest">{item.label}</span>
+          {item.label}
         </Link>
       )}
 
-      {/* Accordion Content - Slides open */}
-      {item.columns && (
-        <div
-          className={`grid transition-[grid-template-rows] duration-300 ease-in-out bg-[#00223a] ${isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-            }`}
-        >
-          <div className="overflow-hidden">
-            <div className="py-4 px-6 space-y-6">
-              {item.columns.map((col, idx) => (
-                <div key={idx}>
-                  {col.title && (
-                    <h4 className="text-[10px] text-white/40 font-bold mb-3 uppercase tracking-widest border-b border-white/5 pb-1 inline-block">{col.title}</h4>
-                  )}
-                  <ul className="space-y-3">
-                    {col.links.length > 0 ? col.links.map((link, lIdx) => (
-                      <li key={lIdx}>
-                        <Link
-                          to={link.path}
-                          onClick={onLinkClick}
-                          className="text-xs font-medium text-white/80 block hover:text-amber-400 transition-colors uppercase tracking-wider"
-                        >
-                          {link.label}
-                        </Link>
-                      </li>
-                    )) : (
-                      <li className="text-[10px] text-white/30 italic">No listings</li>
-                    )}
-                  </ul>
-                </div>
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-in-out bg-[#001e33] ${isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+          }`}
+      >
+        {item.columns?.map((col, idx) => (
+          <div key={idx} className="flex flex-col">
+            {col.title && (
+              <div className="px-8 py-3 text-[10px] font-bold text-amber-500/80 uppercase tracking-[0.2em] border-b border-white/5 bg-[#001524]">
+                {col.title}
+              </div>
+            )}
+            <div className="py-2">
+              {col.links.map((link, lIdx) => (
+                <Link
+                  key={lIdx}
+                  to={link.path}
+                  onClick={onLinkClick}
+                  className="block py-3 px-8 text-sm text-slate-300 hover:text-white hover:pl-10 transition-all border-l-2 border-transparent hover:border-amber-500 hover:bg-white/5"
+                >
+                  {link.label}
+                </Link>
               ))}
             </div>
           </div>
-        </div>
-      )}
+        ))}
+      </div>
     </div>
   );
 });
 
 const Header: React.FC<HeaderProps> = ({ navData }) => {
+  const [scrolled, setScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
-  const [scrolled, setScrolled] = useState(false);
   const [imgError, setImgError] = useState(false);
   const location = useLocation();
 
-  const toggleMobileExpand = useCallback((label: string) => {
-    setMobileExpanded(prev => prev === label ? null : label);
-  }, []);
-
-  const closeMobileMenu = useCallback(() => {
-    setMobileMenuOpen(false);
-  }, []);
+  // Handle scroll effect
+  const handleScroll = useCallback(() => {
+    const isScrolled = window.scrollY > 20;
+    if (isScrolled !== scrolled) {
+      setScrolled(isScrolled);
+    }
+  }, [scrolled]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [handleScroll]);
 
-  // Close mobile menu on route change & prevent body scroll
+  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
+    setMobileExpanded(null);
   }, [location]);
 
+  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -129,6 +120,15 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
     }
     return () => { document.body.style.overflow = 'unset'; };
   }, [mobileMenuOpen]);
+
+  const toggleMobileExpand = useCallback((label: string) => {
+    setMobileExpanded(prev => prev === label ? null : label);
+  }, []);
+
+  const closeMobileMenu = useCallback(() => {
+    setMobileMenuOpen(false);
+    setMobileExpanded(null);
+  }, []);
 
   return (
     <>
