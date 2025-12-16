@@ -137,7 +137,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
 
         {/* Top Bar - Hidden on Mobile */}
         <div className={`hidden md:block border-b border-white/10`}>
-          <div className="w-full px-4 md:px-12 flex justify-end items-center gap-6 py-2.5 text-[11px] font-bold tracking-wider text-white uppercase">
+          <div className="w-full max-w-[1280px] mx-auto px-4 md:px-12 flex justify-end items-center gap-6 py-2.5 text-[11px] font-bold tracking-wider text-white uppercase">
             <div className="flex gap-6 items-center">
               <Link to="/register" className="hover:text-amber-400 transition-colors">Register for Updates</Link>
               <Link to="/careers" className="hover:text-amber-400 transition-colors">Careers</Link>
@@ -158,7 +158,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
         </div>
 
         {/* Main Navbar */}
-        <div className="w-full px-4 md:px-12">
+        <div className="w-full max-w-[1280px] mx-auto px-4 md:px-12">
           <div className={`flex justify-between lg:justify-start lg:gap-16 items-center transition-all duration-300 ${scrolled ? 'h-16' : 'h-20 md:h-24'}`}>
             {/* Logo */}
             <Link to="/" className="flex items-center shrink-0 mr-4 group z-50">
