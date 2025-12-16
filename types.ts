@@ -23,20 +23,20 @@ export const NAVIGATION_DATA: NavItem[] = [
       {
         title: "NOW SELLING",
         links: [
-          { label: "Singapore Life Phase 1, 2 And 4", path: "/new-homes/singapore-life" },
-          { label: "Chouhan Green Valley Phase 1, 2, 3", path: "/new-homes/green-valley" },
-          { label: "Sunrisecity", path: "/new-homes/sunrisecity" },
+          { label: "Singapore Life City", path: "/new-homes/singapore-life" },
+          { label: "Chouhan Green Valley", path: "/new-homes/green-valley" },
+          { label: "Sunrise City", path: "/new-homes/sunrisecity" },
           { label: "Chouhan Town", path: "/new-homes/town" },
-          { label: "Chouhan Parkview", path: "/new-homes/parkview" },
+          { label: "Chouhan Park View", path: "/new-homes/parkview" },
         ]
       },
       {
         title: "UPCOMING",
-        links: [] 
+        links: []
       },
       {
         title: "SOLD",
-        links: [] 
+        links: []
       }
     ]
   },
@@ -44,13 +44,10 @@ export const NAVIGATION_DATA: NavItem[] = [
     label: "Commercial",
     columns: [
       {
-        title: "NOW SELLING",
+        title: "Commercial Projects",
         links: [
           { label: "Chouhan Business Center", path: "/commercial/business-center" },
-          { label: "Chouhan Business Park", path: "/commercial/business-park" },
-          { label: "Chouhan Estates", path: "/commercial/estates" },
-          { label: "Chouhan Parkview Complex", path: "/commercial/parkview-complex" },
-          { label: "Chouhan Plaza", path: "/commercial/plaza" },
+          { label: "City Center", path: "/commercial/city-center" },
         ]
       },
       {

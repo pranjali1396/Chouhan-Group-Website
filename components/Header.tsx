@@ -19,6 +19,30 @@ interface HeaderProps {
   navData: NavItem[];
 }
 
+const NavLinkComponent = ({ to, children, className, onClick }: { to: string, children: React.ReactNode, className: string, onClick?: () => void }) => {
+  const isExternal = to.startsWith('http');
+
+  if (isExternal) {
+    return (
+      <a
+        href={to}
+        className={className}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={onClick}
+      >
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <Link to={to} className={className} onClick={onClick}>
+      {children}
+    </Link>
+  );
+};
+
 // Optimized Mobile Item Component with Dark Theme and Accordion Slide
 const MobileNavItem = React.memo(({
   item,
@@ -45,13 +69,13 @@ const MobileNavItem = React.memo(({
           />
         </button>
       ) : (
-        <Link
+        <NavLinkComponent
           to={item.path || '#'}
           onClick={onLinkClick}
           className="block py-5 px-6 text-white hover:text-amber-400 transition-colors font-heading font-bold uppercase text-[13px] tracking-widest bg-[#002b49]"
         >
           {item.label}
-        </Link>
+        </NavLinkComponent>
       )}
 
       <div
@@ -67,14 +91,14 @@ const MobileNavItem = React.memo(({
             )}
             <div className="py-2">
               {col.links.map((link, lIdx) => (
-                <Link
+                <NavLinkComponent
                   key={lIdx}
                   to={link.path}
                   onClick={onLinkClick}
                   className="block py-3 px-8 text-sm text-slate-300 hover:text-white hover:pl-10 transition-all border-l-2 border-transparent hover:border-amber-500 hover:bg-white/5"
                 >
                   {link.label}
-                </Link>
+                </NavLinkComponent>
               ))}
             </div>
           </div>
@@ -191,7 +215,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
                   onMouseEnter={() => setActiveMenu(item.label)}
                   onMouseLeave={() => setActiveMenu(null)}
                 >
-                  <Link
+                  <NavLinkComponent
                     to={item.path || '#'}
                     className={`flex items-center gap-1 font-heading font-bold text-[13px] tracking-widest uppercase transition-all duration-300 py-6 border-b-2 border-transparent whitespace-nowrap ${activeMenu === item.label ? 'text-amber-400 border-amber-400' : 'text-white hover:text-amber-400'
                       }`}
@@ -200,7 +224,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
                     {item.columns && (
                       <ChevronDown size={10} className={`ml-0.5 transition-transform duration-300 opacity-70 ${activeMenu === item.label ? 'rotate-180' : ''}`} />
                     )}
-                  </Link>
+                  </NavLinkComponent>
 
                   {/* Desktop Mega Menu Dropdown */}
                   {activeMenu === item.label && item.columns && (
@@ -215,12 +239,12 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
                           <ul className="space-y-2.5">
                             {col.links.length > 0 ? col.links.map((link, lIdx) => (
                               <li key={lIdx}>
-                                <Link
+                                <NavLinkComponent
                                   to={link.path}
                                   className="text-[11px] font-bold text-slate-500 hover:text-amber-600 hover:translate-x-1 transition-all block leading-tight uppercase tracking-wider"
                                 >
                                   {link.label}
-                                </Link>
+                                </NavLinkComponent>
                               </li>
                             )) : (
                               <li className="text-[10px] text-slate-400 italic">No current listings</li>
