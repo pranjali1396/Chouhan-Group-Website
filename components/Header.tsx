@@ -217,7 +217,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
                 >
                   <NavLinkComponent
                     to={item.path || '#'}
-                    className={`flex items-center gap-1 font-heading font-black text-[13px] tracking-widest uppercase transition-all duration-300 py-6 border-b-2 border-transparent whitespace-nowrap ${activeMenu === item.label ? 'text-amber-400 border-amber-400' : 'text-white hover:text-amber-400'
+                    className={`flex items-center gap-1 font-heading font-bold text-[13px] tracking-widest uppercase transition-all duration-300 py-6 border-b-2 border-transparent whitespace-nowrap ${activeMenu === item.label ? 'text-amber-400 border-amber-400' : 'text-white hover:text-amber-400'
                       }`}
                   >
                     {item.label}
@@ -241,7 +241,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
                               <li key={lIdx}>
                                 <NavLinkComponent
                                   to={link.path}
-                                  className="text-[11px] font-bold text-slate-500 hover:text-amber-600 hover:translate-x-1 transition-all block leading-tight uppercase tracking-wider"
+                                  className="text-[11px] font-black text-slate-500 hover:text-amber-600 hover:translate-x-1 transition-all block leading-tight uppercase tracking-wider"
                                 >
                                   {link.label}
                                 </NavLinkComponent>
