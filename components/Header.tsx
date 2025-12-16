@@ -19,7 +19,14 @@ interface HeaderProps {
   navData: NavItem[];
 }
 
-const NavLinkComponent = ({ to, children, className, onClick }: { to: string, children: React.ReactNode, className: string, onClick?: () => void }) => {
+interface NavLinkProps {
+  to: string;
+  children: React.ReactNode;
+  className: string;
+  onClick?: () => void;
+}
+
+const NavLinkComponent: React.FC<NavLinkProps> = ({ to, children, className, onClick }) => {
   const isExternal = to.startsWith('http');
 
   if (isExternal) {
