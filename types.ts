@@ -47,6 +47,10 @@ export const NAVIGATION_DATA: NavItem[] = [
         title: "Commercial Projects",
         links: [
           { label: "Chouhan Business Center", path: "/commercial/business-center" },
+          { label: "Chouhan Business Park", path: "/commercial/business-park" },
+          { label: "Chouhan Estates", path: "/commercial/estates" },
+          { label: "Chouhan Parkview Complex", path: "/commercial/parkview-complex" },
+          { label: "Chouhan Plaza", path: "/commercial/plaza" },
           { label: "City Center", path: "/commercial/city-center" },
         ]
       },
