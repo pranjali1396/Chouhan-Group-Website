@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import GenericPage from './pages/GenericPage';
 import SunriseLanding from './pages/SunriseLanding';
 import CityCenter from './pages/CityCenter';
+import AshokLeyland from './pages/AshokLeyland';
 import AboutGroup from './pages/AboutGroup';
 import Founder from './pages/Founder';
 import CapitalDivision from './pages/CapitalDivision';
@@ -43,8 +44,7 @@ const SINGAPORE_DATA: ProjectData = {
     email: "chouhanhousing@gmail.com"
   },
   heroImage: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=2000",
-  mapQuery: "Chouhan Estate, Bhilai",
-  websiteUrl: "https://singapore-city.vercel.app/"
+  mapQuery: "Chouhan Estate, Bhilai"
 };
 
 const PARKVIEW_DATA: ProjectData = {
@@ -61,8 +61,7 @@ const PARKVIEW_DATA: ProjectData = {
     email: "chouhanhousing@gmail.com"
   },
   heroImage: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=2000",
-  mapQuery: "Shankracharya Mahavidyalaya, Junwani, Bhilai",
-  websiteUrl: "https://chouhan-park-view-xi.vercel.app/"
+  mapQuery: "Shankracharya Mahavidyalaya, Junwani, Bhilai"
 };
 
 const BUSINESS_CENTER_DATA: ProjectData = {
@@ -79,8 +78,7 @@ const BUSINESS_CENTER_DATA: ProjectData = {
     email: "sales@chouhangroup.com"
   },
   heroImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000",
-  mapQuery: "Chouhan Estate, Bhilai",
-  websiteUrl: "https://chouhan-business-center.vercel.app/"
+  mapQuery: "Chouhan Estate, Bhilai"
 };
 
 const App: React.FC = () => {
@@ -89,19 +87,22 @@ const App: React.FC = () => {
       <ScrollToTop />
       <div className="flex flex-col min-h-screen font-sans text-slate-900 bg-white selection:bg-amber-100 selection:text-amber-900">
         <Header navData={NAVIGATION_DATA} />
-
+        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/new-homes" element={<NewHomes />} />
-
+          
           {/* Specific Project Routes */}
           <Route path="/new-homes/singapore-life" element={<ProjectDetail data={SINGAPORE_DATA} />} />
           <Route path="/new-homes/parkview" element={<ProjectDetail data={PARKVIEW_DATA} />} />
           <Route path="/commercial/business-center" element={<ProjectDetail data={BUSINESS_CENTER_DATA} />} />
-
+          
           {/* Commercial / Custom Pages */}
           <Route path="/commercial/city-center" element={<CityCenter />} />
           <Route path="/new-homes/sunrisecity" element={<SunriseLanding />} />
+          
+          {/* Automobiles */}
+          <Route path="/auto/ashok" element={<AshokLeyland />} />
 
           <Route path="/about/group" element={<AboutGroup />} />
           <Route path="/about/founder" element={<Founder />} />
@@ -111,7 +112,7 @@ const App: React.FC = () => {
           <Route path="/about/sustainable" element={<SustainableDesign />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/care/:category" element={<CustomerCare />} />
-
+          
           {/* Generic routes for others */}
           <Route path="/:category/:sub" element={<GenericPage />} />
           <Route path="/:category" element={<GenericPage />} />
