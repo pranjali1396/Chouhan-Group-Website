@@ -74,13 +74,13 @@ const PROJECTS = [
   }
 ];
 
-const STATS = [
-  { count: "1500", label: "Residential", icon: <HomeIcon /> },
-  { count: "500", label: "Bunglows", icon: <HomeIcon /> },
-  { count: "3", label: "Commercial", icon: <Building2 /> },
-  { count: "2", label: "Mall", icon: <ShoppingBag /> },
-  { count: "1", label: "Hotel", icon: <BedDouble /> },
-  { count: "20", label: "Years of Experience", icon: <CheckCircle2 /> }
+const IMPACT_GRID = [
+  { count: "1500", label: "RESIDENTIAL" },
+  { count: "500", label: "BUNGLOWS" },
+  { count: "3", label: "COMMERCIAL" },
+  { count: "2", label: "MALL" },
+  { count: "1", label: "HOTEL" },
+  { count: "20", label: "YEARS OF EXPERIENCE" }
 ];
 
 const Home: React.FC = () => {
@@ -89,7 +89,7 @@ const Home: React.FC = () => {
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
       const { current } = scrollRef;
-      const scrollAmount = current.offsetWidth < 768 ? current.offsetWidth : 400; // Scroll one card width approx
+      const scrollAmount = current.offsetWidth < 768 ? current.offsetWidth : 400;
       
       current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
@@ -148,7 +148,6 @@ const Home: React.FC = () => {
               </p>
             </div>
             
-            {/* Navigation Buttons */}
             <div className="flex gap-4">
               <button 
                 onClick={() => scroll('left')} 
@@ -167,7 +166,6 @@ const Home: React.FC = () => {
             </div>
           </div>
 
-          {/* Slider Container */}
           <div 
             ref={scrollRef}
             className="flex gap-8 overflow-x-auto pb-16 pt-4 snap-x snap-mandatory hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0"
@@ -181,14 +179,11 @@ const Home: React.FC = () => {
                 key={idx} 
                 className="min-w-[85vw] md:min-w-[380px] lg:min-w-[400px] snap-center bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group overflow-visible flex flex-col hover:-translate-y-2 relative border border-slate-100/50 mt-2"
               >
-                
-                {/* Image Container */}
                 <div className="h-64 w-full overflow-hidden relative rounded-t-2xl">
                    <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors z-10"></div>
                    <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 </div>
                 
-                {/* Floating Icon Button */}
                 <div className="absolute top-64 right-8 -translate-y-1/2 z-30">
                    <div className="bg-white p-4 rounded-full text-amber-500 shadow-xl group-hover:scale-110 transition-transform duration-300 border border-slate-50 flex items-center justify-center w-16 h-16">
                      {service.icon}
@@ -205,10 +200,25 @@ const Home: React.FC = () => {
               </div>
             ))}
           </div>
-          
-          {/* Progress Bar / Indicator (Optional visual cue) */}
-          <div className="w-full h-1 bg-slate-200 rounded-full overflow-hidden max-w-xs mx-auto mt-4 md:hidden">
-             <div className="h-full bg-slate-400 w-1/3 rounded-full"></div>
+        </div>
+      </section>
+
+      {/* Orange Impact Grid Section (Based on Image 2) */}
+      <section className="bg-amber-500 py-24">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3">
+            {IMPACT_GRID.map((item, idx) => (
+              <div 
+                key={idx} 
+                className={`flex flex-col items-center justify-center py-16 px-8 border-white/20 text-center
+                  ${idx < 3 ? 'border-b' : ''} 
+                  ${(idx + 1) % 3 !== 0 ? 'md:border-r' : ''}
+                `}
+              >
+                <span className="text-6xl font-black text-white mb-4 drop-shadow-sm">{item.count}</span>
+                <span className="text-xs font-black tracking-[0.3em] text-white uppercase opacity-90">{item.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -221,7 +231,7 @@ const Home: React.FC = () => {
           <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
             <div className="lg:w-1/2">
               <span className="text-amber-500 font-bold tracking-[0.2em] text-xs uppercase mb-6 block">HOUSING PROJECT</span>
-              <h2 className="text-4xl md:text-6xl font-heading font-bold mb-8 leading-tight">
+              <h2 className="text-4xl md:text-6xl font-heading font-black mb-8 leading-tight">
                 Your Dream Abode Awaits at Chouhan Residences
               </h2>
               <div className="space-y-8 text-slate-300 leading-loose font-light text-lg">
@@ -279,20 +289,6 @@ const Home: React.FC = () => {
               Explore Our Exceptional Projects
             </Link>
           </div>
-        </div>
-      </section>
-
-      {/* Stats Counter */}
-      <section className="py-20 bg-amber-500 text-white">
-        <div className="container mx-auto px-4">
-           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center divide-x divide-white/20">
-             {STATS.map((stat, idx) => (
-               <div key={idx} className="p-4">
-                 <div className="text-4xl md:text-6xl font-black mb-3">{stat.count}</div>
-                 <div className="text-xs uppercase tracking-widest font-bold opacity-80">{stat.label}</div>
-               </div>
-             ))}
-           </div>
         </div>
       </section>
 

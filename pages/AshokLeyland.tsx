@@ -59,8 +59,8 @@ const AshokLeyland: React.FC = () => {
                     </div>
                     <div className="p-6 bg-slate-50 rounded-xl border border-slate-100">
                         <Calendar className="text-amber-500 mb-4" size={32} />
-                        <h3 className="font-bold text-lg mb-2">Opening 2024</h3>
-                        <p className="text-sm text-slate-500">Construction is underway. Stay tuned for the grand launch.</p>
+                        <h3 className="font-bold text-lg mb-2">Status</h3>
+                        <p className="text-sm text-slate-500">Coming Soon. Stay tuned for the grand launch.</p>
                     </div>
                 </div>
             </div>

@@ -65,7 +65,7 @@ export const NAVIGATION_DATA: NavItem[] = [
       {
         title: "UPCOMING",
         links: [
-          { label: "City Center Bhilai", path: "/commercial/city-center" },
+          { label: "City Center Bhilai (Coming Soon)", path: "/commercial/city-center" },
         ]
       }
     ]
@@ -95,7 +95,7 @@ export const NAVIGATION_DATA: NavItem[] = [
           { label: "Nexa", path: "/auto/nexa" },
           { label: "True Value", path: "/auto/true-value" },
           { label: "Hero", path: "/auto/hero" },
-          { label: "Ashok Leyland", path: "/auto/ashok" },
+          { label: "Ashok Leyland (Coming Soon)", path: "/auto/ashok" },
         ]
       }
     ]
