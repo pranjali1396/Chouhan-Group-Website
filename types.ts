@@ -32,11 +32,11 @@ export const NAVIGATION_DATA: NavItem[] = [
       },
       {
         title: "UPCOMING",
-        links: [] 
+        links: []
       },
       {
         title: "SOLD",
-        links: [] 
+        links: []
       }
     ]
   },
