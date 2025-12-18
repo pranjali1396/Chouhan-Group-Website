@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Facebook, Twitter, Linkedin, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -18,7 +17,7 @@ export interface ProjectData {
   };
   heroImage: string;
   mapQuery: string;
-  websiteUrl: string;
+  websiteUrl?: string;
 }
 
 const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
@@ -69,17 +68,23 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
             <h3 className="text-xs font-bold uppercase tracking-widest text-slate-900 mb-6">Project Info</h3>
 
             <div className="grid grid-cols-2 gap-4 mb-10">
-              <a
-                href={data.websiteUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-brand-dark text-white py-3.5 px-4 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm text-center block"
-              >
-                View Website
-              </a>
+              {data.websiteUrl ? (
+                <a
+                  href={data.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#002b49] text-white py-3.5 px-4 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm text-center block"
+                >
+                  View Website
+                </a>
+              ) : (
+                <button className="bg-[#002b49]/50 text-white/50 py-3.5 px-4 text-[11px] font-bold uppercase tracking-wider cursor-not-allowed shadow-sm">
+                  Website Soon
+                </button>
+              )}
               <Link
                 to="/contact"
-                className="bg-brand-dark text-white py-3.5 px-4 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm text-center block"
+                className="bg-[#002b49] text-white py-3.5 px-4 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm text-center block"
               >
                 Register Today
               </Link>
@@ -115,10 +120,10 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
               <div className="grid grid-cols-3 gap-4 items-center pt-2">
                 <div className="text-slate-500 font-medium">Share:</div>
                 <div className="col-span-2 flex gap-2">
-                  <button className="w-8 h-8 bg-brand-dark text-white flex items-center justify-center hover:bg-amber-500 transition-colors rounded-sm"><Facebook size={14} /></button>
-                  <button className="w-8 h-8 bg-brand-dark text-white flex items-center justify-center hover:bg-amber-500 transition-colors rounded-sm"><Twitter size={14} /></button>
-                  <button className="w-8 h-8 bg-brand-dark text-white flex items-center justify-center hover:bg-amber-500 transition-colors rounded-sm"><Mail size={14} /></button>
-                  <button className="w-8 h-8 bg-brand-dark text-white flex items-center justify-center hover:bg-amber-500 transition-colors rounded-sm"><Linkedin size={14} /></button>
+                  <button className="w-8 h-8 bg-[#002b49] text-white flex items-center justify-center hover:bg-amber-500 transition-colors rounded-sm"><Facebook size={14} /></button>
+                  <button className="w-8 h-8 bg-[#002b49] text-white flex items-center justify-center hover:bg-amber-500 transition-colors rounded-sm"><Twitter size={14} /></button>
+                  <button className="w-8 h-8 bg-[#002b49] text-white flex items-center justify-center hover:bg-amber-500 transition-colors rounded-sm"><Mail size={14} /></button>
+                  <button className="w-8 h-8 bg-[#002b49] text-white flex items-center justify-center hover:bg-amber-500 transition-colors rounded-sm"><Linkedin size={14} /></button>
                 </div>
               </div>
             </div>

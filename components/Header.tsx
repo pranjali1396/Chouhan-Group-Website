@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
 import { NavItem } from '../types';
 import {
@@ -10,8 +9,8 @@ import {
   Menu,
   X,
   ChevronDown,
-  Phone,
-  Briefcase
+  Plus,
+  Minus
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -19,7 +18,7 @@ interface HeaderProps {
   navData: NavItem[];
 }
 
-// Optimized Mobile Item Component with Dark Theme and Accordion Slide
+// Refactored Mobile Item Component with Enhanced Usability
 const MobileNavItem = React.memo(({
   item,
   isExpanded,
@@ -31,55 +30,67 @@ const MobileNavItem = React.memo(({
   onToggle: (label: string) => void,
   onLinkClick: () => void
 }) => {
+  const hasSubmenu = !!item.columns;
+
   return (
-    <div className="border-b border-white/10 last:border-0">
-      {item.columns ? (
+    <div className={`border-b border-white/10 transition-colors duration-300 ${isExpanded ? 'bg-[#00365c]' : 'bg-[#002b49]'}`}>
+      {hasSubmenu ? (
         <button
           onClick={() => onToggle(item.label)}
-          className="w-full flex justify-between items-center py-5 px-6 text-white hover:text-amber-400 transition-colors select-none group bg-[#002b49]"
+          className="w-full flex justify-between items-center py-5 px-6 text-white hover:text-amber-400 transition-all select-none group"
         >
-          <span className="font-heading font-bold uppercase text-[13px] tracking-widest">{item.label}</span>
-          <ChevronDown
-            size={18}
-            className={`transition-transform duration-300 text-white/70 group-hover:text-amber-400 ${isExpanded ? 'rotate-180' : ''}`}
-          />
+          <div className="flex items-center gap-3">
+            <span className={`font-heading font-bold uppercase text-[13px] tracking-widest transition-colors ${isExpanded ? 'text-amber-400' : 'text-white'}`}>
+              {item.label}
+            </span>
+            {isExpanded && <span className="bg-amber-500 w-1.5 h-1.5 rounded-full animate-pulse"></span>}
+          </div>
+          <div className={`transition-transform duration-500 ease-in-out ${isExpanded ? 'rotate-180' : 'rotate-0'}`}>
+            {isExpanded ? (
+              <Minus size={18} className="text-amber-400" />
+            ) : (
+              <Plus size={18} className="text-white/60 group-hover:text-amber-400" />
+            )}
+          </div>
         </button>
       ) : (
         <Link
           to={item.path || '#'}
           onClick={onLinkClick}
-          className="w-full flex justify-between items-center py-5 px-6 text-white hover:text-amber-400 transition-colors bg-[#002b49]"
+          className="w-full flex justify-between items-center py-5 px-6 text-white hover:text-amber-400 transition-colors"
         >
           <span className="font-heading font-bold uppercase text-[13px] tracking-widest">{item.label}</span>
         </Link>
       )}
 
-      {/* Accordion Content - Slides open */}
-      {item.columns && (
+      {/* Accordion Content with Enhanced Animation */}
+      {hasSubmenu && (
         <div
-          className={`grid transition-[grid-template-rows] duration-300 ease-in-out bg-[#00223a] ${isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+          className={`grid transition-[grid-template-rows,opacity] duration-500 ease-in-out bg-[#00223a]/50 ${isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
             }`}
         >
           <div className="overflow-hidden">
-            <div className="py-4 px-6 space-y-6">
-              {item.columns.map((col, idx) => (
-                <div key={idx}>
+            <div className="py-6 px-8 space-y-8">
+              {item.columns!.map((col, idx) => (
+                <div key={idx} className="animate-fadeIn" style={{ animationDelay: `${idx * 100}ms` }}>
                   {col.title && (
-                    <h4 className="text-[10px] text-white/40 font-bold mb-3 uppercase tracking-widest border-b border-white/5 pb-1 inline-block">{col.title}</h4>
+                    <h4 className="text-[10px] text-amber-500/80 font-black mb-4 uppercase tracking-[0.2em] border-b border-white/5 pb-2">
+                      {col.title}
+                    </h4>
                   )}
-                  <ul className="space-y-3">
+                  <ul className="space-y-4">
                     {col.links.length > 0 ? col.links.map((link, lIdx) => (
                       <li key={lIdx}>
                         <Link
                           to={link.path}
                           onClick={onLinkClick}
-                          className="text-xs font-medium text-white/80 block hover:text-amber-400 transition-colors uppercase tracking-wider"
+                          className="text-xs font-semibold text-white/70 block hover:text-amber-400 transition-all hover:translate-x-1 uppercase tracking-widest"
                         >
                           {link.label}
                         </Link>
                       </li>
                     )) : (
-                      <li className="text-[10px] text-white/30 italic">No listings</li>
+                      <li className="text-[10px] text-white/30 italic">No current listings</li>
                     )}
                   </ul>
                 </div>
@@ -132,7 +143,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
 
   return (
     <>
-      <header className={`fixed w-full z-50 transition-all duration-300 font-sans ${scrolled ? 'bg-[#002b49]/95 backdrop-blur-md shadow-md' : 'bg-[#002b49]'
+      <header className={`fixed w-full z-50 transition-all duration-300 font-sans ${scrolled ? 'bg-[#002b49]/95 backdrop-blur-md shadow-lg' : 'bg-[#002b49]'
         }`}>
 
         {/* Top Bar - Hidden on Mobile */}
@@ -155,7 +166,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
         </div>
 
         {/* Main Navbar */}
-        <div className="container mx-auto px-4 lg:px-6 xl:px-12">
+        <div className="container mx-auto px-4 md:px-12">
           <div className={`flex justify-between items-center transition-all duration-300 ${scrolled ? 'h-16' : 'h-20 md:h-24'}`}>
             {/* Logo */}
             <Link to="/" className="flex items-center shrink-0 mr-8 group z-50">
@@ -167,7 +178,6 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
                   onError={() => setImgError(true)}
                 />
               ) : (
-                /* Fallback Stylized Logo - White Text */
                 <div className="flex flex-col items-center">
                   <div className="flex items-baseline gap-1">
                     <span className="font-serif text-xl md:text-2xl font-bold text-white tracking-wider">CHOUHAN</span>
@@ -180,7 +190,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center h-full gap-3 xl:gap-6 2xl:gap-8">
+            <nav className="hidden lg:flex items-center h-full gap-6 xl:gap-8">
               {navData.map((item) => (
                 <div
                   key={item.label}
@@ -190,7 +200,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
                 >
                   <Link
                     to={item.path || '#'}
-                    className={`flex items-center gap-1 font-heading font-bold text-[11px] xl:text-[13px] tracking-widest uppercase transition-all duration-300 py-6 border-b-2 border-transparent whitespace-nowrap ${activeMenu === item.label ? 'text-amber-400 border-amber-400' : 'text-white hover:text-amber-400'
+                    className={`flex items-center gap-1 font-heading font-bold text-[13px] tracking-widest uppercase transition-all duration-300 py-6 border-b-2 border-transparent ${activeMenu === item.label ? 'text-amber-400 border-amber-400' : 'text-white hover:text-amber-400'
                       }`}
                   >
                     {item.label}
@@ -245,7 +255,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
 
       {/* Mobile Navigation Overlay */}
       <div
-        className={`fixed inset-0 bg-black/60 z-[60] lg:hidden transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        className={`fixed inset-0 bg-black/70 z-[60] lg:hidden transition-opacity duration-500 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         onClick={() => setMobileMenuOpen(false)}
         aria-hidden="true"
@@ -253,15 +263,15 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
 
       {/* Mobile Navigation Drawer - Dark Blue Theme */}
       <div
-        className={`fixed inset-y-0 right-0 w-full md:w-[400px] bg-[#002b49] z-[70] lg:hidden shadow-2xl transform-gpu transition-transform duration-300 ease-out will-change-transform flex flex-col ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed inset-y-0 right-0 w-full md:w-[450px] bg-[#002b49] z-[70] lg:hidden shadow-2xl transform-gpu transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1) flex flex-col ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         {/* Mobile Header: Logo & Close */}
-        <div className="flex justify-between items-center px-6 py-5 border-b border-white/10 shrink-0">
+        <div className="flex justify-between items-center px-6 py-6 border-b border-white/10 shrink-0">
           {!imgError ? (
             <img
               src="/logo.png"
               alt="Chouhan Group"
-              className="h-8 w-auto object-contain brightness-0 invert"
+              className="h-10 w-auto object-contain brightness-0 invert"
               onError={() => setImgError(true)}
             />
           ) : (
@@ -269,7 +279,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
           )}
           <button
             onClick={() => setMobileMenuOpen(false)}
-            className="text-white hover:text-amber-400 transition-colors p-1"
+            className="text-white hover:text-amber-400 transition-colors p-2 rounded-full hover:bg-white/5"
             aria-label="Close menu"
           >
             <X size={32} strokeWidth={1} />
@@ -277,9 +287,9 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
         </div>
 
         {/* Scrollable Content Area */}
-        <div className="flex-grow overflow-y-auto">
+        <div className="flex-grow overflow-y-auto no-scrollbar">
           {/* Main Links List */}
-          <div>
+          <div className="py-4">
             {navData.map((item) => (
               <MobileNavItem
                 key={item.label}
@@ -292,31 +302,27 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
           </div>
 
           {/* Mobile Footer Actions */}
-          <div className="p-8 pb-12 mt-4 space-y-8">
+          <div className="p-8 pb-12 mt-4 space-y-8 bg-black/10">
             {/* Social Icons - White Circle Style */}
-            <div className="flex gap-4 items-center">
-              <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#002b49] hover:bg-amber-500 hover:text-white transition-all">
-                <Facebook size={20} fill="currentColor" className="stroke-none" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#002b49] hover:bg-amber-500 hover:text-white transition-all">
-                <Twitter size={20} fill="currentColor" className="stroke-none" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#002b49] hover:bg-amber-500 hover:text-white transition-all">
-                <Instagram size={20} />
-              </a>
-              <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#002b49] hover:bg-amber-500 hover:text-white transition-all">
-                <Youtube size={20} fill="currentColor" className="stroke-none" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#002b49] hover:bg-amber-500 hover:text-white transition-all">
-                <Linkedin size={20} fill="currentColor" className="stroke-none" />
-              </a>
+            <div className="flex gap-4 items-center justify-center">
+              {[
+                { icon: <Facebook size={20} fill="currentColor" className="stroke-none" />, href: "#" },
+                { icon: <Twitter size={20} fill="currentColor" className="stroke-none" />, href: "#" },
+                { icon: <Instagram size={20} />, href: "#" },
+                { icon: <Youtube size={20} fill="currentColor" className="stroke-none" />, href: "#" },
+                { icon: <Linkedin size={20} fill="currentColor" className="stroke-none" />, href: "#" }
+              ].map((social, idx) => (
+                <a key={idx} href={social.href} className="w-11 h-11 bg-white/5 rounded-full flex items-center justify-center text-white hover:bg-amber-500 hover:text-white transition-all border border-white/10">
+                  {social.icon}
+                </a>
+              ))}
             </div>
 
             {/* Register Button */}
             <Link
-              to="/register"
+              to="/contact"
               onClick={closeMobileMenu}
-              className="block w-full py-4 px-6 text-center border border-white/30 text-white font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-[#002b49] transition-all"
+              className="block w-full py-5 px-6 text-center border-2 border-amber-500 text-amber-500 font-black uppercase tracking-[0.2em] text-[11px] hover:bg-amber-500 hover:text-white transition-all rounded-sm shadow-lg"
             >
               Register for updates
             </Link>

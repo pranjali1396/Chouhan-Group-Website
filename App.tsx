@@ -108,11 +108,9 @@ const App: React.FC = () => {
       <ScrollToTop />
       <div className="flex flex-col min-h-screen font-sans text-slate-900 bg-white selection:bg-amber-100 selection:text-amber-900">
         <Header navData={NAVIGATION_DATA} />
-
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/new-homes" element={<NewHomes />} />
-
           {/* Specific Project Routes */}
           <Route path="/new-homes/singapore-life" element={<ProjectDetail data={SINGAPORE_DATA} />} />
           <Route path="/new-homes/parkview" element={<ProjectDetail data={PARKVIEW_DATA} />} />
@@ -122,7 +120,6 @@ const App: React.FC = () => {
           {/* Commercial / Custom Pages */}
           <Route path="/commercial/city-center" element={<CityCenter />} />
           <Route path="/new-homes/sunrisecity" element={<SunriseLanding />} />
-
           {/* Automobiles */}
           <Route path="/auto/ashok" element={<AshokLeyland />} />
 
@@ -134,16 +131,15 @@ const App: React.FC = () => {
           <Route path="/about/sustainable" element={<SustainableDesign />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/care/:category" element={<CustomerCare />} />
-
           {/* Generic routes for others */}
           <Route path="/:category/:sub" element={<GenericPage />} />
           <Route path="/:category" element={<GenericPage />} />
           <Route path="*" element={<Home />} />
-        </Routes>
+        </Routes >
 
         <Footer />
-      </div>
-    </Router>
+      </div >
+    </Router >
   );
 };
 
