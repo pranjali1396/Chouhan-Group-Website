@@ -169,7 +169,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
         <div className="container mx-auto px-4 md:px-12">
           <div className={`flex justify-between items-center transition-all duration-300 ${scrolled ? 'h-16' : 'h-20 md:h-24'}`}>
             {/* Logo */}
-            <Link to="/" className="flex items-center shrink-0 mr-8 group z-50">
+            <Link to="/" className="flex items-center shrink-0 mr-4 xl:mr-8 group z-50">
               {!imgError ? (
                 <img
                   src="/logo.png"
@@ -190,7 +190,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center h-full gap-6 xl:gap-8">
+            <nav className="hidden lg:flex items-center h-full gap-3 xl:gap-6">
               {navData.map((item) => (
                 <div
                   key={item.label}
@@ -200,7 +200,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
                 >
                   <Link
                     to={item.path || '#'}
-                    className={`flex items-center gap-1 font-heading font-bold text-[13px] tracking-widest uppercase transition-all duration-300 py-6 border-b-2 border-transparent ${activeMenu === item.label ? 'text-amber-400 border-amber-400' : 'text-white hover:text-amber-400'
+                    className={`flex items-center gap-1 font-heading font-bold text-[12px] xl:text-[13px] tracking-widest uppercase transition-all duration-300 py-6 border-b-2 border-transparent whitespace-nowrap ${activeMenu === item.label ? 'text-amber-400 border-amber-400' : 'text-white hover:text-amber-400'
                       }`}
                   >
                     {item.label}
