@@ -32,11 +32,14 @@ export const NAVIGATION_DATA: NavItem[] = [
       },
       {
         title: "UPCOMING",
-        links: []
+        links: [] 
       },
       {
         title: "SOLD",
-        links: []
+        links: [
+          { label: "Dream Home Complex", path: "/new-homes/dream-home" },
+          { label: "Shikhar Complex", path: "/new-homes/shikhar" },
+        ] 
       }
     ]
   },
@@ -50,16 +53,14 @@ export const NAVIGATION_DATA: NavItem[] = [
           { label: "Chouhan Business Park", path: "/commercial/business-park" },
           { label: "Chouhan Estates", path: "/commercial/estates" },
           { label: "Chouhan Parkview Complex", path: "/commercial/parkview-complex" },
-          { label: "Chouhan Plaza", path: "/commercial/plaza" },
         ]
       },
       {
         title: "SOLD",
         links: [
           { label: "Chouhan Landmark", path: "/commercial/landmark" },
-          { label: "Dream Home Complex", path: "/commercial/dream-home" },
           { label: "Chouhan Complex", path: "/commercial/complex" },
-          { label: "Shikhar Complex", path: "/commercial/shikhar" },
+          { label: "Chouhan Plaza", path: "/commercial/plaza" },
         ]
       },
       {
