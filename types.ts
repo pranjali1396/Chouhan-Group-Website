@@ -105,13 +105,13 @@ export const NAVIGATION_DATA: NavItem[] = [
     label: "Rentals",
     columns: [
       {
-        title: "NOW RENTING",
+        title: "COMING SOON",
         links: [
-          { label: "Chouhan Estates", path: "/rentals/estates" },
-          { label: "Chouhan Parview", path: "/rentals/parview" },
-          { label: "City Center Mall", path: "/rentals/mall" },
-          { label: "Apartments", path: "/rentals/apartments" },
-          { label: "Retail Outlet", path: "/rentals/retail" },
+          { label: "Chouhan Estates (Coming Soon)", path: "/rentals/estates" },
+          { label: "Chouhan Parkview (Coming Soon)", path: "/rentals/parview" },
+          { label: "City Center Mall (Coming Soon)", path: "/rentals/mall" },
+          { label: "Apartments (Coming Soon)", path: "/rentals/apartments" },
+          { label: "Retail Outlet (Coming Soon)", path: "/rentals/retail" },
         ]
       }
     ]

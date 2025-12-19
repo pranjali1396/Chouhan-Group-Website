@@ -5,7 +5,7 @@ import {
   CheckCircle2, ArrowRight, MapPin, Phone, Mail, 
   Home, Wifi, Car, Coffee, Dumbbell, Shield, Sun, 
   Play, Maximize2, X, ChevronRight, Layout, Download,
-  Layers, Zap, Droplet, Monitor, ZoomIn, Ban
+  Layers, Zap, Droplet, Monitor, ZoomIn, Ban, BellRing, Send, Facebook, Twitter, Instagram, Linkedin
 } from 'lucide-react';
 
 const PROPERTY_DATA = {
@@ -61,14 +61,14 @@ const GenericPage: React.FC = () => {
   const title = rawTitle?.replace(/-/g, ' ').toUpperCase() || 'LUXURY LIVING';
   const category = pathParts[0]?.replace(/-/g, ' ').toUpperCase();
 
-  // Heuristic for Sold
+  // Logic for Coming Soon / Sold
+  const isRentals = category === 'RENTALS';
   const isSold = title.includes('DREAM HOME') || title.includes('SHIKHAR') || title.includes('SOLD');
 
   const scrollToSection = (id: string) => {
     setActiveTab(id);
     const element = document.getElementById(id);
     if (element) {
-      // Increased offset to account for sticky nav + subnav height (approx 140px) + visual breathing room
       const offset = 160; 
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
@@ -119,6 +119,75 @@ const GenericPage: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [lightboxIndex, lightboxImages]);
 
+  // Special Coming Soon Layout for Rentals
+  if (isRentals) {
+    return (
+      <div className="min-h-screen bg-[#002b49] flex flex-col pt-20">
+        {/* Background Image Overlay */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
+           <img 
+            src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2000" 
+            alt="Coming Soon Background" 
+            className="w-full h-full object-cover grayscale"
+           />
+           <div className="absolute inset-0 bg-gradient-to-b from-[#002b49] via-transparent to-[#002b49]"></div>
+        </div>
+
+        <div className="container mx-auto px-4 flex-grow flex flex-col items-center justify-center relative z-10 py-20 text-center">
+           <div className="max-w-4xl animate-fadeIn">
+              <span className="inline-block bg-amber-500 text-slate-900 px-5 py-1.5 text-xs font-black uppercase tracking-[0.3em] rounded-full mb-8 shadow-2xl">
+                Coming Soon
+              </span>
+              <h1 className="text-5xl md:text-8xl font-heading font-black text-white mb-8 leading-tight tracking-tight drop-shadow-2xl">
+                {title.replace(' (COMING SOON)', '')} <br/>
+                <span className="text-amber-500 font-light italic text-4xl md:text-6xl font-serif">A New Standard in Rentals</span>
+              </h1>
+              <p className="text-slate-300 text-lg md:text-2xl font-light mb-12 max-w-2xl mx-auto leading-relaxed">
+                We're currently perfecting our premium rental offerings for this project. 
+                Experience unparalleled managed living and commercial lease opportunities shortly.
+              </p>
+
+              {/* Notify Form */}
+              <div className="bg-white/5 backdrop-blur-xl p-8 md:p-12 rounded-[2rem] border border-white/10 shadow-2xl max-w-xl mx-auto">
+                 <h3 className="text-white font-bold text-xl mb-6 flex items-center justify-center gap-2">
+                   <BellRing className="text-amber-500 animate-pulse" /> Get Priority Notification
+                 </h3>
+                 <form className="space-y-4">
+                    <input 
+                      type="text" 
+                      placeholder="Your Name" 
+                      className="w-full bg-white/10 border border-white/10 rounded-xl p-4 text-white placeholder:text-white/40 focus:outline-none focus:border-amber-500 transition-all font-medium" 
+                    />
+                    <input 
+                      type="tel" 
+                      placeholder="Phone Number" 
+                      className="w-full bg-white/10 border border-white/10 rounded-xl p-4 text-white placeholder:text-white/40 focus:outline-none focus:border-amber-500 transition-all font-medium" 
+                    />
+                    <button className="w-full bg-amber-500 text-slate-900 font-black uppercase tracking-widest py-4 rounded-xl hover:bg-white hover:text-slate-900 transition-all flex items-center justify-center gap-2 group">
+                       Notify Me <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </button>
+                 </form>
+              </div>
+
+              {/* Back Link */}
+              <div className="mt-16 flex flex-col items-center gap-6">
+                 <Link to="/" className="text-white/60 hover:text-amber-500 font-bold uppercase tracking-widest text-xs flex items-center gap-2 transition-colors">
+                    <ArrowRight size={14} className="rotate-180" /> Back to Home
+                 </Link>
+                 <div className="flex gap-4">
+                    <button className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white transition-all"><Facebook size={16} /></button>
+                    <button className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white transition-all"><Twitter size={16} /></button>
+                    <button className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white transition-all"><Instagram size={16} /></button>
+                    <button className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white transition-all"><Linkedin size={16} /></button>
+                 </div>
+              </div>
+           </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Standard Layout for other Categories
   return (
     <div className="min-h-screen bg-white font-sans">
       {/* Lightbox Modal */}

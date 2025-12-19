@@ -30,7 +30,7 @@ const ScrollToTop = () => {
   return null;
 };
 
-// Data for specific projects
+// --- RESIDENTIAL PROJECTS DATA ---
 const SINGAPORE_DATA: ProjectData = {
   title: "Singapore Life Phase 1, 2 And 4",
   description: "Proudly introducing Singapore Life City. Inspired by the architecture and lifestyle of the global city-state, this project brings world-class urban planning to the heart of Chhattisgarh. Rising as a landmark township, it offers 360 degree convenience and access to extensive indoor and outdoor amenities.\n\nThe layout is designed to be self-sufficient, featuring wide roads, dedicated commercial zones, and lush parks. Don't miss your chance to be a part of this award-winning community concept.",
@@ -50,10 +50,7 @@ const SINGAPORE_DATA: ProjectData = {
   gallery: [
     "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600",
     "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=600",
-    "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=600",
-    "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=600",
-    "https://images.unsplash.com/photo-1600585154542-630a9398402c?q=80&w=600",
-    "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=600"
+    "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=600"
   ]
 };
 
@@ -75,11 +72,7 @@ const PARKVIEW_DATA: ProjectData = {
   mapQuery: "Shankracharya Mahavidyalaya, Junwani, Bhilai",
   gallery: [
     "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800",
-    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800",
-    "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=800",
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800",
-    "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800",
-    "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?q=80&w=800"
+    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800"
   ]
 };
 
@@ -98,15 +91,7 @@ const TOWN_DATA: ProjectData = {
     email: "chouhanhousing@gmail.com"
   },
   heroImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000",
-  mapQuery: "Chouhan Town, Bhilai",
-  gallery: [
-    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800",
-    "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=800",
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800",
-    "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800",
-    "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=800",
-    "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?q=80&w=800"
-  ]
+  mapQuery: "Chouhan Town, Bhilai"
 };
 
 const GREEN_VALLEY_DATA: ProjectData = {
@@ -124,18 +109,33 @@ const GREEN_VALLEY_DATA: ProjectData = {
     email: "chouhanhousing@gmail.com"
   },
   heroImage: "https://images.unsplash.com/photo-1600596542815-e32cb718d202?q=80&w=2000",
-  mapQuery: "Chouhan Green Valley, Junwani, Bhilai",
+  mapQuery: "Chouhan Green Valley, Junwani, Bhilai"
+};
+
+// --- COMMERCIAL PROJECTS DATA ---
+const BUSINESS_CENTER_DATA: ProjectData = {
+  title: "Chouhan Business Center",
+  description: "A state-of-the-art commercial hub designed for modern enterprise. Chouhan Business Center offers premium grade-A office spaces and retail outlets in the most accessible part of Bhilai. \n\nFeaturing advanced building management systems, ample multi-level parking, and high-speed connectivity, it is engineered for the visionaries of tomorrow. Limited inventory now available for sale and lease.",
+  status: "Now Selling & Leasing",
+  address: "GE Road, Bhilai, Chhattisgarh",
+  logoText: "Business Center",
+  presentationCentre: {
+    address: "Ground Floor, Chouhan Estate, Beside Chandra Maurya Talkies, NH53, Bhilai",
+    hours: "Open Daily 10AM - 8PM"
+  },
+  contact: {
+    phone: "+91 95111 21113",
+    email: "sales@chouhangroup.com"
+  },
+  heroImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000",
+  mapQuery: "Chouhan Estate, Bhilai",
   gallery: [
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800",
-    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800",
-    "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=800",
-    "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800",
-    "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?q=80&w=800",
-    "https://images.unsplash.com/photo-1600585154542-630a9398402c?q=80&w=800"
+    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=800",
+    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800"
   ]
 };
 
-// SOLD PROPERTIES DATA
+// --- SOLD RESIDENTIAL ---
 const DREAM_HOMES_DATA: ProjectData = {
   title: "CHPL Dream Homes",
   description: "A completed residential community by Chouhan Group. CHPL Dream Homes offered premium quality construction and a strategic location in Bhilai. This project is now fully occupied and stands as a testament to our commitment to excellence and timely delivery.",
@@ -151,11 +151,7 @@ const DREAM_HOMES_DATA: ProjectData = {
     email: "chouhanhousing@gmail.com"
   },
   heroImage: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?q=80&w=2000",
-  mapQuery: "Chouhan Estate, Bhilai",
-  gallery: [
-    "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800",
-    "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=800"
-  ]
+  mapQuery: "Chouhan Estate, Bhilai"
 };
 
 const SHIKHAR_DATA: ProjectData = {
@@ -176,30 +172,59 @@ const SHIKHAR_DATA: ProjectData = {
   mapQuery: "Chouhan Estate, Bhilai"
 };
 
-const BUSINESS_CENTER_DATA: ProjectData = {
-  title: "Chouhan Business Center",
-  description: "A state-of-the-art commercial hub designed for modern enterprise. Chouhan Business Center offers premium grade-A office spaces and retail outlets in the most accessible part of Bhilai. \n\nFeaturing advanced building management systems, ample multi-level parking, and high-speed connectivity, it is engineered for the visionaries of tomorrow. Limited inventory now available for sale and lease.",
-  status: "Now Selling & Leasing",
-  address: "GE Road, Bhilai, Chhattisgarh",
-  logoText: "Business Center",
+// --- SOLD COMMERCIAL ---
+const LANDMARK_DATA: ProjectData = {
+  title: "Chouhan Landmark",
+  description: "Chouhan Landmark stands as a premier business landmark in the heart of Bhilai. This mixed-use commercial facility provided premium retail and office spaces to the city's most established brands. The project reached 100% occupancy shortly after completion and continues to be a thriving commercial hub.",
+  status: "Sold",
+  address: "Supela, Bhilai, Chhattisgarh",
+  logoText: "Landmark",
   presentationCentre: {
-    address: "Ground Floor, Chouhan Estate, Beside Chandra Maurya Talkies, NH53, Bhilai",
-    hours: "Open Daily 10AM - 8PM"
+    address: "Completed & Operational",
+    hours: "Fully Occupied"
   },
   contact: {
     phone: "+91 95111 21113",
-    email: "sales@chouhangroup.com"
+    email: "chouhanhousing@gmail.com"
   },
-  heroImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000",
-  mapQuery: "Chouhan Estate, Bhilai",
-  gallery: [
-    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=800",
-    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800",
-    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800",
-    "https://images.unsplash.com/photo-1436450412740-6b988f486c6b?q=80&w=800",
-    "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=800",
-    "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800"
-  ]
+  heroImage: "https://images.unsplash.com/photo-1436450412740-6b988f486c6b?q=80&w=2000",
+  mapQuery: "Supela, Bhilai"
+};
+
+const CHOUHAN_COMPLEX_DATA: ProjectData = {
+  title: "Chouhan Complex",
+  description: "A signature commercial development by Chouhan Group that defined modern retail spaces in Durg. Chouhan Complex was designed with high-visibility storefronts and robust amenities for retailers and shoppers alike. This development is now fully sold and hosts a variety of retail and service providers.",
+  status: "Sold",
+  address: "Durg-Bhilai Road, Chhattisgarh",
+  logoText: "The Complex",
+  presentationCentre: {
+    address: "Completed & Operational",
+    hours: "Fully Occupied"
+  },
+  contact: {
+    phone: "+91 95111 21113",
+    email: "chouhanhousing@gmail.com"
+  },
+  heroImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000",
+  mapQuery: "Durg, Chhattisgarh"
+};
+
+const PLAZA_DATA: ProjectData = {
+  title: "Chouhan Plaza",
+  description: "Chouhan Plaza is an award-winning retail and commercial destination. Featuring a centralized layout and high-speed elevator access, it became a preferred choice for local and national brands. The project is fully sold and continues to serve the Bhilai community as a primary shopping destination.",
+  status: "Sold",
+  address: "G.E. Road, Bhilai, Chhattisgarh",
+  logoText: "Plaza",
+  presentationCentre: {
+    address: "Completed & Operational",
+    hours: "Fully Occupied"
+  },
+  contact: {
+    phone: "+91 95111 21113",
+    email: "chouhanhousing@gmail.com"
+  },
+  heroImage: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=2000",
+  mapQuery: "Bhilai, Chhattisgarh"
 };
 
 const App: React.FC = () => {
@@ -214,19 +239,24 @@ const App: React.FC = () => {
           <Route path="/new-homes" element={<NewHomes />} />
           <Route path="/commercial" element={<Commercial />} />
           
-          {/* Specific Project Routes using the refined ProjectDetail Layout */}
+          {/* Specific Project Routes */}
           <Route path="/new-homes/singapore-life" element={<ProjectDetail data={SINGAPORE_DATA} />} />
           <Route path="/new-homes/parkview" element={<ProjectDetail data={PARKVIEW_DATA} />} />
           <Route path="/new-homes/town" element={<ProjectDetail data={TOWN_DATA} />} />
           <Route path="/new-homes/green-valley" element={<ProjectDetail data={GREEN_VALLEY_DATA} />} />
           
-          {/* Sold Properties Routes */}
+          {/* Sold Residential Routes */}
           <Route path="/new-homes/dream-home" element={<ProjectDetail data={DREAM_HOMES_DATA} />} />
           <Route path="/new-homes/shikhar" element={<ProjectDetail data={SHIKHAR_DATA} />} />
           
           {/* Commercial Specific Project Routes */}
           <Route path="/commercial/business-center" element={<ProjectDetail data={BUSINESS_CENTER_DATA} />} />
           <Route path="/commercial/city-center" element={<CityCenter />} />
+
+          {/* Sold Commercial Routes */}
+          <Route path="/commercial/landmark" element={<ProjectDetail data={LANDMARK_DATA} />} />
+          <Route path="/commercial/complex" element={<ProjectDetail data={CHOUHAN_COMPLEX_DATA} />} />
+          <Route path="/commercial/plaza" element={<ProjectDetail data={PLAZA_DATA} />} />
           
           {/* Custom Landings */}
           <Route path="/new-homes/sunrisecity" element={<SunriseLanding />} />
