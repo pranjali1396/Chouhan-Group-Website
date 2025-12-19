@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const PROPERTIES = [
   {
     id: 1,
-    name: "Singapore Life City",
+    name: "Singapore Life Phase 1, 2 And 4",
     location: "Bhilai",
     type: "Integrated Township",
     price: "₹ 25L - ₹ 65L",
@@ -19,7 +19,7 @@ const PROPERTIES = [
   },
   {
     id: 2,
-    name: "Chouhan Green Valley",
+    name: "Chouhan Green Valley Phase 1, 2, 3",
     location: "Junwani, Bhilai",
     type: "Premium Bungalows",
     price: "₹ 55L - ₹ 1.2Cr",

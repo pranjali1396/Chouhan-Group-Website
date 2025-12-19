@@ -37,7 +37,7 @@ export const NAVIGATION_DATA: NavItem[] = [
       {
         title: "SOLD",
         links: [
-          { label: "Dream Home Complex", path: "/new-homes/dream-home" },
+          { label: "CHPL Dream homes", path: "/new-homes/dream-home" },
           { label: "Shikhar Complex", path: "/new-homes/shikhar" },
         ] 
       }

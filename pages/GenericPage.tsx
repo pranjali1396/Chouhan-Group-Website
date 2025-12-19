@@ -1,10 +1,11 @@
+
 import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { 
   CheckCircle2, ArrowRight, MapPin, Phone, Mail, 
   Home, Wifi, Car, Coffee, Dumbbell, Shield, Sun, 
   Play, Maximize2, X, ChevronRight, Layout, Download,
-  Layers, Zap, Droplet, Monitor, ZoomIn
+  Layers, Zap, Droplet, Monitor, ZoomIn, Ban
 } from 'lucide-react';
 
 const PROPERTY_DATA = {
@@ -59,6 +60,9 @@ const GenericPage: React.FC = () => {
   const rawTitle = pathParts[pathParts.length - 1];
   const title = rawTitle?.replace(/-/g, ' ').toUpperCase() || 'LUXURY LIVING';
   const category = pathParts[0]?.replace(/-/g, ' ').toUpperCase();
+
+  // Heuristic for Sold
+  const isSold = title.includes('DREAM HOME') || title.includes('SHIKHAR') || title.includes('SOLD');
 
   const scrollToSection = (id: string) => {
     setActiveTab(id);
@@ -157,6 +161,16 @@ const GenericPage: React.FC = () => {
              style={{ backgroundImage: `url('https://images.unsplash.com/photo-1600596542815-e32cb718d202?q=80&w=2000&auto=format&fit=crop')` }}>
         </div>
          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+
+         {/* SOLD OUT Overlay for Generic Page */}
+         {isSold && (
+            <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+              <div className="bg-red-600/90 text-white border-4 border-white px-10 py-4 text-4xl md:text-7xl font-black uppercase tracking-[0.2em] -rotate-12 shadow-2xl">
+                Sold Out
+              </div>
+            </div>
+         )}
+
          <div className="absolute bottom-0 left-0 w-full p-8 md:p-16">
             <div className="container mx-auto animate-fade-in-up">
               <div className="text-amber-400 font-bold tracking-widest text-xs uppercase mb-4 flex items-center gap-2">
@@ -170,7 +184,7 @@ const GenericPage: React.FC = () => {
               <div className="flex flex-wrap gap-6 text-white font-light text-sm md:text-base drop-shadow">
                 <span className="flex items-center gap-2"><MapPin size={18} className="text-amber-500" /> Prime Location</span>
                 <span className="flex items-center gap-2"><Layout size={18} className="text-amber-500" /> 1,200 - 2,500 Sq. Ft.</span>
-                <span className="flex items-center gap-2"><Home size={18} className="text-amber-500" /> Ready to Move</span>
+                <span className="flex items-center gap-2"><Home size={18} className="text-amber-500" /> {isSold ? 'Sold' : 'Ready to Move'}</span>
               </div>
             </div>
          </div>
@@ -193,9 +207,11 @@ const GenericPage: React.FC = () => {
                 {section.label}
               </button>
             ))}
-            <a href="#contact" className="ml-auto bg-amber-500 text-white px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-amber-600 transition-colors hidden md:block rounded shadow-sm">
-              Enquire Now
-            </a>
+            {!isSold && (
+              <a href="#contact" className="ml-auto bg-amber-500 text-white px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-amber-600 transition-colors hidden md:block rounded shadow-sm">
+                Enquire Now
+              </a>
+            )}
           </div>
         </div>
       </div>
@@ -374,54 +390,68 @@ const GenericPage: React.FC = () => {
 
           </div>
 
-          {/* Sidebar / Inquiry Form */}
-          <div className="lg:w-1/3 relative" id="contact">
-            <div className="sticky top-28 space-y-8">
-              {/* Form Card */}
-              <div className="bg-white p-8 rounded-xl shadow-2xl border border-slate-100">
-                <div className="mb-6">
-                  <span className="text-amber-500 font-bold tracking-widest text-xs uppercase block mb-2">Interested?</span>
-                  <h3 className="text-2xl font-bold font-heading text-slate-900">Request a Callback</h3>
-                </div>
-                
-                <form className="space-y-4">
-                  <div>
-                    <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-4 text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400" placeholder="Full Name *" />
-                  </div>
-                  <div>
-                    <input type="email" className="w-full bg-slate-50 border border-slate-200 rounded p-4 text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400" placeholder="Email Address *" />
-                  </div>
-                  <div>
-                    <input type="tel" className="w-full bg-slate-50 border border-slate-200 rounded p-4 text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400" placeholder="Phone Number *" />
-                  </div>
-                  <div>
-                     <select className="w-full bg-slate-50 border border-slate-200 rounded p-4 text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition-all text-slate-500">
-                        <option>Interested In</option>
-                        <option>Buying</option>
-                        <option>Renting</option>
-                        <option>Site Visit</option>
-                     </select>
+          {/* Sidebar / Inquiry Form - Hidden if Sold */}
+          <div className="lg:w-1/3 relative">
+            {!isSold ? (
+              <div className="sticky top-28 space-y-8" id="contact">
+                {/* Form Card */}
+                <div className="bg-white p-8 rounded-xl shadow-2xl border border-slate-100">
+                  <div className="mb-6">
+                    <span className="text-amber-500 font-bold tracking-widest text-xs uppercase block mb-2">Interested?</span>
+                    <h3 className="text-2xl font-bold font-heading text-slate-900">Request a Callback</h3>
                   </div>
                   
-                  <button type="button" className="w-full bg-gradient-to-r from-slate-900 to-slate-800 text-white font-bold uppercase tracking-widest py-4 rounded hover:from-amber-500 hover:to-amber-600 hover:text-white transition-all mt-4 flex justify-center items-center gap-2 group shadow-md">
-                    Submit Enquiry
-                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
-                  <p className="text-[10px] text-center text-slate-400 mt-4">By submitting this form, you agree to our Terms of Service.</p>
-                </form>
-              </div>
+                  <form className="space-y-4">
+                    <div>
+                      <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-4 text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400" placeholder="Full Name *" />
+                    </div>
+                    <div>
+                      <input type="email" className="w-full bg-slate-50 border border-slate-200 rounded p-4 text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400" placeholder="Email Address *" />
+                    </div>
+                    <div>
+                      <input type="tel" className="w-full bg-slate-50 border border-slate-200 rounded p-4 text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400" placeholder="Phone Number *" />
+                    </div>
+                    <div>
+                       <select className="w-full bg-slate-50 border border-slate-200 rounded p-4 text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition-all text-slate-500">
+                          <option>Interested In</option>
+                          <option>Buying</option>
+                          <option>Renting</option>
+                          <option>Site Visit</option>
+                       </select>
+                    </div>
+                    
+                    <button type="button" className="w-full bg-gradient-to-r from-slate-900 to-slate-800 text-white font-bold uppercase tracking-widest py-4 rounded hover:from-amber-500 hover:to-amber-600 hover:text-white transition-all mt-4 flex justify-center items-center gap-2 group shadow-md">
+                      Submit Enquiry
+                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    </button>
+                    <p className="text-[10px] text-center text-slate-400 mt-4">By submitting this form, you agree to our Terms of Service.</p>
+                  </form>
+                </div>
 
-              {/* Brochure Download */}
-              <div className="bg-amber-50 p-6 rounded-xl text-slate-800 flex items-center justify-between cursor-pointer hover:bg-amber-100 transition-colors shadow-sm border border-amber-100 group">
-                <div>
-                   <h4 className="font-bold text-lg leading-none mb-1 text-slate-900">Download Brochure</h4>
-                   <p className="text-xs text-slate-500">Get detailed floor plans & pricing</p>
-                </div>
-                <div className="w-10 h-10 bg-amber-200 rounded-full flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition-all text-amber-700">
-                   <Download size={20} />
+                {/* Brochure Download */}
+                <div className="bg-amber-50 p-6 rounded-xl text-slate-800 flex items-center justify-between cursor-pointer hover:bg-amber-100 transition-colors shadow-sm border border-amber-100 group">
+                  <div>
+                     <h4 className="font-bold text-lg leading-none mb-1 text-slate-900">Download Brochure</h4>
+                     <p className="text-xs text-slate-500">Get detailed floor plans & pricing</p>
+                  </div>
+                  <div className="w-10 h-10 bg-amber-200 rounded-full flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition-all text-amber-700">
+                     <Download size={20} />
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div className="sticky top-28 p-8 bg-red-50 border border-red-100 rounded-xl text-center shadow-lg">
+                <div className="flex items-center justify-center gap-2 text-red-600 font-black uppercase tracking-[0.2em] text-sm mb-3">
+                  <Ban size={20} /> Sold Out
+                </div>
+                <p className="text-slate-600 text-sm leading-relaxed mb-6">
+                  This project has been completely sold. We are no longer accepting inquiries for this property.
+                </p>
+                <Link to="/new-homes" className="inline-block bg-slate-900 text-white px-6 py-2 rounded text-xs font-bold uppercase tracking-widest hover:bg-amber-500 transition-colors">
+                  Explore Other Homes
+                </Link>
+              </div>
+            )}
           </div>
 
         </div>
