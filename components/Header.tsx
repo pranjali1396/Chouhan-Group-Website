@@ -1,13 +1,13 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { NavItem } from '../types';
-import { 
-  Linkedin, 
-  Facebook, 
-  Instagram, 
-  Youtube, 
-  Twitter, 
-  Menu, 
+import {
+  Linkedin,
+  Facebook,
+  Instagram,
+  Youtube,
+  Twitter,
+  Menu,
   X,
   ChevronDown,
   Plus,
@@ -20,14 +20,14 @@ interface HeaderProps {
 }
 
 // Refactored Mobile Item Component with Enhanced Usability
-const MobileNavItem = React.memo(({ 
-  item, 
-  isExpanded, 
-  onToggle, 
-  onLinkClick 
-}: { 
-  item: NavItem, 
-  isExpanded: boolean, 
+const MobileNavItem = React.memo(({
+  item,
+  isExpanded,
+  onToggle,
+  onLinkClick
+}: {
+  item: NavItem,
+  isExpanded: boolean,
   onToggle: (label: string) => void,
   onLinkClick: () => void
 }) => {
@@ -36,7 +36,7 @@ const MobileNavItem = React.memo(({
   return (
     <div className={`border-b border-white/10 transition-colors duration-300 ${isExpanded ? 'bg-[#00365c]' : 'bg-[#002b49]'}`}>
       {hasSubmenu ? (
-        <button 
+        <button
           onClick={() => onToggle(item.label)}
           className="w-full flex justify-between items-center py-5 px-6 text-white hover:text-amber-400 transition-all select-none group"
         >
@@ -48,9 +48,9 @@ const MobileNavItem = React.memo(({
           </div>
           <div className={`transition-transform duration-500 ease-in-out ${isExpanded ? 'rotate-180' : 'rotate-0'}`}>
             {isExpanded ? (
-               <Minus size={18} className="text-amber-400" />
+              <Minus size={18} className="text-amber-400" />
             ) : (
-               <Plus size={18} className="text-white/60 group-hover:text-amber-400" />
+              <Plus size={18} className="text-white/60 group-hover:text-amber-400" />
             )}
           </div>
         </button>
@@ -63,13 +63,12 @@ const MobileNavItem = React.memo(({
           <span className="font-heading font-bold uppercase text-[13px] tracking-widest">{item.label}</span>
         </Link>
       )}
-      
+
       {/* Accordion Content with Enhanced Animation */}
       {hasSubmenu && (
-        <div 
-          className={`grid transition-[grid-template-rows,opacity] duration-500 ease-in-out bg-[#00223a]/50 ${
-            isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-          }`}
+        <div
+          className={`grid transition-[grid-template-rows,opacity] duration-500 ease-in-out bg-[#00223a]/50 ${isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+            }`}
         >
           <div className="overflow-hidden">
             <div className="py-6 px-8 space-y-8">
@@ -83,9 +82,9 @@ const MobileNavItem = React.memo(({
                   <ul className="space-y-4">
                     {col.links.length > 0 ? col.links.map((link, lIdx) => (
                       <li key={lIdx}>
-                        <Link 
+                        <Link
                           to={link.path}
-                          onClick={onLinkClick} 
+                          onClick={onLinkClick}
                           className="text-xs font-semibold text-white/70 block hover:text-amber-400 transition-all hover:translate-x-1 uppercase tracking-widest"
                         >
                           {link.label}
@@ -145,14 +144,13 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
 
   return (
     <>
-      <header className={`fixed w-full z-50 transition-all duration-300 font-sans ${
-          scrolled ? 'bg-[#002b49]/95 backdrop-blur-md shadow-lg' : 'bg-[#002b49]'
+      <header className={`fixed w-full z-50 transition-all duration-300 font-sans ${scrolled ? 'bg-[#002b49]/95 backdrop-blur-md shadow-lg' : 'bg-[#002b49]'
         }`}>
-        
+
         {/* Top Bar - Hidden on Mobile */}
         <div className={`hidden md:flex justify-end items-center gap-6 px-4 md:px-12 py-2.5 text-[11px] font-bold tracking-wider text-white border-b border-white/10 uppercase`}>
           <div className="flex gap-6 items-center">
-            <Link to="/register" className="hover:text-amber-400 transition-colors">Register for Updates</Link>
+            <Link to="/contact" className="hover:text-amber-400 transition-colors">Register for Updates</Link>
             <Link to="/careers" className="hover:text-amber-400 transition-colors">Careers</Link>
             <div className="flex gap-3 text-white/60 font-medium select-none">
               <span className="cursor-pointer hover:text-white transition-colors">EN</span>
@@ -169,43 +167,43 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
         </div>
 
         {/* Main Navbar */}
-        <div className="container mx-auto px-4 md:px-12">
-          <div className={`flex justify-between items-center transition-all duration-300 ${scrolled ? 'h-16' : 'h-20 md:h-24'}`}>
+        <div className="container mx-auto px-4 md:pl-4 md:pr-12">
+          <div className={`flex justify-between items-center transition-all duration-300 ${scrolled ? 'h-12' : 'h-14 md:h-16'}`}>
             {/* Logo */}
-            <Link to="/" className="flex items-center shrink-0 mr-8 group z-50">
+            <Link to="/" className="flex items-center shrink-0 mr-4 group z-50">
               {!imgError ? (
-                <img 
-                  src="/logo.png" 
-                  alt="Chouhan Group" 
-                  className="h-8 md:h-10 w-auto object-contain transition-transform group-hover:scale-105 brightness-0 invert"
+                <img
+                  src="/logo.png"
+                  alt="Chouhan Group"
+                  className="h-6 md:h-8 w-auto object-contain transition-transform group-hover:scale-105"
+                  style={{ filter: 'brightness(0) saturate(100%) invert(61%) sepia(97%) saturate(1832%) hue-rotate(357deg) brightness(101%) contrast(93%)' }}
                   onError={() => setImgError(true)}
                 />
               ) : (
                 <div className="flex flex-col items-center">
                   <div className="flex items-baseline gap-1">
-                      <span className="font-serif text-xl md:text-2xl font-bold text-white tracking-wider">CHOUHAN</span>
+                    <span className="font-serif text-xl md:text-2xl font-bold text-white tracking-wider">CHOUHAN</span>
                   </div>
                   <div className="flex flex-col items-center -mt-1 w-full">
-                      <span className="text-[8px] md:text-[10px] text-amber-400 font-sans font-bold tracking-[0.3em] uppercase w-full text-center">Group</span>
+                    <span className="text-[8px] md:text-[10px] text-amber-400 font-sans font-bold tracking-[0.3em] uppercase w-full text-center">Group</span>
                   </div>
                 </div>
               )}
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center h-full gap-6 xl:gap-8">
+            <nav className="hidden xl:flex items-center h-full gap-5 xl:gap-8">
               {navData.map((item) => (
-                <div 
+                <div
                   key={item.label}
                   className="group h-full flex items-center relative"
                   onMouseEnter={() => setActiveMenu(item.label)}
                   onMouseLeave={() => setActiveMenu(null)}
                 >
-                  <Link 
+                  <Link
                     to={item.path || '#'}
-                    className={`flex items-center gap-1 font-heading font-bold text-[13px] tracking-widest uppercase transition-all duration-300 py-6 border-b-2 border-transparent ${
-                      activeMenu === item.label ? 'text-amber-400 border-amber-400' : 'text-white hover:text-amber-400'
-                    }`}
+                    className={`flex items-center gap-1 font-heading font-bold text-[11px] tracking-widest uppercase whitespace-nowrap transition-all duration-300 py-6 border-b-2 border-transparent ${activeMenu === item.label ? 'text-amber-400 border-amber-400' : 'text-white hover:text-amber-400'
+                      }`}
                   >
                     {item.label}
                     {item.columns && (
@@ -215,7 +213,8 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
 
                   {/* Desktop Mega Menu Dropdown */}
                   {activeMenu === item.label && item.columns && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-max min-w-[200px] bg-white text-slate-800 shadow-xl rounded-b-lg border-t-4 border-amber-500 z-50 flex overflow-hidden animate-fadeIn">
+                    <div className={`absolute top-full mt-0 w-max min-w-[300px] bg-white text-slate-800 shadow-xl rounded-b-lg border-t-4 border-amber-500 z-50 flex overflow-hidden animate-fadeIn max-w-[90vw] ${navData.indexOf(item) >= (navData.length / 2) - 1 ? 'right-0' : 'left-0'
+                      }`}>
                       {item.columns.map((col, idx) => (
                         <div key={idx} className="p-6 min-w-[220px] border-r border-slate-100 last:border-r-0 bg-white">
                           {col.title && (
@@ -226,8 +225,8 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
                           <ul className="space-y-2.5">
                             {col.links.length > 0 ? col.links.map((link, lIdx) => (
                               <li key={lIdx}>
-                                <Link 
-                                  to={link.path} 
+                                <Link
+                                  to={link.path}
                                   className="text-[11px] font-bold text-slate-500 hover:text-amber-600 hover:translate-x-1 transition-all block leading-tight uppercase tracking-wider"
                                 >
                                   {link.label}
@@ -246,8 +245,8 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
             </nav>
 
             {/* Mobile Menu Button - White */}
-            <button 
-              className="lg:hidden text-white hover:text-amber-400 transition-colors p-2 z-50 relative"
+            <button
+              className="xl:hidden text-white hover:text-amber-400 transition-colors p-2 z-50 relative"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             >
@@ -258,31 +257,31 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
       </header>
 
       {/* Mobile Navigation Overlay */}
-      <div 
-        className={`fixed inset-0 bg-black/70 z-[60] lg:hidden transition-opacity duration-500 ${
-          mobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`}
+      <div
+        className={`fixed inset-0 bg-black/70 z-[60] xl:hidden transition-opacity duration-500 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
         onClick={() => setMobileMenuOpen(false)}
         aria-hidden="true"
       />
 
       {/* Mobile Navigation Drawer - Dark Blue Theme */}
-      <div 
-        className={`fixed inset-y-0 right-0 w-full md:w-[450px] bg-[#002b49] z-[70] lg:hidden shadow-2xl transform-gpu transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1) flex flex-col ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+      <div
+        className={`fixed inset-y-0 right-0 w-full md:w-[450px] bg-[#002b49] z-[70] xl:hidden shadow-2xl transform-gpu transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1) flex flex-col ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         {/* Mobile Header: Logo & Close */}
         <div className="flex justify-between items-center px-6 py-6 border-b border-white/10 shrink-0">
           {!imgError ? (
-             <img 
-               src="/logo.png" 
-               alt="Chouhan Group" 
-               className="h-10 w-auto object-contain brightness-0 invert"
-               onError={() => setImgError(true)}
-             />
-           ) : (
-             <span className="font-serif text-xl font-bold text-white tracking-wider">CHOUHAN GROUP</span>
-           )}
-          <button 
+            <img
+              src="/logo.png"
+              alt="Chouhan Group"
+              className="h-10 w-auto object-contain"
+              style={{ filter: 'brightness(0) saturate(100%) invert(61%) sepia(97%) saturate(1832%) hue-rotate(357deg) brightness(101%) contrast(93%)' }}
+              onError={() => setImgError(true)}
+            />
+          ) : (
+            <span className="font-serif text-xl font-bold text-white tracking-wider">CHOUHAN GROUP</span>
+          )}
+          <button
             onClick={() => setMobileMenuOpen(false)}
             className="text-white hover:text-amber-400 transition-colors p-2 rounded-full hover:bg-white/5"
             aria-label="Close menu"
@@ -296,7 +295,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
           {/* Main Links List */}
           <div className="py-4">
             {navData.map((item) => (
-              <MobileNavItem 
+              <MobileNavItem
                 key={item.label}
                 item={item}
                 isExpanded={mobileExpanded === item.label}
@@ -308,29 +307,29 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
 
           {/* Mobile Footer Actions */}
           <div className="p-8 pb-12 mt-4 space-y-8 bg-black/10">
-             {/* Social Icons - White Circle Style */}
-             <div className="flex gap-4 items-center justify-center">
-               {[
-                 { icon: <Facebook size={20} fill="currentColor" className="stroke-none" />, href: "#" },
-                 { icon: <Twitter size={20} fill="currentColor" className="stroke-none" />, href: "#" },
-                 { icon: <Instagram size={20} />, href: "#" },
-                 { icon: <Youtube size={20} fill="currentColor" className="stroke-none" />, href: "#" },
-                 { icon: <Linkedin size={20} fill="currentColor" className="stroke-none" />, href: "#" }
-               ].map((social, idx) => (
-                 <a key={idx} href={social.href} className="w-11 h-11 bg-white/5 rounded-full flex items-center justify-center text-white hover:bg-amber-500 hover:text-white transition-all border border-white/10">
-                   {social.icon}
-                 </a>
-               ))}
-             </div>
+            {/* Social Icons - White Circle Style */}
+            <div className="flex gap-4 items-center justify-center">
+              {[
+                { icon: <Facebook size={20} fill="currentColor" className="stroke-none" />, href: "#" },
+                { icon: <Twitter size={20} fill="currentColor" className="stroke-none" />, href: "#" },
+                { icon: <Instagram size={20} />, href: "#" },
+                { icon: <Youtube size={20} fill="currentColor" className="stroke-none" />, href: "#" },
+                { icon: <Linkedin size={20} fill="currentColor" className="stroke-none" />, href: "#" }
+              ].map((social, idx) => (
+                <a key={idx} href={social.href} className="w-11 h-11 bg-white/5 rounded-full flex items-center justify-center text-white hover:bg-amber-500 hover:text-white transition-all border border-white/10">
+                  {social.icon}
+                </a>
+              ))}
+            </div>
 
-             {/* Register Button */}
-             <Link 
-               to="/contact" 
-               onClick={closeMobileMenu}
-               className="block w-full py-5 px-6 text-center border-2 border-amber-500 text-amber-500 font-black uppercase tracking-[0.2em] text-[11px] hover:bg-amber-500 hover:text-white transition-all rounded-sm shadow-lg"
-             >
-               Register for updates
-             </Link>
+            {/* Register Button */}
+            <Link
+              to="/contact"
+              onClick={closeMobileMenu}
+              className="block w-full py-5 px-6 text-center border-2 border-amber-500 text-amber-500 font-black uppercase tracking-[0.2em] text-[11px] hover:bg-amber-500 hover:text-white transition-all rounded-sm shadow-lg"
+            >
+              Register for updates
+            </Link>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { 
-  Building2, Car, BedDouble, Target, Eye, Users, 
+import {
+  Building2, Car, BedDouble, Target, Eye, Users,
   Award, Briefcase, TrendingUp, CheckCircle, MapPin, Phone, Globe, Calendar
 } from 'lucide-react';
 
@@ -9,7 +9,7 @@ const TEAM = [
   {
     name: "Mr. Ajay Chouhan",
     role: "Founder & Chairman",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&fit=crop", 
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&fit=crop",
     desc: "The visionary force behind Chouhan Group, founding the organization in 1998 with a commitment to excellence."
   },
   {
@@ -82,21 +82,21 @@ const PORTFOLIO = {
 
 const AboutGroup: React.FC = () => {
   return (
-    <div className="bg-white font-sans text-slate-800">
-      
+    <div className="bg-white font-sans text-slate-800 pt-32 md:pt-48">
+
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000')] bg-cover bg-center"></div>
         <div className="absolute inset-0 bg-white/90"></div>
         <div className="container mx-auto px-4 relative z-10 text-center text-slate-900">
-           <div className="inline-block border border-amber-500/30 bg-amber-50 px-4 py-1 rounded-full text-amber-600 font-bold tracking-widest text-xs uppercase mb-6">
-             Est. 1998
-           </div>
-           <h1 className="text-5xl md:text-7xl font-heading font-black mb-6 drop-shadow-sm">About Chouhan Group</h1>
-           <div className="h-1 w-24 bg-amber-500 mx-auto mb-8"></div>
-           <p className="text-xl md:text-2xl font-light tracking-wide text-slate-600">
-             Innovating. Building. Driving Excellence.
-           </p>
+          <div className="inline-block border border-amber-500/30 bg-amber-50 px-4 py-1 rounded-full text-amber-600 font-bold tracking-widest text-xs uppercase mb-6">
+            Est. 1998
+          </div>
+          <h1 className="text-5xl md:text-7xl font-heading font-black mb-6 drop-shadow-sm">About Chouhan Group</h1>
+          <div className="h-1 w-24 bg-amber-500 mx-auto mb-8"></div>
+          <p className="text-xl md:text-2xl font-light tracking-wide text-slate-600">
+            Innovating. Building. Driving Excellence.
+          </p>
         </div>
       </section>
 
@@ -105,70 +105,70 @@ const AboutGroup: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-16 items-start">
             <div className="lg:w-1/2">
-               <h2 className="text-sm font-bold text-amber-600 uppercase tracking-widest mb-4">Our Story</h2>
-               <h3 className="text-4xl font-heading font-black text-slate-900 mb-8">
-                 A Legacy Rooted in <span className="text-amber-500">Vision & Dedication</span>
-               </h3>
-               <div className="space-y-6 text-slate-600 leading-loose text-lg font-light">
-                 <p>
-                   Founded in 1998 by <strong className="text-slate-900">Mr. Ajay Chouhan</strong>, the Chouhan Group stands as a multi-vertical enterprise with a legacy rooted in entrepreneurship. Over the years, the group has grown into a dynamic organization and emerged as a leader across diverse sectors—namely Real Estate, Automobile Dealerships, and Hospitality.
-                 </p>
-                 <p>
-                   We pride ourselves on a strong foundation of trust, performance, and innovation, delivering impactful projects and experiences that shape communities and improve lives. Today, we continue to strive for excellence, bringing quality to all ventures while contributing actively to community development.
-                 </p>
-               </div>
+              <h2 className="text-sm font-bold text-amber-600 uppercase tracking-widest mb-4">Our Story</h2>
+              <h3 className="text-4xl font-heading font-black text-slate-900 mb-8">
+                A Legacy Rooted in <span className="text-amber-500">Vision & Dedication</span>
+              </h3>
+              <div className="space-y-6 text-slate-600 leading-loose text-lg font-light">
+                <p>
+                  Founded in 1998 by <strong className="text-slate-900">Mr. Ajay Chouhan</strong>, the Chouhan Group stands as a multi-vertical enterprise with a legacy rooted in entrepreneurship. Over the years, the group has grown into a dynamic organization and emerged as a leader across diverse sectors—namely Real Estate, Automobile Dealerships, and Hospitality.
+                </p>
+                <p>
+                  We pride ourselves on a strong foundation of trust, performance, and innovation, delivering impactful projects and experiences that shape communities and improve lives. Today, we continue to strive for excellence, bringing quality to all ventures while contributing actively to community development.
+                </p>
+              </div>
             </div>
             <div className="lg:w-1/2 w-full">
-               <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-xl relative overflow-hidden group">
-                   <div className="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-bl-full -mr-8 -mt-8 z-0"></div>
-                   
-                   <h3 className="text-xl font-bold font-heading text-slate-900 mb-8 relative z-10 flex items-center gap-2">
-                     Corporate Fast Facts
-                     <div className="h-0.5 w-8 bg-amber-500"></div>
-                   </h3>
-                   
-                   <div className="space-y-6 relative z-10">
-                       <div className="flex items-start gap-4 p-4 rounded-lg bg-slate-50 hover:bg-amber-50 transition-colors group/item">
-                         <div className="p-2 bg-white rounded-full shadow-sm text-amber-500 group-hover/item:scale-110 transition-transform">
-                           <MapPin size={20} />
-                         </div>
-                         <div>
-                           <h4 className="font-bold text-slate-900 text-sm mb-1">Global Headquarters</h4>
-                           <p className="text-slate-500 text-xs leading-relaxed">Ground Floor, Chouhan Estate, Beside Chandra Maurya Talkies, NH53, Bhilai, Chhattisgarh</p>
-                         </div>
-                       </div>
+              <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-xl relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-bl-full -mr-8 -mt-8 z-0"></div>
 
-                       <div className="flex items-start gap-4 p-4 rounded-lg bg-slate-50 hover:bg-amber-50 transition-colors group/item">
-                         <div className="p-2 bg-white rounded-full shadow-sm text-amber-500 group-hover/item:scale-110 transition-transform">
-                           <Calendar size={20} />
-                         </div>
-                         <div>
-                           <h4 className="font-bold text-slate-900 text-sm mb-1">Established</h4>
-                           <p className="text-slate-500 text-xs">1998</p>
-                         </div>
-                       </div>
+                <h3 className="text-xl font-bold font-heading text-slate-900 mb-8 relative z-10 flex items-center gap-2">
+                  Corporate Fast Facts
+                  <div className="h-0.5 w-8 bg-amber-500"></div>
+                </h3>
 
-                       <div className="flex items-start gap-4 p-4 rounded-lg bg-slate-50 hover:bg-amber-50 transition-colors group/item">
-                         <div className="p-2 bg-white rounded-full shadow-sm text-amber-500 group-hover/item:scale-110 transition-transform">
-                           <Phone size={20} />
-                         </div>
-                         <div>
-                           <h4 className="font-bold text-slate-900 text-sm mb-1">Contact</h4>
-                           <p className="text-slate-500 text-xs">+91 9109104005</p>
-                         </div>
-                       </div>
+                <div className="space-y-6 relative z-10">
+                  <div className="flex items-start gap-4 p-4 rounded-lg bg-slate-50 hover:bg-amber-50 transition-colors group/item">
+                    <div className="p-2 bg-white rounded-full shadow-sm text-amber-500 group-hover/item:scale-110 transition-transform">
+                      <MapPin size={20} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 text-sm mb-1">Global Headquarters</h4>
+                      <p className="text-slate-500 text-xs leading-relaxed">Ground Floor, Chouhan Estate, Beside Chandra Maurya Talkies, NH53, Bhilai, Chhattisgarh</p>
+                    </div>
+                  </div>
 
-                       <div className="flex items-start gap-4 p-4 rounded-lg bg-slate-50 hover:bg-amber-50 transition-colors group/item">
-                         <div className="p-2 bg-white rounded-full shadow-sm text-amber-500 group-hover/item:scale-110 transition-transform">
-                           <Globe size={20} />
-                         </div>
-                         <div>
-                           <h4 className="font-bold text-slate-900 text-sm mb-1">Online Presence</h4>
-                           <p className="text-slate-500 text-xs">chouhangroup.com</p>
-                         </div>
-                       </div>
-                   </div>
-               </div>
+                  <div className="flex items-start gap-4 p-4 rounded-lg bg-slate-50 hover:bg-amber-50 transition-colors group/item">
+                    <div className="p-2 bg-white rounded-full shadow-sm text-amber-500 group-hover/item:scale-110 transition-transform">
+                      <Calendar size={20} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 text-sm mb-1">Established</h4>
+                      <p className="text-slate-500 text-xs">1998</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4 p-4 rounded-lg bg-slate-50 hover:bg-amber-50 transition-colors group/item">
+                    <div className="p-2 bg-white rounded-full shadow-sm text-amber-500 group-hover/item:scale-110 transition-transform">
+                      <Phone size={20} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 text-sm mb-1">Contact</h4>
+                      <p className="text-slate-500 text-xs">+91 9109104005</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4 p-4 rounded-lg bg-slate-50 hover:bg-amber-50 transition-colors group/item">
+                    <div className="p-2 bg-white rounded-full shadow-sm text-amber-500 group-hover/item:scale-110 transition-transform">
+                      <Globe size={20} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 text-sm mb-1">Online Presence</h4>
+                      <p className="text-slate-500 text-xs">chouhangroup.com</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -216,23 +216,23 @@ const AboutGroup: React.FC = () => {
 
       {/* Leadership Team */}
       <section className="py-24 bg-white">
-         <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl font-heading font-black text-slate-900 mb-16">Leadership Team</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {TEAM.map((member, idx) => (
-                <div key={idx} className="group relative">
-                  <div className="h-96 overflow-hidden rounded-lg mb-6 bg-slate-100 relative shadow-sm">
-                     <img src={member.image} alt={member.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6 text-left">
-                       <p className="text-white text-sm">{member.desc}</p>
-                     </div>
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl font-heading font-black text-slate-900 mb-16">Leadership Team</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {TEAM.map((member, idx) => (
+              <div key={idx} className="group relative">
+                <div className="h-96 overflow-hidden rounded-lg mb-6 bg-slate-100 relative shadow-sm">
+                  <img src={member.image} alt={member.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6 text-left">
+                    <p className="text-white text-sm">{member.desc}</p>
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900">{member.name}</h3>
-                  <p className="text-amber-600 font-medium text-sm uppercase tracking-widest mt-1">{member.role}</p>
                 </div>
-              ))}
-            </div>
-         </div>
+                <h3 className="text-xl font-bold text-slate-900">{member.name}</h3>
+                <p className="text-amber-600 font-medium text-sm uppercase tracking-widest mt-1">{member.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Business Verticals Portfolio */}
@@ -242,83 +242,83 @@ const AboutGroup: React.FC = () => {
 
           {/* Real Estate */}
           <div className="mb-20">
-             <div className="flex items-center gap-4 mb-8">
-               <div className="p-3 bg-amber-100 text-amber-600 rounded"><Building2 size={24} /></div>
-               <h3 className="text-3xl font-bold text-slate-900">Real Estate</h3>
-             </div>
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 border-l border-slate-300 pl-6 md:pl-12">
-               <div>
-                 <h4 className="text-amber-600 font-bold uppercase tracking-widest text-sm mb-6">Residential Projects</h4>
-                 <ul className="space-y-4">
-                   {PORTFOLIO.realEstate.residential.map((item, i) => (
-                     <li key={i} className="flex items-start gap-3 text-slate-600 hover:text-amber-600 transition-colors">
-                       <CheckCircle size={18} className="text-amber-500 mt-1 shrink-0" /> {item}
-                     </li>
-                   ))}
-                 </ul>
-               </div>
-               <div>
-                 <h4 className="text-amber-600 font-bold uppercase tracking-widest text-sm mb-6">Commercial Projects</h4>
-                 <ul className="space-y-4">
-                   {PORTFOLIO.realEstate.commercial.map((item, i) => (
-                     <li key={i} className="flex items-start gap-3 text-slate-600 hover:text-amber-600 transition-colors">
-                       <CheckCircle size={18} className="text-amber-500 mt-1 shrink-0" /> {item}
-                     </li>
-                   ))}
-                 </ul>
-               </div>
-             </div>
+            <div className="flex items-center gap-4 mb-8">
+              <div className="p-3 bg-amber-100 text-amber-600 rounded"><Building2 size={24} /></div>
+              <h3 className="text-3xl font-bold text-slate-900">Real Estate</h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 border-l border-slate-300 pl-6 md:pl-12">
+              <div>
+                <h4 className="text-amber-600 font-bold uppercase tracking-widest text-sm mb-6">Residential Projects</h4>
+                <ul className="space-y-4">
+                  {PORTFOLIO.realEstate.residential.map((item, i) => (
+                    <li key={i} className="flex items-start gap-3 text-slate-600 hover:text-amber-600 transition-colors">
+                      <CheckCircle size={18} className="text-amber-500 mt-1 shrink-0" /> {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-amber-600 font-bold uppercase tracking-widest text-sm mb-6">Commercial Projects</h4>
+                <ul className="space-y-4">
+                  {PORTFOLIO.realEstate.commercial.map((item, i) => (
+                    <li key={i} className="flex items-start gap-3 text-slate-600 hover:text-amber-600 transition-colors">
+                      <CheckCircle size={18} className="text-amber-500 mt-1 shrink-0" /> {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
 
           {/* Automobiles */}
           <div className="mb-20">
-             <div className="flex items-center gap-4 mb-8">
-               <div className="p-3 bg-blue-100 text-blue-600 rounded"><Car size={24} /></div>
-               <h3 className="text-3xl font-bold text-slate-900">Automobiles</h3>
-             </div>
-             <div className="border-l border-slate-300 pl-6 md:pl-12">
-               <p className="text-slate-600 mb-8 max-w-2xl">
-                 We are proud partners with leading automotive brands, offering exceptional service and customer experiences through our extensive network of dealerships including Maruti Suzuki, NEXA, Hero, and Ashok Leyland.
-               </p>
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-                  {PORTFOLIO.auto.locations.map((loc, i) => (
-                    <div key={i} className="flex items-center gap-3 p-4 bg-white border border-slate-200 rounded hover:shadow-md transition-all">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                      <span className="text-sm tracking-wide font-medium">{loc}</span>
-                    </div>
-                  ))}
-               </div>
-             </div>
+            <div className="flex items-center gap-4 mb-8">
+              <div className="p-3 bg-blue-100 text-blue-600 rounded"><Car size={24} /></div>
+              <h3 className="text-3xl font-bold text-slate-900">Automobiles</h3>
+            </div>
+            <div className="border-l border-slate-300 pl-6 md:pl-12">
+              <p className="text-slate-600 mb-8 max-w-2xl">
+                We are proud partners with leading automotive brands, offering exceptional service and customer experiences through our extensive network of dealerships including Maruti Suzuki, NEXA, Hero, and Ashok Leyland.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                {PORTFOLIO.auto.locations.map((loc, i) => (
+                  <div key={i} className="flex items-center gap-3 p-4 bg-white border border-slate-200 rounded hover:shadow-md transition-all">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span className="text-sm tracking-wide font-medium">{loc}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Hospitality */}
           <div>
-             <div className="flex items-center gap-4 mb-8">
-               <div className="p-3 bg-purple-100 text-purple-600 rounded"><BedDouble size={24} /></div>
-               <h3 className="text-3xl font-bold text-slate-900">Hospitality</h3>
-             </div>
-             <div className="border-l border-slate-300 pl-6 md:pl-12 grid grid-cols-1 md:grid-cols-2 gap-12">
-               <div>
-                 <h4 className="text-purple-600 font-bold uppercase tracking-widest text-sm mb-6">Current Properties</h4>
-                 <ul className="space-y-4">
-                   {PORTFOLIO.hospitality.current.map((item, i) => (
-                     <li key={i} className="flex items-center gap-3 text-slate-600">
-                        <span className="w-1.5 h-1.5 bg-purple-500 rotate-45"></span> {item}
-                     </li>
-                   ))}
-                 </ul>
-               </div>
-               <div>
-                 <h4 className="text-purple-600 font-bold uppercase tracking-widest text-sm mb-6">Upcoming Projects</h4>
-                 <ul className="space-y-4">
-                   {PORTFOLIO.hospitality.upcoming.map((item, i) => (
-                     <li key={i} className="flex items-center gap-3 text-slate-600">
-                        <span className="w-1.5 h-1.5 bg-purple-500 rotate-45"></span> {item}
-                     </li>
-                   ))}
-                 </ul>
-               </div>
-             </div>
+            <div className="flex items-center gap-4 mb-8">
+              <div className="p-3 bg-purple-100 text-purple-600 rounded"><BedDouble size={24} /></div>
+              <h3 className="text-3xl font-bold text-slate-900">Hospitality</h3>
+            </div>
+            <div className="border-l border-slate-300 pl-6 md:pl-12 grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div>
+                <h4 className="text-purple-600 font-bold uppercase tracking-widest text-sm mb-6">Current Properties</h4>
+                <ul className="space-y-4">
+                  {PORTFOLIO.hospitality.current.map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-slate-600">
+                      <span className="w-1.5 h-1.5 bg-purple-500 rotate-45"></span> {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-purple-600 font-bold uppercase tracking-widest text-sm mb-6">Upcoming Projects</h4>
+                <ul className="space-y-4">
+                  {PORTFOLIO.hospitality.upcoming.map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-slate-600">
+                      <span className="w-1.5 h-1.5 bg-purple-500 rotate-45"></span> {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -327,29 +327,29 @@ const AboutGroup: React.FC = () => {
       {/* Awards & Recognition */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 text-center">
-           <div className="inline-block p-4 bg-amber-50 rounded-full text-amber-500 mb-6">
-             <Award size={40} />
-           </div>
-           <h2 className="text-4xl font-heading font-black text-slate-900 mb-6">Awards & Recognition</h2>
-           <p className="max-w-2xl mx-auto text-slate-600 mb-16">
-             Our commitment to quality has been recognized across the industry. From "Best Performing New Outlet" for Maruti Suzuki to regional real estate excellence awards.
-           </p>
-           
-           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-              {/* Placeholders for Award Images */}
-              <div className="h-40 bg-slate-50 shadow-sm rounded-lg flex items-center justify-center p-4 border border-slate-100">
-                <span className="font-bold text-slate-400">Real Estate Excellence</span>
-              </div>
-              <div className="h-40 bg-slate-50 shadow-sm rounded-lg flex items-center justify-center p-4 border border-slate-100">
-                <span className="font-bold text-slate-400">Maruti Suzuki Gold</span>
-              </div>
-              <div className="h-40 bg-slate-50 shadow-sm rounded-lg flex items-center justify-center p-4 border border-slate-100">
-                <span className="font-bold text-slate-400">NEXA Platinum Dealer</span>
-              </div>
-              <div className="h-40 bg-slate-50 shadow-sm rounded-lg flex items-center justify-center p-4 border border-slate-100">
-                <span className="font-bold text-slate-400">Hospitality Design Award</span>
-              </div>
-           </div>
+          <div className="inline-block p-4 bg-amber-50 rounded-full text-amber-500 mb-6">
+            <Award size={40} />
+          </div>
+          <h2 className="text-4xl font-heading font-black text-slate-900 mb-6">Awards & Recognition</h2>
+          <p className="max-w-2xl mx-auto text-slate-600 mb-16">
+            Our commitment to quality has been recognized across the industry. From "Best Performing New Outlet" for Maruti Suzuki to regional real estate excellence awards.
+          </p>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+            {/* Placeholders for Award Images */}
+            <div className="h-40 bg-slate-50 shadow-sm rounded-lg flex items-center justify-center p-4 border border-slate-100">
+              <span className="font-bold text-slate-400">Real Estate Excellence</span>
+            </div>
+            <div className="h-40 bg-slate-50 shadow-sm rounded-lg flex items-center justify-center p-4 border border-slate-100">
+              <span className="font-bold text-slate-400">Maruti Suzuki Gold</span>
+            </div>
+            <div className="h-40 bg-slate-50 shadow-sm rounded-lg flex items-center justify-center p-4 border border-slate-100">
+              <span className="font-bold text-slate-400">NEXA Platinum Dealer</span>
+            </div>
+            <div className="h-40 bg-slate-50 shadow-sm rounded-lg flex items-center justify-center p-4 border border-slate-100">
+              <span className="font-bold text-slate-400">Hospitality Design Award</span>
+            </div>
+          </div>
         </div>
       </section>
 

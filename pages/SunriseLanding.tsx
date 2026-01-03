@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  MapPin, Phone, Mail, CheckCircle2, ArrowRight, Download, 
-  Menu, X, ChevronDown, Trees, Shield, Zap, Home, 
+import {
+  MapPin, Phone, Mail, CheckCircle2, ArrowRight, Download,
+  Menu, X, ChevronDown, Trees, Shield, Zap, Home,
   Coffee, Users, Landmark, Search, Play
 } from 'lucide-react';
 
@@ -88,13 +88,13 @@ const SunriseLanding: React.FC = () => {
   };
 
   return (
-    <div className="bg-white font-sans text-stone-800">
-      
+    <div className="bg-white font-sans text-stone-800 pt-32 md:pt-48">
+
       {/* Brochure Modal */}
       {showModal && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-md p-8 relative animate-fadeIn border border-stone-100">
-            <button 
+            <button
               onClick={() => setShowModal(false)}
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-900"
             >
@@ -126,11 +126,10 @@ const SunriseLanding: React.FC = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`text-xs font-bold uppercase tracking-wider whitespace-nowrap py-2 border-b-2 transition-all ${
-                    activeTab === item.id 
-                      ? 'border-emerald-600 text-emerald-800' 
-                      : 'border-transparent text-gray-400 hover:text-emerald-600'
-                  }`}
+                  className={`text-xs font-bold uppercase tracking-wider whitespace-nowrap py-2 border-b-2 transition-all ${activeTab === item.id
+                    ? 'border-emerald-600 text-emerald-800'
+                    : 'border-transparent text-gray-400 hover:text-emerald-600'
+                    }`}
                 >
                   {item.label}
                 </button>
@@ -146,15 +145,15 @@ const SunriseLanding: React.FC = () => {
       {/* Hero Section */}
       <section id="home" className="relative h-[85vh] w-full overflow-hidden">
         <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2200&auto=format&fit=crop" 
-            alt="Sunrise City Aerial View" 
+          <img
+            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2200&auto=format&fit=crop"
+            alt="Sunrise City Aerial View"
             className="w-full h-full object-cover"
           />
           {/* Lighter overlay for clearer look */}
           <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/60 via-emerald-900/10 to-transparent"></div>
         </div>
-        
+
         <div className="relative container mx-auto px-4 h-full flex flex-col justify-center">
           <div className="max-w-2xl text-white">
             <span className="inline-block px-3 py-1 bg-amber-400 text-black text-[10px] font-bold uppercase tracking-widest rounded mb-6 shadow-sm">
@@ -167,13 +166,13 @@ const SunriseLanding: React.FC = () => {
               Flexible plots, prime location near IIT Bhilai, and strong long-term value. Build your dream home in a community designed for the future.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button 
+              <button
                 onClick={() => scrollToSection('contact')}
                 className="bg-white text-emerald-900 px-8 py-4 font-bold rounded hover:bg-emerald-50 transition-colors flex items-center justify-center gap-2 shadow-lg"
               >
                 Register for Priority Access <ArrowRight size={18} />
               </button>
-              <button 
+              <button
                 onClick={() => setShowModal(true)}
                 className="border-2 border-white text-white px-8 py-4 font-bold rounded hover:bg-white/20 transition-colors flex items-center justify-center gap-2 backdrop-blur-sm"
               >
@@ -189,31 +188,31 @@ const SunriseLanding: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-16 items-center">
             <div className="md:w-1/2">
-               <h2 className="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-2">Project Intro</h2>
-               <h3 className="text-4xl font-heading font-bold text-stone-900 mb-6">A Vision for the Future.<br/>A Place to Call Home.</h3>
-               <p className="text-gray-600 leading-loose mb-6">
-                 Strategically located near <strong className="text-emerald-800">IIT Bhilai</strong>, Chouhan Sunrise City is more than just a plotted residential project — it's a community designed for those who seek space, peace of mind, and long-term investment growth. Set in the rapidly developing corridor of <strong className="text-emerald-800">Bhilai’s Dhamdha Road</strong>, this premium development offers a unique opportunity to own land in one of Chhattisgarh’s most promising locations.
-               </p>
-               <p className="text-gray-600 leading-loose">
-                 Whether you're planning to build your dream home or looking for a smart investment, Chouhan Sunrise City offers the perfect blend of <strong>location</strong>, <strong>lifestyle</strong>, and <strong>future value</strong>.
-               </p>
+              <h2 className="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-2">Project Intro</h2>
+              <h3 className="text-4xl font-heading font-bold text-stone-900 mb-6">A Vision for the Future.<br />A Place to Call Home.</h3>
+              <p className="text-gray-600 leading-loose mb-6">
+                Strategically located near <strong className="text-emerald-800">IIT Bhilai</strong>, Chouhan Sunrise City is more than just a plotted residential project — it's a community designed for those who seek space, peace of mind, and long-term investment growth. Set in the rapidly developing corridor of <strong className="text-emerald-800">Bhilai’s Dhamdha Road</strong>, this premium development offers a unique opportunity to own land in one of Chhattisgarh’s most promising locations.
+              </p>
+              <p className="text-gray-600 leading-loose">
+                Whether you're planning to build your dream home or looking for a smart investment, Chouhan Sunrise City offers the perfect blend of <strong>location</strong>, <strong>lifestyle</strong>, and <strong>future value</strong>.
+              </p>
             </div>
             <div className="md:w-1/2 grid grid-cols-2 gap-4">
               <div className="bg-stone-50 p-8 rounded-2xl border border-stone-200 hover:shadow-lg transition-shadow">
-                 <h4 className="text-3xl font-black text-emerald-800 mb-1">Prime</h4>
-                 <p className="text-sm text-gray-500 uppercase tracking-wider">Location</p>
+                <h4 className="text-3xl font-black text-emerald-800 mb-1">Prime</h4>
+                <p className="text-sm text-gray-500 uppercase tracking-wider">Location</p>
               </div>
               <div className="bg-emerald-50 p-8 rounded-2xl border border-emerald-100 hover:shadow-lg transition-shadow">
-                 <h4 className="text-3xl font-black text-emerald-800 mb-1">Ready</h4>
-                 <p className="text-sm text-gray-500 uppercase tracking-wider">Infrastructure</p>
+                <h4 className="text-3xl font-black text-emerald-800 mb-1">Ready</h4>
+                <p className="text-sm text-gray-500 uppercase tracking-wider">Infrastructure</p>
               </div>
               <div className="bg-emerald-50 p-8 rounded-2xl border border-emerald-100 hover:shadow-lg transition-shadow">
-                 <h4 className="text-3xl font-black text-emerald-800 mb-1">Gated</h4>
-                 <p className="text-sm text-gray-500 uppercase tracking-wider">Community</p>
+                <h4 className="text-3xl font-black text-emerald-800 mb-1">Gated</h4>
+                <p className="text-sm text-gray-500 uppercase tracking-wider">Community</p>
               </div>
               <div className="bg-stone-50 p-8 rounded-2xl border border-stone-200 hover:shadow-lg transition-shadow">
-                 <h4 className="text-3xl font-black text-emerald-800 mb-1">Green</h4>
-                 <p className="text-sm text-gray-500 uppercase tracking-wider">Open Spaces</p>
+                <h4 className="text-3xl font-black text-emerald-800 mb-1">Green</h4>
+                <p className="text-sm text-gray-500 uppercase tracking-wider">Open Spaces</p>
               </div>
             </div>
           </div>
@@ -237,7 +236,7 @@ const SunriseLanding: React.FC = () => {
                 </div>
                 <div className="text-sm text-gray-600 mb-4">Area Range</div>
                 <div className="text-2xl font-black text-stone-800 mb-4">{plot.size}</div>
-                <button 
+                <button
                   onClick={() => scrollToSection('contact')}
                   className="w-full py-2 bg-white rounded border border-emerald-200 text-emerald-800 text-xs font-bold uppercase tracking-widest hover:bg-emerald-600 hover:text-white transition-colors"
                 >
@@ -248,7 +247,7 @@ const SunriseLanding: React.FC = () => {
           </div>
 
           <div className="mt-12 text-center">
-            <button 
+            <button
               onClick={() => setShowModal(true)}
               className="inline-flex items-center gap-2 text-emerald-800 font-bold border-b-2 border-emerald-800 pb-1 hover:text-emerald-600 hover:border-emerald-600 transition-colors"
             >
@@ -287,31 +286,31 @@ const SunriseLanding: React.FC = () => {
       <section id="gallery" className="bg-stone-50 py-24 text-stone-900 border-t border-stone-200">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-end mb-12">
-             <div>
-               <h2 className="text-3xl font-heading font-bold mb-2">Visual Showcase</h2>
-               <p className="text-stone-500">Drone views and on-ground developments</p>
-             </div>
+            <div>
+              <h2 className="text-3xl font-heading font-bold mb-2">Visual Showcase</h2>
+              <p className="text-stone-500">Drone views and on-ground developments</p>
+            </div>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-[600px]">
             <div className="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-lg shadow-md">
-               <img src="https://images.unsplash.com/photo-1592595896551-12b371d546d5?q=80&w=1200" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Main View" />
-               <div className="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/80 to-transparent w-full">
-                 <span className="text-amber-400 text-xs font-bold uppercase tracking-widest">Site Progress</span>
-                 <h3 className="text-xl font-bold text-white">Main Entrance Avenue</h3>
-               </div>
+              <img src="https://images.unsplash.com/photo-1592595896551-12b371d546d5?q=80&w=1200" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Main View" />
+              <div className="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/80 to-transparent w-full">
+                <span className="text-amber-400 text-xs font-bold uppercase tracking-widest">Site Progress</span>
+                <h3 className="text-xl font-bold text-white">Main Entrance Avenue</h3>
+              </div>
             </div>
             <div className="relative group overflow-hidden rounded-lg shadow-md">
-               <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="View 2" />
-               <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                 <Search className="text-white" />
-               </div>
+              <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="View 2" />
+              <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <Search className="text-white" />
+              </div>
             </div>
             <div className="relative group overflow-hidden rounded-lg shadow-md">
-               <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="View 3" />
-               <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                 <Search className="text-white" />
-               </div>
+              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="View 3" />
+              <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <Search className="text-white" />
+              </div>
             </div>
           </div>
         </div>
@@ -326,7 +325,7 @@ const SunriseLanding: React.FC = () => {
               <p className="text-emerald-800 leading-relaxed">
                 Chouhan Sunrise City places you at the heart of Bhilai’s most connected neighborhood. Enjoy quick access to education, healthcare, and entertainment.
               </p>
-              
+
               <ul className="space-y-6">
                 <li className="flex gap-4">
                   <div className="w-10 h-10 rounded bg-emerald-200 flex items-center justify-center flex-shrink-0">
@@ -357,14 +356,14 @@ const SunriseLanding: React.FC = () => {
                 </li>
               </ul>
             </div>
-            
+
             <div className="lg:w-2/3 h-[400px] bg-white rounded-xl overflow-hidden relative shadow-lg border border-emerald-100">
               {/* Map Placeholder */}
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.549070866035!2d81.3323!3d21.2505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDE1JzAxLjgiTiA4McKwMTknNTYuMyJF!5e0!3m2!1sen!2sin!4v1631234567890!5m2!1sen!2sin" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.549070866035!2d81.3323!3d21.2505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDE1JzAxLjgiTiA4McKwMTknNTYuMyJF!5e0!3m2!1sen!2sin!4v1631234567890!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
                 loading="lazy"
                 title="Location Map"
               ></iframe>
@@ -377,73 +376,73 @@ const SunriseLanding: React.FC = () => {
       <div className="bg-stone-50 py-24 border-t border-stone-200">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            
+
             {/* FAQ Section */}
             <div id="faq">
-               <h2 className="text-3xl font-heading font-bold mb-8 text-stone-900">Frequently Asked Questions</h2>
-               <div className="space-y-4">
-                 {FAQS.map((item, idx) => (
-                   <details key={idx} className="group bg-white rounded-lg border border-stone-200 overflow-hidden shadow-sm">
-                     <summary className="flex justify-between items-center font-bold p-6 cursor-pointer list-none text-stone-800 hover:text-emerald-700 transition-colors">
-                       {item.q}
-                       <ChevronDown className="group-open:rotate-180 transition-transform text-emerald-500" />
-                     </summary>
-                     <div className="px-6 pb-6 text-gray-600 leading-relaxed text-sm animate-fadeIn border-t border-stone-100">
-                       {item.a}
-                     </div>
-                   </details>
-                 ))}
-               </div>
+              <h2 className="text-3xl font-heading font-bold mb-8 text-stone-900">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {FAQS.map((item, idx) => (
+                  <details key={idx} className="group bg-white rounded-lg border border-stone-200 overflow-hidden shadow-sm">
+                    <summary className="flex justify-between items-center font-bold p-6 cursor-pointer list-none text-stone-800 hover:text-emerald-700 transition-colors">
+                      {item.q}
+                      <ChevronDown className="group-open:rotate-180 transition-transform text-emerald-500" />
+                    </summary>
+                    <div className="px-6 pb-6 text-gray-600 leading-relaxed text-sm animate-fadeIn border-t border-stone-100">
+                      {item.a}
+                    </div>
+                  </details>
+                ))}
+              </div>
             </div>
 
             {/* Lead Form Section */}
             <div id="contact" className="bg-white p-8 md:p-10 rounded-2xl shadow-xl border-t-4 border-emerald-600">
-               <div className="mb-8">
-                 <h2 className="text-2xl font-heading font-bold text-stone-900 mb-2">Register Your Interest</h2>
-                 <p className="text-gray-500 text-sm">Fill out the form below to book a site visit or speak with a sales representative.</p>
-               </div>
+              <div className="mb-8">
+                <h2 className="text-2xl font-heading font-bold text-stone-900 mb-2">Register Your Interest</h2>
+                <p className="text-gray-500 text-sm">Fill out the form below to book a site visit or speak with a sales representative.</p>
+              </div>
 
-               <form className="space-y-5">
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                   <div className="space-y-1">
-                     <label className="text-xs font-bold text-gray-500 uppercase">Name *</label>
-                     <input type="text" className="w-full bg-stone-50 border border-stone-200 rounded p-3 text-sm focus:border-emerald-500 focus:outline-none" />
-                   </div>
-                   <div className="space-y-1">
-                     <label className="text-xs font-bold text-gray-500 uppercase">Phone *</label>
-                     <input type="tel" className="w-full bg-stone-50 border border-stone-200 rounded p-3 text-sm focus:border-emerald-500 focus:outline-none" />
-                   </div>
-                 </div>
+              <form className="space-y-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-gray-500 uppercase">Name *</label>
+                    <input type="text" className="w-full bg-stone-50 border border-stone-200 rounded p-3 text-sm focus:border-emerald-500 focus:outline-none" />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-gray-500 uppercase">Phone *</label>
+                    <input type="tel" className="w-full bg-stone-50 border border-stone-200 rounded p-3 text-sm focus:border-emerald-500 focus:outline-none" />
+                  </div>
+                </div>
 
-                 <div className="space-y-1">
-                   <label className="text-xs font-bold text-gray-500 uppercase">Email</label>
-                   <input type="email" className="w-full bg-stone-50 border border-stone-200 rounded p-3 text-sm focus:border-emerald-500 focus:outline-none" />
-                 </div>
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-gray-500 uppercase">Email</label>
+                  <input type="email" className="w-full bg-stone-50 border border-stone-200 rounded p-3 text-sm focus:border-emerald-500 focus:outline-none" />
+                </div>
 
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                   <div className="space-y-1">
-                     <label className="text-xs font-bold text-gray-500 uppercase">City *</label>
-                     <input type="text" className="w-full bg-stone-50 border border-stone-200 rounded p-3 text-sm focus:border-emerald-500 focus:outline-none" />
-                   </div>
-                   <div className="space-y-1">
-                     <label className="text-xs font-bold text-gray-500 uppercase">Are you a Broker?</label>
-                     <select className="w-full bg-stone-50 border border-stone-200 rounded p-3 text-sm focus:border-emerald-500 focus:outline-none">
-                       <option>No</option>
-                       <option>Yes</option>
-                     </select>
-                   </div>
-                 </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-gray-500 uppercase">City *</label>
+                    <input type="text" className="w-full bg-stone-50 border border-stone-200 rounded p-3 text-sm focus:border-emerald-500 focus:outline-none" />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-gray-500 uppercase">Are you a Broker?</label>
+                    <select className="w-full bg-stone-50 border border-stone-200 rounded p-3 text-sm focus:border-emerald-500 focus:outline-none">
+                      <option>No</option>
+                      <option>Yes</option>
+                    </select>
+                  </div>
+                </div>
 
-                 <button type="button" className="w-full bg-emerald-900 text-white font-bold text-sm uppercase tracking-widest py-4 rounded hover:bg-emerald-800 transition-colors shadow-lg mt-4">
-                   Submit Enquiry
-                 </button>
-                 
-                 <div className="flex justify-center mt-4">
-                   <button className="text-emerald-700 text-sm font-bold flex items-center gap-2 hover:text-emerald-900">
-                     <Phone size={16} /> or Contact via WhatsApp
-                   </button>
-                 </div>
-               </form>
+                <button type="button" className="w-full bg-emerald-900 text-white font-bold text-sm uppercase tracking-widest py-4 rounded hover:bg-emerald-800 transition-colors shadow-lg mt-4">
+                  Submit Enquiry
+                </button>
+
+                <div className="flex justify-center mt-4">
+                  <button className="text-emerald-700 text-sm font-bold flex items-center gap-2 hover:text-emerald-900">
+                    <Phone size={16} /> or Contact via WhatsApp
+                  </button>
+                </div>
+              </form>
             </div>
 
           </div>
@@ -456,10 +455,10 @@ const SunriseLanding: React.FC = () => {
 
 // Helper icons
 const HeartPulse = ({ size, className }: { size: number, className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08v0c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.15 4.33l-1.3 1.5"/><path d="M18 15v3h-3"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08v0c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.15 4.33l-1.3 1.5" /><path d="M18 15v3h-3" /></svg>
 );
 const ShoppingBag = ({ size, className }: { size: number, className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" /><path d="M3 6h18" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
 );
 
 export default SunriseLanding;

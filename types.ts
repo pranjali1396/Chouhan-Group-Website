@@ -19,6 +19,7 @@ export interface NavItem {
 export const NAVIGATION_DATA: NavItem[] = [
   {
     label: "New Homes",
+    path: "/new-homes",
     columns: [
       {
         title: "NOW SELLING",
@@ -32,19 +33,20 @@ export const NAVIGATION_DATA: NavItem[] = [
       },
       {
         title: "UPCOMING",
-        links: [] 
+        links: []
       },
       {
         title: "SOLD",
         links: [
           { label: "CHPL Dream homes", path: "/new-homes/dream-home" },
           { label: "Shikhar Complex", path: "/new-homes/shikhar" },
-        ] 
+        ]
       }
     ]
   },
   {
     label: "Commercial",
+    path: "/commercial",
     columns: [
       {
         title: "NOW SELLING",
@@ -56,62 +58,96 @@ export const NAVIGATION_DATA: NavItem[] = [
         ]
       },
       {
+        title: "UPCOMING",
+        links: [
+          { label: "City Center Bhilai (Coming Soon)", path: "/commercial/city-center" },
+        ]
+      },
+      {
         title: "SOLD",
         links: [
           { label: "Chouhan Landmark", path: "/commercial/landmark" },
           { label: "Chouhan Complex", path: "/commercial/complex" },
           { label: "Chouhan Plaza", path: "/commercial/plaza" },
         ]
-      },
-      {
-        title: "UPCOMING",
-        links: [
-          { label: "City Center Bhilai (Coming Soon)", path: "/commercial/city-center" },
-        ]
       }
     ]
   },
   {
     label: "Hospitality",
+    path: "/hospitality",
     columns: [
       {
+        title: "NOW OPEN",
         links: [
           { label: "Empyrean Hotels Bhilai", path: "/hospitality/empyrean-bhilai" },
           { label: "Empyrean Resort Balod", path: "/hospitality/empyrean-balod" },
           { label: "Empyrean Kendri", path: "/hospitality/empyrean-kendri" },
-          { label: "Empyrean Tumdibod", path: "/hospitality/empyrean-tumdibod" },
-          { label: "Empyrean Tatiband", path: "/hospitality/empyrean-tatiband" },
           { label: "Hotel Palladio", path: "/hospitality/palladio" },
           { label: "Hotel Skypark", path: "/hospitality/skypark" },
         ]
+      },
+      {
+        title: "UPCOMING",
+        links: [
+          { label: "Empyrean Tumdibod", path: "/hospitality/empyrean-tumdibod" },
+          { label: "Empyrean Tatiband", path: "/hospitality/empyrean-tatiband" },
+        ]
+      },
+      {
+        title: "LEGACY",
+        links: []
       }
     ]
   },
   {
     label: "Automobile",
+    path: "/automobile",
     columns: [
       {
+        title: "SHOWROOMS",
         links: [
-          { label: "Maruti Suzuki Arena", path: "/auto/maruti" },
-          { label: "Nexa", path: "/auto/nexa" },
-          { label: "True Value", path: "/auto/true-value" },
-          { label: "Hero", path: "/auto/hero" },
-          { label: "Ashok Leyland (Coming Soon)", path: "/auto/ashok" },
+          { label: "Maruti Suzuki Arena", path: "/automobile/maruti" },
+          { label: "Nexa", path: "/automobile/nexa" },
+          { label: "Hero", path: "/automobile/hero" },
+        ]
+      },
+      {
+        title: "SERVICES",
+        links: [
+          { label: "True Value", path: "/automobile/true-value" },
+        ]
+      },
+      {
+        title: "UPCOMING",
+        links: [
+          { label: "Ashok Leyland", path: "/automobile/ashok" },
         ]
       }
     ]
   },
   {
     label: "Rentals",
+    path: "/rentals",
     columns: [
       {
-        title: "COMING SOON",
+        title: "RESIDENTIAL",
         links: [
-          { label: "Chouhan Estates (Coming Soon)", path: "/rentals/estates" },
-          { label: "Chouhan Parkview (Coming Soon)", path: "/rentals/parview" },
-          { label: "City Center Mall (Coming Soon)", path: "/rentals/mall" },
-          { label: "Apartments (Coming Soon)", path: "/rentals/apartments" },
-          { label: "Retail Outlet (Coming Soon)", path: "/rentals/retail" },
+          { label: "Chouhan Estates", path: "/rentals/estates" },
+          { label: "Apartments", path: "/rentals/apartments" },
+        ]
+      },
+      {
+        title: "COMMERCIAL",
+        links: [
+          { label: "City Center Mall", path: "/rentals/mall" },
+          { label: "Retail Outlets", path: "/rentals/retail" },
+        ]
+      },
+      {
+        title: "UPCOMING",
+        links: [
+          { label: "Chouhan Parkview", path: "/rentals/parview" },
         ]
       }
     ]
@@ -120,10 +156,25 @@ export const NAVIGATION_DATA: NavItem[] = [
     label: "Customer Care",
     columns: [
       {
+        title: "REAL ESTATE",
         links: [
-          { label: "Real Estate", path: "/care/real-estate" },
-          { label: "Hospitality", path: "/care/hospitality" },
-          { label: "Automobiles", path: "/care/automobiles" },
+          { label: "Maintenance Request", path: "/care/real-estate" },
+          { label: "Payment Portal", path: "/care/real-estate" },
+          { label: "Documentation", path: "/care/real-estate" },
+        ]
+      },
+      {
+        title: "DIVISION SUPPORT",
+        links: [
+          { label: "Hospitality Care", path: "/care/hospitality" },
+          { label: "Automobile Service", path: "/care/automobiles" },
+        ]
+      },
+      {
+        title: "FEEDBACK",
+        links: [
+          { label: "Submit Complaint", path: "/care/contact" },
+          { label: "General Inquiry", path: "/contact" },
         ]
       }
     ]
@@ -132,17 +183,27 @@ export const NAVIGATION_DATA: NavItem[] = [
     label: "About",
     columns: [
       {
+        title: "COMPANY",
         links: [
           { label: "Our Founder", path: "/about/founder" },
           { label: "About Chouhan Group", path: "/about/group" },
-          { label: "Capital Division", path: "/about/capital" },
-          { label: "Charities And Sponsorship", path: "/about/charity" },
           { label: "Constructions", path: "/about/constructions" },
+        ]
+      },
+      {
+        title: "INITIATIVES",
+        links: [
+          { label: "Capital Division", path: "/about/capital" },
+          { label: "Sustainable Design", path: "/about/sustainable" },
+          { label: "Charities", path: "/about/charity" },
+        ]
+      },
+      {
+        title: "LIFESTYLE",
+        links: [
           { label: "Tourism", path: "/about/tourism" },
           { label: "Convention Centre", path: "/about/convention" },
-          { label: "Government Projects", path: "/about/gov" },
-          { label: "Sustainable Design", path: "/about/sustainable" },
-          { label: "Chouhan Group Rewards", path: "/about/rewards" },
+          { label: "Group Rewards", path: "/about/rewards" },
         ]
       }
     ]

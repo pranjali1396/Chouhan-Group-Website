@@ -28,18 +28,18 @@ const TEAM = [
 const Founder: React.FC = () => {
   return (
     <div className="bg-white font-sans text-slate-800">
-      
+
       {/* Founder Hero */}
-      <section className="relative pt-32 pb-20 bg-slate-50 overflow-hidden">
+      <section className="relative pt-32 md:pt-48 pb-20 bg-slate-50 overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16">
-            
+
             {/* Founder Image */}
             <div className="lg:w-1/2 relative">
               <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl border-4 border-white">
-                <img 
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&fit=crop" 
-                  alt="Mr. Ajay Chouhan" 
+                <img
+                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&fit=crop"
+                  alt="Mr. Ajay Chouhan"
                   className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
               </div>
@@ -50,25 +50,25 @@ const Founder: React.FC = () => {
 
             {/* Founder Content */}
             <div className="lg:w-1/2 text-slate-900">
-               <div className="inline-flex items-center gap-2 text-amber-600 font-bold uppercase tracking-widest text-xs mb-4">
-                 <span className="w-8 h-0.5 bg-amber-500"></span>
-                 Our Founder
-               </div>
-               <h1 className="text-5xl lg:text-6xl font-heading font-black mb-2 text-slate-900">Mr. Ajay Chouhan</h1>
-               <p className="text-2xl text-slate-500 font-light mb-8">Founder & Chairman</p>
-               
-               <div className="relative p-8 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg mb-8">
-                 <Quote className="absolute top-4 left-4 text-amber-200 transform -scale-x-100" size={48} />
-                 <p className="relative z-10 text-lg italic text-slate-700 leading-relaxed font-serif">
-                   "True success is not just about building structures, but about building trust. Since 1998, our goal has been to create value that transcends generations, ensuring that every family associated with Chouhan Group feels a sense of pride and security."
-                 </p>
-               </div>
+              <div className="inline-flex items-center gap-2 text-amber-600 font-bold uppercase tracking-widest text-xs mb-4">
+                <span className="w-8 h-0.5 bg-amber-500"></span>
+                Our Founder
+              </div>
+              <h1 className="text-5xl lg:text-6xl font-heading font-black mb-2 text-slate-900">Mr. Ajay Chouhan</h1>
+              <p className="text-2xl text-slate-500 font-light mb-8">Founder & Chairman</p>
 
-               <div className="flex gap-4">
-                 <button className="bg-slate-900 text-white px-8 py-3 font-bold uppercase tracking-widest text-sm hover:bg-amber-500 hover:text-black transition-colors rounded">
-                   Read Full Story
-                 </button>
-               </div>
+              <div className="relative p-8 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg mb-8">
+                <Quote className="absolute top-4 left-4 text-amber-200 transform -scale-x-100" size={48} />
+                <p className="relative z-10 text-lg italic text-slate-700 leading-relaxed font-serif">
+                  "True success is not just about building structures, but about building trust. Since 1998, our goal has been to create value that transcends generations, ensuring that every family associated with Chouhan Group feels a sense of pride and security."
+                </p>
+              </div>
+
+              <div className="flex gap-4">
+                <button className="bg-slate-900 text-white px-8 py-3 font-bold uppercase tracking-widest text-sm hover:bg-amber-500 hover:text-black transition-colors rounded">
+                  Read Full Story
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -109,12 +109,12 @@ const Founder: React.FC = () => {
               <div key={idx} className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-slate-100">
                 <div className="h-80 overflow-hidden relative">
                   <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors z-10"></div>
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
+                  <img
+                    src={member.image}
+                    alt={member.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  
+
                   {/* Social Overlay */}
                   <div className="absolute bottom-4 right-4 z-20 translate-y-12 group-hover:translate-y-0 transition-transform duration-300">
                     <a href={member.linkedin} className="w-10 h-10 bg-amber-500 text-white rounded-full flex items-center justify-center hover:bg-amber-600">
@@ -122,7 +122,7 @@ const Founder: React.FC = () => {
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="p-8">
                   <h3 className="text-2xl font-heading font-bold text-slate-900">{member.name}</h3>
                   <p className="text-amber-600 font-bold uppercase text-xs tracking-widest mt-1 mb-4">{member.role}</p>

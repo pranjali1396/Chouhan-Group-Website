@@ -78,11 +78,11 @@ const NewHomes: React.FC = () => {
 
   const filteredProperties = useMemo(() => {
     return PROPERTIES.filter(property => {
-      const matchesSearch = property.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                            property.location.toLowerCase().includes(searchTerm.toLowerCase());
-      
+      const matchesSearch = property.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        property.location.toLowerCase().includes(searchTerm.toLowerCase());
+
       const matchesLocation = selectedLocation === 'All' || property.location.includes(selectedLocation);
-      
+
       let matchesPrice = true;
       if (priceRange === 'Under 25L') matchesPrice = property.priceVal < 2500000;
       if (priceRange === '25L - 50L') matchesPrice = property.priceVal >= 2500000 && property.priceVal <= 5000000;
@@ -96,9 +96,9 @@ const NewHomes: React.FC = () => {
 
   return (
     <div className="bg-slate-50 font-sans min-h-screen">
-      
+
       {/* Hero Section */}
-      <div className="bg-[#002b49] text-white pt-32 pb-24 md:pb-32 px-4 relative overflow-hidden">
+      <div className="bg-[#002b49] text-white pt-32 md:pt-48 pb-24 md:pb-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000')] bg-cover bg-center opacity-10"></div>
         <div className="container mx-auto max-w-5xl relative z-10 text-center">
           <span className="text-amber-500 font-bold tracking-widest text-xs uppercase mb-4 block animate-fadeIn">Find Your Sanctuary</span>
@@ -115,13 +115,13 @@ const NewHomes: React.FC = () => {
       <div className="container mx-auto px-4 -mt-16 relative z-20">
         <div className="bg-white rounded-xl shadow-xl p-6 border border-slate-100 max-w-5xl mx-auto animate-fadeInUp">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-            
+
             {/* Search Input */}
             <div className="md:col-span-4 lg:col-span-5 relative">
               <label className="block text-[10px] font-bold text-slate-400 uppercase mb-1 ml-1">Search Keywords</label>
               <div className="relative">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-                <input 
+                <input
                   type="text"
                   placeholder="Project name, area..."
                   className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-amber-500 focus:bg-white transition-all text-sm font-medium text-slate-800"
@@ -136,7 +136,7 @@ const NewHomes: React.FC = () => {
               <label className="block text-[10px] font-bold text-slate-400 uppercase mb-1 ml-1">Location</label>
               <div className="relative">
                 <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-                <select 
+                <select
                   className="w-full pl-11 pr-8 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-amber-500 focus:bg-white transition-all text-sm font-medium text-slate-800 appearance-none cursor-pointer"
                   value={selectedLocation}
                   onChange={(e) => setSelectedLocation(e.target.value)}
@@ -146,7 +146,7 @@ const NewHomes: React.FC = () => {
                   ))}
                 </select>
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none border-l border-slate-200 pl-2">
-                   <Filter size={12} className="text-slate-400" />
+                  <Filter size={12} className="text-slate-400" />
                 </div>
               </div>
             </div>
@@ -156,7 +156,7 @@ const NewHomes: React.FC = () => {
               <label className="block text-[10px] font-bold text-slate-400 uppercase mb-1 ml-1">Budget</label>
               <div className="relative">
                 <IndianRupee className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-                <select 
+                <select
                   className="w-full pl-11 pr-8 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-amber-500 focus:bg-white transition-all text-sm font-medium text-slate-800 appearance-none cursor-pointer"
                   value={priceRange}
                   onChange={(e) => setPriceRange(e.target.value)}
@@ -167,7 +167,7 @@ const NewHomes: React.FC = () => {
                   <option value="Above 50L">Above ₹ 50 Lakhs</option>
                 </select>
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none border-l border-slate-200 pl-2">
-                   <Filter size={12} className="text-slate-400" />
+                  <Filter size={12} className="text-slate-400" />
                 </div>
               </div>
             </div>
@@ -188,7 +188,7 @@ const NewHomes: React.FC = () => {
         {filteredProperties.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {filteredProperties.map((property) => (
-              <div key={property.id} className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col">
+              <Link to={property.link} key={property.id} className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col block">
                 {/* Image */}
                 <div className="relative h-64 overflow-hidden">
                   <div className="absolute top-4 left-4 z-10">
@@ -196,13 +196,13 @@ const NewHomes: React.FC = () => {
                       {property.status}
                     </span>
                   </div>
-                  <img 
-                    src={property.image} 
-                    alt={property.name} 
+                  <img
+                    src={property.image}
+                    alt={property.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
-                  
+
                   <div className="absolute bottom-4 left-4 text-white">
                     <p className="text-xl font-bold font-heading">{property.price}</p>
                   </div>
@@ -220,45 +220,44 @@ const NewHomes: React.FC = () => {
 
                   <div className="grid grid-cols-2 gap-y-2 gap-x-4 mb-6 text-sm text-slate-600 bg-slate-50 p-4 rounded-lg">
                     <div className="flex items-center gap-2">
-                       <Building2 size={16} className="text-slate-400" />
-                       <span className="font-medium">{property.type}</span>
+                      <Building2 size={16} className="text-slate-400" />
+                      <span className="font-medium">{property.type}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                       <BedDouble size={16} className="text-slate-400" />
-                       <span className="font-medium">{property.bhk}</span>
+                      <BedDouble size={16} className="text-slate-400" />
+                      <span className="font-medium">{property.bhk}</span>
                     </div>
                   </div>
 
                   <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
                     <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                       {property.amenities.slice(0, 2).join(' • ')}
+                      {property.amenities.slice(0, 2).join(' • ')}
                     </span>
-                    <Link 
-                      to={property.link} 
+                    <div
                       className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-900 hover:bg-amber-500 hover:text-white transition-all group-hover:translate-x-1"
                     >
                       <ArrowRight size={18} />
-                    </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         ) : (
           <div className="text-center py-24 bg-white rounded-xl border border-dashed border-slate-300 max-w-4xl mx-auto">
-             <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4">
-               <Home size={32} className="text-slate-300" />
-             </div>
-             <h3 className="text-lg font-bold text-slate-900 mb-2">No properties found</h3>
-             <p className="text-slate-500 max-w-md mx-auto">
-               We couldn't find any properties matching your search criteria. Try adjusting your filters or search keywords.
-             </p>
-             <button 
-               onClick={() => { setSearchTerm(''); setPriceRange('All'); setSelectedLocation('All'); }}
-               className="mt-6 text-amber-600 font-bold text-sm uppercase tracking-widest hover:text-amber-700"
-             >
-               Clear All Filters
-             </button>
+            <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Home size={32} className="text-slate-300" />
+            </div>
+            <h3 className="text-lg font-bold text-slate-900 mb-2">No properties found</h3>
+            <p className="text-slate-500 max-w-md mx-auto">
+              We couldn't find any properties matching your search criteria. Try adjusting your filters or search keywords.
+            </p>
+            <button
+              onClick={() => { setSearchTerm(''); setPriceRange('All'); setSelectedLocation('All'); }}
+              className="mt-6 text-amber-600 font-bold text-sm uppercase tracking-widest hover:text-amber-700"
+            >
+              Clear All Filters
+            </button>
           </div>
         )}
       </div>
