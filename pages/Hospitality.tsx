@@ -9,7 +9,7 @@ const HOSPITALITY_DATA = [
     location: "GE Road, Bhilai",
     type: "Luxury Hotel",
     rating: "4.5",
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200",
     link: "/hospitality/empyrean-bhilai",
     status: "Now Open",
     category: "Hotel",
@@ -22,7 +22,7 @@ const HOSPITALITY_DATA = [
     location: "Lake Side, Balod",
     type: "Lakeside Resort",
     rating: "4.8",
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=1200",
     link: "/hospitality/empyrean-balod",
     status: "Now Open",
     category: "Resort",
@@ -64,6 +64,18 @@ const HOSPITALITY_DATA = [
     status: "Now Open",
     category: "Hotel",
     amenities: ["Spa", "Banquet Hall", "Luxury Suites"]
+  },
+  {
+    id: 6,
+    name: "Hotel Skypark",
+    location: "Bhilai",
+    type: "Modern Business Hotel",
+    rating: "4.1",
+    image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200",
+    link: "/hospitality/skypark",
+    status: "Now Open",
+    category: "Hotel",
+    amenities: ["Centrally Located", "Business Rooms", "Dining"]
   }
 ];
 

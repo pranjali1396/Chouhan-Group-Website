@@ -65,7 +65,7 @@ const PARKVIEW_DATA: ProjectData = {
     phone: "+91 72229 09449",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=2000",
+  heroImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000",
   mapQuery: "Shankracharya Mahavidyalaya, Junwani, Bhilai",
   websiteUrl: "https://chouhan-park-view-xi.vercel.app/"
 };
@@ -101,7 +101,7 @@ const BUSINESS_PARK_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "sales@chouhangroup.com"
   },
-  heroImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000",
+  heroImage: "/images/housing-business.png",
   mapQuery: "Chouhan Estate, Bhilai",
   websiteUrl: "https://chouhan-business-park.vercel.app/"
 };
@@ -119,7 +119,7 @@ const GREEN_VALLEY_DATA: ProjectData = {
     phone: "+91 91091 04005",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000",
+  heroImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000",
   mapQuery: "Chouhan Estate, Bhilai",
   websiteUrl: "https://green-valley-sage.vercel.app/"
 };
@@ -137,7 +137,7 @@ const EMPYREAN_BHILAI_DATA: ProjectData = {
     phone: "+91 788 404 0000",
     email: "reservations@empyreanhotels.in"
   },
-  heroImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2000",
+  heroImage: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2000",
   mapQuery: "Empyrean Hotel, Bhilai",
   websiteUrl: "https://www.empyreanhotels.in/bhilai"
 };
@@ -155,7 +155,7 @@ const EMPYREAN_BALOD_DATA: ProjectData = {
     phone: "+91 788 404 0000",
     email: "reservations@empyreanhotels.in"
   },
-  heroImage: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2000",
+  heroImage: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2000",
   mapQuery: "Balod, Chhattisgarh",
   websiteUrl: "https://www.empyreanhotels.in/balod"
 };
@@ -173,7 +173,7 @@ const CHOUHAN_TOWN_DATA: ProjectData = {
     phone: "+91 91091 04005",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000",
+  heroImage: "/images/housing-business.png",
   mapQuery: "Chouhan Town, Bhilai",
 };
 
@@ -190,7 +190,7 @@ const CHOUHAN_ESTATES_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "sales@chouhangroup.com"
   },
-  heroImage: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2000",
+  heroImage: "/images/housing-business.png",
   mapQuery: "Chouhan Estate, Bhilai",
 };
 
@@ -258,7 +258,7 @@ const SKYPARK_DATA: ProjectData = {
     phone: "+91 788 404 0000",
     email: "info@hotelskypark.in"
   },
-  heroImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2000", // Using general luxury hotel image
+  heroImage: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2000", // Using general luxury hotel image
   mapQuery: "Bhilai, Chhattisgarh",
   websiteUrl: "https://www.empyreanhotels.in/"
 };
