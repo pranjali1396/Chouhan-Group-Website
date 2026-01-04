@@ -15,7 +15,7 @@ const AUTOMOBILE_DATA = [
     status: "Open Now",
     feature: "Sales • Service • Spares",
     amenities: ["Large Showroom", "Service Center", "Insurance"],
-    websiteUrl: "https://chouhangroup.com/arena"
+    websiteUrl: "https://www.arenaofbhilai.com/"
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ const AUTOMOBILE_DATA = [
     status: "Open Now",
     feature: "Premium Car Experience",
     amenities: ["Lounge", "Personal relationship manager", "Test Drive"],
-    websiteUrl: "https://chouhangroup.com/nexa"
+    websiteUrl: "https://www.arenaofbhilai.com/"
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ const AUTOMOBILE_DATA = [
     status: "Open Now",
     feature: "World's No. 1 Two Wheeler",
     amenities: ["Easy Finance", "Quick Service", "Exchange"],
-    websiteUrl: "https://chouhangroup.com/chouhan_hero"
+    websiteUrl: "https://chouhanmotors.com"
   },
   {
     id: 4,

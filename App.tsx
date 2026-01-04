@@ -278,7 +278,7 @@ const MARUTI_DATA: ProjectData = {
   },
   heroImage: "/images/maruti-arena.png",
   mapQuery: "Maruti Suzuki Arena, Bhilai",
-  websiteUrl: "https://chouhangroup.com/arena"
+  websiteUrl: "https://www.arenaofbhilai.com/"
 };
 
 const NEXA_DATA: ProjectData = {
@@ -296,7 +296,7 @@ const NEXA_DATA: ProjectData = {
   },
   heroImage: "/images/nexa-showroom.png",
   mapQuery: "Nexa, Bhilai",
-  websiteUrl: "https://chouhangroup.com/nexa"
+  websiteUrl: "https://www.arenaofbhilai.com/"
 };
 
 const HERO_DATA: ProjectData = {
@@ -314,7 +314,7 @@ const HERO_DATA: ProjectData = {
   },
   heroImage: "/images/hero-showroom.png",
   mapQuery: "Hero MotoCorp, Durg",
-  websiteUrl: "https://chouhangroup.com/chouhan_hero"
+  websiteUrl: "https://chouhanmotors.com"
 };
 
 const TRUE_VALUE_DATA: ProjectData = {
