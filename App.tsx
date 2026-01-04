@@ -296,7 +296,7 @@ const NEXA_DATA: ProjectData = {
   },
   heroImage: "/images/nexa-showroom.png",
   mapQuery: "Nexa, Bhilai",
-  websiteUrl: "https://www.arenaofbhilai.com/"
+  websiteUrl: "https://www.nexaofdurgbypass.com/"
 };
 
 const HERO_DATA: ProjectData = {

@@ -29,7 +29,7 @@ const AUTOMOBILE_DATA = [
     status: "Open Now",
     feature: "Premium Car Experience",
     amenities: ["Lounge", "Personal relationship manager", "Test Drive"],
-    websiteUrl: "https://www.arenaofbhilai.com/"
+    websiteUrl: "https://www.nexaofdurgbypass.com/"
   },
   {
     id: 3,
