@@ -11,7 +11,7 @@ const PROPERTIES = [
     type: "Integrated Township",
     price: "₹ 25L - ₹ 65L",
     priceVal: 2500000,
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200",
+    image: "/images/singapore-life-city.png",
     link: "/new-homes/singapore-life",
     status: "Now Selling",
     bhk: "2, 3 & 4 BHK",

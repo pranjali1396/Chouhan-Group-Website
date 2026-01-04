@@ -34,7 +34,7 @@ const SERVICE_HIGHLIGHTS = [
     title: "Automobiles",
     desc: "Proud partners of Maruti Suzuki Arena, NEXA, Hero, and Ashok Leyland. Driving excellence in mobility.",
     icon: <Car size={24} />,
-    image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=800&fit=crop",
+    image: "/images/maruti-arena.png",
     link: "/automobile"
   },
   {
@@ -69,7 +69,7 @@ const PROJECTS = [
   {
     title: "Singapore Life City I",
     desc: "A well-planned modern and smart layout city inspired by Singapore, is at Bhilai.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&fit=crop",
+    image: "/images/singapore-life-city.png",
     link: "/new-homes/singapore-life"
   }
 ];

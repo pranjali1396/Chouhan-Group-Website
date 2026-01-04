@@ -10,7 +10,7 @@ const COMMERCIAL_PROPERTIES = [
     location: "GE Road, Bhilai",
     type: "Office Space",
     sector: "Office",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200",
+    image: "/images/housing-business.png",
     link: "/commercial/business-center",
     status: "Now Selling",
     features: "Premium Offices • High Visibility",
@@ -196,7 +196,7 @@ const Commercial: React.FC = () => {
                 <div className="relative h-64 overflow-hidden">
                   <div className="absolute top-4 left-4 z-10 flex gap-2">
                     <span className={`backdrop-blur text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded ${property.status === 'Now Selling' ? 'bg-amber-500/80' :
-                        property.status === 'Upcoming' ? 'bg-blue-600/80' : 'bg-slate-500/80'
+                      property.status === 'Upcoming' ? 'bg-blue-600/80' : 'bg-slate-500/80'
                       }`}>
                       {property.status}
                     </span>

@@ -14,7 +14,7 @@ const HOSPITALITY_DATA = [
     status: "Now Open",
     category: "Hotel",
     amenities: ["Fine Dining", "Bar & Lounge", "Meeting Rooms"],
-    websiteUrl: "https://www.empyreanhotels.in/"
+    websiteUrl: "https://www.empyreanhotels.in/bhilai"
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const HOSPITALITY_DATA = [
     status: "Now Open",
     category: "Resort",
     amenities: ["Infinity Pool", "Boat Club", "Garden Cafe"],
-    websiteUrl: "https://www.empyreanhotels.in/"
+    websiteUrl: "https://www.empyreanhotels.in/balod"
   },
   {
     id: 3,

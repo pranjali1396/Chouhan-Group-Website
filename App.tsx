@@ -47,7 +47,7 @@ const SINGAPORE_DATA: ProjectData = {
     phone: "+91 91091 04005",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=2000",
+  heroImage: "/images/singapore-life-city.png",
   mapQuery: "Chouhan Estate, Bhilai",
   websiteUrl: "https://singapore-city.vercel.app/"
 };
@@ -83,7 +83,7 @@ const BUSINESS_CENTER_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "sales@chouhangroup.com"
   },
-  heroImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000",
+  heroImage: "/images/housing-business.png",
   mapQuery: "Chouhan Estate, Bhilai",
   websiteUrl: "https://chouhan-business-center.vercel.app/"
 };
@@ -139,7 +139,7 @@ const EMPYREAN_BHILAI_DATA: ProjectData = {
   },
   heroImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2000",
   mapQuery: "Empyrean Hotel, Bhilai",
-  websiteUrl: "https://www.empyreanhotels.in/"
+  websiteUrl: "https://www.empyreanhotels.in/bhilai"
 };
 
 const EMPYREAN_BALOD_DATA: ProjectData = {
@@ -157,7 +157,7 @@ const EMPYREAN_BALOD_DATA: ProjectData = {
   },
   heroImage: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2000",
   mapQuery: "Balod, Chhattisgarh",
-  websiteUrl: "https://www.empyreanhotels.in/"
+  websiteUrl: "https://www.empyreanhotels.in/balod"
 };
 
 const CHOUHAN_TOWN_DATA: ProjectData = {
