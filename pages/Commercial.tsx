@@ -87,6 +87,18 @@ const COMMERCIAL_PROPERTIES = [
     status: "Now Selling",
     features: "Premium Shops • Office Spaces",
     priceRange: "Mid-High"
+  },
+  {
+    id: 8,
+    name: "Chouhan Complex",
+    location: "Supela, Bhilai",
+    type: "Commercial Hub",
+    sector: "Retail",
+    image: "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?q=80&w=1200",
+    link: "/commercial/complex",
+    status: "Sold",
+    features: "Shops • Offices",
+    priceRange: "Mid"
   }
 ];
 

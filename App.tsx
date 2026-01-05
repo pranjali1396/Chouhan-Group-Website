@@ -197,7 +197,7 @@ const CHOUHAN_ESTATES_DATA: ProjectData = {
 
 const PARKVIEW_COMPLEX_DATA: ProjectData = {
   title: "Chouhan Parkview Complex",
-  description: "Now Selling – A modern commercial complex situated within the prestigious Chouhan Parkview township. Offering convenience retail and office spaces to serve the vibrant residential community. The perfect location for daily needs stores, clinics, and professional offices.",
+  description: "Now Selling – A distinct modern commercial complex situated within the prestigious Chouhan Parkview township. Offering convenience retail and office spaces to serve the vibrant residential community. The perfect location for daily needs stores, clinics, and professional offices.",
   status: "Now Selling",
   address: "Junwani Road, Bhilai, Chhattisgarh",
   presentationCentre: {
@@ -246,6 +246,24 @@ const CHOUHAN_PLAZA_DATA: ProjectData = {
   },
   heroImage: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=2000",
   mapQuery: "Chouhan Plaza, Bhilai",
+  websiteUrl: "https://chouhan-group-website.vercel.app/"
+};
+
+const CHOUHAN_COMPLEX_DATA: ProjectData = {
+  title: "Chouhan Complex",
+  description: "Sold Out – A prominent commercial hub in Supela, Bhilai. Known for its strategic location and vibrant mix of retail shops and office spaces.",
+  status: "Sold",
+  address: "Supela, Bhilai, Chhattisgarh",
+  presentationCentre: {
+    address: "Supela, Bhilai, Chhattisgarh",
+    hours: "Closed - Project Sold Out"
+  },
+  contact: {
+    phone: "+91 95111 21113",
+    email: "sales@chouhangroup.com"
+  },
+  heroImage: "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?q=80&w=2000",
+  mapQuery: "Supela, Bhilai",
   websiteUrl: "https://chouhan-group-website.vercel.app/"
 };
 
@@ -397,6 +415,7 @@ const App: React.FC = () => {
           <Route path="/commercial/parkview-complex" element={<ProjectDetail data={PARKVIEW_COMPLEX_DATA} />} />
           <Route path="/commercial/landmark" element={<ProjectDetail data={CHOUHAN_LANDMARK_DATA} />} />
           <Route path="/commercial/plaza" element={<ProjectDetail data={CHOUHAN_PLAZA_DATA} />} />
+          <Route path="/commercial/complex" element={<ProjectDetail data={CHOUHAN_COMPLEX_DATA} />} />
 
           <Route path="/commercial" element={<Commercial />} />
           <Route path="/commercial/city-center" element={<CityCenter />} />
