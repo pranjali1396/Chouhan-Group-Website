@@ -75,6 +75,18 @@ const COMMERCIAL_PROPERTIES = [
     status: "Sold",
     features: "Multi-brand Retail • Centralized AC",
     priceRange: "Mid"
+  },
+  {
+    id: 7,
+    name: "Chouhan Park View Commercial",
+    location: "Junwani Road, Bhilai",
+    type: "Commercial Complex",
+    sector: "Mixed-use",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200",
+    link: "https://chouhan-park-view-xi.vercel.app/commercial",
+    status: "Now Selling",
+    features: "Premium Shops • Office Spaces",
+    priceRange: "Mid-High"
   }
 ];
 
@@ -234,12 +246,23 @@ const Commercial: React.FC = () => {
                     <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
                       Project ID: CG-C{property.id}
                     </span>
-                    <Link
-                      to={property.link}
-                      className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-900 hover:text-amber-600 transition-all group-hover:gap-3"
-                    >
-                      View Details <ArrowRight size={14} />
-                    </Link>
+                    {property.link.startsWith('http') ? (
+                      <a
+                        href={property.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-900 hover:text-amber-600 transition-all group-hover:gap-3"
+                      >
+                        View Details <ArrowRight size={14} />
+                      </a>
+                    ) : (
+                      <Link
+                        to={property.link}
+                        className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-900 hover:text-amber-600 transition-all group-hover:gap-3"
+                      >
+                        View Details <ArrowRight size={14} />
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
