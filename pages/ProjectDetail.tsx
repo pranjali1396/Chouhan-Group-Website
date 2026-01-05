@@ -102,22 +102,28 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
             <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#718096] mb-6 border-b border-slate-100 pb-2">Project Info</h3>
 
             {/* CTA Buttons - Hidden if Sold */}
-            {!isSold ? (
-              <div className="grid grid-cols-2 gap-3 mb-10">
-                {data.websiteUrl ? (
-                  <a href={data.websiteUrl} target="_blank" rel="noopener noreferrer" className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center">
-                    View Website
-                  </a>
-                ) : (
+            {/* CTA Buttons */}
+            <div className="grid grid-cols-2 gap-3 mb-10">
+              {data.websiteUrl ? (
+                <a href={data.websiteUrl} target="_blank" rel="noopener noreferrer" className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center">
+                  View Website
+                </a>
+              ) : (
+                !isSold && (
                   <button className="bg-slate-300 text-slate-500 py-3 px-2 text-[11px] font-bold uppercase tracking-wider cursor-not-allowed shadow-sm rounded-sm">
                     View Website
                   </button>
-                )}
+                )
+              )}
+
+              {!isSold && (
                 <Link to="/contact" className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center">
                   Register Today
                 </Link>
-              </div>
-            ) : (
+              )}
+            </div>
+
+            {isSold && (
               <div className="mb-10 p-6 bg-red-50 border border-red-100 rounded-sm text-center">
                 <div className="flex items-center justify-center gap-2 text-red-600 font-black uppercase tracking-[0.2em] text-xs">
                   <Ban size={14} /> Sold Out
