@@ -83,7 +83,7 @@ const COMMERCIAL_PROPERTIES = [
     type: "Commercial Complex",
     sector: "Mixed-use",
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200",
-    link: "https://chouhan-park-view-xi.vercel.app/commercial",
+    link: "/commercial/parkview-complex",
     status: "Now Selling",
     features: "Premium Shops • Office Spaces",
     priceRange: "Mid-High"
