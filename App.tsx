@@ -213,6 +213,42 @@ const PARKVIEW_COMPLEX_DATA: ProjectData = {
   websiteUrl: "https://chouhan-park-view-xi.vercel.app/commercial"
 };
 
+const CHOUHAN_LANDMARK_DATA: ProjectData = {
+  title: "Chouhan Landmark",
+  description: "Sold Out – A landmark premium office building in the heart of Durg. Chouhan Landmark stands as a testament to our commitment to quality and architectural excellence. It now serves as a thriving hub for various businesses and professionals.",
+  status: "Sold",
+  address: "Durg, Chhattisgarh",
+  presentationCentre: {
+    address: "Durg, Chhattisgarh",
+    hours: "Closed - Project Sold Out"
+  },
+  contact: {
+    phone: "+91 95111 21113",
+    email: "sales@chouhangroup.com"
+  },
+  heroImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000",
+  mapQuery: "Chouhan Landmark, Durg",
+  websiteUrl: "https://chouhan-group-website.vercel.app/"
+};
+
+const CHOUHAN_PLAZA_DATA: ProjectData = {
+  title: "Chouhan Plaza",
+  description: "Sold Out – A bustling retail hub in Bhilai that has become a favorite destination for shoppers. With its strategic location and centralized air conditioning, Chouhan Plaza offers a comfortable and convenient shopping experience. Home to multiple leading brands.",
+  status: "Sold",
+  address: "Bhilai, Chhattisgarh",
+  presentationCentre: {
+    address: "Bhilai, Chhattisgarh",
+    hours: "Closed - Project Sold Out"
+  },
+  contact: {
+    phone: "+91 95111 21113",
+    email: "sales@chouhangroup.com"
+  },
+  heroImage: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=2000",
+  mapQuery: "Chouhan Plaza, Bhilai",
+  websiteUrl: "https://chouhan-group-website.vercel.app/"
+};
+
 const EMPYREAN_KENDRI_DATA: ProjectData = {
   title: "Empyrean Kendri",
   description: "Now Open – A premium transit boutique hotel located near Raipur Airport. Ideal for business travelers and short stays, offering modern amenities, comfortable rooms, and a rooftop lounge for relaxation. Experience efficiency and elegance combined.",
@@ -359,6 +395,8 @@ const App: React.FC = () => {
           <Route path="/commercial/business-park" element={<ProjectDetail data={BUSINESS_PARK_DATA} />} />
           <Route path="/commercial/estates" element={<ProjectDetail data={CHOUHAN_ESTATES_DATA} />} />
           <Route path="/commercial/parkview-complex" element={<ProjectDetail data={PARKVIEW_COMPLEX_DATA} />} />
+          <Route path="/commercial/landmark" element={<ProjectDetail data={CHOUHAN_LANDMARK_DATA} />} />
+          <Route path="/commercial/plaza" element={<ProjectDetail data={CHOUHAN_PLAZA_DATA} />} />
 
           <Route path="/commercial" element={<Commercial />} />
           <Route path="/commercial/city-center" element={<CityCenter />} />
