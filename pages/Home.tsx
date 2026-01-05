@@ -8,6 +8,7 @@ import {
   CheckCircle2, ShoppingBag, BedDouble, Hammer, TrendingUp, ChevronLeft, ChevronRight
 } from 'lucide-react';
 
+
 const SERVICE_HIGHLIGHTS = [
   {
     title: "Housing Business",

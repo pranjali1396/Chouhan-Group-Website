@@ -22,6 +22,7 @@ import Hospitality from './pages/Hospitality';
 import Automobile from './pages/Automobile';
 import Rentals from './pages/Rentals';
 import ProjectDetail, { ProjectData } from './pages/ProjectDetail';
+
 import { NAVIGATION_DATA } from './types';
 
 // Scroll to top on route change
@@ -262,9 +263,9 @@ const CHOUHAN_COMPLEX_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "sales@chouhangroup.com"
   },
-  heroImage: "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?q=80&w=2000",
+  heroImage: "/chouhan_complex_hero_small.png",
   mapQuery: "Supela, Bhilai",
-  websiteUrl: "https://chouhan-group-website.vercel.app/"
+  websiteUrl: "https://chouhan-complex.vercel.app/"
 };
 
 const EMPYREAN_KENDRI_DATA: ProjectData = {
@@ -419,6 +420,7 @@ const App: React.FC = () => {
 
           <Route path="/commercial" element={<Commercial />} />
           <Route path="/commercial/city-center" element={<CityCenter />} />
+
           <Route path="/new-homes/sunrisecity" element={<SunriseLanding />} />
 
           <Route path="/hospitality" element={<Hospitality />} />
