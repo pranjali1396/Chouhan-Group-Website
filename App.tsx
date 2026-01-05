@@ -175,6 +175,7 @@ const CHOUHAN_TOWN_DATA: ProjectData = {
   },
   heroImage: "/images/housing-business.png",
   mapQuery: "Chouhan Town, Bhilai",
+  websiteUrl: "https://chouhan-town.vercel.app/"
 };
 
 const CHOUHAN_ESTATES_DATA: ProjectData = {
