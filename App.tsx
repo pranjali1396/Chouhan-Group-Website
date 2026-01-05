@@ -210,6 +210,7 @@ const PARKVIEW_COMPLEX_DATA: ProjectData = {
   },
   heroImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000", // Reusing business center image as placeholder
   mapQuery: "Shankracharya Mahavidyalaya, Junwani, Bhilai",
+  websiteUrl: "https://chouhan-park-view-xi.vercel.app/commercial"
 };
 
 const EMPYREAN_KENDRI_DATA: ProjectData = {
