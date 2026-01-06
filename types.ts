@@ -26,7 +26,7 @@ export const NAVIGATION_DATA: NavItem[] = [
         links: [
           { label: "Singapore Life Phase 1, 2 And 4", path: "/new-homes/singapore-life" },
           { label: "Chouhan Green Valley Phase 1, 2, 3", path: "/new-homes/green-valley" },
-          { label: "Sunrise City", path: "/new-homes/sunrise-city-details" },
+          { label: "Sunrise City", path: "/new-homes/sunrise-city-details" }, // Assuming this should point to details based on context
           { label: "Chouhan Town", path: "/new-homes/town" },
           { label: "Chouhan Parkview", path: "/new-homes/parkview" },
         ]
@@ -38,8 +38,8 @@ export const NAVIGATION_DATA: NavItem[] = [
       {
         title: "SOLD",
         links: [
-          { label: "CHPL Dream homes", path: "/new-homes/dream-home" },
-          { label: "Shikhar Complex", path: "/new-homes/shikhar" },
+          { label: "Chouhan Dream Homes", path: "/new-homes/dream-homes-details" },
+          { label: "Shikhar Complex", path: "/commercial/shikhar-complex-details" },
         ]
       }
     ]
@@ -60,7 +60,7 @@ export const NAVIGATION_DATA: NavItem[] = [
       {
         title: "UPCOMING",
         links: [
-          { label: "City Center Bhilai (Coming Soon)", path: "/commercial/city-center" },
+          { label: "City Center Bhilai (Coming Soon)", path: "/commercial/city-center-details" },
         ]
       },
       {

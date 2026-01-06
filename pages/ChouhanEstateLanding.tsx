@@ -56,6 +56,18 @@ const ChouhanEstateLanding: React.FC = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Handle initial scroll if hash is present (for Register buttons)
+    useEffect(() => {
+        const handleInitialHash = () => {
+            if (window.location.hash.toLowerCase().includes('contact')) {
+                setTimeout(() => scrollToSection('contact'), 800);
+            }
+        };
+        handleInitialHash();
+        window.addEventListener('hashchange', handleInitialHash);
+        return () => window.removeEventListener('hashchange', handleInitialHash);
+    }, []);
+
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id);
         if (element) {

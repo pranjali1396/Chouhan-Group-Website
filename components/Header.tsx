@@ -158,10 +158,14 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
             </div>
           </div>
           <div className="flex items-center gap-3 pl-6 border-l border-white/20">
-            <a href="#" className="hover:text-amber-400 transition-colors"><Facebook size={15} /></a>
-            <a href="#" className="hover:text-amber-400 transition-colors"><Twitter size={15} /></a>
-            <a href="#" className="hover:text-amber-400 transition-colors"><Instagram size={15} /></a>
-            <a href="#" className="hover:text-amber-400 transition-colors"><Youtube size={15} /></a>
+            <a href="https://www.facebook.com/share/17atysTgnf/" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors"><Facebook size={15} /></a>
+            <a href="https://x.com/ChouhanHousing?t=qr_WRxVvfJ9a6q9yU_rHlA&s=09" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">
+              <svg viewBox="0 0 24 24" fill="currentColor" className="w-[15px] h-[15px]">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/chouhan_housing_commercial?igsh=MTZuNXpibTF4N2k4bA==" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors"><Instagram size={15} /></a>
+            <a href="https://youtube.com/@chouhangroup-x7v?si=yHs8HX0SxFY9X1EB" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors"><Youtube size={15} /></a>
             <a href="#" className="hover:text-amber-400 transition-colors"><Linkedin size={15} /></a>
           </div>
         </div>
@@ -310,13 +314,20 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
             {/* Social Icons - White Circle Style */}
             <div className="flex gap-4 items-center justify-center">
               {[
-                { icon: <Facebook size={20} fill="currentColor" className="stroke-none" />, href: "#" },
-                { icon: <Twitter size={20} fill="currentColor" className="stroke-none" />, href: "#" },
-                { icon: <Instagram size={20} />, href: "#" },
-                { icon: <Youtube size={20} fill="currentColor" className="stroke-none" />, href: "#" },
+                { icon: <Facebook size={20} fill="currentColor" className="stroke-none" />, href: "https://www.facebook.com/share/17atysTgnf/" },
+                {
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                  ),
+                  href: "https://x.com/ChouhanHousing?t=qr_WRxVvfJ9a6q9yU_rHlA&s=09"
+                },
+                { icon: <Instagram size={20} />, href: "https://www.instagram.com/chouhan_housing_commercial?igsh=MTZuNXpibTF4N2k4bA==" },
+                { icon: <Youtube size={20} fill="currentColor" className="stroke-none" />, href: "https://youtube.com/@chouhangroup-x7v?si=yHs8HX0SxFY9X1EB" },
                 { icon: <Linkedin size={20} fill="currentColor" className="stroke-none" />, href: "#" }
               ].map((social, idx) => (
-                <a key={idx} href={social.href} className="w-11 h-11 bg-white/5 rounded-full flex items-center justify-center text-white hover:bg-amber-500 hover:text-white transition-all border border-white/10">
+                <a key={idx} href={social.href} target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-white/5 rounded-full flex items-center justify-center text-white hover:bg-amber-500 hover:text-white transition-all border border-white/10">
                   {social.icon}
                 </a>
               ))}

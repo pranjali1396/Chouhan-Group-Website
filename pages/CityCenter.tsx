@@ -89,7 +89,7 @@ const CityCenter: React.FC = () => {
               <p className="text-xl md:text-2xl text-slate-200 font-light max-w-2xl leading-relaxed mb-10">
                 Bhilai's most anticipated destination for luxury retail, fine dining, and world-class entertainment.
               </p>
-              <a href="#book-now" className="bg-white text-[#002b49] px-10 py-5 font-black uppercase tracking-widest text-xs hover:bg-amber-500 hover:text-white transition-all shadow-2xl rounded-sm inline-block">
+              <a href="#contact" className="bg-white text-[#002b49] px-10 py-5 font-black uppercase tracking-widest text-xs hover:bg-amber-500 hover:text-white transition-all shadow-2xl rounded-sm inline-block">
                 Register Interest
               </a>
             </div>
@@ -212,7 +212,7 @@ const CityCenter: React.FC = () => {
       </section>
 
       {/* Booking Form Section */}
-      <section className="py-32 bg-[#002b49] text-white overflow-hidden relative" id="book-now">
+      <section className="py-32 bg-[#002b49] text-white overflow-hidden relative" id="contact">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2000')] bg-cover opacity-5"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col lg:flex-row gap-20 items-center">

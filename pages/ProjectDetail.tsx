@@ -62,7 +62,32 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
               ))}
               {!isSold && (
                 <p className="text-[#555]">
-                  The final tower is now selling! <Link to="/contact" className="text-[#002b49] underline font-medium hover:text-amber-600">Register today</Link> to stay informed.
+                  The final tower is now selling! {data.websiteUrl ? (
+                    data.websiteUrl.startsWith('/') ? (
+                      <Link to={`${data.websiteUrl}#contact`} className="text-[#002b49] underline font-medium hover:text-amber-600">Register today</Link>
+                    ) : (
+                      <a
+                        href={
+                          data.title.toLowerCase().includes('green valley') || data.title.toLowerCase().includes('town')
+                            ? `${data.websiteUrl.endsWith('/') ? data.websiteUrl : data.websiteUrl + '/'}#contact`
+                            : data.title.toLowerCase().includes('empyrean') || data.title.toLowerCase().includes('balod')
+                              ? `https://www.empyreanhotels.in/contact`
+                              : data.title.toLowerCase().includes('parkview')
+                                ? data.title.toLowerCase().includes('complex') || data.title.toLowerCase().includes('commercial')
+                                  ? `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact`
+                                  : `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact-us`
+                                : `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact`
+                        }
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#002b49] underline font-medium hover:text-amber-600"
+                      >
+                        Register today
+                      </a>
+                    )
+                  ) : (
+                    <a href="#contact" className="text-[#002b49] underline font-medium hover:text-amber-600">Register today</a>
+                  )} to stay informed.
                 </p>
               )}
             </div>
@@ -122,64 +147,120 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
               )}
 
               {!isSold && (
-                <Link to="/contact" className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center">
-                  Register Today
-                </Link>
+                data.websiteUrl ? (
+                  data.websiteUrl.startsWith('/') ? (
+                    <Link to={`${data.websiteUrl}#contact`} className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center">
+                      Register Today
+                    </Link>
+                  ) : (
+                    <a
+                      href={
+                        data.title.toLowerCase().includes('green valley') || data.title.toLowerCase().includes('town')
+                          ? `${data.websiteUrl.endsWith('/') ? data.websiteUrl : data.websiteUrl + '/'}#contact`
+                          : data.title.toLowerCase().includes('empyrean') || data.title.toLowerCase().includes('balod')
+                            ? `https://www.empyreanhotels.in/contact`
+                            : data.title.toLowerCase().includes('parkview')
+                              ? data.title.toLowerCase().includes('complex') || data.title.toLowerCase().includes('commercial')
+                                ? `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact`
+                                : `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact-us`
+                              : `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact`
+                      }
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center"
+                    >
+                      Register Today
+                    </a>
+                  )
+                ) : (
+                  <a href="#contact" className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center">
+                    Register Today
+                  </a>
+                )
               )}
             </div>
 
-            {isSold && (
-              <div className="mb-10 p-6 bg-red-50 border border-red-100 rounded-sm text-center">
-                <div className="flex items-center justify-center gap-2 text-red-600 font-black uppercase tracking-[0.2em] text-xs">
-                  <Ban size={14} /> Sold Out
-                </div>
-                <p className="text-[10px] text-red-400 mt-2 font-medium">All units in this project have been sold.</p>
-              </div>
-            )}
+            {/* Project Details Section */}
+            <div id="contact" className="scroll-mt-32 space-y-10">
+              <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#718096] mb-6 border-b border-slate-100 pb-2">Project Details</h3>
 
-            {/* Details Table */}
-            <div className="space-y-6 text-[13px] text-[#4a5568]">
-              <div className="flex gap-4">
-                <div className="w-24 shrink-0 font-medium">Status:</div>
-                <div className={isSold ? "font-bold text-red-600 uppercase" : "font-light"}>{data.status}</div>
-              </div>
+              <div className="space-y-6 text-[13px] text-[#4a5568]">
+                {/* Status */}
+                <div className="flex gap-4">
+                  <div className="w-24 shrink-0 font-medium">Status:</div>
+                  <div className={isSold ? "font-bold text-red-600 uppercase" : "font-light"}>{data.status}</div>
+                </div>
 
-              <div className="flex gap-4">
-                <div className="w-24 shrink-0 font-medium">Contact:</div>
-                <div className="font-light">
-                  <a href={`mailto:${data.contact.email}`} className="text-[#002b49] underline hover:text-amber-600 block mb-1">
-                    {data.contact.email}
-                  </a>
-                  <p className="text-slate-400">{data.contact.phone}</p>
+                {/* Contact */}
+                <div className="flex gap-4">
+                  <div className="w-24 shrink-0 font-medium">Contact:</div>
+                  <div className="font-light">
+                    <a href={`mailto:${data.contact.email}`} className="text-[#002b49] underline hover:text-amber-600 block mb-1">
+                      {data.contact.email}
+                    </a>
+                    <p className="text-slate-400">{data.contact.phone}</p>
+                  </div>
+                </div>
+
+                {/* Presentation Centre */}
+                <div className="flex gap-4">
+                  <div className="w-24 shrink-0 font-medium">Presentation Centre:</div>
+                  <div className="font-light leading-relaxed">
+                    {data.presentationCentre.address}
+                    <p className="text-slate-400 mt-1">{data.presentationCentre.hours}</p>
+                  </div>
+                </div>
+
+                {/* Share */}
+                <div className="flex gap-4 items-center">
+                  <div className="w-24 shrink-0 font-medium">Share:</div>
+                  <div className="flex gap-2">
+                    <button className="w-7 h-7 bg-[#002b49] text-white flex items-center justify-center hover:bg-amber-500 transition-colors rounded-sm"><Facebook size={12} fill="white" stroke="none" /></button>
+                    <button className="w-7 h-7 bg-[#002b49] text-white flex items-center justify-center hover:bg-amber-500 transition-colors rounded-sm"><Twitter size={12} fill="white" stroke="none" /></button>
+                    <button className="w-7 h-7 bg-[#002b49] text-white flex items-center justify-center hover:bg-amber-500 transition-colors rounded-sm"><Mail size={12} /></button>
+                    <button className="w-7 h-7 bg-[#002b49] text-white flex items-center justify-center hover:bg-amber-500 transition-colors rounded-sm"><Linkedin size={12} fill="white" stroke="none" /></button>
+                  </div>
                 </div>
               </div>
 
-              <div className="flex gap-4">
-                <div className="w-24 shrink-0 font-medium">Presentation Centre:</div>
-                <div className="font-light leading-relaxed">
-                  {data.presentationCentre.address}
-                  <p className="text-slate-400 mt-1">{data.presentationCentre.hours}</p>
+              {/* Registration Form (Only if not sold) */}
+              {!isSold && (
+                <div className="bg-slate-50 p-8 rounded-sm border border-slate-100 mt-12">
+                  <h4 className="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-6">Register Your Interest</h4>
+                  <form className="space-y-4">
+                    <div>
+                      <input type="text" className="w-full bg-white border border-slate-200 rounded-sm p-4 text-sm focus:outline-none focus:border-amber-500 transition-colors shadow-inner" placeholder="Full Name *" required />
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <input type="tel" className="w-full bg-white border border-slate-200 rounded-sm p-4 text-sm focus:outline-none focus:border-amber-500 transition-colors shadow-inner" placeholder="Phone Number *" required />
+                      <input type="email" className="w-full bg-white border border-slate-200 rounded-sm p-4 text-sm focus:outline-none focus:border-amber-500 transition-colors shadow-inner" placeholder="Email Address *" required />
+                    </div>
+                    <textarea className="w-full bg-white border border-slate-200 rounded-sm p-4 text-sm focus:outline-none focus:border-amber-500 transition-colors h-32 resize-none shadow-inner" placeholder="I'm interested in learning more..."></textarea>
+                    <button type="button" className="w-full bg-[#002b49] text-white py-4 font-bold uppercase tracking-[0.2em] text-xs hover:bg-slate-800 transition-all shadow-lg rounded-sm">
+                      Submit Enquiry
+                    </button>
+                    <p className="text-[10px] text-slate-400 text-center italic mt-4">Safe & Confidential: Your information is protected.</p>
+                  </form>
                 </div>
-              </div>
+              )}
 
-              <div className="flex gap-4 items-center">
-                <div className="w-24 shrink-0 font-medium">Share:</div>
-                <div className="flex gap-2">
-                  <button className="w-7 h-7 bg-[#002b49] text-white flex items-center justify-center hover:bg-amber-500 transition-colors rounded-sm"><Facebook size={12} fill="white" stroke="none" /></button>
-                  <button className="w-7 h-7 bg-[#002b49] text-white flex items-center justify-center hover:bg-amber-500 transition-colors rounded-sm"><Twitter size={12} fill="white" stroke="none" /></button>
-                  <button className="w-7 h-7 bg-[#002b49] text-white flex items-center justify-center hover:bg-amber-500 transition-colors rounded-sm"><Mail size={12} /></button>
-                  <button className="w-7 h-7 bg-[#002b49] text-white flex items-center justify-center hover:bg-amber-500 transition-colors rounded-sm"><Linkedin size={12} fill="white" stroke="none" /></button>
+              {isSold && (
+                <div className="bg-red-50 p-6 rounded-sm border border-red-100 text-center mt-8">
+                  <div className="flex items-center justify-center gap-2 text-red-600 font-black uppercase tracking-[0.2em] text-xs">
+                    <Ban size={14} /> Sold Out
+                  </div>
+                  <p className="text-[10px] text-red-400 mt-2 font-medium">All units in this project have been sold.</p>
                 </div>
-              </div>
+              )}
             </div>
 
             {/* Gallery Section */}
             {data.gallery && data.gallery.length > 0 && (
-              <div className="mt-12">
-                <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#718096] mb-6 border-b border-slate-100 pb-2">Gallery</h3>
-                <div className="grid grid-cols-3 gap-2">
+              <div className="mt-16">
+                <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#718096] mb-8 border-b border-slate-100 pb-2">Photo Gallery</h3>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                   {data.gallery.slice(0, 6).map((img, idx) => (
-                    <div key={idx} className="aspect-[4/3] overflow-hidden bg-slate-100 group cursor-pointer border border-slate-50 shadow-sm">
+                    <div key={idx} className="aspect-[4/3] overflow-hidden bg-slate-100 group cursor-pointer border border-slate-50 shadow-sm rounded-sm">
                       <img
                         src={img}
                         alt={`${data.title} Gallery ${idx + 1}`}

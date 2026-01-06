@@ -68,6 +68,32 @@ const PROPERTIES = [
     status: "Now Selling",
     bhk: "2 & 3 BHK",
     amenities: ["Sky Lounge", "Gym", "Parking"]
+  },
+  {
+    id: 6,
+    name: "Chouhan Dream Homes",
+    location: "Bhilai",
+    type: "Affordable Luxury",
+    price: "Sold Out",
+    priceVal: 0,
+    image: "/images/housing-business.png",
+    link: "/new-homes/dream-homes-details",
+    status: "Sold Out",
+    bhk: "Residential Units",
+    amenities: ["Gated", "Security", "Parks"]
+  },
+  {
+    id: 7,
+    name: "Shikhar Complex",
+    location: "Bhilai",
+    type: "Premium Apartments",
+    price: "Sold Out",
+    priceVal: 0,
+    image: "/images/housing-business.png",
+    link: "/commercial/shikhar-complex-details", // Pointing to detail page
+    status: "Sold Out",
+    bhk: "Shops & Offices",
+    amenities: ["Prime Location", "Parking"]
   }
 ];
 

@@ -76,12 +76,12 @@ const PROJECTS = [
 ];
 
 const IMPACT_GRID = [
-  { count: "1500", label: "RESIDENTIAL" },
-  { count: "500", label: "BUNGLOWS" },
-  { count: "3", label: "COMMERCIAL" },
-  { count: "2", label: "MALL" },
-  { count: "1", label: "HOTEL" },
-  { count: "20", label: "YEARS OF EXPERIENCE" }
+  { count: "1500+", label: "Residential UNITS", icon: <HomeIcon size={24} /> },
+  { count: "500+", label: "BUNGALOWS", icon: <HomeIcon size={24} /> },
+  { count: "3+", label: "Commercial", icon: <Building2 size={24} /> },
+  { count: "2+", label: "Malls", icon: <ShoppingBag size={24} /> },
+  { count: "1+", label: "Luxury Hotel", icon: <BedDouble size={24} /> },
+  { count: "20+", label: "Years Experience", icon: <CheckCircle2 size={24} /> }
 ];
 
 const Home: React.FC = () => {
@@ -139,7 +139,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Service Highlights Slider */}
-      <section className="py-24 bg-slate-50 relative overflow-hidden">
+      <section className="pt-24 pb-8 bg-slate-50 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
             <div className="max-w-3xl">
@@ -169,7 +169,7 @@ const Home: React.FC = () => {
 
           <div
             ref={scrollRef}
-            className="flex gap-8 overflow-x-auto pb-16 pt-4 snap-x snap-mandatory hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0"
+            className="flex gap-8 overflow-x-auto pb-8 pt-4 snap-x snap-mandatory hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none'
@@ -204,20 +204,25 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Orange Impact Grid Section (Based on Image 2) */}
-      <section className="bg-amber-500 py-24">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3">
+      {/* Impact Stats Strip - Modern, Compact & Vibrant */}
+      <section className="bg-amber-500 py-10 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+          <div className="absolute top-0 left-[-10%] w-[120%] h-full border-y border-white flex justify-around items-center rotate-1"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
             {IMPACT_GRID.map((item, idx) => (
               <div
                 key={idx}
-                className={`flex flex-col items-center justify-center py-16 px-8 border-white/20 text-center
-                  ${idx < 3 ? 'border-b' : ''} 
-                  ${(idx + 1) % 3 !== 0 ? 'md:border-r' : ''}
-                `}
+                className="flex flex-col items-center justify-center text-center group"
               >
-                <span className="text-6xl font-black text-white mb-4 drop-shadow-sm">{item.count}</span>
-                <span className="text-xs font-black tracking-[0.3em] text-white uppercase opacity-90">{item.label}</span>
+                <div className="text-white/80 mb-3 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                  {item.icon}
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-3xl font-black text-white leading-tight">{item.count}</span>
+                  <span className="text-[9px] font-bold tracking-[0.2em] text-white/80 uppercase">{item.label}</span>
+                </div>
               </div>
             ))}
           </div>

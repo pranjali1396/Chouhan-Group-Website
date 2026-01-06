@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   MapPin, Phone, Mail, CheckCircle2, ArrowRight, Download,
   Menu, X, ChevronDown, Trees, Shield, Zap, Home,
@@ -83,6 +84,7 @@ const SunriseLanding: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   // Hero Slider Autoplay
   useEffect(() => {
@@ -134,6 +136,20 @@ const SunriseLanding: React.FC = () => {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Handle initial scroll if hash is present (for Register buttons)
+  useEffect(() => {
+    const handleInitialHash = () => {
+      // With HashRouter, the hash might be part of the path or double hashed
+      if (window.location.hash.toLowerCase().includes('contact')) {
+        setTimeout(() => scrollToSection('contact'), 800);
+      }
+    };
+    handleInitialHash();
+    // Also listen for hash changes if user is already on the page
+    window.addEventListener('hashchange', handleInitialHash);
+    return () => window.removeEventListener('hashchange', handleInitialHash);
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -244,6 +260,12 @@ const SunriseLanding: React.FC = () => {
                   {item.label}
                 </button>
               ))}
+              <button
+                onClick={() => navigate('/new-homes')}
+                className="ml-4 text-[10px] font-bold uppercase tracking-widest text-emerald-600 hover:text-emerald-700 transition-colors flex items-center gap-1 border border-emerald-200 px-3 py-1.5 rounded-full"
+              >
+                <ArrowRight size={12} /> HOME
+              </button>
             </div>
 
             {/* Desktop Action Button */}
@@ -280,15 +302,17 @@ const SunriseLanding: React.FC = () => {
                   {item.label}
                 </button>
               ))}
-              <button
-                onClick={() => {
-                  scrollToSection('contact');
-                  setIsMobileMenuOpen(false);
-                }}
-                className="bg-emerald-600 text-white w-full py-3 rounded text-sm font-bold uppercase tracking-wider hover:bg-emerald-700 transition-colors"
-              >
-                Register Interest
-              </button>
+              <div className="pt-4 mt-2 border-t border-stone-100">
+                <button
+                  onClick={() => navigate('/new-homes')}
+                  className="flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-emerald-600 w-full"
+                >
+                  <div className="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center">
+                    <ArrowRight size={16} />
+                  </div>
+                  Back to Home
+                </button>
+              </div>
             </div>
           </div>
         )}

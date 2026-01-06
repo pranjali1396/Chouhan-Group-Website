@@ -25,15 +25,48 @@ import ProjectDetail, { ProjectData } from './pages/ProjectDetail';
 import ChouhanEstateLanding from './pages/ChouhanEstateLanding';
 import ChouhanLandmarkLanding from './pages/ChouhanLandmarkLanding';
 import ChouhanCityCenterLanding from './pages/ChouhanCityCenterLanding';
+import ShikharComplexLanding from './pages/ShikharComplexLanding';
+import ChouhanDreamHomesLanding from './pages/ChouhanDreamHomesLanding';
 
 import { NAVIGATION_DATA } from './types';
 
-// Scroll to top on route change
+// Scroll to top or to specific hash on route change
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    // With HashRouter, sometimes the hash is part of the pathname if using simple <Link>
+    // but react-router-dom should handle it. However, we check both.
+    const scrollTarget = hash || (pathname.includes('#') ? '#' + pathname.split('#')[1] : null);
+
+    if (!scrollTarget) {
+      window.scrollTo(0, 0);
+    } else {
+      const id = scrollTarget.replace('#', '');
+
+      // Try multiple times to scroll as content might take time to render
+      const tryScroll = (count: number) => {
+        const element = document.getElementById(id);
+        if (element) {
+          const offset = 100;
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = element.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - offset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        } else if (count < 10) {
+          setTimeout(() => tryScroll(count + 1), 200);
+        }
+      };
+
+      tryScroll(0);
+    }
+  }, [pathname, hash]);
+
   return null;
 };
 
@@ -267,7 +300,7 @@ const CHOUHAN_CITY_CENTER_DATA: ProjectData = {
     phone: "+91 91091 04005",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "/images/vishal mega mart.jpg",
+  heroImage: "/images/chouhan_city_center_hero.png",
   mapQuery: "Chouhan City Centre, Bhilai",
   websiteUrl: "/commercial/city-center"
 };
@@ -432,10 +465,46 @@ const TRUE_VALUE_DATA: ProjectData = {
   websiteUrl: "https://chouhangroup.com/truevalue"
 };
 
+const SHIKHAR_COMPLEX_DATA: ProjectData = {
+  title: "Shikhar Complex",
+  description: "Sold Out – A prominent commercial landmark in Bhilai.",
+  status: "Sold",
+  address: "Bhilai, Chhattisgarh",
+  presentationCentre: {
+    address: "Bhilai, Chhattisgarh",
+    hours: "Closed - Project Sold Out"
+  },
+  contact: {
+    phone: "+91 95111 21113",
+    email: "sales@chouhangroup.com"
+  },
+  heroImage: "/images/housing-business.png", // Placeholder
+  mapQuery: "Shikhar Complex, Bhilai",
+  websiteUrl: "/commercial/shikhar-complex"
+};
+
+const CHOUHAN_DREAM_HOMES_DATA: ProjectData = {
+  title: "Chouhan Dream Homes",
+  description: "Sold Out – Affordable luxury for every family.",
+  status: "Sold",
+  address: "Bhilai, Chhattisgarh",
+  presentationCentre: {
+    address: "Bhilai, Chhattisgarh",
+    hours: "Closed - Project Sold Out"
+  },
+  contact: {
+    phone: "+91 91091 04005",
+    email: "chouhanhousing@gmail.com"
+  },
+  heroImage: "/images/housing-business.png", // Placeholder
+  mapQuery: "Chouhan Dream Homes, Bhilai",
+  websiteUrl: "/new-homes/dream-homes"
+};
+
 
 const AppContent: React.FC = () => {
   const location = useLocation();
-  const hideHeaderFooter = location.pathname === '/commercial/estate-details' || location.pathname === '/commercial/landmark-details' || location.pathname === '/commercial/city-center' || location.pathname === '/new-homes/sunrise-city';
+  const hideHeaderFooter = location.pathname === '/commercial/estate-details' || location.pathname === '/commercial/landmark-details' || location.pathname === '/commercial/city-center' || location.pathname === '/new-homes/sunrise-city' || location.pathname === '/commercial/shikhar-complex' || location.pathname === '/new-homes/dream-homes';
 
   return (
     <div className="flex flex-col min-h-screen font-sans text-slate-900 bg-white selection:bg-amber-100 selection:text-amber-900">
@@ -452,6 +521,9 @@ const AppContent: React.FC = () => {
         <Route path="/new-homes/town" element={<ProjectDetail data={CHOUHAN_TOWN_DATA} />} />
         <Route path="/new-homes/sunrise-city-details" element={<ProjectDetail data={SUNRISE_CITY_DATA} />} />
         <Route path="/new-homes/sunrise-city" element={<SunriseLanding />} />
+        <Route path="/new-homes/sunrise-city" element={<SunriseLanding />} />
+        <Route path="/new-homes/dream-homes-details" element={<ProjectDetail data={CHOUHAN_DREAM_HOMES_DATA} />} />
+        <Route path="/new-homes/dream-homes" element={<ChouhanDreamHomesLanding />} />
 
         <Route path="/commercial/business-center" element={<ProjectDetail data={BUSINESS_CENTER_DATA} />} />
         <Route path="/commercial/business-park" element={<ProjectDetail data={BUSINESS_PARK_DATA} />} />
@@ -460,6 +532,9 @@ const AppContent: React.FC = () => {
         <Route path="/commercial/landmark" element={<ProjectDetail data={CHOUHAN_LANDMARK_DATA} />} />
         <Route path="/commercial/plaza" element={<ProjectDetail data={CHOUHAN_PLAZA_DATA} />} />
         <Route path="/commercial/complex" element={<ProjectDetail data={CHOUHAN_COMPLEX_DATA} />} />
+        <Route path="/commercial/shikhar-complex-details" element={<ProjectDetail data={SHIKHAR_COMPLEX_DATA} />} />
+        <Route path="/commercial/shikhar-complex" element={<ShikharComplexLanding />} />
+        <Route path="/commercial/shikhar-complex" element={<ShikharComplexLanding />} />
 
         <Route path="/commercial" element={<Commercial />} />
         <Route path="/commercial/city-center-details" element={<ProjectDetail data={CHOUHAN_CITY_CENTER_DATA} />} />
