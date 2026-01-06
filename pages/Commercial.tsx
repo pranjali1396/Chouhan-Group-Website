@@ -22,10 +22,12 @@ const COMMERCIAL_PROPERTIES = [
     location: "Bhilai",
     type: "Shopping Mall & Entertainment",
     sector: "Retail",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200",
-    link: "/commercial/city-center",
+    image: "/images/chouhan_city_center_hero.png",
+    link: "/commercial/city-center-details",
+    detailsLink: "/commercial/city-center-details",
+    websiteUrl: "/commercial/city-center",
     status: "Upcoming",
-    features: "5 Screen Multiplex • Food Court",
+    features: "15 Acres • Multiplex • 1200 Seats",
     priceRange: "Premium"
   },
   {
@@ -48,20 +50,20 @@ const COMMERCIAL_PROPERTIES = [
     sector: "Industrial",
     image: "/images/housing-business.png",
     link: "/commercial/estates",
-    status: "Now Selling",
+    status: "Now Renting",
     features: "Warehouse Space • Highway Frontage",
     priceRange: "Competitive"
   },
   {
     id: 5,
     name: "Chouhan Landmark",
-    location: "Durg",
-    type: "Premium Office Building",
-    sector: "Office",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200",
-    link: "/commercial/landmark",
+    location: "Bhilai",
+    type: "Premium Commercial Hub",
+    sector: "Mixed-use",
+    image: "/images/vishal mega mart.jpg",
+    link: "/commercial/landmark", // Keeping this link as it might be used by App router or user wants the dedicated page
     status: "Sold",
-    features: "Iconic Design • Prime Hub",
+    features: "Anchor: Vishal Mega Mart",
     priceRange: "Premium"
   },
   {
@@ -120,7 +122,7 @@ const Commercial: React.FC = () => {
   }, [searchTerm, selectedSector, selectedStatus]);
 
   const sectors = ['All', 'Office', 'Retail', 'Industrial', 'Mixed-use'];
-  const statuses = ['All', 'Now Selling', 'Upcoming', 'Sold'];
+  const statuses = ['All', 'Now Selling', 'Now Renting', 'Upcoming', 'Sold'];
 
   return (
     <div className="bg-slate-50 font-sans min-h-screen">

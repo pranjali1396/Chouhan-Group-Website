@@ -49,7 +49,7 @@ export const NAVIGATION_DATA: NavItem[] = [
     path: "/commercial",
     columns: [
       {
-        title: "NOW SELLING",
+        title: "NOW SELLING / LEASING",
         links: [
           { label: "Chouhan Business Center", path: "/commercial/business-center" },
           { label: "Chouhan Business Park", path: "/commercial/business-park" },

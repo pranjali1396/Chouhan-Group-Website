@@ -22,6 +22,9 @@ import Hospitality from './pages/Hospitality';
 import Automobile from './pages/Automobile';
 import Rentals from './pages/Rentals';
 import ProjectDetail, { ProjectData } from './pages/ProjectDetail';
+import ChouhanEstateLanding from './pages/ChouhanEstateLanding';
+import ChouhanLandmarkLanding from './pages/ChouhanLandmarkLanding';
+import ChouhanCityCenterLanding from './pages/ChouhanCityCenterLanding';
 
 import { NAVIGATION_DATA } from './types';
 
@@ -181,8 +184,8 @@ const CHOUHAN_TOWN_DATA: ProjectData = {
 
 const CHOUHAN_ESTATES_DATA: ProjectData = {
   title: "Chouhan Estates",
-  description: "Now Selling – Premier industrial and retail spaces located on the prime NH-53 highway. Chouhan Estates offers versatile warehouse spaces and high-visibility retail frontages designed for logistical efficiency and business growth. A strategic location for industrial and commercial ventures.",
-  status: "Now Selling",
+  description: "Now Renting – Premier industrial and retail spaces located on the prime NH-53 highway. Chouhan Estates offers versatile warehouse spaces and high-visibility retail frontages designed for logistical efficiency and business growth. A strategic location for industrial and commercial ventures.",
+  status: "Now Renting",
   address: "NH-53, Bhilai, Chhattisgarh",
   presentationCentre: {
     address: "Chouhan Estate, Bhilai, Chhattisgarh",
@@ -194,6 +197,7 @@ const CHOUHAN_ESTATES_DATA: ProjectData = {
   },
   heroImage: "/images/housing-business.png",
   mapQuery: "Chouhan Estate, Bhilai",
+  websiteUrl: "/commercial/estate-details"
 };
 
 const PARKVIEW_COMPLEX_DATA: ProjectData = {
@@ -216,20 +220,38 @@ const PARKVIEW_COMPLEX_DATA: ProjectData = {
 
 const CHOUHAN_LANDMARK_DATA: ProjectData = {
   title: "Chouhan Landmark",
-  description: "Sold Out – A landmark premium office building in the heart of Durg. Chouhan Landmark stands as a testament to our commitment to quality and architectural excellence. It now serves as a thriving hub for various businesses and professionals.",
+  description: "Sold Out – A landmark success story, fully leased to Vishal Mega Mart. This premium commercial complex serves as a major retail destination in Bhilai.",
   status: "Sold",
-  address: "Durg, Chhattisgarh",
+  address: "NH-53, Bhilai, Chhattisgarh",
   presentationCentre: {
-    address: "Durg, Chhattisgarh",
+    address: "Chouhan Estate, Bhilai, Chhattisgarh",
     hours: "Closed - Project Sold Out"
   },
   contact: {
-    phone: "+91 95111 21113",
-    email: "sales@chouhangroup.com"
+    phone: "+91 91091 04005",
+    email: "chouhanhousing@gmail.com"
   },
-  heroImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000",
-  mapQuery: "Chouhan Landmark, Durg",
-  websiteUrl: "https://chouhan-group-website.vercel.app/"
+  heroImage: "/images/vishal mega mart.jpg",
+  mapQuery: "Chouhan Landmark, Bhilai",
+  websiteUrl: "/commercial/landmark-details"
+};
+
+const CHOUHAN_CITY_CENTER_DATA: ProjectData = {
+  title: "Chouhan City Center",
+  description: "Coming Soon – Bhilai's premier destination for shopping and entertainment. Spanning 15 acres, this landmark project features a state-of-the-art multiplex with 5 screens and 1200 seats, comprehensive Family Entertainment Center, retail blocks, food mall, and vibrant children's park.",
+  status: "Coming Soon",
+  address: "Bhilai, Chhattisgarh",
+  presentationCentre: {
+    address: "Chouhan City Center, Bhilai, Chhattisgarh",
+    hours: "Coming Soon - 2024"
+  },
+  contact: {
+    phone: "+91 91091 04005",
+    email: "chouhanhousing@gmail.com"
+  },
+  heroImage: "/images/chouhan_city_center_hero.png",
+  mapQuery: "Chouhan City Centre, Bhilai",
+  websiteUrl: "/commercial/city-center"
 };
 
 const CHOUHAN_PLAZA_DATA: ProjectData = {
@@ -393,70 +415,82 @@ const TRUE_VALUE_DATA: ProjectData = {
 };
 
 
+const AppContent: React.FC = () => {
+  const location = useLocation();
+  const hideHeaderFooter = location.pathname === '/commercial/estate-details' || location.pathname === '/commercial/landmark-details' || location.pathname === '/commercial/city-center';
+
+  return (
+    <div className="flex flex-col min-h-screen font-sans text-slate-900 bg-white selection:bg-amber-100 selection:text-amber-900">
+      {!hideHeaderFooter && <Header navData={NAVIGATION_DATA} />}
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/new-homes" element={<NewHomes />} />
+
+        {/* Specific Project Routes */}
+        <Route path="/new-homes/singapore-life" element={<ProjectDetail data={SINGAPORE_DATA} />} />
+        <Route path="/new-homes/parkview" element={<ProjectDetail data={PARKVIEW_DATA} />} />
+        <Route path="/new-homes/green-valley" element={<ProjectDetail data={GREEN_VALLEY_DATA} />} />
+        <Route path="/new-homes/town" element={<ProjectDetail data={CHOUHAN_TOWN_DATA} />} />
+
+        <Route path="/commercial/business-center" element={<ProjectDetail data={BUSINESS_CENTER_DATA} />} />
+        <Route path="/commercial/business-park" element={<ProjectDetail data={BUSINESS_PARK_DATA} />} />
+        <Route path="/commercial/estates" element={<ProjectDetail data={CHOUHAN_ESTATES_DATA} />} />
+        <Route path="/commercial/parkview-complex" element={<ProjectDetail data={PARKVIEW_COMPLEX_DATA} />} />
+        <Route path="/commercial/landmark" element={<ProjectDetail data={CHOUHAN_LANDMARK_DATA} />} />
+        <Route path="/commercial/plaza" element={<ProjectDetail data={CHOUHAN_PLAZA_DATA} />} />
+        <Route path="/commercial/complex" element={<ProjectDetail data={CHOUHAN_COMPLEX_DATA} />} />
+
+        <Route path="/commercial" element={<Commercial />} />
+        <Route path="/commercial/city-center-details" element={<ProjectDetail data={CHOUHAN_CITY_CENTER_DATA} />} />
+        <Route path="/commercial/city-center" element={<ChouhanCityCenterLanding />} />
+        <Route path="/commercial/estate-details" element={<ChouhanEstateLanding />} />
+        <Route path="/commercial/landmark-details" element={<ChouhanLandmarkLanding />} />
+        <Route path="/new-homes/sunrisecity" element={<SunriseLanding />} />
+
+        <Route path="/hospitality" element={<Hospitality />} />
+        <Route path="/hospitality/empyrean-bhilai" element={<ProjectDetail data={EMPYREAN_BHILAI_DATA} />} />
+        <Route path="/hospitality/empyrean-balod" element={<ProjectDetail data={EMPYREAN_BALOD_DATA} />} />
+        <Route path="/hospitality/empyrean-kendri" element={<ProjectDetail data={EMPYREAN_KENDRI_DATA} />} />
+        <Route path="/hospitality/palladio" element={<ProjectDetail data={PALLADIO_DATA} />} />
+        <Route path="/hospitality/skypark" element={<ProjectDetail data={SKYPARK_DATA} />} />
+
+        <Route path="/automobile" element={<Automobile />} />
+        <Route path="/automobile/maruti" element={<ProjectDetail data={MARUTI_DATA} />} />
+        <Route path="/automobile/nexa" element={<ProjectDetail data={NEXA_DATA} />} />
+        <Route path="/automobile/hero" element={<ProjectDetail data={HERO_DATA} />} />
+        <Route path="/automobile/true-value" element={<ProjectDetail data={TRUE_VALUE_DATA} />} />
+        <Route path="/automobile/ashok" element={<AshokLeyland />} />
+
+        <Route path="/rentals" element={<Rentals />} />
+        <Route path="/care" element={<CustomerCare />} />
+
+        <Route path="/about/group" element={<AboutGroup />} />
+        <Route path="/about/founder" element={<Founder />} />
+        <Route path="/about/capital" element={<CapitalDivision />} />
+        <Route path="/about/charity" element={<CharitySponsorship />} />
+        <Route path="/about/constructions" element={<Construction />} />
+        <Route path="/about/sustainable" element={<SustainableDesign />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/care/:category" element={<CustomerCare />} />
+
+        {/* Generic routes for others */}
+        <Route path="/:category/:sub" element={<GenericPage />} />
+        <Route path="/:category" element={<GenericPage />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
+
+      {!hideHeaderFooter && <Footer />}
+    </div>
+  );
+};
+
+
 const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen font-sans text-slate-900 bg-white selection:bg-amber-100 selection:text-amber-900">
-        <Header navData={NAVIGATION_DATA} />
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/new-homes" element={<NewHomes />} />
-
-          {/* Specific Project Routes */}
-          <Route path="/new-homes/singapore-life" element={<ProjectDetail data={SINGAPORE_DATA} />} />
-          <Route path="/new-homes/parkview" element={<ProjectDetail data={PARKVIEW_DATA} />} />
-          <Route path="/new-homes/green-valley" element={<ProjectDetail data={GREEN_VALLEY_DATA} />} />
-          <Route path="/new-homes/town" element={<ProjectDetail data={CHOUHAN_TOWN_DATA} />} />
-
-          <Route path="/commercial/business-center" element={<ProjectDetail data={BUSINESS_CENTER_DATA} />} />
-          <Route path="/commercial/business-park" element={<ProjectDetail data={BUSINESS_PARK_DATA} />} />
-          <Route path="/commercial/estates" element={<ProjectDetail data={CHOUHAN_ESTATES_DATA} />} />
-          <Route path="/commercial/parkview-complex" element={<ProjectDetail data={PARKVIEW_COMPLEX_DATA} />} />
-          <Route path="/commercial/landmark" element={<ProjectDetail data={CHOUHAN_LANDMARK_DATA} />} />
-          <Route path="/commercial/plaza" element={<ProjectDetail data={CHOUHAN_PLAZA_DATA} />} />
-          <Route path="/commercial/complex" element={<ProjectDetail data={CHOUHAN_COMPLEX_DATA} />} />
-
-          <Route path="/commercial" element={<Commercial />} />
-          <Route path="/commercial/city-center" element={<CityCenter />} />
-
-          <Route path="/new-homes/sunrisecity" element={<SunriseLanding />} />
-
-          <Route path="/hospitality" element={<Hospitality />} />
-          <Route path="/hospitality/empyrean-bhilai" element={<ProjectDetail data={EMPYREAN_BHILAI_DATA} />} />
-          <Route path="/hospitality/empyrean-balod" element={<ProjectDetail data={EMPYREAN_BALOD_DATA} />} />
-          <Route path="/hospitality/empyrean-kendri" element={<ProjectDetail data={EMPYREAN_KENDRI_DATA} />} />
-          <Route path="/hospitality/palladio" element={<ProjectDetail data={PALLADIO_DATA} />} />
-          <Route path="/hospitality/skypark" element={<ProjectDetail data={SKYPARK_DATA} />} />
-
-          <Route path="/automobile" element={<Automobile />} />
-          <Route path="/automobile/maruti" element={<ProjectDetail data={MARUTI_DATA} />} />
-          <Route path="/automobile/nexa" element={<ProjectDetail data={NEXA_DATA} />} />
-          <Route path="/automobile/hero" element={<ProjectDetail data={HERO_DATA} />} />
-          <Route path="/automobile/true-value" element={<ProjectDetail data={TRUE_VALUE_DATA} />} />
-          <Route path="/automobile/ashok" element={<AshokLeyland />} />
-
-          <Route path="/rentals" element={<Rentals />} />
-          <Route path="/care" element={<CustomerCare />} />
-
-          <Route path="/about/group" element={<AboutGroup />} />
-          <Route path="/about/founder" element={<Founder />} />
-          <Route path="/about/capital" element={<CapitalDivision />} />
-          <Route path="/about/charity" element={<CharitySponsorship />} />
-          <Route path="/about/constructions" element={<Construction />} />
-          <Route path="/about/sustainable" element={<SustainableDesign />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/care/:category" element={<CustomerCare />} />
-
-          {/* Generic routes for others */}
-          <Route path="/:category/:sub" element={<GenericPage />} />
-          <Route path="/:category" element={<GenericPage />} />
-          <Route path="*" element={<Home />} />
-        </Routes>
-
-        <Footer />
-      </div>
+      <AppContent />
     </Router>
   );
 };

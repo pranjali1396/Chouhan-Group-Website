@@ -6,14 +6,26 @@ const RENTALS_DATA = [
   {
     id: 1,
     name: "Chouhan Estates",
+    location: "NH-53, Bhilai",
+    type: "Commercial Leasing",
+    category: "Commercial",
+    image: "/images/housing-business.png",
+    link: "/commercial/estate-details",
+    status: "Active",
+    feature: "Industrial & Retail Spaces",
+    amenities: ["Highway Access", "Large Parking", "Loading Bay"]
+  },
+  {
+    id: 5,
+    name: "Chouhan Landmark",
     location: "Bhilai",
-    type: "Residential Rental",
-    category: "Residential",
-    image: "https://images.unsplash.com/photo-1621699042502-04e22543e1d6?q=80&w=1200",
-    link: "/rentals/estates",
-    status: "Coming Soon",
-    feature: "Premium Apartments",
-    amenities: ["Gated", "Parking", "Maintenance"]
+    type: "Retail Lease",
+    category: "Commercial",
+    image: "/images/vishal mega mart.jpg",
+    link: "/commercial/landmark-details",
+    status: "Fully Leased",
+    feature: "Anchor: Vishal Mega Mart",
+    amenities: ["Open Layout", "Security", "Food Court"]
   },
   {
     id: 2,
