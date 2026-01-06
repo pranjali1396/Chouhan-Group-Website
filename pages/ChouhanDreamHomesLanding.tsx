@@ -29,8 +29,14 @@ const GALLERY_IMAGES = [
 ];
 
 const HERO_IMAGES = [
-    "/chouhan_dream_homes_1.webp",
-    "/chouhan_dream_homes_2.webp"
+    {
+        desktop: "/chouhan_dream_homes_1.webp",
+        mobile: "/chouhan_dream_homes_1_mob.webp"
+    },
+    {
+        desktop: "/chouhan_dream_homes_2.webp",
+        mobile: "/chouhan_dream_homes_2_mob.webp"
+    }
 ];
 
 const ChouhanDreamHomesLanding: React.FC = () => {
@@ -201,17 +207,20 @@ const ChouhanDreamHomesLanding: React.FC = () => {
             </div>
 
             {/* Hero Section */}
-            <section id="home" className="relative h-[85vh] w-full overflow-hidden bg-stone-900">
+            <section id="home" className="relative h-[180px] sm:h-[300px] md:h-[500px] lg:h-[650px] w-full overflow-hidden bg-stone-900">
                 {HERO_IMAGES.map((img, idx) => (
                     <div
                         key={idx}
                         className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === currentHeroSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
                     >
-                        <img
-                            src={img}
-                            alt={`Chouhan Dream Homes View ${idx + 1}`}
-                            className="w-full h-full object-cover"
-                        />
+                        <picture>
+                            <source media="(max-width: 768px)" srcSet={img.mobile} />
+                            <img
+                                src={img.desktop}
+                                alt={`Chouhan Dream Homes View ${idx + 1}`}
+                                className="w-full h-full object-cover"
+                            />
+                        </picture>
                         <div className="absolute inset-0 bg-black/30"></div>
                     </div>
                 ))}
@@ -224,13 +233,13 @@ const ChouhanDreamHomesLanding: React.FC = () => {
                         <div className="lg:w-1/2">
                             <span className="text-emerald-900 font-bold tracking-widest text-xs uppercase block mb-4">Sold Out • Premier Complex</span>
                             <h1 className="text-4xl lg:text-5xl font-heading font-black text-stone-900 mb-6 leading-tight">
-                                Chouhan Dream Home
+                                Chouhan Dream Homes
                             </h1>
                             <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                                <strong>Chouhan Dream Home</strong>, developed by Chouhan Group, is a premier residential and commercial complex in Bhilai, crafted with innovative design and a prime location.
+                                <strong>Chouhan Dream Homes</strong>, developed by Chouhan Group, is a premier residential and commercial complex in Bhilai, crafted with innovative design and a prime location.
                             </p>
                             <p className="text-gray-600 mb-8 leading-relaxed">
-                                Established in 2005, this project quickly became a market favorite, achieving remarkable success by selling out within its first year. Our commitment to quality and excellence is evident in every aspect of Chouhan Dream Home, offering residents an exceptional blend of comfortable living spaces and convenient commercial facilities. Experience the legacy of Chouhan Dream Home, where visionary development meets.
+                                Established in 2005, this project quickly became a market favorite, achieving remarkable success by selling out within its first year. Our commitment to quality and excellence is evident in every aspect of Chouhan Dream Homes, offering residents an exceptional blend of comfortable living spaces and convenient commercial facilities. Experience the legacy of Chouhan Dream Homes, where visionary development meets modern living.
                             </p>
 
                             <div className="inline-flex items-center gap-2 px-4 py-2 bg-stone-100 rounded text-stone-600 font-bold text-sm">
