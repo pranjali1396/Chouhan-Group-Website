@@ -200,6 +200,24 @@ const CHOUHAN_ESTATES_DATA: ProjectData = {
   websiteUrl: "/commercial/estate-details"
 };
 
+const SUNRISE_CITY_DATA: ProjectData = {
+  title: "Sunrise City",
+  description: "A Premier Plot Investment Opportunity in Durg. Strategically located near IIT Bhilai, Chouhan Sunrise City is more than just a plotted residential project — it's a community designed for those who seek space, peace of mind, and long-term investment growth.",
+  status: "New Launch",
+  address: "Dhamdha Road, Durg, Chhattisgarh",
+  presentationCentre: {
+    address: "Dhamdha Road, Durg, Chhattisgarh",
+    hours: "Open Daily 10AM - 7PM"
+  },
+  contact: {
+    phone: "+91 91091 04005",
+    email: "chouhanhousing@gmail.com"
+  },
+  heroImage: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2200",
+  mapQuery: "Sunrise City, Bhilai",
+  websiteUrl: "/new-homes/sunrise-city"
+};
+
 const PARKVIEW_COMPLEX_DATA: ProjectData = {
   title: "Chouhan Parkview Complex",
   description: "Now Selling – A distinct modern commercial complex situated within the prestigious Chouhan Parkview township. Offering convenience retail and office spaces to serve the vibrant residential community. The perfect location for daily needs stores, clinics, and professional offices.",
@@ -249,7 +267,7 @@ const CHOUHAN_CITY_CENTER_DATA: ProjectData = {
     phone: "+91 91091 04005",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "/images/chouhan_city_center_hero.png",
+  heroImage: "/images/vishal mega mart.jpg",
   mapQuery: "Chouhan City Centre, Bhilai",
   websiteUrl: "/commercial/city-center"
 };
@@ -417,7 +435,7 @@ const TRUE_VALUE_DATA: ProjectData = {
 
 const AppContent: React.FC = () => {
   const location = useLocation();
-  const hideHeaderFooter = location.pathname === '/commercial/estate-details' || location.pathname === '/commercial/landmark-details' || location.pathname === '/commercial/city-center';
+  const hideHeaderFooter = location.pathname === '/commercial/estate-details' || location.pathname === '/commercial/landmark-details' || location.pathname === '/commercial/city-center' || location.pathname === '/new-homes/sunrise-city';
 
   return (
     <div className="flex flex-col min-h-screen font-sans text-slate-900 bg-white selection:bg-amber-100 selection:text-amber-900">
@@ -432,6 +450,8 @@ const AppContent: React.FC = () => {
         <Route path="/new-homes/parkview" element={<ProjectDetail data={PARKVIEW_DATA} />} />
         <Route path="/new-homes/green-valley" element={<ProjectDetail data={GREEN_VALLEY_DATA} />} />
         <Route path="/new-homes/town" element={<ProjectDetail data={CHOUHAN_TOWN_DATA} />} />
+        <Route path="/new-homes/sunrise-city-details" element={<ProjectDetail data={SUNRISE_CITY_DATA} />} />
+        <Route path="/new-homes/sunrise-city" element={<SunriseLanding />} />
 
         <Route path="/commercial/business-center" element={<ProjectDetail data={BUSINESS_CENTER_DATA} />} />
         <Route path="/commercial/business-park" element={<ProjectDetail data={BUSINESS_PARK_DATA} />} />

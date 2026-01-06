@@ -22,7 +22,7 @@ const COMMERCIAL_PROPERTIES = [
     location: "Bhilai",
     type: "Shopping Mall & Entertainment",
     sector: "Retail",
-    image: "/images/chouhan_city_center_hero.png",
+    image: "/images/vishal mega mart.jpg",
     link: "/commercial/city-center-details",
     detailsLink: "/commercial/city-center-details",
     websiteUrl: "/commercial/city-center",

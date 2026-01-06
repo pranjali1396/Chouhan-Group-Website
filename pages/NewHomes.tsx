@@ -38,7 +38,7 @@ const PROPERTIES = [
     price: "₹ 15L - ₹ 45L",
     priceVal: 1500000,
     image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200",
-    link: "/new-homes/sunrisecity",
+    link: "/new-homes/sunrise-city-details",
     status: "New Launch",
     bhk: "Residential Plots",
     amenities: ["Wide Roads", "Parks", "Temple"]

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {
   MapPin, Phone, Mail, CheckCircle2, ArrowRight, Download,
   Menu, X, ChevronDown, Trees, Shield, Zap, Home,
-  Coffee, Users, Landmark, Search, Play
+  Coffee, Users, Landmark, Search, Play, ChevronLeft, ChevronRight,
+  Facebook, Instagram, Twitter, Youtube
 } from 'lucide-react';
 
 const SECTIONS = [
@@ -52,9 +53,72 @@ const AMENITIES = [
   { icon: <Landmark size={28} />, title: "Temple Space", desc: "Culturally inclusive planning with space allocated for a temple." },
 ];
 
+const GALLERY_IMAGES = [
+  "/Sunrise City/Photos and Videos/sunrise_city.webp",
+  "/Sunrise City/Photos and Videos/chouhan_sunrise_city_img_2.webp",
+  "/Sunrise City/Photos and Videos/chouhan_sunrise_city_img_3.webp",
+  "/Sunrise City/Photos and Videos/chouhan_sunrise_city_img_8.webp",
+  "/Sunrise City/Photos and Videos/sunrise_city_p1.webp",
+  "/Sunrise City/Photos and Videos/sunrise_city_p2.webp",
+  "/Sunrise City/Photos and Videos/sunrisecity.webp",
+  "/Sunrise City/Photos and Videos/sunrisecity_00.webp",
+  "/Sunrise City/Photos and Videos/sunrixecity_03.webp",
+  "/Sunrise City/Photos and Videos/sunrixecity_04.webp",
+  "/Sunrise City/Photos and Videos/sunrixecity_05.webp",
+  "/Sunrise City/Photos and Videos/sunrizecity_002.webp",
+  "/Sunrise City/Photos and Videos/singapore_city_4_1.jpg",
+  "/Sunrise City/Photos and Videos/singapore_city_4_2.jpg",
+];
+
+const HERO_IMAGES = [
+  "/Sunrise City/Photos and Videos/sunrisecity_00.webp",
+  "/Sunrise City/Photos and Videos/singapore_city_4_1.jpg",
+  "/Sunrise City/Photos and Videos/singapore_city_4_2.jpg",
+  "/Sunrise City/Photos and Videos/sunrisecity.webp"
+];
+
 const SunriseLanding: React.FC = () => {
   const [activeTab, setActiveTab] = useState('home');
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [showModal, setShowModal] = useState(false);
+  const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Hero Slider Autoplay
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentHeroSlide((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 5000); // 5 seconds per slide
+    return () => clearInterval(timer);
+  }, []);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedImage) return;
+      if (e.key === 'Escape') setSelectedImage(null);
+      if (e.key === 'ArrowRight') handleNext();
+      if (e.key === 'ArrowLeft') handlePrev();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImage]);
+
+  const handleNext = () => {
+    if (selectedImage) {
+      const currentIndex = GALLERY_IMAGES.indexOf(selectedImage);
+      const nextIndex = (currentIndex + 1) % GALLERY_IMAGES.length;
+      setSelectedImage(GALLERY_IMAGES[nextIndex]);
+    }
+  };
+
+  const handlePrev = () => {
+    if (selectedImage) {
+      const currentIndex = GALLERY_IMAGES.indexOf(selectedImage);
+      const prevIndex = (currentIndex - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length;
+      setSelectedImage(GALLERY_IMAGES[prevIndex]);
+    }
+  };
 
   // Scroll spy effect
   useEffect(() => {
@@ -88,7 +152,48 @@ const SunriseLanding: React.FC = () => {
   };
 
   return (
-    <div className="bg-white font-sans text-stone-800 pt-32 md:pt-48">
+    <div className="bg-white font-sans text-stone-800 pt-0">
+
+      {/* Image Lightbox Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/95 backdrop-blur-md animate-fadeIn select-none"
+          onClick={() => setSelectedImage(null)}
+        >
+          {/* Close Button */}
+          <button
+            onClick={() => setSelectedImage(null)}
+            className="absolute top-4 right-4 z-[90] text-white/80 hover:text-white bg-black/40 hover:bg-black/60 rounded-full p-2 transition-all backdrop-blur-sm"
+          >
+            <X size={32} />
+          </button>
+
+          {/* Navigation Buttons */}
+          <button
+            onClick={(e) => { e.stopPropagation(); handlePrev(); }}
+            className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-[80] text-white/70 hover:text-white bg-black/40 hover:bg-black/70 rounded-full p-2 md:p-3 transition-all backdrop-blur-sm"
+            aria-label="Previous Image"
+          >
+            <ChevronLeft size={32} className="w-8 h-8 md:w-10 md:h-10" />
+          </button>
+
+          <button
+            onClick={(e) => { e.stopPropagation(); handleNext(); }}
+            className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-[80] text-white/70 hover:text-white bg-black/40 hover:bg-black/70 rounded-full p-2 md:p-3 transition-all backdrop-blur-sm"
+            aria-label="Next Image"
+          >
+            <ChevronRight size={32} className="w-8 h-8 md:w-10 md:h-10" />
+          </button>
+
+          <div className="relative max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center" onClick={e => e.stopPropagation()}>
+            <img
+              src={selectedImage}
+              alt="Gallery Preview"
+              className="max-w-full max-h-full object-contain rounded shadow-2xl"
+            />
+          </div>
+        </div>
+      )}
 
       {/* Brochure Modal */}
       {showModal && (
@@ -115,13 +220,18 @@ const SunriseLanding: React.FC = () => {
       )}
 
       {/* Internal Navigation (Sticky) */}
-      <div className="sticky top-[70px] lg:top-[80px] z-40 bg-white/95 backdrop-blur shadow-sm border-b border-stone-100">
+      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur shadow-sm border-b border-stone-100">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-16">
-            <div className="hidden md:block font-heading font-bold text-emerald-900 text-lg uppercase tracking-wider">
-              Sunrise City
+
+            {/* Logo Section */}
+            <div className="flex items-center gap-2 font-heading font-bold text-emerald-900 text-lg uppercase tracking-wider">
+              <img src="/Sunrise City/chouhan_sunrise_city_logo-removebg-preview.png" alt="Sunrise City Logo" className="h-10 w-auto object-contain" />
+
             </div>
-            <div className="flex space-x-6 overflow-x-auto no-scrollbar w-full md:w-auto">
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex space-x-6 overflow-x-auto no-scrollbar">
               {SECTIONS.filter(s => s.id !== 'home').map((item) => (
                 <button
                   key={item.id}
@@ -135,86 +245,150 @@ const SunriseLanding: React.FC = () => {
                 </button>
               ))}
             </div>
+
+            {/* Desktop Action Button */}
             <button onClick={() => scrollToSection('contact')} className="hidden lg:block bg-emerald-600 text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-emerald-700 transition-colors shadow-lg shadow-emerald-100">
               Register Interest
             </button>
+
+            {/* Mobile Hamburger Button */}
+            <button
+              className="md:hidden text-emerald-900 p-2"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
-      </div>
 
-      {/* Hero Section */}
-      <section id="home" className="relative h-[85vh] w-full overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2200&auto=format&fit=crop"
-            alt="Sunrise City Aerial View"
-            className="w-full h-full object-cover"
-          />
-          {/* Lighter overlay for clearer look */}
-          <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/60 via-emerald-900/10 to-transparent"></div>
-        </div>
-
-        <div className="relative container mx-auto px-4 h-full flex flex-col justify-center">
-          <div className="max-w-2xl text-white">
-            <span className="inline-block px-3 py-1 bg-amber-400 text-black text-[10px] font-bold uppercase tracking-widest rounded mb-6 shadow-sm">
-              Now Selling • Pre-Launch Offers Available
-            </span>
-            <h1 className="text-4xl md:text-6xl font-heading font-black mb-6 leading-tight drop-shadow-md">
-              A Premier Plot Investment Opportunity in Durg
-            </h1>
-            <p className="text-lg md:text-xl text-stone-100 mb-8 font-light leading-relaxed drop-shadow-sm">
-              Flexible plots, prime location near IIT Bhilai, and strong long-term value. Build your dream home in a community designed for the future.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+        {/* Mobile Menu Overlay */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-16 left-0 w-full bg-white border-b border-stone-100 shadow-xl animate-fadeIn">
+            <div className="flex flex-col p-4 space-y-4">
+              {SECTIONS.filter(s => s.id !== 'home').map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    scrollToSection(item.id);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className={`text-left text-sm font-bold uppercase tracking-wider py-3 border-b border-stone-50 ${activeTab === item.id
+                    ? 'text-emerald-800'
+                    : 'text-gray-500'
+                    }`}
+                >
+                  {item.label}
+                </button>
+              ))}
               <button
-                onClick={() => scrollToSection('contact')}
-                className="bg-white text-emerald-900 px-8 py-4 font-bold rounded hover:bg-emerald-50 transition-colors flex items-center justify-center gap-2 shadow-lg"
+                onClick={() => {
+                  scrollToSection('contact');
+                  setIsMobileMenuOpen(false);
+                }}
+                className="bg-emerald-600 text-white w-full py-3 rounded text-sm font-bold uppercase tracking-wider hover:bg-emerald-700 transition-colors"
               >
-                Register for Priority Access <ArrowRight size={18} />
-              </button>
-              <button
-                onClick={() => setShowModal(true)}
-                className="border-2 border-white text-white px-8 py-4 font-bold rounded hover:bg-white/20 transition-colors flex items-center justify-center gap-2 backdrop-blur-sm"
-              >
-                Download Brochure <Download size={18} />
+                Register Interest
               </button>
             </div>
           </div>
+        )}
+      </div>
+
+      {/* Hero Section - Image Slider */}
+      <section id="home" className="relative h-[85vh] w-full overflow-hidden">
+        {HERO_IMAGES.map((img, idx) => (
+          <div
+            key={idx}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === currentHeroSlide ? 'opacity-100' : 'opacity-0'}`}
+          >
+            <img
+              src={img}
+              alt={`Sunrise City Slide ${idx + 1}`}
+              className="w-full h-full object-cover"
+            />
+            {/* Subtle gradient for depth */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
+          </div>
+        ))}
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/80 z-10">
+          <ChevronDown size={32} />
         </div>
       </section>
 
       {/* Discover / Intro Section */}
       <section id="discover" className="py-24 bg-white">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row gap-16 items-center">
-            <div className="md:w-1/2">
-              <h2 className="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-2">Project Intro</h2>
-              <h3 className="text-4xl font-heading font-bold text-stone-900 mb-6">A Vision for the Future.<br />A Place to Call Home.</h3>
-              <p className="text-gray-600 leading-loose mb-6">
-                Strategically located near <strong className="text-emerald-800">IIT Bhilai</strong>, Chouhan Sunrise City is more than just a plotted residential project — it's a community designed for those who seek space, peace of mind, and long-term investment growth. Set in the rapidly developing corridor of <strong className="text-emerald-800">Bhilai’s Dhamdha Road</strong>, this premium development offers a unique opportunity to own land in one of Chhattisgarh’s most promising locations.
-              </p>
-              <p className="text-gray-600 leading-loose">
-                Whether you're planning to build your dream home or looking for a smart investment, Chouhan Sunrise City offers the perfect blend of <strong>location</strong>, <strong>lifestyle</strong>, and <strong>future value</strong>.
-              </p>
+          <div className="flex flex-col lg:flex-row gap-16 items-center">
+
+            {/* Left Column: Text Content */}
+            <div className="lg:w-1/2 space-y-8">
+              <div>
+                <span className="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-[10px] font-bold uppercase tracking-widest rounded mb-4">
+                  Now Selling • Pre-Launch Offers Available
+                </span>
+                <h1 className="text-4xl md:text-5xl font-heading font-black text-emerald-900 leading-tight mb-4">
+                  A Premier Plot Investment Opportunity in Durg
+                </h1>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  Flexible plots, prime location near <strong className="text-emerald-700">IIT Bhilai</strong>, and strong long-term value. Build your dream home in a community designed for the future.
+                </p>
+                <p className="text-gray-600 leading-relaxed mt-4">
+                  Strategically located on <strong className="text-emerald-800">Bhilai’s Dhamdha Road</strong>, this premium development offers a unique opportunity to own land in one of Chhattisgarh’s most promising locations.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="bg-emerald-900 text-white px-8 py-4 font-bold rounded hover:bg-emerald-800 transition-colors flex items-center justify-center gap-2 shadow-lg"
+                >
+                  Register for Priority Access <ArrowRight size={18} />
+                </button>
+                <a
+                  href="/Sunrise City/Layout Plan/Sunrise_City_plan.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border-2 border-emerald-900 text-emerald-900 px-8 py-4 font-bold rounded hover:bg-emerald-50 transition-colors flex items-center justify-center gap-2"
+                >
+                  Download Master Plan <Download size={18} />
+                </a>
+              </div>
             </div>
-            <div className="md:w-1/2 grid grid-cols-2 gap-4">
-              <div className="bg-stone-50 p-8 rounded-2xl border border-stone-200 hover:shadow-lg transition-shadow">
-                <h4 className="text-3xl font-black text-emerald-800 mb-1">Prime</h4>
+
+            {/* Right Column: Key Features Grid */}
+            <div className="lg:w-1/2 grid grid-cols-2 gap-4">
+              <div className="bg-stone-50 p-8 rounded-2xl border border-stone-200 hover:shadow-lg transition-transform hover:-translate-y-1">
+                <div className="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mb-4">
+                  <MapPin size={24} />
+                </div>
+                <h4 className="text-2xl font-black text-emerald-900 mb-1">Prime</h4>
                 <p className="text-sm text-gray-500 uppercase tracking-wider">Location</p>
               </div>
-              <div className="bg-emerald-50 p-8 rounded-2xl border border-emerald-100 hover:shadow-lg transition-shadow">
-                <h4 className="text-3xl font-black text-emerald-800 mb-1">Ready</h4>
+              <div className="bg-emerald-50 p-8 rounded-2xl border border-emerald-100 hover:shadow-lg transition-transform hover:-translate-y-1">
+                <div className="w-12 h-12 bg-emerald-200 text-emerald-900 rounded-full flex items-center justify-center mb-4">
+                  <Zap size={24} />
+                </div>
+                <h4 className="text-2xl font-black text-emerald-900 mb-1">Ready</h4>
                 <p className="text-sm text-gray-500 uppercase tracking-wider">Infrastructure</p>
               </div>
-              <div className="bg-emerald-50 p-8 rounded-2xl border border-emerald-100 hover:shadow-lg transition-shadow">
-                <h4 className="text-3xl font-black text-emerald-800 mb-1">Gated</h4>
+              <div className="bg-emerald-50 p-8 rounded-2xl border border-emerald-100 hover:shadow-lg transition-transform hover:-translate-y-1">
+                <div className="w-12 h-12 bg-emerald-200 text-emerald-900 rounded-full flex items-center justify-center mb-4">
+                  <Shield size={24} />
+                </div>
+                <h4 className="text-2xl font-black text-emerald-900 mb-1">Gated</h4>
                 <p className="text-sm text-gray-500 uppercase tracking-wider">Community</p>
               </div>
-              <div className="bg-stone-50 p-8 rounded-2xl border border-stone-200 hover:shadow-lg transition-shadow">
-                <h4 className="text-3xl font-black text-emerald-800 mb-1">Green</h4>
+              <div className="bg-stone-50 p-8 rounded-2xl border border-stone-200 hover:shadow-lg transition-transform hover:-translate-y-1">
+                <div className="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mb-4">
+                  <Trees size={24} />
+                </div>
+                <h4 className="text-2xl font-black text-emerald-900 mb-1">Green</h4>
                 <p className="text-sm text-gray-500 uppercase tracking-wider">Open Spaces</p>
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -247,12 +421,14 @@ const SunriseLanding: React.FC = () => {
           </div>
 
           <div className="mt-12 text-center">
-            <button
-              onClick={() => setShowModal(true)}
+            <a
+              href="/Sunrise City/Layout Plan/Sunrise_City_plan.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-emerald-800 font-bold border-b-2 border-emerald-800 pb-1 hover:text-emerald-600 hover:border-emerald-600 transition-colors"
             >
               <Download size={18} /> Download Layout Master Plan (PDF)
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -282,6 +458,60 @@ const SunriseLanding: React.FC = () => {
         </div>
       </section>
 
+      {/* Video Tour Section */}
+      <section className="py-24 bg-stone-900 text-white relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <span className="text-amber-500 font-bold tracking-widest text-xs uppercase block mb-4">Virtual Tour</span>
+            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-6">Experience Sunrise City</h2>
+            <p className="text-stone-300 text-lg leading-relaxed max-w-2xl mx-auto">
+              Take a closer look at the development progress, wide roads, and lush green surroundings of your future home.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Video 1 */}
+            <div className="space-y-4">
+              <div className="aspect-video bg-black rounded-xl overflow-hidden shadow-2xl border border-stone-700 relative group">
+                <video controls className="w-full h-full object-cover">
+                  <source src="/Sunrise City/Photos and Videos/VID-20250825-WA0002.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <h3 className="text-xl font-bold text-center">Development Progress</h3>
+            </div>
+
+            {/* Video 2 */}
+            <div className="space-y-4">
+              <div className="aspect-video bg-black rounded-xl overflow-hidden shadow-2xl border border-stone-700 relative group">
+                <video controls className="w-full h-full object-cover">
+                  <source src="/Sunrise City/Photos and Videos/VID-20251002-WA0007.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <h3 className="text-xl font-bold text-center">Site Walkthrough</h3>
+            </div>
+
+            {/* Video 3 */}
+            <div className="space-y-4">
+              <div className="aspect-video bg-black rounded-xl overflow-hidden shadow-2xl border border-stone-700 relative group">
+                <video controls className="w-full h-full object-cover">
+                  <source src="/Sunrise City/Photos and Videos/VID-20251002-WA0008.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <h3 className="text-xl font-bold text-center">Green Spaces Tour</h3>
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <button onClick={() => scrollToSection('contact')} className="bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-4 rounded font-bold transition-colors shadow-lg shadow-emerald-900/50">
+              Schedule Site Visit
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* Gallery */}
       <section id="gallery" className="bg-stone-50 py-24 text-stone-900 border-t border-stone-200">
         <div className="container mx-auto px-4">
@@ -292,26 +522,23 @@ const SunriseLanding: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-[600px]">
-            <div className="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-lg shadow-md">
-              <img src="https://images.unsplash.com/photo-1592595896551-12b371d546d5?q=80&w=1200" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Main View" />
-              <div className="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/80 to-transparent w-full">
-                <span className="text-amber-400 text-xs font-bold uppercase tracking-widest">Site Progress</span>
-                <h3 className="text-xl font-bold text-white">Main Entrance Avenue</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {GALLERY_IMAGES.map((img, idx) => (
+              <div
+                key={idx}
+                className={`relative group overflow-hidden rounded-lg shadow-md aspect-[4/3] cursor-pointer ${idx === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
+                onClick={() => setSelectedImage(img)}
+              >
+                <img
+                  src={img}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  alt={`Sunrise City View ${idx + 1}`}
+                />
+                <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Search className="text-white drop-shadow-lg" size={32} />
+                </div>
               </div>
-            </div>
-            <div className="relative group overflow-hidden rounded-lg shadow-md">
-              <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="View 2" />
-              <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <Search className="text-white" />
-              </div>
-            </div>
-            <div className="relative group overflow-hidden rounded-lg shadow-md">
-              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="View 3" />
-              <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <Search className="text-white" />
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -448,6 +675,86 @@ const SunriseLanding: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Footer Section */}
+      <footer className="bg-white text-stone-600 py-16 border-t border-stone-100">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+            {/* Column 1: Brand */}
+            <div className="space-y-6">
+              <h3 className="text-2xl font-heading font-bold text-emerald-900 tracking-wider">SUNRISE CITY</h3>
+              <p className="text-sm leading-relaxed max-w-xs">
+                A premium plotted development by Chouhan Group, designed for a sustainable and connected future.
+              </p>
+              <div className="flex gap-4 items-center">
+                <a href="https://www.facebook.com/share/17atysTgnf/" target="_blank" rel="noopener noreferrer" className="text-stone-700 hover:text-emerald-600 transition-colors">
+                  <Facebook size={18} />
+                </a>
+                <a href="https://www.instagram.com/chouhan_housing_commercial?igsh=MTZuNXpibTF4N2k4bA==" target="_blank" rel="noopener noreferrer" className="text-stone-700 hover:text-emerald-600 transition-colors">
+                  <Instagram size={18} />
+                </a>
+                <a href="https://x.com/ChouhanHousing?t=qr_WRxVvfJ9a6q9yU_rHlA&s=09" target="_blank" rel="noopener noreferrer" className="text-stone-700 hover:text-emerald-600 transition-colors">
+                  <Twitter size={18} />
+                </a>
+                <a href="https://youtube.com/@chouhangroup-x7v?si=yHs8HX0SxFY9X1EB" target="_blank" rel="noopener noreferrer" className="text-stone-700 hover:text-emerald-600 transition-colors">
+                  <Youtube size={18} />
+                </a>
+                <img
+                  src="/ChouhanG.png"
+                  className="h-10 w-auto ml-4 object-contain opacity-90 hover:opacity-100 transition-opacity"
+                  alt="Chouhan Group"
+                />
+              </div>
+            </div>
+
+            {/* Column 2: Location Details */}
+            <div className="space-y-6">
+              <h3 className="text-sm font-bold text-emerald-900 uppercase tracking-widest">Location</h3>
+              <ul className="space-y-4">
+                <li className="flex gap-4">
+                  <MapPin size={20} className="text-emerald-600 flex-shrink-0" />
+                  <span className="text-sm leading-relaxed">
+                    Chouhan Sunrise City,<br />
+                    Near IIT Bhilai Campus,<br />
+                    Dhamdha Road, Bhilai, CG
+                  </span>
+                </li>
+                <li className="flex gap-4 items-center">
+                  <Phone size={18} className="text-emerald-600 flex-shrink-0" />
+                  <span className="text-sm">+91 91091 04005</span>
+                </li>
+                <li className="flex gap-4 items-center">
+                  <Mail size={18} className="text-emerald-600 flex-shrink-0" />
+                  <span className="text-sm underline cursor-pointer hover:text-emerald-600 transition-colors">chouhanhousing@gmail.com</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 3: Mini Map */}
+            <div className="h-40 rounded-lg overflow-hidden border border-stone-100 shadow-sm relative group">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14876.177267156942!2d81.3533!3d21.2307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDEzJzUwLjUiTiA4McKwMjEnMTEuOSJF!5e0!3m2!1sen!2sin!4v1631234567890!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                loading="lazy"
+                title="Location Map"
+              ></iframe>
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors pointer-events-none"></div>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="pt-8 border-t border-stone-100 flex flex-col md:flex-row justify-center items-center gap-4 text-[11px] font-medium text-stone-400">
+            <p>© {new Date().getFullYear()} Chouhan Group. All rights reserved.</p>
+            <div className="flex gap-4">
+              <span className="cursor-pointer hover:text-stone-600">| RERA Approved Project.</span>
+              <span className="cursor-pointer hover:text-stone-600">| Privacy Policy</span>
+              <span className="cursor-pointer hover:text-stone-600">| Disclaimer</span>
+            </div>
+          </div>
+        </div>
+      </footer>
 
     </div>
   );

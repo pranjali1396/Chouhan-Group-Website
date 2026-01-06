@@ -26,7 +26,7 @@ export const NAVIGATION_DATA: NavItem[] = [
         links: [
           { label: "Singapore Life Phase 1, 2 And 4", path: "/new-homes/singapore-life" },
           { label: "Chouhan Green Valley Phase 1, 2, 3", path: "/new-homes/green-valley" },
-          { label: "Sunrisecity", path: "/new-homes/sunrisecity" },
+          { label: "Sunrise City", path: "/new-homes/sunrise-city-details" },
           { label: "Chouhan Town", path: "/new-homes/town" },
           { label: "Chouhan Parkview", path: "/new-homes/parkview" },
         ]
