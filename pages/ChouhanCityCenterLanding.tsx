@@ -89,7 +89,6 @@ const WHY_CHOOSE_DATA = [
 ];
 
 const HERO_IMAGES = [
-    "/images/vishal mega mart.jpg",
     "/images/city_center_interior_atrium.png",
     "/images/city_center_food_court.png",
     "/images/city_center_kids_zone.png"
