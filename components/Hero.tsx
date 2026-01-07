@@ -76,15 +76,15 @@ const Hero: React.FC = () => {
 
           {/* Text Content */}
           <div className={`absolute inset-0 flex flex-col justify-center items-center text-center p-8 md:p-20 lg:p-32 z-20 ${index === current ? 'animate-fadeIn' : ''}`}>
-            <div className={`max-w-4xl space-y-6 transform transition-all duration-1000 ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <div className={`max-w-6xl space-y-6 transform transition-all duration-1000 ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
 
               {/* Orange Line */}
               <div className="w-16 h-1 bg-amber-500 mx-auto mb-6"></div>
 
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-black text-white leading-[1.1] drop-shadow-xl">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-black text-white leading-[1.1] drop-shadow-xl">
                 {slide.title}
               </h1>
-              <p className="text-lg md:text-2xl text-slate-200 font-light max-w-3xl mx-auto drop-shadow-md leading-relaxed">
+              <p className="text-base md:text-xl text-slate-200 font-light max-w-4xl mx-auto drop-shadow-md leading-relaxed">
                 {slide.subtitle}
               </p>
               <div className="pt-8">
