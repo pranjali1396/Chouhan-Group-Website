@@ -166,8 +166,8 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
         }`}>
 
         {/* Top Bar - Hidden on Mobile (Shows only when Desktop Nav is active at XL) */}
-        <div className="hidden xl:block border-b border-white/10 text-white uppercase">
-          <div className="container-fluid mx-auto px-4 md:px-8 py-2 flex justify-end items-center gap-6 text-[13px] font-bold tracking-wider">
+        <div className="hidden xl:block border-b border-white/10 text-white uppercase bg-black/5">
+          <div className="container-fluid mx-auto px-4 md:px-8 py-1.5 flex justify-end items-center gap-4 2xl:gap-6 text-[11px] 2xl:text-[12px] font-bold tracking-wider">
             <div className="flex gap-6 items-center">
               <Link to="/contact" className="hover:text-amber-400 transition-colors">Register for Updates</Link>
               <Link to="/careers" className="hover:text-amber-400 transition-colors">Careers</Link>
@@ -192,14 +192,14 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
 
         {/* Main Navbar */}
         <div className="container-fluid mx-auto px-4 md:px-8">
-          <div className={`flex justify-between items-center transition-all duration-300 ${scrolled ? 'h-13' : 'h-16 md:h-18'}`}>
+          <div className={`flex justify-between items-center transition-all duration-300 ${scrolled ? 'h-12 md:h-13' : 'h-14 md:h-16'}`}>
             {/* Logo */}
             <Link to="/" className="flex items-center shrink-0 group z-50 max-w-[65%] md:max-w-none">
               {!imgError ? (
                 <img
                   src="/logo.png"
                   alt="Chouhan Group"
-                  className="h-7 md:h-10 w-auto object-contain transition-transform group-hover:scale-105"
+                  className="h-6 md:h-7 xl:h-8 2xl:h-9 w-auto object-contain transition-transform group-hover:scale-105"
                   style={{ filter: 'brightness(0) saturate(100%) invert(61%) sepia(97%) saturate(1832%) hue-rotate(357deg) brightness(101%) contrast(93%)' }}
                   onError={() => setImgError(true)}
                 />
@@ -216,7 +216,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden xl:flex items-center h-full gap-4 xl:gap-6">
+            <nav className="hidden xl:flex items-center h-full gap-3 xl:gap-4 2xl:gap-6">
               {navData.map((item) => (
                 <div
                   key={item.label}
@@ -226,7 +226,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
                 >
                   <Link
                     to={item.path || '#'}
-                    className={`flex items-center gap-1 font-heading font-black text-[14px] tracking-widest uppercase whitespace-nowrap transition-all duration-300 py-6 border-b-2 border-transparent ${activeMenu === item.label ? 'text-amber-400 border-amber-400' : 'text-white hover:text-amber-400'
+                    className={`flex items-center gap-1 font-heading font-black text-[11px] xl:text-[11px] 2xl:text-[14px] tracking-wider 2xl:tracking-widest uppercase whitespace-nowrap transition-all duration-300 py-4 xl:py-6 border-b-2 border-transparent ${activeMenu === item.label ? 'text-amber-400 border-amber-400' : 'text-white hover:text-amber-400'
                       }`}
                   >
                     {item.label}

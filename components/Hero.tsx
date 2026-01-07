@@ -80,7 +80,7 @@ const Hero: React.FC = () => {
             <div className={`max-w-7xl space-y-4 md:space-y-6 transform transition-all duration-1000 ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
 
               {/* Orange Line */}
-              <div className="w-12 h-1 md:w-16 md:h-1 bg-amber-500 mx-auto mb-4 md:mb-6"></div>
+              <div className="w-12 h-1 md:w-16 md:h-1 bg-amber-500 mx-auto mb-5 md:mb-8"></div>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-heading font-black text-white leading-[1.1] drop-shadow-xl">
                 {slide.title}
@@ -120,7 +120,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Slide Indicators */}
-      <div className="absolute bottom-8 left-4 md:bottom-12 md:left-12 z-20 flex gap-2 md:gap-3">
+      <div className="absolute bottom-8 left-4 md:bottom-12 md:left-12 z-20 flex gap-4 md:gap-6">
         {SLIDES.map((_, idx) => (
           <button
             key={idx}
