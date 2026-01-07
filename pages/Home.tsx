@@ -29,7 +29,7 @@ const SERVICE_HIGHLIGHTS = [
     title: "Hospitality",
     desc: "Experience unmatched luxury at our hotels and resorts. Where every stay is an experience beyond expectations!",
     icon: <Coffee size={24} />,
-    image: "/new images/IMG-20190328-WA0053.jpg",
+    image: "/new images/IMG_0028_optimized.webp",
     link: "/hospitality"
   },
   {

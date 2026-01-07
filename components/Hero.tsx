@@ -10,11 +10,11 @@ const SLIDES = [
   },
   {
     id: 2,
-    image: '/new images/Arena.webp',
+    image: '/new images/ai_nexa_showroom_optimized.webp',
   },
   {
     id: 3,
-    image: '/new images/bcw44.webp',
+    image: '/new images/pro_optimized.webp',
   },
   {
     id: 4,
@@ -26,7 +26,7 @@ const SLIDES = [
   },
   {
     id: 6,
-    image: '/new images/sunrixecity_04.webp',
+    image: '/new images/ELR_Balod_104_optimized.webp',
   }
 ];
 
