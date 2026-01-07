@@ -5,21 +5,21 @@ const TEAM = [
   {
     name: "Suraj Chouhan",
     role: "Director",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=600&fit=crop",
+    image: "/new images/suraj_chouhan.png",
     bio: "Suraj leads the group's strategic expansion into new markets. With a keen eye for emerging trends, he has been pivotal in diversification strategies across the hospitality and automotive sectors.",
     linkedin: "#"
   },
   {
     name: "Sunny Chouhan",
     role: "Director",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=600&fit=crop",
+    image: "/new images/sunny_chouhan.png",
     bio: "Focusing on operational excellence, Sunny ensures that the group's commitment to quality is met in every project. His management ensures seamless execution from conception to delivery.",
     linkedin: "#"
   },
   {
     name: "Saurabh Chouhan",
     role: "Director",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&fit=crop",
+    image: "/new images/sourabh_chouhan.png",
     bio: "Spearheading the brand's marketing and customer engagement, Saurabh brings a modern approach to the legacy business, driving digital transformation and brand loyalty.",
     linkedin: "#"
   }
@@ -38,7 +38,7 @@ const Founder: React.FC = () => {
             <div className="lg:w-1/2 relative">
               <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl border-4 border-white">
                 <img
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&fit=crop"
+                  src="/new images/ajay_chouhan.png"
                   alt="Mr. Ajay Chouhan"
                   className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />

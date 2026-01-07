@@ -5,7 +5,8 @@ import CategoryGrid from '../components/CategoryGrid';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight, Home as HomeIcon, Building2, Car, Coffee,
-  CheckCircle2, ShoppingBag, BedDouble, Hammer, TrendingUp, ChevronLeft, ChevronRight
+  CheckCircle2, ShoppingBag, BedDouble, Hammer, TrendingUp, ChevronLeft, ChevronRight,
+  Briefcase, Hotel, Award
 } from 'lucide-react';
 
 
@@ -14,21 +15,21 @@ const SERVICE_HIGHLIGHTS = [
     title: "Housing Business",
     desc: "Discover the Art of Exceptional Living! Your Dream Home Awaits in Our Stunning Collection of Flats, Row Houses, and Apartments.",
     icon: <HomeIcon size={24} />,
-    image: "/images/housing-business.png",
+    image: "/new images/chouhan-green-valley-7.webp",
     link: "/new-homes"
   },
   {
     title: "Commercial Projects",
     desc: "Premium commercial spaces designed for success. From retail outlets to office complexes, we build landmarks for businesses.",
     icon: <Building2 size={24} />,
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&fit=crop",
+    image: "/new images/chouhan_estate.webp",
     link: "/commercial"
   },
   {
     title: "Hospitality",
     desc: "Experience unmatched luxury at our hotels and resorts. Where every stay is an experience beyond expectations!",
     icon: <Coffee size={24} />,
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&fit=crop",
+    image: "/new images/IMG-20190328-WA0053.jpg",
     link: "/hospitality"
   },
   {
@@ -58,30 +59,30 @@ const PROJECTS = [
   {
     title: "Chouhan Park View",
     desc: "A prestigious project by Chouhan Group, is located on Junwani Road, Bhilai",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800&fit=crop",
+    image: "/new images/chouhan_park_view_3.webp",
     link: "/new-homes/parkview"
   },
   {
     title: "Chouhan Green Valley",
     desc: "One of the popular residential developments in Bhilai.",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&fit=crop",
+    image: "/new images/chouhan-green-valley-6 (1).webp",
     link: "/new-homes/green-valley"
   },
   {
     title: "Singapore Life City I",
     desc: "A well-planned modern and smart layout city inspired by Singapore, is at Bhilai.",
-    image: "/images/singapore-life-city.png",
+    image: "/new images/singa_gate_half.webp",
     link: "/new-homes/singapore-life"
   }
 ];
 
 const IMPACT_GRID = [
-  { count: "1500+", label: "Residential UNITS", icon: <HomeIcon size={24} /> },
-  { count: "500+", label: "BUNGALOWS", icon: <HomeIcon size={24} /> },
-  { count: "3+", label: "Commercial", icon: <Building2 size={24} /> },
-  { count: "2+", label: "Malls", icon: <ShoppingBag size={24} /> },
-  { count: "1+", label: "Luxury Hotel", icon: <BedDouble size={24} /> },
-  { count: "20+", label: "Years Experience", icon: <CheckCircle2 size={24} /> }
+  { count: "3500+", label: "Residential UNITS", icon: <Building2 className="text-amber-500" size={32} /> },
+  { count: "500+", label: "BUSINESSES", icon: <Briefcase className="text-amber-500" size={32} /> },
+  { count: "10+", label: "Commercial COMPLEX", icon: <Building2 className="text-amber-500" size={32} /> },
+  { count: "1", label: "MALL", icon: <ShoppingBag className="text-amber-500" size={32} /> },
+  { count: "5+", label: "Luxury HOTELS", icon: <Hotel className="text-amber-500" size={32} /> },
+  { count: "28+", label: "Years Experience", icon: <Award className="text-amber-500" size={32} /> }
 ];
 
 const Home: React.FC = () => {
@@ -129,7 +130,7 @@ const Home: React.FC = () => {
             <div className="lg:w-1/2 relative w-full">
               <div className="absolute -inset-4 bg-amber-50 rounded-2xl transform rotate-2"></div>
               <img
-                src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200"
+                src="/new images/sunrixecity_04.webp"
                 alt="Chouhan Group Legacy"
                 className="relative rounded-xl shadow-2xl w-full h-[400px] md:h-[600px] object-cover"
               />
@@ -204,27 +205,47 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Impact Stats Strip - Modern, Compact & Vibrant */}
-      <section className="bg-amber-500 py-10 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-          <div className="absolute top-0 left-[-10%] w-[120%] h-full border-y border-white flex justify-around items-center rotate-1"></div>
-        </div>
+      {/* Impact Stats Section - Modern Split Layout */}
+      <section className="py-24 bg-white relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-            {IMPACT_GRID.map((item, idx) => (
-              <div
-                key={idx}
-                className="flex flex-col items-center justify-center text-center group"
-              >
-                <div className="text-white/80 mb-3 group-hover:text-white group-hover:scale-110 transition-all duration-300">
-                  {item.icon}
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-3xl font-black text-white leading-tight">{item.count}</span>
-                  <span className="text-[9px] font-bold tracking-[0.2em] text-white/80 uppercase">{item.label}</span>
-                </div>
+          <div className="flex flex-col lg:flex-row items-center gap-16 xl:gap-24">
+
+            {/* Left Side: Illustration */}
+            <div className="lg:w-1/2 w-full max-w-2xl mx-auto">
+              <div className="relative">
+                <div className="absolute -inset-10 bg-amber-50 rounded-full opacity-50 blur-3xl -z-10"></div>
+                <img
+                  src="/new images/impact_house.png"
+                  alt="Chouhan Group Impact Illustration"
+                  className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
+                />
               </div>
-            ))}
+            </div>
+
+            {/* Right Side: Stats Grid */}
+            <div className="lg:w-1/2 w-full lg:pl-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-12">
+                {IMPACT_GRID.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center gap-5 group"
+                  >
+                    <div className="shrink-0 p-4 bg-amber-50 rounded-2xl group-hover:bg-amber-100 transition-colors duration-300">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <div className="text-3xl lg:text-4xl font-black text-slate-900 leading-none mb-1">
+                        {item.count}
+                      </div>
+                      <div className="text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase">
+                        {item.label}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -253,8 +274,8 @@ const Home: React.FC = () => {
               </Link>
             </div>
             <div className="lg:w-1/2 grid grid-cols-2 gap-6 w-full">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600" className="rounded-xl shadow-2xl translate-y-8 grayscale hover:grayscale-0 transition-all duration-500" alt="Interior 1" />
-              <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=600" className="rounded-xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-500" alt="Interior 2" />
+              <img src="/new images/sunrisecity.webp" className="rounded-xl shadow-2xl translate-y-8 grayscale hover:grayscale-0 transition-all duration-500" alt="Interior 1" />
+              <img src="/new images/chouhan_town_img_4.jpg" className="rounded-xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-500" alt="Interior 2" />
             </div>
           </div>
         </div>

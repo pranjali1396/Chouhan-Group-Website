@@ -27,6 +27,7 @@ import ChouhanLandmarkLanding from './pages/ChouhanLandmarkLanding';
 import ChouhanCityCenterLanding from './pages/ChouhanCityCenterLanding';
 import ShikharComplexLanding from './pages/ShikharComplexLanding';
 import ChouhanDreamHomesLanding from './pages/ChouhanDreamHomesLanding';
+import ChouhanPlazaLanding from './pages/ChouhanPlazaLanding';
 
 import { NAVIGATION_DATA } from './types';
 
@@ -77,15 +78,15 @@ const SINGAPORE_DATA: ProjectData = {
   status: "Now Selling",
   address: "Singapore Life City, Bhilai, Chhattisgarh",
   presentationCentre: {
-    address: "Ground Floor, Chouhan Estate, Beside Chandra Maurya Talkies, NH53, Bhilai, Chhattisgarh",
-    hours: "Open Daily (Except Tuesdays) 10AM - 7PM"
+    address: "4th floor, beside Shankracharya Mahavidyalaya, Junwani Road, Bhilai",
+    hours: "Open Daily 10AM - 7PM"
   },
   contact: {
     phone: "+91 91091 04005",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "/images/singapore-life-city.png",
-  mapQuery: "Chouhan Estate, Bhilai",
+  heroImage: "/new images/herosingapore.JPG",
+  mapQuery: "CHOUHAN SINGAPORE LIFE CITY PHASE 1",
   websiteUrl: "https://singapore-city.vercel.app/"
 };
 
@@ -102,8 +103,8 @@ const PARKVIEW_DATA: ProjectData = {
     phone: "+91 72229 09449",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000",
-  mapQuery: "Shankracharya Mahavidyalaya, Junwani, Bhilai",
+  heroImage: "/new images/chouhan_park_view_3.webp",
+  mapQuery: "Chouhan Parkview",
   websiteUrl: "https://chouhan-park-view-xi.vercel.app/"
 };
 
@@ -120,8 +121,8 @@ const BUSINESS_CENTER_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "sales@chouhangroup.com"
   },
-  heroImage: "/images/housing-business.png",
-  mapQuery: "Chouhan Estate, Bhilai",
+  heroImage: "/new images/Businesscenter_hero.jpg",
+  mapQuery: "Chouhan Business Center Phase-1",
   websiteUrl: "https://chouhan-business-center.vercel.app/"
 };
 
@@ -138,8 +139,8 @@ const BUSINESS_PARK_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "sales@chouhangroup.com"
   },
-  heroImage: "/images/housing-business.png",
-  mapQuery: "Chouhan Estate, Bhilai",
+  heroImage: "/new images/chouhan_business_park_ai.png",
+  mapQuery: "Chouhan Business Center Phase-1",
   websiteUrl: "https://chouhan-business-park.vercel.app/"
 };
 
@@ -156,8 +157,8 @@ const GREEN_VALLEY_DATA: ProjectData = {
     phone: "+91 91091 04005",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000",
-  mapQuery: "Chouhan Estate, Bhilai",
+  heroImage: "/new images/chouhan-green-valley-4 (1).webp",
+  mapQuery: "Chouhan Green Valley Rd",
   websiteUrl: "https://green-valley-sage.vercel.app/"
 };
 
@@ -165,17 +166,17 @@ const EMPYREAN_BHILAI_DATA: ProjectData = {
   title: "Empyrean Hotels Bhilai",
   description: "Now Open – Experience luxury redefined at Empyrean Hotels Bhilai. Offering world-class hospitality, exquisite dining, and premium accommodation in the heart of the city. Perfect for business travelers and leisure seekers alike.",
   status: "Now Open",
-  address: "GE Road, Bhilai, Chhattisgarh",
+  address: "6856+QCJ, Durg Bypass, Padmanabhpur, Pushpak Nagar, near Maruti Suzuki Arena, Bhilai, Chhattisgarh 490020, India",
   presentationCentre: {
-    address: "GE Road, Bhilai, Chhattisgarh",
+    address: "6856+QCJ, Durg Bypass, Padmanabhpur, Pushpak Nagar, near Maruti Suzuki Arena, Bhilai, Chhattisgarh 490020, India",
     hours: "Open 24/7"
   },
   contact: {
     phone: "+91 788 404 0000",
     email: "reservations@empyreanhotels.in"
   },
-  heroImage: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2000",
-  mapQuery: "Empyrean Hotel, Bhilai",
+  heroImage: "/new images/chouhan2.jpg",
+  mapQuery: "Empyrean hotels & resort, Bhilai",
   websiteUrl: "https://www.empyreanhotels.in/bhilai"
 };
 
@@ -183,17 +184,17 @@ const EMPYREAN_BALOD_DATA: ProjectData = {
   title: "Empyrean Resort Balod",
   description: "Now Open – Escape to the serenity of Empyrean Resort Balod. Nestled by the lakeside, this resort offers a perfect blend of nature and luxury. Enjoy boating, infinity pools, and a tranquil atmosphere for a rejuvenating getaway.",
   status: "Now Open",
-  address: "Lake Side, Balod, Chhattisgarh",
+  address: "Tandula Dm Rd, Balod, Sivni, Chhattisgarh 491226",
   presentationCentre: {
-    address: "Lake Side, Balod, Chhattisgarh",
+    address: "Tandula Dm Rd, Balod, Sivni, Chhattisgarh 491226",
     hours: "Open 24/7"
   },
   contact: {
     phone: "+91 788 404 0000",
     email: "reservations@empyreanhotels.in"
   },
-  heroImage: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2000",
-  mapQuery: "Balod, Chhattisgarh",
+  heroImage: "/new images/ELR_Balod 25.jpg",
+  mapQuery: "Empyrean Lake Resort",
   websiteUrl: "https://www.empyreanhotels.in/balod"
 };
 
@@ -210,7 +211,7 @@ const CHOUHAN_TOWN_DATA: ProjectData = {
     phone: "+91 91091 04005",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "/images/housing-business.png",
+  heroImage: "/new images/chouhan_town_img_12.jpg",
   mapQuery: "Chouhan Town, Bhilai",
   websiteUrl: "https://chouhan-town.vercel.app/"
 };
@@ -228,7 +229,7 @@ const CHOUHAN_ESTATES_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "sales@chouhangroup.com"
   },
-  heroImage: "/images/housing-business.png",
+  heroImage: "/new images/chouhan_estate.webp",
   mapQuery: "Chouhan Estate, Bhilai",
   websiteUrl: "/commercial/estate-details"
 };
@@ -246,7 +247,7 @@ const SUNRISE_CITY_DATA: ProjectData = {
     phone: "+91 91091 04005",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2200",
+  heroImage: "/new images/chouhan_sunrise_city_img_3.webp",
   mapQuery: "Sunrise City, Bhilai",
   websiteUrl: "/new-homes/sunrise-city"
 };
@@ -264,8 +265,8 @@ const PARKVIEW_COMPLEX_DATA: ProjectData = {
     phone: "+91 72229 09449",
     email: "sales@chouhangroup.com"
   },
-  heroImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000", // Reusing business center image as placeholder
-  mapQuery: "Shankracharya Mahavidyalaya, Junwani, Bhilai",
+  heroImage: "new images/chouhan_park_view_4.webp", // Reusing business center image as placeholder
+  mapQuery: "Chouhan Parkview Complex, Junwani Road, Bhilai",
   websiteUrl: "https://chouhan-park-view-xi.vercel.app/commercial"
 };
 
@@ -283,7 +284,7 @@ const CHOUHAN_LANDMARK_DATA: ProjectData = {
     email: "chouhanhousing@gmail.com"
   },
   heroImage: "/images/vishal mega mart.jpg",
-  mapQuery: "Chouhan Landmark, Bhilai",
+  mapQuery: "Vishal Mega Mart, NH-53, Bhilai",
   websiteUrl: "/commercial/landmark-details"
 };
 
@@ -318,9 +319,9 @@ const CHOUHAN_PLAZA_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "sales@chouhangroup.com"
   },
-  heroImage: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=2000",
+  heroImage: "/new images/chouhan_plaza_ai.png",
   mapQuery: "Chouhan Plaza, Bhilai",
-  websiteUrl: "https://chouhan-group-website.vercel.app/"
+  websiteUrl: "/commercial/plaza-details"
 };
 
 const CHOUHAN_COMPLEX_DATA: ProjectData = {
@@ -336,8 +337,8 @@ const CHOUHAN_COMPLEX_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "sales@chouhangroup.com"
   },
-  heroImage: "/chouhan_complex_hero_small.png",
-  mapQuery: "Supela, Bhilai",
+  heroImage: "/new images/kmart.webp",
+  mapQuery: "Shubham K Mart,junwani road",
   websiteUrl: "https://chouhan-complex.vercel.app/"
 };
 
@@ -397,17 +398,17 @@ const MARUTI_DATA: ProjectData = {
   title: "Maruti Suzuki Arena",
   description: "Now Open – Your trusted destination for Maruti Suzuki vehicles. Experience the joy of mobility with our wide range of cars, state-of-the-art service center, and genuine spare parts availability. We ensure a seamless ownership experience.",
   status: "Open Now",
-  address: "Bhilai & Raipur, Chhattisgarh",
+  address: "Service Lane, Pushpak Nagar, Smriti Nagar, Chhattisgarh 490020",
   presentationCentre: {
-    address: "Bhilai & Raipur, Chhattisgarh",
+    address: "Service Lane, Pushpak Nagar, Smriti Nagar, Chhattisgarh 490020",
     hours: "Open Daily 10AM - 8PM"
   },
   contact: {
     phone: "+91 788 404 0000",
     email: "info@chouhanmaruti.com"
   },
-  heroImage: "/images/maruti-arena.png",
-  mapQuery: "Maruti Suzuki Arena, Bhilai",
+  heroImage: "/new images/Arena.webp",
+  mapQuery: "Maruti Suzuki ARENA (Chouhan Automobiles, Bhilai, Durg Bypass",
   websiteUrl: "https://www.arenaofbhilai.com/"
 };
 
@@ -415,17 +416,17 @@ const NEXA_DATA: ProjectData = {
   title: "Nexa Bhilai",
   description: "Now Open – Step into a world of innovation and premium experiences at Nexa Bhilai. We bring you a range of sophisticated cars designed to inspire. Enjoy personalized attention, exclusive lounges, and a test drive experience like no other.",
   status: "Open Now",
-  address: "GE Road, Bhilai, Chhattisgarh",
+  address: "Service Lane, Pushpak Nagar, Smriti Nagar, Chhattisgarh 490020",
   presentationCentre: {
-    address: "GE Road, Bhilai, Chhattisgarh",
+    address: "Service Lane, Pushpak Nagar, Smriti Nagar, Chhattisgarh 490020",
     hours: "Open Daily 10AM - 8PM"
   },
   contact: {
     phone: "+91 788 404 0000",
     email: "manager@chouhannexa.com"
   },
-  heroImage: "/images/nexa-showroom.png",
-  mapQuery: "Nexa, Bhilai",
+  heroImage: "/new images/maruti-suzuki.webp",
+  mapQuery: "Maruti Suzuki True Value (Chouhan Automobiles LLP, Bhilai, Nehru Nagar)",
   websiteUrl: "https://www.nexaofdurgbypass.com/"
 };
 
@@ -433,17 +434,17 @@ const HERO_DATA: ProjectData = {
   title: "Hero MotoCorp",
   description: "Now Open – Ride with confidence with the world's largest two-wheeler manufacturer. Our Durg showroom offers the complete range of Hero motorcycles and scooters, backed by efficient service and genuine parts. Your journey starts here.",
   status: "Open Now",
-  address: "Durg, Chhattisgarh",
+  address: "Service Lane, Pushpak Nagar, Smriti Nagar, Chhattisgarh 490020",
   presentationCentre: {
-    address: "Durg, Chhattisgarh",
+    address: "Service Lane, Pushpak Nagar, Smriti Nagar, Chhattisgarh 490020",
     hours: "Open Daily 10AM - 8PM"
   },
   contact: {
     phone: "+91 788 404 0000",
     email: "sales@chouhanhero.com"
   },
-  heroImage: "/images/hero-showroom.png",
-  mapQuery: "Hero MotoCorp, Durg",
+  heroImage: "/new images/herofinal.webp",
+  mapQuery: "Maruti Suzuki True Value (Chouhan Automobiles LLP, Bhilai, Nehru Nagar)",
   websiteUrl: "https://chouhanmotors.com"
 };
 
@@ -451,17 +452,17 @@ const TRUE_VALUE_DATA: ProjectData = {
   title: "Maruti Suzuki True Value",
   description: "Now Open – Trust and transparency in pre-owned cars. At True Value, every car goes through rigorous quality checks to ensure you get the best. Buy, sell, or exchange your car with complete peace of mind and excellent value.",
   status: "Open Now",
-  address: "Junwani Road, Bhilai, Chhattisgarh",
+  address: "Service Lane, Pushpak Nagar, Smriti Nagar, Chhattisgarh 490020",
   presentationCentre: {
-    address: "Junwani Road, Bhilai, Chhattisgarh",
+    address: "Service Lane, Pushpak Nagar, Smriti Nagar, Chhattisgarh 490020",
     hours: "Open Daily 10AM - 8PM"
   },
   contact: {
     phone: "+91 788 404 0000",
     email: "truevalue@chouhan.com"
   },
-  heroImage: "/images/truevalue-showroom-v2.png",
-  mapQuery: "True Value, Junwani, Bhilai",
+  heroImage: "/new images/trueshowroom.webp",
+  mapQuery: "Maruti Suzuki True Value (Chouhan Automobiles LLP, Bhilai, Nehru Nagar)",
   websiteUrl: "https://chouhangroup.com/truevalue"
 };
 
@@ -479,7 +480,7 @@ const SHIKHAR_COMPLEX_DATA: ProjectData = {
     email: "sales@chouhangroup.com"
   },
   heroImage: "/images/housing-business.png", // Placeholder
-  mapQuery: "Shikhar Complex, Bhilai",
+  mapQuery: "Shikhar Apartments",
   websiteUrl: "/commercial/shikhar-complex"
 };
 
@@ -496,15 +497,15 @@ const CHOUHAN_DREAM_HOMES_DATA: ProjectData = {
     phone: "+91 91091 04005",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "/images/housing-business.png", // Placeholder
-  mapQuery: "Chouhan Dream Homes, Bhilai",
+  heroImage: "/chouhan_dream_homes_1.webp", // Placeholder
+  mapQuery: "CHPL DREAM HOMES D BLOCK",
   websiteUrl: "/new-homes/dream-homes"
 };
 
 
 const AppContent: React.FC = () => {
   const location = useLocation();
-  const hideHeaderFooter = location.pathname === '/commercial/estate-details' || location.pathname === '/commercial/landmark-details' || location.pathname === '/commercial/city-center' || location.pathname === '/new-homes/sunrise-city' || location.pathname === '/commercial/shikhar-complex' || location.pathname === '/new-homes/dream-homes';
+  const hideHeaderFooter = location.pathname === '/commercial/estate-details' || location.pathname === '/commercial/landmark-details' || location.pathname === '/commercial/city-center' || location.pathname === '/new-homes/sunrise-city' || location.pathname === '/commercial/shikhar-complex' || location.pathname === '/new-homes/dream-homes' || location.pathname === '/commercial/plaza-details';
 
   return (
     <div className="flex flex-col min-h-screen font-sans text-slate-900 bg-white selection:bg-amber-100 selection:text-amber-900">
@@ -521,7 +522,6 @@ const AppContent: React.FC = () => {
         <Route path="/new-homes/town" element={<ProjectDetail data={CHOUHAN_TOWN_DATA} />} />
         <Route path="/new-homes/sunrise-city-details" element={<ProjectDetail data={SUNRISE_CITY_DATA} />} />
         <Route path="/new-homes/sunrise-city" element={<SunriseLanding />} />
-        <Route path="/new-homes/sunrise-city" element={<SunriseLanding />} />
         <Route path="/new-homes/dream-homes-details" element={<ProjectDetail data={CHOUHAN_DREAM_HOMES_DATA} />} />
         <Route path="/new-homes/dream-homes" element={<ChouhanDreamHomesLanding />} />
 
@@ -530,10 +530,10 @@ const AppContent: React.FC = () => {
         <Route path="/commercial/estates" element={<ProjectDetail data={CHOUHAN_ESTATES_DATA} />} />
         <Route path="/commercial/parkview-complex" element={<ProjectDetail data={PARKVIEW_COMPLEX_DATA} />} />
         <Route path="/commercial/landmark" element={<ProjectDetail data={CHOUHAN_LANDMARK_DATA} />} />
+        <Route path="/commercial/plaza-details" element={<ChouhanPlazaLanding />} />
         <Route path="/commercial/plaza" element={<ProjectDetail data={CHOUHAN_PLAZA_DATA} />} />
         <Route path="/commercial/complex" element={<ProjectDetail data={CHOUHAN_COMPLEX_DATA} />} />
         <Route path="/commercial/shikhar-complex-details" element={<ProjectDetail data={SHIKHAR_COMPLEX_DATA} />} />
-        <Route path="/commercial/shikhar-complex" element={<ShikharComplexLanding />} />
         <Route path="/commercial/shikhar-complex" element={<ShikharComplexLanding />} />
 
         <Route path="/commercial" element={<Commercial />} />
@@ -541,7 +541,6 @@ const AppContent: React.FC = () => {
         <Route path="/commercial/city-center" element={<ChouhanCityCenterLanding />} />
         <Route path="/commercial/estate-details" element={<ChouhanEstateLanding />} />
         <Route path="/commercial/landmark-details" element={<ChouhanLandmarkLanding />} />
-        <Route path="/new-homes/sunrisecity" element={<SunriseLanding />} />
 
         <Route path="/hospitality" element={<Hospitality />} />
         <Route path="/hospitality/empyrean-bhilai" element={<ProjectDetail data={EMPYREAN_BHILAI_DATA} />} />

@@ -29,7 +29,7 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
   return (
     <div className="bg-white font-sans text-slate-800 pt-32 md:pt-48">
       {/* Hero Section - Large image with simple white text overlay */}
-      <div className="relative h-[55vh] min-h-[400px] w-full overflow-hidden">
+      <div className="relative h-[85vh] min-h-[500px] w-full overflow-hidden">
         <img src={data.heroImage} alt={data.title} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/10"></div>
 
@@ -64,29 +64,35 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
                 <p className="text-[#555]">
                   The final tower is now selling! {data.websiteUrl ? (
                     data.websiteUrl.startsWith('/') ? (
-                      <Link to={`${data.websiteUrl}#contact`} className="text-[#002b49] underline font-medium hover:text-amber-600">Register today</Link>
+                      <Link to={`${data.websiteUrl}#contact`} className="text-[#002b49] underline font-medium hover:text-amber-600">
+                        {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Register today'}
+                      </Link>
                     ) : (
                       <a
                         href={
-                          data.title.toLowerCase().includes('green valley') || data.title.toLowerCase().includes('town')
-                            ? `${data.websiteUrl.endsWith('/') ? data.websiteUrl : data.websiteUrl + '/'}#contact`
-                            : data.title.toLowerCase().includes('empyrean') || data.title.toLowerCase().includes('balod')
-                              ? `https://www.empyreanhotels.in/contact`
-                              : data.title.toLowerCase().includes('parkview')
-                                ? data.title.toLowerCase().includes('complex') || data.title.toLowerCase().includes('commercial')
-                                  ? `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact`
-                                  : `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact-us`
-                                : `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact`
+                          data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value')
+                            ? `tel:${data.contact.phone}`
+                            : data.title.toLowerCase().includes('green valley') || data.title.toLowerCase().includes('town')
+                              ? `${data.websiteUrl.endsWith('/') ? data.websiteUrl : data.websiteUrl + '/'}#contact`
+                              : data.title.toLowerCase().includes('empyrean') || data.title.toLowerCase().includes('balod')
+                                ? `https://www.empyreanhotels.in/contact`
+                                : data.title.toLowerCase().includes('parkview')
+                                  ? data.title.toLowerCase().includes('complex') || data.title.toLowerCase().includes('commercial')
+                                    ? `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact`
+                                    : `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact-us`
+                                  : `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact`
                         }
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        target={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? undefined : "_blank"}
+                        rel={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? undefined : "noopener noreferrer"}
                         className="text-[#002b49] underline font-medium hover:text-amber-600"
                       >
-                        Register today
+                        {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Register today'}
                       </a>
                     )
                   ) : (
-                    <a href="#contact" className="text-[#002b49] underline font-medium hover:text-amber-600">Register today</a>
+                    <a href={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? `tel:${data.contact.phone}` : "#contact"} className="text-[#002b49] underline font-medium hover:text-amber-600">
+                      {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Register today'}
+                    </a>
                   )} to stay informed.
                 </p>
               )}
@@ -149,32 +155,34 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
               {!isSold && (
                 data.websiteUrl ? (
                   data.websiteUrl.startsWith('/') ? (
-                    <Link to={`${data.websiteUrl}#contact`} className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center">
-                      Register Today
+                    <Link to={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? "tel:" + data.contact.phone : `${data.websiteUrl}#contact`} className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center">
+                      {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Register Today'}
                     </Link>
                   ) : (
                     <a
                       href={
-                        data.title.toLowerCase().includes('green valley') || data.title.toLowerCase().includes('town')
-                          ? `${data.websiteUrl.endsWith('/') ? data.websiteUrl : data.websiteUrl + '/'}#contact`
-                          : data.title.toLowerCase().includes('empyrean') || data.title.toLowerCase().includes('balod')
-                            ? `https://www.empyreanhotels.in/contact`
-                            : data.title.toLowerCase().includes('parkview')
-                              ? data.title.toLowerCase().includes('complex') || data.title.toLowerCase().includes('commercial')
-                                ? `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact`
-                                : `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact-us`
-                              : `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact`
+                        data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value')
+                          ? `tel:${data.contact.phone}`
+                          : data.title.toLowerCase().includes('green valley') || data.title.toLowerCase().includes('town')
+                            ? `${data.websiteUrl.endsWith('/') ? data.websiteUrl : data.websiteUrl + '/'}#contact`
+                            : data.title.toLowerCase().includes('empyrean') || data.title.toLowerCase().includes('balod')
+                              ? `https://www.empyreanhotels.in/contact`
+                              : data.title.toLowerCase().includes('parkview')
+                                ? data.title.toLowerCase().includes('complex') || data.title.toLowerCase().includes('commercial')
+                                  ? `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact`
+                                  : `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact-us`
+                                : `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact`
                       }
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      target={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? undefined : "_blank"}
+                      rel={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? undefined : "noopener noreferrer"}
                       className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center"
                     >
-                      Register Today
+                      {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Register Today'}
                     </a>
                   )
                 ) : (
-                  <a href="#contact" className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center">
-                    Register Today
+                  <a href={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? `tel:${data.contact.phone}` : "#contact"} className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center">
+                    {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Register Today'}
                   </a>
                 )
               )}
@@ -192,24 +200,51 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
                 </div>
 
                 {/* Contact */}
-                <div className="flex gap-4">
-                  <div className="w-24 shrink-0 font-medium">Contact:</div>
-                  <div className="font-light">
-                    <a href={`mailto:${data.contact.email}`} className="text-[#002b49] underline hover:text-amber-600 block mb-1">
-                      {data.contact.email}
-                    </a>
-                    <p className="text-slate-400">{data.contact.phone}</p>
-                  </div>
-                </div>
+                {data.title.toLowerCase().includes('maruti') ||
+                  data.title.toLowerCase().includes('nexa') ||
+                  data.title.toLowerCase().includes('hero') ||
+                  data.title.toLowerCase().includes('true value') ? (
+                  <>
+                    <div className="flex gap-4">
+                      <div className="w-24 shrink-0 font-medium whitespace-nowrap">Contact:</div>
+                      <div className="font-light">
+                        <a href={`mailto:${data.contact.email}`} className="text-[#002b49] underline hover:text-amber-600 block mb-1">
+                          {data.contact.email}
+                        </a>
+                        <p className="text-slate-400">{data.contact.phone}</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-4">
+                      <div className="w-24 shrink-0 font-medium">Showroom:</div>
+                      <div className="font-light leading-relaxed">
+                        {data.presentationCentre.address}
+                        <p className="text-slate-400 mt-1">{data.presentationCentre.hours}</p>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="flex gap-4">
+                      <div className="w-24 shrink-0 font-medium whitespace-nowrap">📞 Contact:</div>
+                      <div className="font-light">
+                        <a href={`tel:${data.contact.phone}`} className="text-[#002b49] font-bold hover:text-amber-600">
+                          {data.contact.phone}
+                        </a>
+                      </div>
+                    </div>
 
-                {/* Presentation Centre */}
-                <div className="flex gap-4">
-                  <div className="w-24 shrink-0 font-medium">Presentation Centre:</div>
-                  <div className="font-light leading-relaxed">
-                    {data.presentationCentre.address}
-                    <p className="text-slate-400 mt-1">{data.presentationCentre.hours}</p>
-                  </div>
-                </div>
+                    {/* Head Office / Presentation Centre */}
+                    <div className="flex gap-4">
+                      <div className="w-24 shrink-0 font-medium whitespace-nowrap">📍 Office:</div>
+                      <div className="font-light leading-relaxed">
+                        {data.presentationCentre.address}
+                        {data.presentationCentre.hours && (
+                          <p className="text-slate-400 mt-1">{data.presentationCentre.hours}</p>
+                        )}
+                      </div>
+                    </div>
+                  </>
+                )}
 
                 {/* Share */}
                 <div className="flex gap-4 items-center">

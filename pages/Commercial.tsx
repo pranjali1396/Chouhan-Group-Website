@@ -10,7 +10,7 @@ const COMMERCIAL_PROPERTIES = [
     location: "GE Road, Bhilai",
     type: "Office Space",
     sector: "Office",
-    image: "/images/housing-business.png",
+    image: "/new images/Business center.webp",
     link: "/commercial/business-center",
     status: "Now Selling",
     features: "Premium Offices • High Visibility",
@@ -36,7 +36,7 @@ const COMMERCIAL_PROPERTIES = [
     location: "Bhilai-Durg Road",
     type: "Commercial Complex",
     sector: "Mixed-use",
-    image: "/images/housing-business.png",
+    image: "/new images/chouhan_business_park_ai.png",
     link: "/commercial/business-park",
     status: "Now Selling",
     features: "Large Floor Plates • Modern Facade",
@@ -48,7 +48,7 @@ const COMMERCIAL_PROPERTIES = [
     location: "NH-53, Bhilai",
     type: "Industrial & Retail",
     sector: "Industrial",
-    image: "/images/housing-business.png",
+    image: "/images/chouhan_estate_mob.webp",
     link: "/commercial/estates",
     status: "Now Renting",
     features: "Warehouse Space • Highway Frontage",
@@ -72,8 +72,8 @@ const COMMERCIAL_PROPERTIES = [
     location: "Bhilai",
     type: "Retail Hub",
     sector: "Retail",
-    image: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=1200",
-    link: "/commercial/plaza",
+    image: "/new images/chouhan_plaza_ai.png",
+    link: "/commercial/plaza-details",
     status: "Sold",
     features: "Multi-brand Retail • Centralized AC",
     priceRange: "Mid"
@@ -84,7 +84,7 @@ const COMMERCIAL_PROPERTIES = [
     location: "Junwani Road, Bhilai",
     type: "Commercial Complex",
     sector: "Mixed-use",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200",
+    image: "new images/commercial.png",
     link: "/commercial/parkview-complex",
     status: "Now Selling",
     features: "Premium Shops • Office Spaces",
@@ -96,7 +96,7 @@ const COMMERCIAL_PROPERTIES = [
     location: "Supela, Bhilai",
     type: "Commercial Hub",
     sector: "Retail",
-    image: "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?q=80&w=1200",
+    image: "new images/kmart.webp",
     link: "/commercial/complex",
     status: "Sold",
     features: "Shops • Offices",
@@ -217,7 +217,12 @@ const Commercial: React.FC = () => {
         {filteredProperties.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {filteredProperties.map((property) => (
-              <div key={property.id} className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col">
+              <Link
+                to={property.link}
+                key={property.id}
+                className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col block"
+                {...(property.link.startsWith('http') ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              >
                 {/* Image */}
                 <div className="relative h-64 overflow-hidden">
                   <div className="absolute top-4 left-4 z-10 flex gap-2">
@@ -241,7 +246,7 @@ const Commercial: React.FC = () => {
                 {/* Content */}
                 <div className="p-6 flex-grow flex flex-col">
                   <div className="mb-4">
-                    <h3 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-amber-600 transition-colors">{property.name}</h3>
+                    <h3 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-amber-600 transition-colors uppercase tracking-tight">{property.name}</h3>
                     <div className="flex items-center text-slate-500 text-sm">
                       <MapPin size={14} className="mr-1 text-amber-500" />
                       {property.location}
@@ -260,26 +265,12 @@ const Commercial: React.FC = () => {
                     <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
                       Project ID: CG-C{property.id}
                     </span>
-                    {property.link.startsWith('http') ? (
-                      <a
-                        href={property.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-900 hover:text-amber-600 transition-all group-hover:gap-3"
-                      >
-                        View Details <ArrowRight size={14} />
-                      </a>
-                    ) : (
-                      <Link
-                        to={property.link}
-                        className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-900 hover:text-amber-600 transition-all group-hover:gap-3"
-                      >
-                        View Details <ArrowRight size={14} />
-                      </Link>
-                    )}
+                    <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-900 hover:bg-amber-500 hover:text-white transition-all group-hover:translate-x-1">
+                      <ArrowRight size={18} />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         ) : (

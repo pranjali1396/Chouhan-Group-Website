@@ -40,8 +40,8 @@ const Contact: React.FC = () => {
                   <h3 className="text-xl font-bold text-amber-600 mb-1">CHOUHAN GROUP</h3>
                   <div className="flex items-start gap-3 mt-4 text-slate-600">
                     <MapPin className="shrink-0 text-amber-500 mt-1" size={20} />
-                    <p className="leading-relaxed">
-                      Ground Floor, Chouhan Estate, Beside Chandra Maurya Talkies, NH53, Bhilai, Chhattisgarh - 490001
+                    <p className="leading-relaxed font-bold">
+                      Beside Shankracharya Mahavidyalaya, Junwani Road, Bhilai, Chhattisgarh – 490020
                     </p>
                   </div>
                 </div>

@@ -68,7 +68,7 @@ export const NAVIGATION_DATA: NavItem[] = [
         links: [
           { label: "Chouhan Landmark", path: "/commercial/landmark" },
           { label: "Chouhan Complex", path: "/commercial/complex" },
-          { label: "Chouhan Plaza", path: "/commercial/plaza" },
+          { label: "Chouhan Plaza", path: "/commercial/plaza-details" },
         ]
       }
     ]
@@ -82,14 +82,14 @@ export const NAVIGATION_DATA: NavItem[] = [
         links: [
           { label: "Empyrean Hotels Bhilai", path: "/hospitality/empyrean-bhilai" },
           { label: "Empyrean Resort Balod", path: "/hospitality/empyrean-balod" },
-          { label: "Empyrean Kendri", path: "/hospitality/empyrean-kendri" },
-          { label: "Hotel Palladio", path: "/hospitality/palladio" },
-          { label: "Hotel Skypark", path: "/hospitality/skypark" },
         ]
       },
       {
         title: "UPCOMING",
         links: [
+          { label: "Empyrean Kendri", path: "/hospitality/empyrean-kendri" },
+          { label: "Hotel Palladio", path: "/hospitality/palladio" },
+          { label: "Hotel Skypark", path: "/hospitality/skypark" },
           { label: "Empyrean Tumdibod", path: "/hospitality/empyrean-tumdibod" },
           { label: "Empyrean Tatiband", path: "/hospitality/empyrean-tatiband" },
         ]
@@ -110,11 +110,6 @@ export const NAVIGATION_DATA: NavItem[] = [
           { label: "Maruti Suzuki Arena", path: "/automobile/maruti" },
           { label: "Nexa", path: "/automobile/nexa" },
           { label: "Hero", path: "/automobile/hero" },
-        ]
-      },
-      {
-        title: "SERVICES",
-        links: [
           { label: "True Value", path: "/automobile/true-value" },
         ]
       },

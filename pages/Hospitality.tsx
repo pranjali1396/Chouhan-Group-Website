@@ -9,11 +9,11 @@ const HOSPITALITY_DATA = [
     location: "GE Road, Bhilai",
     type: "Luxury Hotel",
     rating: "4.5",
-    image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200",
+    image: "/new images/chouhan2.jpg",
     link: "/hospitality/empyrean-bhilai",
     status: "Now Open",
     category: "Hotel",
-    amenities: ["Fine Dining", "Bar & Lounge", "Meeting Rooms"],
+    amenities: ["Fine Dining", "Bar & Lounge", "Meeting Rooms", "wedding venues", "Luxury suites"],
     websiteUrl: "https://www.empyreanhotels.in/bhilai"
   },
   {
@@ -22,11 +22,11 @@ const HOSPITALITY_DATA = [
     location: "Lake Side, Balod",
     type: "Lakeside Resort",
     rating: "4.8",
-    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=1200",
+    image: "/new images/ELR_Balod 25.jpg",
     link: "/hospitality/empyrean-balod",
     status: "Now Open",
     category: "Resort",
-    amenities: ["Infinity Pool", "Boat Club", "Garden Cafe"],
+    amenities: ["Infinity Pool", "Club", "Water sports", "Wedding venues", "luxury rooms"],
     websiteUrl: "https://www.empyreanhotels.in/balod"
   },
   {
@@ -37,7 +37,7 @@ const HOSPITALITY_DATA = [
     rating: "4.2",
     image: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=1200",
     link: "/hospitality/empyrean-kendri",
-    status: "Now Open",
+    status: "Upcoming",
     category: "Boutique",
     amenities: ["Airport Shuttle", "Business Hub", "Rooftop"]
   },
@@ -61,7 +61,7 @@ const HOSPITALITY_DATA = [
     rating: "4.4",
     image: "https://images.unsplash.com/photo-1551882547-ff43c63be5c2?q=80&w=1200",
     link: "/hospitality/palladio",
-    status: "Now Open",
+    status: "Upcoming",
     category: "Hotel",
     amenities: ["Spa", "Banquet Hall", "Luxury Suites"]
   },
@@ -73,7 +73,7 @@ const HOSPITALITY_DATA = [
     rating: "4.1",
     image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200",
     link: "/hospitality/skypark",
-    status: "Now Open",
+    status: "Upcoming",
     category: "Hotel",
     amenities: ["Centrally Located", "Business Rooms", "Dining"]
   }
@@ -199,7 +199,7 @@ const Hospitality: React.FC = () => {
         {filteredItems.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {filteredItems.map((item) => (
-              <div key={item.id} className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col">
+              <Link to={item.link} key={item.id} className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col block">
                 {/* Image */}
                 <div className="relative h-64 overflow-hidden">
                   <div className="absolute top-4 left-4 z-10 flex gap-2">
@@ -244,23 +244,15 @@ const Hospitality: React.FC = () => {
                       <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                         {item.amenities.slice(0, 2).join(' • ')}
                       </span>
-                      {/* @ts-ignore */}
-                      {item.websiteUrl && (
-                        /* @ts-ignore */
-                        <a href={item.websiteUrl} target="_blank" rel="noopener noreferrer" className="text-[10px] font-bold uppercase tracking-widest text-[#002b49] hover:text-amber-600 transition-colors border-b border-transparent hover:border-amber-600 ml-2">
-                          | View Website
-                        </a>
-                      )}
                     </div>
-                    <Link
-                      to={item.link}
+                    <div
                       className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-900 hover:bg-amber-500 hover:text-white transition-all group-hover:translate-x-1"
                     >
                       <ArrowRight size={18} />
-                    </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         ) : (

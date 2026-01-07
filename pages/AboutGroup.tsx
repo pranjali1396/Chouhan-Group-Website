@@ -2,32 +2,32 @@
 import React from 'react';
 import {
   Building2, Car, BedDouble, Target, Eye, Users,
-  Award, Briefcase, TrendingUp, CheckCircle, MapPin, Phone, Globe, Calendar
+  Award, Briefcase, TrendingUp, CheckCircle, MapPin, Phone, Globe, Calendar, Presentation, PlayCircle, FileText
 } from 'lucide-react';
 
 const TEAM = [
   {
     name: "Mr. Ajay Chouhan",
     role: "Founder & Chairman",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&fit=crop",
+    image: "/new images/ajay_chouhan.png",
     desc: "The visionary force behind Chouhan Group, founding the organization in 1998 with a commitment to excellence."
   },
   {
     name: "Suraj Chouhan",
     role: "Director",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&fit=crop",
+    image: "/new images/suraj_chouhan.png",
     desc: "Driving strategic growth and innovation across new verticals."
   },
   {
     name: "Sunny Chouhan",
     role: "Director",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&fit=crop",
+    image: "/new images/sunny_chouhan.png",
     desc: "Overseeing operational excellence and customer satisfaction."
   },
   {
     name: "Saurabh Chouhan",
     role: "Director",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&fit=crop",
+    image: "/new images/sourabh_chouhan.png",
     desc: "Leading marketing initiatives and brand development."
   }
 ];
@@ -81,6 +81,8 @@ const PORTFOLIO = {
 };
 
 const AboutGroup: React.FC = () => {
+  const [showPresentation, setShowPresentation] = React.useState(false);
+
   return (
     <div className="bg-white font-sans text-slate-800 pt-32 md:pt-48">
 
@@ -238,7 +240,17 @@ const AboutGroup: React.FC = () => {
       {/* Business Verticals Portfolio */}
       <section className="bg-slate-50 text-slate-800 py-24 border-t border-slate-200">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-heading font-black mb-16 text-center text-slate-900">Our Portfolio</h2>
+          <h2 className="text-4xl font-heading font-black mb-4 text-center text-slate-900">Our Portfolio</h2>
+          <div className="flex justify-center mb-16">
+            <button
+              onClick={() => setShowPresentation(true)}
+              className="group flex items-center gap-3 bg-[#002b49] text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-amber-500 hover:text-black transition-all shadow-xl hover:shadow-amber-500/20"
+            >
+              <Presentation size={20} className="group-hover:scale-110 transition-transform" />
+              View Dealers Meet Presentation
+              <PlayCircle size={20} className="animate-pulse" />
+            </button>
+          </div>
 
           {/* Real Estate */}
           <div className="mb-20">
@@ -352,6 +364,45 @@ const AboutGroup: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Presentation Modal */}
+      {showPresentation && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-2 md:p-4">
+          <div
+            className="absolute inset-0 bg-slate-900/98 backdrop-blur-sm"
+            onClick={() => setShowPresentation(false)}
+          ></div>
+          <div className="relative w-full h-full max-w-[95vw] bg-white rounded-xl overflow-hidden shadow-2xl flex flex-col animate-scaleUp">
+            <div className="p-4 md:p-5 bg-[#002b49] text-white flex justify-between items-center text-sm md:text-base">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-amber-500 rounded-lg">
+                  <FileText size={20} className="text-white" />
+                </div>
+                <div>
+                  <h3 className="font-heading font-bold text-lg md:text-xl leading-tight">Dealers Meet 2024</h3>
+                  <p className="text-xs text-white/60 font-medium uppercase tracking-widest">Corporate Presentation</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowPresentation(false)}
+                className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors text-white/70 hover:text-white"
+              >
+                <div className="text-3xl font-light">&times;</div>
+              </button>
+            </div>
+            <div className="flex-grow bg-slate-100">
+              <iframe
+                src="/Dealers Meet Presentation New.pdf#toolbar=0"
+                className="w-full h-full"
+                title="Dealers Meet Presentation"
+              ></iframe>
+            </div>
+            <div className="p-4 bg-slate-50 border-t border-slate-200 flex justify-center italic text-slate-400 text-xs text-center">
+              Scroll through the slides for the complete presentation
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );

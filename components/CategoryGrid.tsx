@@ -7,19 +7,19 @@ const CATEGORIES = [
   {
     title: "NEW HOMES",
     subtitle: "",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop",
+    image: "/new images/chouhan-green-valley-6 (1).webp",
     link: "/new-homes"
   },
   {
     title: "COMMERCIAL",
     subtitle: "",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop",
+    image: "/new images/chouhan_park_view_4_1846x750.webp",
     link: "/commercial"
   },
   {
     title: "HOSPITALITY",
     subtitle: "",
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1000&auto=format&fit=crop",
+    image: "/new images/IMG_0028.jpg",
     link: "/hospitality"
   },
   {
@@ -41,16 +41,16 @@ const CategoryGrid: React.FC = () => {
             className="group relative w-full h-[250px] md:h-[300px] lg:h-full overflow-hidden block border-r border-white/10 last:border-r-0 border-b lg:border-b-0"
           >
             {/* Background Image */}
-            <div className="absolute inset-0 bg-slate-900">
+            <div className="absolute inset-0 bg-slate-100">
               <img
                 src={cat.image}
                 alt={cat.title}
-                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
             </div>
 
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-90 transition-opacity duration-500"></div>
+            {/* Gradient Overlay - Lightened for visibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500"></div>
 
             {/* Content */}
             <div className="absolute bottom-0 left-0 w-full p-6 z-10">

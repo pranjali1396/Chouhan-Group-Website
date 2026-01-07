@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { NavItem } from '../types';
 import {
   Linkedin,
@@ -133,13 +133,31 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
     setMobileMenuOpen(false);
   }, [location]);
 
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
+
+      const handleOutsideClick = (event: MouseEvent) => {
+        if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+          setMobileMenuOpen(false);
+        }
+      };
+
+      const handleEscape = (event: KeyboardEvent) => {
+        if (event.key === 'Escape') setMobileMenuOpen(false);
+      };
+
+      document.addEventListener('mousedown', handleOutsideClick);
+      document.addEventListener('keydown', handleEscape);
+
+      return () => {
+        document.removeEventListener('mousedown', handleOutsideClick);
+        document.removeEventListener('keydown', handleEscape);
+        document.body.style.overflow = 'unset';
+      };
     }
-    return () => { document.body.style.overflow = 'unset'; };
   }, [mobileMenuOpen]);
 
   return (
@@ -147,39 +165,41 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
       <header className={`fixed w-full z-50 transition-all duration-300 font-sans ${scrolled ? 'bg-[#002b49]/95 backdrop-blur-md shadow-lg' : 'bg-[#002b49]'
         }`}>
 
-        {/* Top Bar - Hidden on Mobile */}
-        <div className={`hidden md:flex justify-end items-center gap-6 px-4 md:px-12 py-2.5 text-[11px] font-bold tracking-wider text-white border-b border-white/10 uppercase`}>
-          <div className="flex gap-6 items-center">
-            <Link to="/contact" className="hover:text-amber-400 transition-colors">Register for Updates</Link>
-            <Link to="/careers" className="hover:text-amber-400 transition-colors">Careers</Link>
-            <div className="flex gap-3 text-white/60 font-medium select-none">
-              <span className="cursor-pointer hover:text-white transition-colors">EN</span>
-              <span className="cursor-pointer hover:text-white transition-colors">HI</span>
+        {/* Top Bar - Hidden on Mobile (Shows only when Desktop Nav is active at XL) */}
+        <div className="hidden xl:block border-b border-white/10 text-white uppercase">
+          <div className="container-fluid mx-auto px-4 md:px-8 py-2 flex justify-end items-center gap-6 text-[13px] font-bold tracking-wider">
+            <div className="flex gap-6 items-center">
+              <Link to="/contact" className="hover:text-amber-400 transition-colors">Register for Updates</Link>
+              <Link to="/careers" className="hover:text-amber-400 transition-colors">Careers</Link>
+              <div className="flex gap-3 text-white/60 font-medium select-none">
+                <span className="cursor-pointer hover:text-white transition-colors">EN</span>
+                <span className="cursor-pointer hover:text-white transition-colors">HI</span>
+              </div>
             </div>
-          </div>
-          <div className="flex items-center gap-3 pl-6 border-l border-white/20">
-            <a href="https://www.facebook.com/share/17atysTgnf/" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors"><Facebook size={15} /></a>
-            <a href="https://x.com/ChouhanHousing?t=qr_WRxVvfJ9a6q9yU_rHlA&s=09" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">
-              <svg viewBox="0 0 24 24" fill="currentColor" className="w-[15px] h-[15px]">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-              </svg>
-            </a>
-            <a href="https://www.instagram.com/chouhan_housing_commercial?igsh=MTZuNXpibTF4N2k4bA==" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors"><Instagram size={15} /></a>
-            <a href="https://youtube.com/@chouhangroup-x7v?si=yHs8HX0SxFY9X1EB" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors"><Youtube size={15} /></a>
-            <a href="#" className="hover:text-amber-400 transition-colors"><Linkedin size={15} /></a>
+            <div className="flex items-center gap-3 pl-6 border-l border-white/20">
+              <a href="https://www.facebook.com/share/17atysTgnf/" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors"><Facebook size={15} /></a>
+              <a href="https://x.com/ChouhanHousing?t=qr_WRxVvfJ9a6q9yU_rHlA&s=09" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-[15px] h-[15px]">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/chouhan_housing_commercial?igsh=MTZuNXpibTF4N2k4bA==" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors"><Instagram size={15} /></a>
+              <a href="https://youtube.com/@chouhangroup-x7v?si=yHs8HX0SxFY9X1EB" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors"><Youtube size={15} /></a>
+              <a href="#" className="hover:text-amber-400 transition-colors"><Linkedin size={15} /></a>
+            </div>
           </div>
         </div>
 
         {/* Main Navbar */}
-        <div className="container mx-auto px-4 md:pl-4 md:pr-12">
-          <div className={`flex justify-between items-center transition-all duration-300 ${scrolled ? 'h-12' : 'h-14 md:h-16'}`}>
+        <div className="container-fluid mx-auto px-4 md:px-8">
+          <div className={`flex justify-between items-center transition-all duration-300 ${scrolled ? 'h-13' : 'h-16 md:h-18'}`}>
             {/* Logo */}
-            <Link to="/" className="flex items-center shrink-0 mr-4 group z-50">
+            <Link to="/" className="flex items-center shrink-0 group z-50">
               {!imgError ? (
                 <img
                   src="/logo.png"
                   alt="Chouhan Group"
-                  className="h-6 md:h-8 w-auto object-contain transition-transform group-hover:scale-105"
+                  className="h-7 md:h-10 w-auto object-contain transition-transform group-hover:scale-105"
                   style={{ filter: 'brightness(0) saturate(100%) invert(61%) sepia(97%) saturate(1832%) hue-rotate(357deg) brightness(101%) contrast(93%)' }}
                   onError={() => setImgError(true)}
                 />
@@ -196,7 +216,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden xl:flex items-center h-full gap-5 xl:gap-8">
+            <nav className="hidden xl:flex items-center h-full gap-4 xl:gap-6">
               {navData.map((item) => (
                 <div
                   key={item.label}
@@ -206,7 +226,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
                 >
                   <Link
                     to={item.path || '#'}
-                    className={`flex items-center gap-1 font-heading font-bold text-[11px] tracking-widest uppercase whitespace-nowrap transition-all duration-300 py-6 border-b-2 border-transparent ${activeMenu === item.label ? 'text-amber-400 border-amber-400' : 'text-white hover:text-amber-400'
+                    className={`flex items-center gap-1 font-heading font-black text-[14px] tracking-widest uppercase whitespace-nowrap transition-all duration-300 py-6 border-b-2 border-transparent ${activeMenu === item.label ? 'text-amber-400 border-amber-400' : 'text-white hover:text-amber-400'
                       }`}
                   >
                     {item.label}
@@ -222,7 +242,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
                       {item.columns.map((col, idx) => (
                         <div key={idx} className="p-6 min-w-[220px] border-r border-slate-100 last:border-r-0 bg-white">
                           {col.title && (
-                            <h4 className="text-xs font-bold text-amber-600 uppercase mb-4 tracking-widest border-b border-amber-100 pb-2 inline-block">
+                            <h4 className="text-[15px] font-black text-amber-600 uppercase mb-4 tracking-widest border-b border-amber-100 pb-2 inline-block">
                               {col.title}
                             </h4>
                           )}
@@ -231,7 +251,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
                               <li key={lIdx}>
                                 <Link
                                   to={link.path}
-                                  className="text-[11px] font-bold text-slate-500 hover:text-amber-600 hover:translate-x-1 transition-all block leading-tight uppercase tracking-wider"
+                                  className="text-[14px] font-bold text-slate-500 hover:text-amber-600 hover:translate-x-1 transition-all block leading-tight uppercase tracking-wider"
                                 >
                                   {link.label}
                                 </Link>
@@ -270,6 +290,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
 
       {/* Mobile Navigation Drawer - Dark Blue Theme */}
       <div
+        ref={mobileMenuRef}
         className={`fixed inset-y-0 right-0 w-full md:w-[450px] bg-[#002b49] z-[70] xl:hidden shadow-2xl transform-gpu transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1) flex flex-col ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         {/* Mobile Header: Logo & Close */}
@@ -333,14 +354,28 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
               ))}
             </div>
 
-            {/* Register Button */}
-            <Link
-              to="/contact"
-              onClick={closeMobileMenu}
-              className="block w-full py-5 px-6 text-center border-2 border-amber-500 text-amber-500 font-black uppercase tracking-[0.2em] text-[11px] hover:bg-amber-500 hover:text-white transition-all rounded-sm shadow-lg"
-            >
-              Register for updates
-            </Link>
+            {/* Mobile Footer Actions */}
+            <div className="flex flex-col gap-4">
+              <Link
+                to="/contact"
+                onClick={closeMobileMenu}
+                className="block w-full py-5 px-6 text-center border-2 border-amber-500 text-amber-500 font-black uppercase tracking-[0.2em] text-[11px] hover:bg-amber-500 hover:text-white transition-all rounded-sm shadow-lg"
+              >
+                Register for updates
+              </Link>
+              <Link
+                to="/careers"
+                onClick={closeMobileMenu}
+                className="block w-full py-4 px-6 text-center text-white/60 font-bold uppercase tracking-widest text-[10px] hover:text-amber-400 transition-colors"
+              >
+                Careers
+              </Link>
+
+              <div className="flex justify-center gap-6 pt-2 pb-4 text-[11px] font-bold text-white/40 border-t border-white/5 uppercase tracking-widest">
+                <span className="text-amber-500">English</span>
+                <span className="hover:text-amber-400 cursor-pointer transition-colors">Hindi</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
