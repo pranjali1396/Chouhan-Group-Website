@@ -107,32 +107,32 @@ const Home: React.FC = () => {
       <CategoryGrid />
 
       {/* About Us Section */}
-      <section className="py-20 md:py-32 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
+      <section className="py-20 md:py-28 lg:py-32 xl:py-40 bg-white">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="flex flex-col lg:flex-row gap-12 xl:gap-24 items-center">
             <div className="lg:w-1/2">
               <span className="text-amber-600 font-bold tracking-[0.2em] text-xs uppercase mb-6 block">About Us</span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-slate-900 mb-8 leading-tight">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl font-heading font-bold text-slate-900 mb-8 leading-tight">
                 CHOUHAN GROUP <br />
-                <span className="text-slate-400 font-light text-xl md:text-3xl block mt-2">A Legacy of Trust, A Future of Innovation</span>
+                <span className="text-slate-400 font-light text-xl md:text-2xl xl:text-3xl block mt-2">A Legacy of Trust, A Future of Innovation</span>
               </h2>
               <div className="h-0.5 w-24 bg-amber-500 mb-10"></div>
-              <p className="text-slate-600 leading-loose text-lg font-light mb-6">
+              <p className="text-slate-600 leading-loose text-base md:text-lg font-light mb-6">
                 Chouhan Group is a leading real estate developer in Bhilai, Chhattisgarh, Founded in 1998 by Mr. Ajay Chouhan. Renowned for its impactful residential and commercial projects. The group is celebrated for its commitment to quality and timely delivery.
               </p>
-              <p className="text-slate-600 leading-loose text-lg font-light mb-10">
+              <p className="text-slate-600 leading-loose text-base md:text-lg font-light mb-10">
                 Expanding its portfolio, Chouhan Group excels in automotive sectors with Maruti Suzuki ARENA and NEXA, and hospitality with Empyrean Hotels and Empyrean Lake Resorts, showcasing its diverse expertise and excellence.
               </p>
               <Link to="/about/group" className="inline-flex items-center gap-3 text-slate-900 font-bold border-b-2 border-amber-500 pb-2 hover:text-amber-600 transition-colors uppercase tracking-widest text-xs">
                 Know More <ArrowRight size={14} />
               </Link>
             </div>
-            <div className="lg:w-1/2 relative w-full">
+            <div className="lg:w-1/2 relative w-full mt-12 lg:mt-0">
               <div className="absolute -inset-4 bg-amber-50 rounded-2xl transform rotate-2"></div>
               <img
                 src="/new images/sunrixecity_04.webp"
                 alt="Chouhan Group Legacy"
-                className="relative rounded-xl shadow-2xl w-full h-[400px] md:h-[600px] object-cover"
+                className="relative rounded-xl shadow-2xl w-full h-[400px] md:h-[500px] lg:h-[550px] xl:h-[650px] object-cover"
                 loading="lazy"
                 decoding="async"
               />
@@ -142,12 +142,12 @@ const Home: React.FC = () => {
       </section>
 
       {/* Service Highlights Slider */}
-      <section className="pt-24 pb-8 bg-slate-50 relative overflow-hidden">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+      <section className="py-20 md:py-28 lg:py-32 bg-slate-50 relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10 max-w-7xl">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 text-center md:text-left">
             <div className="max-w-3xl">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-slate-900 mb-6">Our Service Highlights</h2>
-              <p className="text-slate-600 leading-relaxed text-lg font-light">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl font-heading font-bold text-slate-900 mb-6">Our Service Highlights</h2>
+              <p className="text-slate-600 leading-relaxed text-base md:text-lg font-light">
                 Chouhan Group excels in diverse sectors, delivering innovation and excellence across real estate, hospitality, automotive, and more.
               </p>
             </div>
@@ -214,12 +214,12 @@ const Home: React.FC = () => {
       </section>
 
       {/* Impact Stats Section - Modern Split Layout */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-16 xl:gap-24">
+      <section className="py-24 md:py-32 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10 max-w-7xl">
+          <div className="flex flex-col lg:flex-row items-center gap-12 xl:gap-24">
 
             {/* Left Side: Illustration */}
-            <div className="lg:w-1/2 w-full max-w-2xl mx-auto">
+            <div className="lg:w-1/2 w-full max-w-xl xl:max-w-2xl mx-auto">
               <div className="relative">
                 <div className="absolute -inset-10 bg-amber-50 rounded-full opacity-50 blur-3xl -z-10"></div>
                 <img
@@ -234,20 +234,20 @@ const Home: React.FC = () => {
 
             {/* Right Side: Stats Grid */}
             <div className="lg:w-1/2 w-full lg:pl-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 xl:gap-x-12 gap-y-10 xl:gap-y-12">
                 {IMPACT_GRID.map((item, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-5 group"
+                    className="flex items-center gap-4 xl:gap-5 group"
                   >
-                    <div className="shrink-0 p-4 bg-amber-50 rounded-2xl group-hover:bg-amber-100 transition-colors duration-300">
+                    <div className="shrink-0 p-3 md:p-4 bg-amber-50 rounded-2xl group-hover:bg-amber-100 transition-colors duration-300">
                       {item.icon}
                     </div>
                     <div>
-                      <div className="text-3xl lg:text-4xl font-black text-slate-900 leading-none mb-1">
+                      <div className="text-3xl xl:text-4xl 2xl:text-5xl font-black text-slate-900 leading-none mb-1">
                         {item.count}
                       </div>
-                      <div className="text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase">
+                      <div className="text-[9px] xl:text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase">
                         {item.label}
                       </div>
                     </div>
@@ -261,17 +261,17 @@ const Home: React.FC = () => {
       </section>
 
       {/* Housing Project Feature */}
-      <section className="py-20 md:py-32 bg-slate-900 text-white relative overflow-hidden">
+      <section className="py-20 md:py-28 lg:py-32 xl:py-40 bg-slate-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000')] bg-cover bg-fixed"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 to-slate-900/80"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
+        <div className="container mx-auto px-4 relative z-10 max-w-7xl">
+          <div className="flex flex-col lg:flex-row gap-12 xl:gap-24 items-center">
             <div className="lg:w-1/2">
               <span className="text-amber-500 font-bold tracking-[0.2em] text-xs uppercase mb-6 block">HOUSING PROJECT</span>
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-heading font-black mb-8 leading-tight">
+              <h2 className="text-3xl md:text-5xl xl:text-6xl 2xl:text-7xl font-heading font-black mb-8 leading-tight">
                 Your Dream Abode Awaits at Chouhan Residences
               </h2>
-              <div className="space-y-8 text-slate-300 leading-loose font-light text-lg">
+              <div className="space-y-6 xl:space-y-8 text-slate-300 leading-loose font-light text-base md:text-lg">
                 <p>
                   Discover the pinnacle of contemporary living at the Housing Project by Chouhan Group. Our elegantly designed homes reinvent urban life with their comfort and sophistication. Ideally positioned for ease of access, every residence is a haven that seamlessly combines modern design and practicality.
                 </p>
@@ -279,14 +279,14 @@ const Home: React.FC = () => {
                   A peaceful living is provided by Chouhan Group's Housing Project, which is dedicated to providing high-quality construction and prompt delivery. Enter a world where every little detail has been carefully considered to create houses that are also safe havens for prosperous families.
                 </p>
               </div>
-              <Link to="/new-homes" className="inline-flex items-center gap-3 bg-white text-slate-900 px-8 py-4 md:px-10 md:py-5 font-bold tracking-widest uppercase text-xs hover:bg-amber-500 hover:text-white transition-all duration-300 mt-12 rounded-sm shadow-xl">
+              <Link to="/new-homes" className="inline-flex items-center gap-3 bg-white text-slate-900 px-8 py-4 md:px-10 md:py-5 font-bold tracking-widest uppercase text-xs hover:bg-amber-500 hover:text-white transition-all duration-300 mt-10 md:mt-12 rounded-sm shadow-xl">
                 Explore Your Dream Home <ArrowRight size={16} />
               </Link>
             </div>
-            <div className="lg:w-1/2 grid grid-cols-2 gap-6 w-full">
+            <div className="lg:w-1/2 grid grid-cols-2 gap-4 xl:gap-6 w-full mt-12 lg:mt-0">
               <img
                 src="/new images/sunrisecity.webp"
-                className="rounded-xl shadow-2xl translate-y-8 grayscale hover:grayscale-0 transition-all duration-500"
+                className="rounded-xl shadow-2xl translate-y-6 md:translate-y-8 grayscale hover:grayscale-0 transition-all duration-500"
                 alt="Interior 1"
                 loading="lazy"
                 decoding="async"
@@ -304,20 +304,20 @@ const Home: React.FC = () => {
       </section>
 
       {/* Our Projects */}
-      <section className="py-20 md:py-32 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16 md:mb-24">
+      <section className="py-20 md:py-28 lg:py-32 bg-white">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-16 md:mb-20 xl:mb-24">
             <span className="text-amber-600 font-bold tracking-[0.2em] text-xs uppercase mb-4 block">OUR PROJECTS</span>
-            <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-900 mb-6">Exceptional Developments</h2>
-            <p className="text-slate-600 max-w-3xl mx-auto text-lg font-light">
+            <h2 className="text-3xl md:text-5xl xl:text-6xl font-heading font-bold text-slate-900 mb-6 transition-all duration-300">Exceptional Developments</h2>
+            <p className="text-slate-600 max-w-3xl mx-auto text-base md:text-lg font-light">
               Discover our visionary projects at Chouhan Group, seamlessly blending quality, innovation, and elegance. Each development is a testament to our commitment to transforming lifestyles.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 xl:gap-12">
             {PROJECTS.map((project, idx) => (
               <div key={idx} className="group cursor-pointer">
-                <div className="relative overflow-hidden rounded-2xl mb-8 h-72 shadow-lg">
+                <div className="relative overflow-hidden rounded-2xl mb-6 md:mb-8 h-64 md:h-72 shadow-lg transition-transform duration-500 hover:-translate-y-2">
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors z-10"></div>
                   <img
                     src={project.image}
@@ -326,21 +326,21 @@ const Home: React.FC = () => {
                     loading="lazy"
                     decoding="async"
                   />
-                  <div className="absolute bottom-0 left-0 p-8 z-20 w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300">
-                    <h3 className="text-2xl font-bold text-white">{project.title}</h3>
+                  <div className="absolute bottom-0 left-0 p-6 md:p-8 z-20 w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+                    <h3 className="text-xl md:text-2xl font-bold text-white">{project.title}</h3>
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-amber-600 transition-colors">{project.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed mb-6">{project.desc}</p>
-                <Link to={project.link} className="text-slate-900 font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all hover:text-amber-600">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2 md:mb-3 group-hover:text-amber-600 transition-colors">{project.title}</h3>
+                <p className="text-slate-500 text-[13px] md:text-sm leading-relaxed mb-6">{project.desc}</p>
+                <Link to={project.link} className="text-slate-900 font-bold text-[10px] md:text-xs uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all hover:text-amber-600">
                   View Project <ArrowRight size={14} />
                 </Link>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-20">
-            <Link to="/new-homes" className="inline-block border border-slate-900 text-slate-900 px-10 py-4 font-bold uppercase tracking-widest text-xs hover:bg-slate-900 hover:text-white transition-all rounded-sm">
+          <div className="text-center mt-16 md:mt-20">
+            <Link to="/new-homes" className="inline-block border border-slate-900 text-slate-900 px-8 py-3 md:px-10 md:py-4 font-bold uppercase tracking-widest text-[10px] md:text-xs hover:bg-slate-900 hover:text-white transition-all rounded-sm">
               Explore Our Exceptional Projects
             </Link>
           </div>
