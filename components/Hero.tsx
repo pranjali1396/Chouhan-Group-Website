@@ -75,7 +75,7 @@ const Hero: React.FC = () => {
           <div className="absolute inset-0 bg-black/40 md:bg-gradient-to-r md:from-black/70 md:via-black/40 md:to-transparent"></div>
 
           {/* Text Content */}
-          <div className={`absolute inset-0 flex flex-col justify-center items-center text-center p-8 md:p-20 lg:p-32 z-20 ${index === current ? 'animate-fadeIn' : ''}`}>
+          <div className={`absolute inset-0 flex flex-col justify-center items-center text-center p-8 md:p-16 lg:p-20 z-20 ${index === current ? 'animate-fadeIn' : ''}`}>
             <div className={`max-w-7xl space-y-6 transform transition-all duration-1000 ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
 
               {/* Orange Line */}
