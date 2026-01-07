@@ -68,7 +68,7 @@ export const NAVIGATION_DATA: NavItem[] = [
         links: [
           { label: "Chouhan Landmark", path: "/commercial/landmark" },
           { label: "Chouhan Complex", path: "/commercial/complex" },
-          { label: "Chouhan Plaza", path: "/commercial/plaza-details" },
+          { label: "Chouhan Plaza", path: "/commercial/plaza" },
         ]
       }
     ]

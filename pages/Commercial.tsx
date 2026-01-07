@@ -73,7 +73,7 @@ const COMMERCIAL_PROPERTIES = [
     type: "Retail Hub",
     sector: "Retail",
     image: "/new images/chouhan_plaza_ai.png",
-    link: "/commercial/plaza-details",
+    link: "/commercial/plaza",
     status: "Sold",
     features: "Multi-brand Retail • Centralized AC",
     priceRange: "Mid"
