@@ -29,22 +29,28 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
   return (
     <div className="bg-white font-sans text-slate-800 pt-32 md:pt-48">
       {/* Hero Section - Large image with simple white text overlay */}
-      <div className="relative h-[85vh] min-h-[500px] w-full overflow-hidden">
-        <img src={data.heroImage} alt={data.title} className="w-full h-full object-cover" />
+      <div className="relative h-[35vh] md:h-[85vh] min-h-[220px] md:min-h-[500px] w-full overflow-hidden">
+        <img
+          src={data.heroImage}
+          alt={data.title}
+          className="w-full h-full object-cover"
+          loading="eager"
+          decoding="async"
+        />
         <div className="absolute inset-0 bg-black/10"></div>
 
         {/* SOLD OUT Overlay */}
         {isSold && (
           <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-            <div className="bg-red-600/90 text-white border-4 border-white px-10 py-4 md:px-16 md:py-6 text-4xl md:text-7xl font-black uppercase tracking-[0.2em] -rotate-12 shadow-2xl animate-pulse">
+            <div className="bg-red-600/90 text-white border-4 border-white px-8 py-3 md:px-16 md:py-6 text-3xl md:text-7xl font-black uppercase tracking-[0.2em] -rotate-12 shadow-2xl animate-pulse">
               Sold Out
             </div>
           </div>
         )}
 
-        <div className="absolute bottom-0 left-0 w-full p-6 md:p-12">
+        <div className="absolute bottom-0 left-0 w-full p-4 md:p-12">
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-6xl text-white font-heading font-light tracking-wide leading-tight max-w-4xl drop-shadow-lg">
+            <h1 className="text-2xl md:text-6xl text-white font-heading font-light tracking-wide leading-tight max-w-4xl drop-shadow-lg">
               {data.title}
             </h1>
           </div>
@@ -300,6 +306,8 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
                         src={img}
                         alt={`${data.title} Gallery ${idx + 1}`}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                   ))}

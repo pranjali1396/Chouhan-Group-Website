@@ -19,7 +19,7 @@ const CATEGORIES = [
   {
     title: "HOSPITALITY",
     subtitle: "",
-    image: "/new images/IMG_0028.jpg",
+    image: "/new images/chouhan2.jpg",
     link: "/hospitality"
   },
   {

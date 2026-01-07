@@ -329,6 +329,9 @@ const SunriseLanding: React.FC = () => {
               src={img}
               alt={`Sunrise City Slide ${idx + 1}`}
               className="w-full h-full object-cover"
+              loading={idx === 0 ? "eager" : "lazy"}
+              decoding="async"
+              {...(idx === 0 ? { fetchpriority: "high" } as any : {})}
             />
             {/* Subtle gradient for depth */}
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
@@ -497,7 +500,7 @@ const SunriseLanding: React.FC = () => {
             {/* Video 1 */}
             <div className="space-y-4">
               <div className="aspect-video bg-black rounded-xl overflow-hidden shadow-2xl border border-stone-700 relative group">
-                <video controls className="w-full h-full object-cover">
+                <video controls className="w-full h-full object-cover" preload="metadata">
                   <source src="/Sunrise City/Photos and Videos/VID-20250825-WA0002.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
@@ -508,7 +511,7 @@ const SunriseLanding: React.FC = () => {
             {/* Video 2 */}
             <div className="space-y-4">
               <div className="aspect-video bg-black rounded-xl overflow-hidden shadow-2xl border border-stone-700 relative group">
-                <video controls className="w-full h-full object-cover">
+                <video controls className="w-full h-full object-cover" preload="metadata">
                   <source src="/Sunrise City/Photos and Videos/VID-20251002-WA0007.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
@@ -519,7 +522,7 @@ const SunriseLanding: React.FC = () => {
             {/* Video 3 */}
             <div className="space-y-4">
               <div className="aspect-video bg-black rounded-xl overflow-hidden shadow-2xl border border-stone-700 relative group">
-                <video controls className="w-full h-full object-cover">
+                <video controls className="w-full h-full object-cover" preload="metadata">
                   <source src="/Sunrise City/Photos and Videos/VID-20251002-WA0008.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
@@ -557,6 +560,8 @@ const SunriseLanding: React.FC = () => {
                   src={img}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   alt={`Sunrise City View ${idx + 1}`}
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                   <Search className="text-white drop-shadow-lg" size={32} />

@@ -133,6 +133,8 @@ const Home: React.FC = () => {
                 src="/new images/sunrixecity_04.webp"
                 alt="Chouhan Group Legacy"
                 className="relative rounded-xl shadow-2xl w-full h-[400px] md:h-[600px] object-cover"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -183,7 +185,13 @@ const Home: React.FC = () => {
               >
                 <div className="h-64 w-full overflow-hidden relative rounded-t-2xl">
                   <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors z-10"></div>
-                  <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
 
                 <div className="absolute top-64 right-8 -translate-y-1/2 z-30">
@@ -218,6 +226,8 @@ const Home: React.FC = () => {
                   src="/new images/impact_house.png"
                   alt="Chouhan Group Impact Illustration"
                   className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -274,8 +284,20 @@ const Home: React.FC = () => {
               </Link>
             </div>
             <div className="lg:w-1/2 grid grid-cols-2 gap-6 w-full">
-              <img src="/new images/sunrisecity.webp" className="rounded-xl shadow-2xl translate-y-8 grayscale hover:grayscale-0 transition-all duration-500" alt="Interior 1" />
-              <img src="/new images/chouhan_town_img_4.jpg" className="rounded-xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-500" alt="Interior 2" />
+              <img
+                src="/new images/sunrisecity.webp"
+                className="rounded-xl shadow-2xl translate-y-8 grayscale hover:grayscale-0 transition-all duration-500"
+                alt="Interior 1"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="/new images/chouhan_town_img_4.jpg"
+                className="rounded-xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-500"
+                alt="Interior 2"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </div>
         </div>
@@ -297,7 +319,13 @@ const Home: React.FC = () => {
               <div key={idx} className="group cursor-pointer">
                 <div className="relative overflow-hidden rounded-2xl mb-8 h-72 shadow-lg">
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors z-10"></div>
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                  />
                   <div className="absolute bottom-0 left-0 p-8 z-20 w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300">
                     <h3 className="text-2xl font-bold text-white">{project.title}</h3>
                   </div>

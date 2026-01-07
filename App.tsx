@@ -85,7 +85,7 @@ const SINGAPORE_DATA: ProjectData = {
     phone: "+91 91091 04005",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "/new images/herosingapore.JPG",
+  heroImage: "/new images/singapore_city_4_1.jpg",
   mapQuery: "CHOUHAN SINGAPORE LIFE CITY PHASE 1",
   websiteUrl: "https://singapore-city.vercel.app/"
 };
@@ -193,7 +193,7 @@ const EMPYREAN_BALOD_DATA: ProjectData = {
     phone: "+91 788 404 0000",
     email: "reservations@empyreanhotels.in"
   },
-  heroImage: "/new images/ELR_Balod 25.jpg",
+  heroImage: "/new images/bcw44.webp",
   mapQuery: "Empyrean Lake Resort",
   websiteUrl: "https://www.empyreanhotels.in/balod"
 };
@@ -211,7 +211,7 @@ const CHOUHAN_TOWN_DATA: ProjectData = {
     phone: "+91 91091 04005",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "/new images/chouhan_town_img_12.jpg",
+  heroImage: "/new images/chouhan_town_overview.webp",
   mapQuery: "Chouhan Town, Bhilai",
   websiteUrl: "https://chouhan-town.vercel.app/"
 };

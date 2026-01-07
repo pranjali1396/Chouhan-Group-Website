@@ -10,23 +10,23 @@ const SLIDES = [
   },
   {
     id: 2,
-    image: '/new images/ai_nexa_showroom.png',
+    image: '/new images/Arena.webp',
   },
   {
     id: 3,
-    image: '/new images/pro.png',
-  },
-  {
-    id: 3,
-    image: '/new images/hero1.webp',
+    image: '/new images/bcw44.webp',
   },
   {
     id: 4,
-    image: '/new images/hero2.webp',
+    image: '/new images/hero1.webp',
   },
   {
     id: 5,
-    image: '/new images/ELR_Balod 104.jpg',
+    image: '/new images/hero2.webp',
+  },
+  {
+    id: 6,
+    image: '/new images/sunrixecity_04.webp',
   }
 ];
 
@@ -66,6 +66,9 @@ const Hero: React.FC = () => {
               src={slide.image}
               alt="Chouhan Group Project View"
               className="w-full h-full object-cover object-center"
+              loading={index === 0 ? "eager" : "lazy"}
+              decoding="async"
+              {...(index === 0 ? { fetchpriority: "high" } as any : {})}
             />
           </div>
 
