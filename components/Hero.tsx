@@ -75,22 +75,23 @@ const Hero: React.FC = () => {
           <div className="absolute inset-0 bg-black/40 md:bg-gradient-to-r md:from-black/70 md:via-black/40 md:to-transparent"></div>
 
           {/* Text Content */}
-          <div className={`absolute inset-0 flex flex-col justify-center items-center text-center p-8 md:p-16 lg:p-20 z-20 ${index === current ? 'animate-fadeIn' : ''}`}>
-            <div className={`max-w-7xl space-y-6 transform transition-all duration-1000 ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          {/* Text Content */}
+          <div className={`absolute inset-0 flex flex-col justify-center items-center text-center p-6 md:p-12 lg:p-16 xl:p-24 z-20 ${index === current ? 'animate-fadeIn' : ''}`}>
+            <div className={`max-w-7xl space-y-4 md:space-y-6 transform transition-all duration-1000 ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
 
               {/* Orange Line */}
-              <div className="w-16 h-1 bg-amber-500 mx-auto mb-6"></div>
+              <div className="w-12 h-1 md:w-16 md:h-1 bg-amber-500 mx-auto mb-4 md:mb-6"></div>
 
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-black text-white leading-[1.1] drop-shadow-xl">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-heading font-black text-white leading-[1.1] drop-shadow-xl">
                 {slide.title}
               </h1>
-              <p className="text-base md:text-xl text-slate-200 font-light max-w-4xl mx-auto drop-shadow-md leading-relaxed">
+              <p className="text-sm md:text-base lg:text-lg xl:text-xl text-slate-200 font-light max-w-4xl mx-auto drop-shadow-md leading-relaxed px-4 md:px-0">
                 {slide.subtitle}
               </p>
-              <div className="pt-8">
+              <div className="pt-6 md:pt-8">
                 <Link
                   to={slide.link}
-                  className="inline-flex items-center gap-2 bg-white text-slate-900 px-8 py-4 font-bold tracking-widest uppercase text-xs hover:bg-amber-500 hover:text-white transition-all duration-300 shadow-lg rounded-sm"
+                  className="inline-flex items-center gap-2 bg-white text-slate-900 px-6 py-3 md:px-8 md:py-4 font-bold tracking-widest uppercase text-[10px] md:text-xs hover:bg-amber-500 hover:text-white transition-all duration-300 shadow-lg rounded-sm"
                 >
                   {slide.cta} <ArrowRight size={16} />
                 </Link>
