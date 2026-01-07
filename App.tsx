@@ -85,7 +85,7 @@ const SINGAPORE_DATA: ProjectData = {
     phone: "+91 91091 04005",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "/new images/singapore_city_4_1.jpg",
+  heroImage: "/new images/herosingapore_optimized.webp",
   mapQuery: "CHOUHAN SINGAPORE LIFE CITY PHASE 1",
   websiteUrl: "https://singapore-city.vercel.app/"
 };
@@ -193,7 +193,7 @@ const EMPYREAN_BALOD_DATA: ProjectData = {
     phone: "+91 788 404 0000",
     email: "reservations@empyreanhotels.in"
   },
-  heroImage: "/new images/bcw44.webp",
+  heroImage: "/new images/ELR_Balod_104_optimized.webp",
   mapQuery: "Empyrean Lake Resort",
   websiteUrl: "https://www.empyreanhotels.in/balod"
 };

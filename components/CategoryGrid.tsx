@@ -13,13 +13,13 @@ const CATEGORIES = [
   {
     title: "COMMERCIAL",
     subtitle: "",
-    image: "/new images/chouhan_park_view_4_1846x750.webp",
+    image: "/new images/image.png",
     link: "/commercial"
   },
   {
     title: "HOSPITALITY",
     subtitle: "",
-    image: "/new images/IMG_0028_optimized.webp",
+    image: "/new images/chouhan2.jpg",
     link: "/hospitality"
   },
   {

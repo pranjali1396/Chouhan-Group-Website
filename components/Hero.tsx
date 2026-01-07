@@ -1,32 +1,31 @@
-
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const SLIDES = [
   {
     id: 1,
-    image: '/new images/chouhan_town_2.webp',
+    image: '/new images/hero1.webp',
+    title: "Pioneering Infrastructure in Bhilai-Durg",
+    subtitle: "Choose from a range of flats, row houses, apartments, and commercial complex tailored to your needs and aspirations.",
+    link: "/new-homes",
+    cta: "FIND YOUR PERFECT PLACE"
   },
   {
     id: 2,
-    image: '/new images/ai_nexa_showroom_optimized.webp',
+    image: '/new images/pro_optimized.webp',
+    title: "Spaces Designed for Success",
+    subtitle: "Premium commercial properties offering the perfect environment for your business to thrive.",
+    link: "/commercial",
+    cta: "EXPLORE COMMERCIAL"
   },
   {
     id: 3,
-    image: '/new images/pro_optimized.webp',
-  },
-  {
-    id: 4,
-    image: '/new images/hero1.webp',
-  },
-  {
-    id: 5,
-    image: '/new images/hero2.webp',
-  },
-  {
-    id: 6,
     image: '/new images/ELR_Balod_104_optimized.webp',
+    title: "Experience Unmatched Luxury",
+    subtitle: "From serene lake resorts to premium city hotels, experience hospitality at its finest.",
+    link: "/hospitality",
+    cta: "BOOK YOUR STAY"
   }
 ];
 
@@ -53,7 +52,7 @@ const Hero: React.FC = () => {
   }, [isAutoPlaying]);
 
   return (
-    <div className="relative w-full h-[300px] sm:h-[500px] lg:h-[90vh] 2xl:h-[100vh] bg-slate-900 overflow-hidden group touch-pan-y">
+    <div className="relative w-full h-[500px] lg:h-[90vh] 2xl:h-[100vh] bg-slate-900 overflow-hidden group touch-pan-y">
       {SLIDES.map((slide, index) => (
         <div
           key={slide.id}
@@ -72,10 +71,32 @@ const Hero: React.FC = () => {
             />
           </div>
 
-          {/* Gradient Overlay - Extremely minimal for maximum image clarity */}
-          <div className="absolute inset-0 bg-black/20 md:bg-gradient-to-r md:from-black/40 md:via-transparent md:to-transparent"></div>
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-black/40 md:bg-gradient-to-r md:from-black/70 md:via-black/40 md:to-transparent"></div>
 
+          {/* Text Content */}
+          <div className={`absolute inset-0 flex flex-col justify-center items-center text-center p-8 md:p-20 lg:p-32 z-20 ${index === current ? 'animate-fadeIn' : ''}`}>
+            <div className={`max-w-4xl space-y-6 transform transition-all duration-1000 ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
 
+              {/* Orange Line */}
+              <div className="w-16 h-1 bg-amber-500 mx-auto mb-6"></div>
+
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-black text-white leading-[1.1] drop-shadow-xl">
+                {slide.title}
+              </h1>
+              <p className="text-lg md:text-2xl text-slate-200 font-light max-w-3xl mx-auto drop-shadow-md leading-relaxed">
+                {slide.subtitle}
+              </p>
+              <div className="pt-8">
+                <Link
+                  to={slide.link}
+                  className="inline-flex items-center gap-2 bg-white text-slate-900 px-8 py-4 font-bold tracking-widest uppercase text-xs hover:bg-amber-500 hover:text-white transition-all duration-300 shadow-lg rounded-sm"
+                >
+                  {slide.cta} <ArrowRight size={16} />
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       ))}
 

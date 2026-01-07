@@ -15,7 +15,7 @@ const SERVICE_HIGHLIGHTS = [
     title: "Housing Business",
     desc: "Discover the Art of Exceptional Living! Your Dream Home Awaits in Our Stunning Collection of Flats, Row Houses, and Apartments.",
     icon: <HomeIcon size={24} />,
-    image: "/new images/chouhan-green-valley-7.webp",
+    image: "/new images/chouhan-building.webp",
     link: "/new-homes"
   },
   {
@@ -29,7 +29,7 @@ const SERVICE_HIGHLIGHTS = [
     title: "Hospitality",
     desc: "Experience unmatched luxury at our hotels and resorts. Where every stay is an experience beyond expectations!",
     icon: <Coffee size={24} />,
-    image: "/new images/IMG_0028_optimized.webp",
+    image: "/new images/chouhan2.jpg",
     link: "/hospitality"
   },
   {
@@ -59,7 +59,7 @@ const PROJECTS = [
   {
     title: "Chouhan Park View",
     desc: "A prestigious project by Chouhan Group, is located on Junwani Road, Bhilai",
-    image: "/new images/chouhan_park_view_3.webp",
+    image: "/new images/chouhan_park_view_4.webp",
     link: "/new-homes/parkview"
   },
   {
