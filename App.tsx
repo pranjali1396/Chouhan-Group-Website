@@ -508,7 +508,7 @@ const AppContent: React.FC = () => {
   const hideHeaderFooter = location.pathname === '/commercial/estate-details' || location.pathname === '/commercial/landmark-details' || location.pathname === '/commercial/city-center' || location.pathname === '/new-homes/sunrise-city' || location.pathname === '/commercial/shikhar-complex' || location.pathname === '/new-homes/dream-homes' || location.pathname === '/commercial/plaza-details';
 
   return (
-    <div className="flex flex-col min-h-screen font-sans text-slate-900 bg-white selection:bg-amber-100 selection:text-amber-900">
+    <div className="flex flex-col min-h-screen font-sans text-slate-900 bg-white selection:bg-amber-100 selection:text-amber-900 overflow-x-hidden">
       {!hideHeaderFooter && <Header navData={NAVIGATION_DATA} />}
 
       <Routes>

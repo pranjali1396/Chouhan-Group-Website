@@ -127,7 +127,7 @@ const Home: React.FC = () => {
                 Know More <ArrowRight size={14} />
               </Link>
             </div>
-            <div className="lg:w-1/2 relative w-full mt-12 lg:mt-0">
+            <div className="lg:w-1/2 relative w-full mt-12 lg:mt-0 overflow-hidden lg:overflow-visible">
               <div className="absolute -inset-4 bg-amber-50 rounded-2xl transform rotate-2"></div>
               <img
                 src="/new images/sunrixecity_04.webp"
@@ -283,7 +283,7 @@ const Home: React.FC = () => {
                 Explore Your Dream Home <ArrowRight size={16} />
               </Link>
             </div>
-            <div className="lg:w-1/2 grid grid-cols-2 gap-4 xl:gap-6 w-full mt-12 lg:mt-0">
+            <div className="lg:w-1/2 grid grid-cols-2 gap-4 xl:gap-6 w-full mt-12 lg:mt-0 overflow-hidden">
               <img
                 src="/new images/sunrisecity.webp"
                 className="rounded-xl shadow-2xl translate-y-6 md:translate-y-8 grayscale hover:grayscale-0 transition-all duration-500"
