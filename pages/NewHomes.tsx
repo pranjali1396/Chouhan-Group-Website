@@ -9,9 +9,9 @@ const PROPERTIES = [
     name: "Singapore Life Phase 1, 2 And 4",
     location: "Bhilai",
     type: "Premium Plots and Bunglows",
-    price: "₹ 25L - ₹ 65L",
-    priceVal: 2500000,
-    image: "/new images/WhatsApp Image 2025-10-02 at 05.47.15_1a2db32e.jpg",
+    price: "₹ 19L - ₹ 1.2Cr",
+    priceVal: 1900000,
+    image: "/new_images/WhatsApp_Image_2025-10-02_at_05.47.15_1a2db32e.jpg",
     link: "/new-homes/singapore-life",
     status: "Now Selling",
     bhk: "3 & 4 BHK",
@@ -22,9 +22,9 @@ const PROPERTIES = [
     name: "Chouhan Green Valley Phase 1, 2, 3",
     location: "Junwani, Bhilai",
     type: "Premium Flats, Bungalows and Penthouse",
-    price: "₹ 55L - ₹ 1.2Cr",
-    priceVal: 5500000,
-    image: "/new images/chouhan-green-valley-6 (1).webp",
+    price: "₹ 16L - ₹ 1Cr",
+    priceVal: 1600000,
+    image: "/new_images/chouhan-green-valley-6_(1).webp",
     link: "/new-homes/green-valley",
     status: "Ready to Move",
     bhk: "4 & 5 BHK Villas and 2 and 3 bhk Flats",
@@ -35,9 +35,9 @@ const PROPERTIES = [
     name: "Sunrise City",
     location: "Dhamdha Road, Durg",
     type: "Plotted Development",
-    price: "₹ 15L - ₹ 45L",
-    priceVal: 1500000,
-    image: "new images/sunrise_city.webp",
+    price: "₹ 11L - ₹ 1Cr",
+    priceVal: 1100000,
+    image: "/chouhan_sunrise_city_img_3.webp",
     link: "/new-homes/sunrise-city-details",
     status: "New Launch",
     bhk: "Residential Plots",
@@ -48,9 +48,9 @@ const PROPERTIES = [
     name: "Chouhan Town",
     location: "Bhilai",
     type: "Apartments and bunglows",
-    price: "₹ 22L - ₹ 40L",
-    priceVal: 2200000,
-    image: "/new images/chouhan_town_overview.webp",
+    price: "₹ 31L - ₹ 1Cr",
+    priceVal: 3100000,
+    image: "/new_images/chouhan_town_overview.webp",
     link: "/new-homes/town",
     status: "Few Units Left",
     bhk: "1, 2, 3, 4 and 5 BHK",
@@ -61,9 +61,9 @@ const PROPERTIES = [
     name: "Chouhan Parkview",
     location: "Junwani Road, Bhilai",
     type: "High-Rise Apartments and Bungalows",
-    price: "₹ 35L - ₹ 60L",
-    priceVal: 3500000,
-    image: "/new images/Housing Chouhan (3).png",
+    price: "₹ 20L - ₹ 2.75Cr",
+    priceVal: 2000000,
+    image: "/new_images/chouhan_park_view_4.webp",
     link: "/new-homes/parkview",
     status: "Now Selling",
     bhk: "2, 3, 4 and 5 BHK",
@@ -125,7 +125,7 @@ const NewHomes: React.FC = () => {
 
       {/* Hero Section */}
       <div className="bg-[#002b49] text-white pt-32 md:pt-48 pb-24 md:pb-32 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000')] bg-cover bg-center opacity-10"></div>
+        <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{ backgroundImage: 'url("/new_images/chouhan-green-valley-7.webp")' }}></div>
         <div className="container mx-auto max-w-5xl relative z-10 text-center">
           <span className="text-amber-500 font-bold tracking-widest text-xs uppercase mb-4 block animate-fadeIn">Find Your Sanctuary</span>
           <h1 className="text-4xl md:text-6xl font-heading font-black mb-6 animate-slideUp">

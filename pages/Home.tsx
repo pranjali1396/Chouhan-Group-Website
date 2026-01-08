@@ -15,28 +15,28 @@ const SERVICE_HIGHLIGHTS = [
     title: "Housing Business",
     desc: "Discover the Art of Exceptional Living! Your Dream Home Awaits in Our Stunning Collection of Flats, Row Houses, and Apartments.",
     icon: <HomeIcon size={24} />,
-    image: "/new images/chouhan-building.webp",
+    image: "/new_images/chouhan-building.webp",
     link: "/new-homes"
   },
   {
     title: "Commercial Projects",
     desc: "Premium commercial spaces designed for success. From retail outlets to office complexes, we build landmarks for businesses.",
     icon: <Building2 size={24} />,
-    image: "/new images/chouhan_estate.webp",
+    image: "/new_images/chouhan_estate.webp",
     link: "/commercial"
   },
   {
     title: "Hospitality",
     desc: "Experience unmatched luxury at our hotels and resorts. Where every stay is an experience beyond expectations!",
     icon: <Coffee size={24} />,
-    image: "/new images/chouhan2.jpg",
+    image: "/new_images/chouhan2.jpg",
     link: "/hospitality"
   },
   {
     title: "Automobiles",
     desc: "Proud partners of Maruti Suzuki Arena, NEXA, Hero, and Ashok Leyland. Driving excellence in mobility.",
     icon: <Car size={24} />,
-    image: "/images/maruti-arena.png",
+    image: "/new_images/maruti-suzuki.webp",
     link: "/automobile"
   },
   {
@@ -59,19 +59,19 @@ const PROJECTS = [
   {
     title: "Chouhan Park View",
     desc: "A prestigious project by Chouhan Group, is located on Junwani Road, Bhilai",
-    image: "/new images/chouhan_park_view_4.webp",
+    image: "/new_images/chouhan_park_view_4.webp",
     link: "/new-homes/parkview"
   },
   {
     title: "Chouhan Green Valley",
     desc: "One of the popular residential developments in Bhilai.",
-    image: "/new images/chouhan-green-valley-6 (1).webp",
+    image: "/new_images/chouhan-green-valley-6_(1).webp",
     link: "/new-homes/green-valley"
   },
   {
-    title: "Singapore Life City I",
+    title: "Singapore Life City I,II and IV",
     desc: "A well-planned modern and smart layout city inspired by Singapore, is at Bhilai.",
-    image: "/new images/singa_gate_half.webp",
+    image: "/new_images/singa_gate_half.webp",
     link: "/new-homes/singapore-life"
   }
 ];
@@ -130,7 +130,7 @@ const Home: React.FC = () => {
             <div className="lg:w-1/2 relative w-full mt-12 lg:mt-0 overflow-hidden lg:overflow-visible">
               <div className="absolute -inset-4 bg-amber-50 rounded-2xl transform rotate-2"></div>
               <img
-                src="/new images/sunrixecity_04.webp"
+                src="/new_images/sunrixecity_04.webp"
                 alt="Chouhan Group Legacy"
                 className="relative rounded-xl shadow-2xl w-full h-[400px] md:h-[500px] lg:h-[550px] xl:h-[650px] object-cover"
                 loading="lazy"
@@ -223,7 +223,7 @@ const Home: React.FC = () => {
               <div className="relative">
                 <div className="absolute -inset-10 bg-amber-50 rounded-full opacity-50 blur-3xl -z-10"></div>
                 <img
-                  src="/new images/impact_house.png"
+                  src="/new_images/impact_house.png"
                   alt="Chouhan Group Impact Illustration"
                   className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
                   loading="lazy"
@@ -262,7 +262,7 @@ const Home: React.FC = () => {
 
       {/* Housing Project Feature */}
       <section className="py-20 md:py-28 lg:py-32 xl:py-40 bg-slate-900 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000')] bg-cover bg-fixed"></div>
+        <div className="absolute inset-0 opacity-20 bg-cover bg-fixed" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000")' }}></div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 to-slate-900/80"></div>
         <div className="container mx-auto px-4 relative z-10 max-w-7xl">
           <div className="flex flex-col lg:flex-row gap-12 xl:gap-24 items-center">
@@ -285,14 +285,14 @@ const Home: React.FC = () => {
             </div>
             <div className="lg:w-1/2 grid grid-cols-2 gap-4 xl:gap-6 w-full mt-12 lg:mt-0 overflow-hidden">
               <img
-                src="/new images/sunrisecity.webp"
+                src="/new_images/sunrisecity.webp"
                 className="rounded-xl shadow-2xl translate-y-6 md:translate-y-8 grayscale hover:grayscale-0 transition-all duration-500"
                 alt="Interior 1"
                 loading="lazy"
                 decoding="async"
               />
               <img
-                src="/new images/chouhan_town_img_4.jpg"
+                src="/new_images/chouhan_town_img_4.jpg"
                 className="rounded-xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-500"
                 alt="Interior 2"
                 loading="lazy"

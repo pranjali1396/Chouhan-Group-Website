@@ -213,7 +213,7 @@ const CityCenter: React.FC = () => {
 
       {/* Booking Form Section */}
       <section className="py-32 bg-[#002b49] text-white overflow-hidden relative" id="contact">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2000')] bg-cover opacity-5"></div>
+        <div className="absolute inset-0 bg-cover opacity-5" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2000")' }}></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col lg:flex-row gap-20 items-center">
 

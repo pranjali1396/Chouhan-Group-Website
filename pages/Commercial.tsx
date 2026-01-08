@@ -10,7 +10,7 @@ const COMMERCIAL_PROPERTIES = [
     location: "GE Road, Bhilai",
     type: "Office Space",
     sector: "Office",
-    image: "/new images/Business center.webp",
+    image: "/new_images/Business_center.webp",
     link: "/commercial/business-center",
     status: "Now Selling",
     features: "Premium Offices • High Visibility",
@@ -36,7 +36,7 @@ const COMMERCIAL_PROPERTIES = [
     location: "Bhilai-Durg Road",
     type: "Commercial Complex",
     sector: "Mixed-use",
-    image: "/new images/chouhan_business_park_ai.png",
+    image: "/new_images/chouhan_business_park_ai.png",
     link: "/commercial/business-park",
     status: "Now Selling",
     features: "Large Floor Plates • Modern Facade",
@@ -72,7 +72,7 @@ const COMMERCIAL_PROPERTIES = [
     location: "Bhilai",
     type: "Retail Hub",
     sector: "Retail",
-    image: "/new images/chouhan_plaza_ai.png",
+    image: "/new_images/chouhan_plaza_ai.png",
     link: "/commercial/plaza",
     status: "Sold",
     features: "Multi-brand Retail • Centralized AC",
@@ -129,7 +129,7 @@ const Commercial: React.FC = () => {
 
       {/* Hero Section */}
       <div className="bg-[#002b49] text-white pt-32 md:pt-48 pb-24 md:pb-32 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=2000')] bg-cover bg-center opacity-10"></div>
+        <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{ backgroundImage: 'url("/new_images/Parkview_complex_card_optimized.webp")' }}></div>
         <div className="container mx-auto max-w-5xl relative z-10 text-center">
           <span className="text-amber-500 font-bold tracking-widest text-xs uppercase mb-4 block animate-fadeIn">For the Visionaries</span>
           <h1 className="text-4xl md:text-6xl font-heading font-black mb-6 animate-slideUp">

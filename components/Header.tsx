@@ -237,31 +237,35 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
 
                   {/* Desktop Mega Menu Dropdown */}
                   {activeMenu === item.label && item.columns && (
-                    <div className={`absolute top-full mt-0 w-max min-w-[300px] bg-white text-slate-800 shadow-xl rounded-b-lg border-t-4 border-amber-500 z-50 flex overflow-hidden animate-fadeIn max-w-[90vw] ${navData.indexOf(item) >= (navData.length / 2) - 1 ? 'right-0' : 'left-0'
+                    <div className={`absolute top-full mt-0 w-max min-w-[220px] bg-white text-slate-800 shadow-xl rounded-b-lg border-t-2 border-amber-500 z-[100] flex animate-fadeIn max-w-[95vw] max-h-[calc(100vh-120px)] overflow-y-auto no-scrollbar scroll-smooth ${navData.indexOf(item) < 7
+                      ? 'right-0'
+                      : 'left-0'
                       }`}>
-                      {item.columns.map((col, idx) => (
-                        <div key={idx} className="p-6 min-w-[220px] border-r border-slate-100 last:border-r-0 bg-white">
-                          {col.title && (
-                            <h4 className="text-[15px] font-black text-amber-600 uppercase mb-4 tracking-widest border-b border-amber-100 pb-2 inline-block">
-                              {col.title}
-                            </h4>
-                          )}
-                          <ul className="space-y-2.5">
-                            {col.links.length > 0 ? col.links.map((link, lIdx) => (
-                              <li key={lIdx}>
-                                <Link
-                                  to={link.path}
-                                  className="text-[14px] font-bold text-slate-500 hover:text-amber-600 hover:translate-x-1 transition-all block leading-tight uppercase tracking-wider"
-                                >
-                                  {link.label}
-                                </Link>
-                              </li>
-                            )) : (
-                              <li className="text-[10px] text-slate-400 italic">No current listings</li>
+                      <div className="flex h-full">
+                        {item.columns.map((col, idx) => (
+                          <div key={idx} className="p-4 md:p-5 min-w-[160px] lg:min-w-[190px] border-r border-slate-100 last:border-r-0 bg-white">
+                            {col.title && (
+                              <h4 className="text-[10px] md:text-[11px] font-black text-amber-600 uppercase mb-3 tracking-widest border-b border-amber-100 pb-1 inline-block">
+                                {col.title}
+                              </h4>
                             )}
-                          </ul>
-                        </div>
-                      ))}
+                            <ul className="space-y-1.5">
+                              {col.links.length > 0 ? col.links.map((link, lIdx) => (
+                                <li key={lIdx}>
+                                  <Link
+                                    to={link.path}
+                                    className="text-[10px] md:text-[11px] font-semibold text-slate-500 hover:text-amber-600 hover:translate-x-0.5 transition-all block leading-tight uppercase tracking-wider"
+                                  >
+                                    {link.label}
+                                  </Link>
+                                </li>
+                              )) : (
+                                <li className="text-[9px] text-slate-400 italic">No current listings</li>
+                              )}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>

@@ -313,7 +313,7 @@ const ChouhanCityCenterLanding: React.FC = () => {
 
             {/* Project Highlights / Stats */}
             <section id="stats" className="py-24 bg-white text-stone-800 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('/images/city_center_interior_atrium.png')] bg-cover bg-center opacity-15"></div>
+                <div className="absolute inset-0 bg-cover bg-center opacity-15" style={{ backgroundImage: 'url("/images/city_center_interior_atrium.png")' }}></div>
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl font-heading font-bold mb-4 text-stone-900">Project Highlights</h2>

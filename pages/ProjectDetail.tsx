@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { Facebook, Twitter, Linkedin, Mail, Ban } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Facebook, Twitter, Linkedin, Mail, Ban, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export interface ProjectData {
@@ -16,7 +16,8 @@ export interface ProjectData {
     phone: string;
     email: string;
   };
-  heroImage: string;
+  heroImage: string | string[];
+  heroPositions?: string[];
   mapQuery: string;
   logoText?: string; // For the script-style logo in the sidebar
   gallery?: string[];
@@ -25,19 +26,68 @@ export interface ProjectData {
 
 const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
   const isSold = data.status.toLowerCase() === 'sold';
+  const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
+  const heroImages = Array.isArray(data.heroImage) ? data.heroImage : [data.heroImage];
+
+  useEffect(() => {
+    if (heroImages.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setCurrentHeroIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
 
   return (
     <div className="bg-white font-sans text-slate-800 pt-32 md:pt-48">
       {/* Hero Section - Large image with simple white text overlay */}
       <div className="relative h-[35vh] md:h-[85vh] min-h-[220px] md:min-h-[500px] w-full overflow-hidden">
-        <img
-          src={data.heroImage}
-          alt={data.title}
-          className="w-full h-full object-cover"
-          loading="eager"
-          decoding="async"
-        />
-        <div className="absolute inset-0 bg-black/10"></div>
+        {heroImages.map((img, idx) => (
+          <div
+            key={idx}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === currentHeroIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+          >
+            <img
+              src={img}
+              alt={`${data.title} ${idx + 1}`}
+              className={`w-full h-full object-cover ${data.heroPositions && data.heroPositions[idx] ? data.heroPositions[idx] : 'object-center'}`}
+              loading={idx === 0 ? "eager" : "lazy"}
+              decoding="async"
+            />
+          </div>
+        ))}
+
+        <div className="absolute inset-0 bg-black/10 z-10"></div>
+
+        {/* Navigation Arrows for Slider (only if multiple images) */}
+        {heroImages.length > 1 && (
+          <>
+            <button
+              onClick={() => setCurrentHeroIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length)}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full backdrop-blur-sm transition-all md:flex hidden items-center justify-center"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <button
+              onClick={() => setCurrentHeroIndex((prev) => (prev + 1) % heroImages.length)}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full backdrop-blur-sm transition-all md:flex hidden items-center justify-center"
+            >
+              <ChevronRight size={24} />
+            </button>
+
+            {/* Dots */}
+            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+              {heroImages.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentHeroIndex(idx)}
+                  className={`w-2 h-2 rounded-full transition-all ${idx === currentHeroIndex ? 'bg-white w-6' : 'bg-white/50'}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
 
         {/* SOLD OUT Overlay */}
         {isSold && (

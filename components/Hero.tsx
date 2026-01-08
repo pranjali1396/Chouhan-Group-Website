@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const SLIDES = [
   {
     id: 1,
-    image: '/new images/hero1.webp',
+    image: '/new_images/CAM-4_optimized.webp',
     title: "Pioneering Infrastructure in Bhilai-Durg",
     subtitle: "Choose from a range of flats, row houses, apartments, and commercial complex tailored to your needs and aspirations.",
     link: "/new-homes",
@@ -13,7 +13,7 @@ const SLIDES = [
   },
   {
     id: 2,
-    image: '/new images/pro_optimized.webp',
+    image: '/new_images/Parkview_complex_card_optimized.webp',
     title: "Spaces Designed for Success",
     subtitle: "Premium commercial properties offering the perfect environment for your business to thrive.",
     link: "/commercial",
@@ -21,12 +21,13 @@ const SLIDES = [
   },
   {
     id: 3,
-    image: '/new images/ELR_Balod_104_optimized.webp',
+    image: '/new_images/ELR_Balod_103_optimized.webp',
     title: "Experience Unmatched Luxury",
     subtitle: "From serene lake resorts to premium city hotels, experience hospitality at its finest.",
     link: "/hospitality",
     cta: "BOOK YOUR STAY"
-  }
+  },
+
 ];
 
 const Hero: React.FC = () => {
@@ -67,7 +68,7 @@ const Hero: React.FC = () => {
               className="w-full h-full object-cover object-center"
               loading={index === 0 ? "eager" : "lazy"}
               decoding="async"
-              {...(index === 0 ? { fetchpriority: "high" } as any : {})}
+              {...(index === 0 ? { fetchPriority: "high" } : {})}
             />
           </div>
 
@@ -77,7 +78,7 @@ const Hero: React.FC = () => {
           {/* Text Content */}
           {/* Text Content */}
           <div className={`absolute inset-0 flex flex-col justify-center items-center text-center p-6 md:p-12 lg:p-16 xl:p-24 z-20 ${index === current ? 'animate-fadeIn' : ''}`}>
-            <div className={`max-w-7xl space-y-4 md:space-y-6 transform transition-all duration-1000 ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <div className={`max-w-7xl space-y-4 md:space-y-6 mt-12 md:mt-20 transform transition-all duration-1000 ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
 
               {/* Orange Line */}
               <div className="w-12 h-1 md:w-16 md:h-1 bg-amber-500 mx-auto mb-5 md:mb-8"></div>

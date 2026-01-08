@@ -9,7 +9,7 @@ const HOSPITALITY_DATA = [
     location: "GE Road, Bhilai",
     type: "Luxury Hotel",
     rating: "4.5",
-    image: "/new images/chouhan2.jpg",
+    image: "/new_images/chouhan2.jpg",
     link: "/hospitality/empyrean-bhilai",
     status: "Now Open",
     category: "Hotel",
@@ -22,7 +22,7 @@ const HOSPITALITY_DATA = [
     location: "Lake Side, Balod",
     type: "Lakeside Resort",
     rating: "4.8",
-    image: "/new images/ELR_Balod 25.jpg",
+    image: "/new_images/ELR_Balod_25.jpg",
     link: "/hospitality/empyrean-balod",
     status: "Now Open",
     category: "Resort",
@@ -35,7 +35,7 @@ const HOSPITALITY_DATA = [
     location: "Near Airport, Raipur",
     type: "Transit Boutique Hotel",
     rating: "4.2",
-    image: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=1200",
+    image: "/new_images/tatibandh.png",
     link: "/hospitality/empyrean-kendri",
     status: "Upcoming",
     category: "Boutique",
@@ -47,7 +47,7 @@ const HOSPITALITY_DATA = [
     location: "National Highway, Rajnandgaon",
     type: "Highway Resort",
     rating: "4.0",
-    image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=1200",
+    image: "/new_images/tumdibod.png",
     link: "/hospitality/empyrean-tumdibod",
     status: "Upcoming",
     category: "Resort",
@@ -59,7 +59,7 @@ const HOSPITALITY_DATA = [
     location: "Civil Lines, Durg",
     type: "Classic Luxury",
     rating: "4.4",
-    image: "https://images.unsplash.com/photo-1551882547-ff43c63be5c2?q=80&w=1200",
+    image: "/new_images/paladio.png",
     link: "/hospitality/palladio",
     status: "Upcoming",
     category: "Hotel",
@@ -71,7 +71,7 @@ const HOSPITALITY_DATA = [
     location: "Bhilai",
     type: "Modern Business Hotel",
     rating: "4.1",
-    image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200",
+    image: "/new_images/skypark.png",
     link: "/hospitality/skypark",
     status: "Upcoming",
     category: "Hotel",
@@ -111,7 +111,7 @@ const Hospitality: React.FC = () => {
 
       {/* Hero Section */}
       <div className="bg-[#002b49] text-white pt-32 md:pt-48 pb-24 md:pb-32 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2000')] bg-cover bg-center opacity-10 scale-110 blur-sm"></div>
+        <div className="absolute inset-0 bg-cover bg-center opacity-10 scale-110 blur-sm" style={{ backgroundImage: 'url("/new_images/chouhan2_optimized.webp")' }}></div>
         <div className="container mx-auto max-w-5xl relative z-10 text-center">
           <span className="text-amber-500 font-bold tracking-widest text-xs uppercase mb-4 block animate-fadeIn">Experience Luxury</span>
           <h1 className="text-4xl md:text-6xl font-heading font-black mb-6 animate-slideUp">

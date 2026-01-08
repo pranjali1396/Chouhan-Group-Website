@@ -151,7 +151,7 @@ const ChouhanPlazaLanding: React.FC = () => {
             <section id="home" className="relative w-full overflow-hidden">
                 <div className="w-full aspect-[21/9] min-h-[400px] relative">
                     <img
-                        src="/new images/chouhan_plaza_ai.png"
+                        src="/new_images/chouhan_plaza_ai.png"
                         alt="Chouhan Plaza"
                         className="w-full h-full object-cover grayscale-[0.3]"
                     />

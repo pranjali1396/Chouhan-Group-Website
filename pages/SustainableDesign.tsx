@@ -29,7 +29,7 @@ const SustainableDesign: React.FC = () => {
 
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000')] bg-cover bg-center"></div>
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000")' }}></div>
         <div className="absolute inset-0 bg-white/90"></div>
         <div className="container mx-auto px-4 relative z-10 text-center text-slate-900">
           <div className="inline-block border border-emerald-500/30 bg-emerald-50 px-4 py-1 rounded-full text-emerald-600 font-bold tracking-widest text-xs uppercase mb-6">

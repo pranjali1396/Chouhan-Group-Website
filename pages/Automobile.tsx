@@ -10,7 +10,7 @@ const AUTOMOBILE_DATA = [
     baseLocation: "Bhilai",
     type: "Authorized Dealership",
     brand: "Maruti Suzuki",
-    image: "/new images/Arena.webp",
+    image: "/new_images/Arena.webp",
     link: "/automobile/maruti",
     status: "Open Now",
     feature: "Sales • Service • Spares",
@@ -24,7 +24,7 @@ const AUTOMOBILE_DATA = [
     baseLocation: "Bhilai",
     type: "Premium Dealership",
     brand: "Nexa",
-    image: "/new images/maruti-suzuki.webp",
+    image: "/new_images/maruti-suzuki.webp",
     link: "/automobile/nexa",
     status: "Open Now",
     feature: "Premium Car Experience",
@@ -38,7 +38,7 @@ const AUTOMOBILE_DATA = [
     baseLocation: "Durg",
     type: "Two Wheeler Dealer",
     brand: "Hero",
-    image: "/new images/herofinal.webp",
+    image: "/new_images/herofinal.webp",
     link: "/automobile/hero",
     status: "Open Now",
     feature: "World's No. 1 Two Wheeler",
@@ -66,7 +66,7 @@ const AUTOMOBILE_DATA = [
     baseLocation: "Bhilai",
     type: "Pre-owned Cars",
     brand: "Maruti Suzuki",
-    image: "/new images/trueshowroom.webp",
+    image: "/new_images/trueshowroom.webp",
     link: "/automobile/true-value",
     status: "Open Now",
     feature: "Certified Used Cars",
@@ -110,7 +110,7 @@ const Automobile: React.FC = () => {
 
       {/* Hero Section */}
       <div className="bg-[#002b49] text-white pt-32 md:pt-48 pb-24 md:pb-32 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1492144534655-ad79c964c9ad?q=80&w=2000')] bg-cover bg-center opacity-10 blur-sm"></div>
+        <div className="absolute inset-0 bg-cover bg-center opacity-10 blur-sm" style={{ backgroundImage: 'url("/new_images/maruti-suzuki-nexa_optimized.webp")' }}></div>
         <div className="container mx-auto max-w-5xl relative z-10 text-center">
           <span className="text-amber-500 font-bold tracking-widest text-xs uppercase mb-4 block animate-fadeIn">Driven by Excellence</span>
           <h1 className="text-4xl md:text-6xl font-heading font-black mb-6 animate-slideUp">

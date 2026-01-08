@@ -9,7 +9,7 @@ const RENTALS_DATA = [
     location: "NH-53, Bhilai",
     type: "Commercial Leasing",
     category: "Commercial",
-    image: "/new images/chouhan_estate.webp",
+    image: "/new_images/chouhan_estate.webp",
     link: "/commercial/estate-details",
     status: "Active",
     feature: "Industrial & Retail Spaces",
@@ -45,7 +45,7 @@ const RENTALS_DATA = [
     location: "Junwani, Bhilai",
     type: "Luxury Rental",
     category: "Residential",
-    image: "/new images/chouhan_park_view_3.webp",
+    image: "/new_images/chouhan_park_view_3.webp",
     link: "/rentals/parkview",
     status: "Coming Soon",
     feature: "Fully Furnished Options",
@@ -57,7 +57,7 @@ const RENTALS_DATA = [
     location: "GE Road",
     type: "Commercial Shop",
     category: "Commercial",
-    image: "/new images/chouhan_plaza_ai.png",
+    image: "/new_images/chouhan_plaza_ai.png",
     link: "/rentals/retail",
     status: "Coming Soon",
     feature: "Prime Road Frontage",
@@ -87,7 +87,7 @@ const Rentals: React.FC = () => {
 
       {/* Hero Section */}
       <div className="bg-[#002b49] text-white pt-32 md:pt-48 pb-24 md:pb-32 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2000')] bg-cover bg-center opacity-10 blur-sm"></div>
+        <div className="absolute inset-0 bg-cover bg-center opacity-10 blur-sm" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2000")' }}></div>
         <div className="container mx-auto max-w-5xl relative z-10 text-center">
           <span className="text-amber-500 font-bold tracking-widest text-xs uppercase mb-4 block animate-fadeIn">Seamless Living</span>
           <h1 className="text-4xl md:text-6xl font-heading font-black mb-6 animate-slideUp">

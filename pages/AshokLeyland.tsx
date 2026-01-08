@@ -69,7 +69,7 @@ const AshokLeyland: React.FC = () => {
 
             {/* Registration Section */}
             <section className="py-20 bg-slate-900 text-white relative overflow-hidden">
-                <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1605218427306-0296d27fe8a7?q=80&w=2000')] bg-cover bg-center"></div>
+                <div className="absolute inset-0 opacity-20 bg-cover bg-center" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1605218427306-0296d27fe8a7?q=80&w=2000")' }}></div>
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-2xl mx-auto bg-white text-slate-900 rounded-2xl p-8 md:p-12 shadow-2xl">
                         {!submitted ? (

@@ -85,9 +85,19 @@ const SINGAPORE_DATA: ProjectData = {
     phone: "+91 91091 04005",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "/new images/herosingapore_optimized.webp",
+  heroImage: [
+    "/new_images/Singapore_p1_and_p2.jpg",
+    "/new_images/Singapore_Phase_4_optimized.webp",
+    "/new_images/Singapore_P4_top_view.png"
+  ],
+  heroPositions: [
+    "object-bottom", // Focus on archway for 1st pic
+    "object-center", // Default for 2nd
+    "object-top"     // Focus on top for 3rd (top view)
+  ],
   mapQuery: "CHOUHAN SINGAPORE LIFE CITY PHASE 1",
-  websiteUrl: "https://singapore-city.vercel.app/"
+  websiteUrl: "https://singapore-city.vercel.app/",
+
 };
 
 const PARKVIEW_DATA: ProjectData = {
@@ -103,7 +113,7 @@ const PARKVIEW_DATA: ProjectData = {
     phone: "+91 72229 09449",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "/new images/chouhan_park_view_3.webp",
+  heroImage: "/new_images/chouhan_park_view_4.webp",
   mapQuery: "Chouhan Parkview",
   websiteUrl: "https://chouhan-park-view-xi.vercel.app/"
 };
@@ -121,7 +131,7 @@ const BUSINESS_CENTER_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "sales@chouhangroup.com"
   },
-  heroImage: "/new images/Businesscenter_hero.jpg",
+  heroImage: "/new_images/Business_Center_Drone_view.png",
   mapQuery: "Chouhan Business Center Phase-1",
   websiteUrl: "https://chouhan-business-center.vercel.app/"
 };
@@ -139,7 +149,7 @@ const BUSINESS_PARK_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "sales@chouhangroup.com"
   },
-  heroImage: "/new images/chouhan_business_park_ai.png",
+  heroImage: "/new_images/chouhan_business_park_ai.png",
   mapQuery: "Chouhan Business Center Phase-1",
   websiteUrl: "https://chouhan-business-park.vercel.app/"
 };
@@ -157,7 +167,7 @@ const GREEN_VALLEY_DATA: ProjectData = {
     phone: "+91 91091 04005",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "/new images/chouhan-green-valley-4 (1).webp",
+  heroImage: "/new_images/chouhan-green-valley-4_(1).webp",
   mapQuery: "Chouhan Green Valley Rd",
   websiteUrl: "https://green-valley-sage.vercel.app/"
 };
@@ -175,7 +185,7 @@ const EMPYREAN_BHILAI_DATA: ProjectData = {
     phone: "+91 788 404 0000",
     email: "reservations@empyreanhotels.in"
   },
-  heroImage: "/new images/chouhan2.jpg",
+  heroImage: "/new_images/chouhan2.jpg",
   mapQuery: "Empyrean hotels & resort, Bhilai",
   websiteUrl: "https://www.empyreanhotels.in/bhilai"
 };
@@ -193,7 +203,7 @@ const EMPYREAN_BALOD_DATA: ProjectData = {
     phone: "+91 788 404 0000",
     email: "reservations@empyreanhotels.in"
   },
-  heroImage: "/new images/ELR_Balod_104_optimized.webp",
+  heroImage: "/new_images/ELR_Balod_104_optimized.webp",
   mapQuery: "Empyrean Lake Resort",
   websiteUrl: "https://www.empyreanhotels.in/balod"
 };
@@ -211,7 +221,7 @@ const CHOUHAN_TOWN_DATA: ProjectData = {
     phone: "+91 91091 04005",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "/new images/chouhan_town_overview.webp",
+  heroImage: "/new_images/chouhan_town_overview.webp",
   mapQuery: "Chouhan Town, Bhilai",
   websiteUrl: "https://chouhan-town.vercel.app/"
 };
@@ -229,7 +239,7 @@ const CHOUHAN_ESTATES_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "sales@chouhangroup.com"
   },
-  heroImage: "/new images/chouhan_estate.webp",
+  heroImage: "/new_images/chouhan_estate.webp",
   mapQuery: "Chouhan Estate, Bhilai",
   websiteUrl: "/commercial/estate-details"
 };
@@ -247,7 +257,7 @@ const SUNRISE_CITY_DATA: ProjectData = {
     phone: "+91 91091 04005",
     email: "chouhanhousing@gmail.com"
   },
-  heroImage: "/new images/chouhan_sunrise_city_img_3.webp",
+  heroImage: "/new_images/singapore_city_4_1.jpg",
   mapQuery: "Sunrise City, Bhilai",
   websiteUrl: "/new-homes/sunrise-city"
 };
@@ -265,7 +275,7 @@ const PARKVIEW_COMPLEX_DATA: ProjectData = {
     phone: "+91 72229 09449",
     email: "sales@chouhangroup.com"
   },
-  heroImage: "new images/chouhan_park_view_4.webp", // Reusing business center image as placeholder
+  heroImage: "/new_images/Parkview_Hero_optimized.webp", // Reusing business center image as placeholder
   mapQuery: "Chouhan Parkview Complex, Junwani Road, Bhilai",
   websiteUrl: "https://chouhan-park-view-xi.vercel.app/commercial"
 };
@@ -319,7 +329,7 @@ const CHOUHAN_PLAZA_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "sales@chouhangroup.com"
   },
-  heroImage: "/new images/chouhan_plaza_ai.png",
+  heroImage: "/new_images/chouhan_plaza_ai.png",
   mapQuery: "Chouhan Plaza, Bhilai",
   websiteUrl: "/commercial/plaza-details"
 };
@@ -337,7 +347,7 @@ const CHOUHAN_COMPLEX_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "sales@chouhangroup.com"
   },
-  heroImage: "/new images/kmart.webp",
+  heroImage: "/new_images/kmart.webp",
   mapQuery: "Shubham K Mart,junwani road",
   websiteUrl: "https://chouhan-complex.vercel.app/"
 };
@@ -407,7 +417,7 @@ const MARUTI_DATA: ProjectData = {
     phone: "+91 788 404 0000",
     email: "info@chouhanmaruti.com"
   },
-  heroImage: "/new images/Arena.webp",
+  heroImage: "/new_images/Arena.webp",
   mapQuery: "Maruti Suzuki ARENA (Chouhan Automobiles, Bhilai, Durg Bypass",
   websiteUrl: "https://www.arenaofbhilai.com/"
 };
@@ -425,7 +435,7 @@ const NEXA_DATA: ProjectData = {
     phone: "+91 788 404 0000",
     email: "manager@chouhannexa.com"
   },
-  heroImage: "/new images/maruti-suzuki.webp",
+  heroImage: "/new_images/maruti-suzuki.webp",
   mapQuery: "Maruti Suzuki True Value (Chouhan Automobiles LLP, Bhilai, Nehru Nagar)",
   websiteUrl: "https://www.nexaofdurgbypass.com/"
 };
@@ -443,7 +453,7 @@ const HERO_DATA: ProjectData = {
     phone: "+91 788 404 0000",
     email: "sales@chouhanhero.com"
   },
-  heroImage: "/new images/herofinal.webp",
+  heroImage: "/new_images/herofinal.webp",
   mapQuery: "Maruti Suzuki True Value (Chouhan Automobiles LLP, Bhilai, Nehru Nagar)",
   websiteUrl: "https://chouhanmotors.com"
 };
@@ -461,7 +471,7 @@ const TRUE_VALUE_DATA: ProjectData = {
     phone: "+91 788 404 0000",
     email: "truevalue@chouhan.com"
   },
-  heroImage: "/new images/trueshowroom.webp",
+  heroImage: "/new_images/trueshowroom.webp",
   mapQuery: "Maruti Suzuki True Value (Chouhan Automobiles LLP, Bhilai, Nehru Nagar)",
   websiteUrl: "https://chouhangroup.com/truevalue"
 };

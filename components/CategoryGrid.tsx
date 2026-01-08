@@ -7,19 +7,19 @@ const CATEGORIES = [
   {
     title: "NEW HOMES",
     subtitle: "",
-    image: "/new images/chouhan-green-valley-6 (1).webp",
+    image: "/new_images/chouhan-green-valley-6_(1).webp",
     link: "/new-homes"
   },
   {
     title: "COMMERCIAL",
     subtitle: "",
-    image: "/new images/image.png",
+    image: "/new_images/image.png",
     link: "/commercial"
   },
   {
     title: "HOSPITALITY",
     subtitle: "",
-    image: "/new images/chouhan2.jpg",
+    image: "/new_images/chouhan2.jpg",
     link: "/hospitality"
   },
   {
