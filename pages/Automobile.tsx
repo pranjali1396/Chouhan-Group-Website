@@ -52,7 +52,7 @@ const AUTOMOBILE_DATA = [
     baseLocation: "Raipur",
     type: "Commercial Vehicles",
     brand: "Ashok Leyland",
-    image: "new images/ashok-leyland.webp",
+    image: "/new_images/ashok-leyland.webp",
     link: "/automobile/ashok",
     status: "Coming Soon",
     feature: "Trucks & Buses",

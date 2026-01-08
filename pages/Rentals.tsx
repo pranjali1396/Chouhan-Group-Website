@@ -45,7 +45,7 @@ const RENTALS_DATA = [
     location: "Junwani, Bhilai",
     type: "Luxury Rental",
     category: "Residential",
-    image: "/new_images/chouhan_park_view_3.webp",
+    image: "/new_images/Parkview_complex_card.jpg",
     link: "/rentals/parkview",
     status: "Coming Soon",
     feature: "Fully Furnished Options",

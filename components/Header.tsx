@@ -237,9 +237,10 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
 
                   {/* Desktop Mega Menu Dropdown */}
                   {activeMenu === item.label && item.columns && (
-                    <div className={`absolute top-full mt-0 w-max min-w-[220px] bg-white text-slate-800 shadow-xl rounded-b-lg border-t-2 border-amber-500 z-[100] flex animate-fadeIn max-w-[95vw] max-h-[calc(100vh-120px)] overflow-y-auto no-scrollbar scroll-smooth ${navData.indexOf(item) < 7
-                      ? 'right-0'
-                      : 'left-0'
+                    <div className={`absolute top-full mt-0 w-max min-w-[220px] bg-white text-slate-800 shadow-xl rounded-b-lg border-t-2 border-amber-500 z-[100] flex animate-fadeIn max-w-[90vw] overflow-y-auto no-scrollbar scroll-smooth ${
+                      // Dynamically adjust position based on index to prevent overflow
+                      navData.indexOf(item) < 3 ? 'left-0' :
+                        navData.indexOf(item) > navData.length - 3 ? 'right-0' : 'left-1/2 -translate-x-1/2'
                       }`}>
                       <div className="flex h-full">
                         {item.columns.map((col, idx) => (
