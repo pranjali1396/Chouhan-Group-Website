@@ -25,7 +25,7 @@ const CATEGORIES = [
   {
     title: "AUTOMOBILES",
     subtitle: "PROUD TO BE INDIA'S LARGEST AUTOMOTIVE NETWORK",
-    image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1000&auto=format&fit=crop",
+    image: "/new_images/car%20image.png",
     link: "/automobile"
   }
 ];
