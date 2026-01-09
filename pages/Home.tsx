@@ -15,7 +15,7 @@ const SERVICE_HIGHLIGHTS = [
     title: "Housing Business",
     desc: "Discover the Art of Exceptional Living! Your Dream Home Awaits in Our Stunning Collection of Flats, Row Houses, and Apartments.",
     icon: <HomeIcon size={24} />,
-    image: "/new_images/chouhan-building.webp",
+    image: "/new_images/New%20homes.png",
     link: "/new-homes"
   },
   {

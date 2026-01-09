@@ -7,7 +7,7 @@ const CATEGORIES = [
   {
     title: "NEW HOMES",
     subtitle: "",
-    image: "/new_images/chouhan-green-valley-6_(1).webp",
+    image: "/new_images/New%20homes.png",
     link: "/new-homes"
   },
   {

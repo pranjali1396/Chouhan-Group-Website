@@ -60,7 +60,7 @@ const COMMERCIAL_PROPERTIES = [
     location: "Bhilai",
     type: "Premium Commercial Hub",
     sector: "Mixed-use",
-    image: "/images/vishal mega mart.jpg",
+    image: "/new_images/landmark.png",
     link: "/commercial/landmark", // Keeping this link as it might be used by App router or user wants the dedicated page
     status: "Sold",
     features: "Anchor: Vishal Mega Mart",
@@ -84,7 +84,7 @@ const COMMERCIAL_PROPERTIES = [
     location: "Junwani Road, Bhilai",
     type: "Commercial Complex",
     sector: "Mixed-use",
-    image: "/new_images/Parkview_complex_card.jpg",
+    image: "/new_images/parview.png",
     link: "/commercial/parkview-complex",
     status: "Now Selling",
     features: "Premium Shops • Office Spaces",
