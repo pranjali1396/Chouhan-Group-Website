@@ -48,7 +48,7 @@ const COMMERCIAL_PROPERTIES = [
     location: "NH-53, Bhilai",
     type: "Industrial & Retail",
     sector: "Industrial",
-    image: "/images/chouhan_estate_mob.webp",
+    image: "/new_images/Chouhan%20Estates.png",
     link: "/commercial/estates",
     status: "Now Renting",
     features: "Warehouse Space • Highway Frontage",
