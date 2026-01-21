@@ -162,125 +162,124 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 font-sans ${scrolled ? 'bg-[#002b49]/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+      <header className={`fixed top-0 left-0 right-0 w-full z-50 flex flex-col transition-all duration-300 font-sans ${scrolled ? 'bg-[#002b49]/95 backdrop-blur-md shadow-2xl' : 'bg-transparent'
         }`}>
 
-        {/* Top Bar - Hidden on Mobile (Shows only when Desktop Nav is active at XL) */}
-        <div className="hidden xl:block border-b border-white/10 text-white uppercase bg-black/5">
-          <div className="container-fluid mx-auto px-4 md:px-8 py-1.5 flex justify-end items-center gap-4 2xl:gap-6 text-[11px] 2xl:text-[12px] font-bold tracking-wider">
+        {/* Top Bar - Reverted Colors: Transparent/Dark, White Text */}
+        <div className={`hidden xl:block w-full border-b border-white/10 text-white transition-all duration-300 ${scrolled ? 'h-10' : 'h-10 bg-black/5'}`}>
+          <div className="container-fluid mx-auto px-8 h-full flex justify-end items-center gap-6 text-[13px] font-bold tracking-wider uppercase">
             <div className="flex gap-6 items-center">
               <Link to="/contact" className="hover:text-amber-400 transition-colors">Register for Updates</Link>
               <Link to="/careers" className="hover:text-amber-400 transition-colors">Careers</Link>
-              <div className="flex gap-3 text-white/60 font-medium select-none">
+              <div className="flex gap-3 text-white/60 font-medium select-none border-l border-white/20 pl-6">
                 <span className="cursor-pointer hover:text-white transition-colors">EN</span>
                 <span className="cursor-pointer hover:text-white transition-colors">HI</span>
               </div>
             </div>
-            <div className="flex items-center gap-3 pl-6 border-l border-white/20">
-              <a href="https://www.facebook.com/share/17atysTgnf/" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors"><Facebook size={15} /></a>
+            <div className="flex items-center gap-3 pl-6 border-l border-white/20 text-white">
+              <a href="https://www.facebook.com/share/17atysTgnf/" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors"><Facebook size={16} /></a>
               <a href="https://x.com/ChouhanHousing?t=qr_WRxVvfJ9a6q9yU_rHlA&s=09" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-[15px] h-[15px]">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
               </a>
-              <a href="https://www.instagram.com/chouhan_housing_commercial?igsh=MTZuNXpibTF4N2k4bA==" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors"><Instagram size={15} /></a>
-              <a href="https://youtube.com/@chouhangroup-x7v?si=yHs8HX0SxFY9X1EB" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors"><Youtube size={15} /></a>
-              <a href="#" className="hover:text-amber-400 transition-colors"><Linkedin size={15} /></a>
+              <a href="https://www.instagram.com/chouhan_housing_commercial?igsh=MTZuNXpibTF4N2k4bA==" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors"><Instagram size={16} /></a>
+              <a href="https://youtube.com/@chouhangroup-x7v?si=yHs8HX0SxFY9X1EB" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors"><Youtube size={16} /></a>
+              <a href="#" className="hover:text-amber-400 transition-colors"><Linkedin size={16} /></a>
             </div>
           </div>
         </div>
 
-        {/* Main Navbar */}
-        <div className="container-fluid mx-auto px-4 md:px-8">
-          <div className={`flex justify-between items-center transition-all duration-300 ${scrolled ? 'h-12 md:h-13' : 'h-14 md:h-16'}`}>
-            {/* Logo */}
-            <Link to="/" className="flex items-center shrink-0 group z-50 max-w-[65%] md:max-w-none">
-              {!imgError ? (
-                <img
-                  src="/logo.png"
-                  alt="Chouhan Group"
-                  className="h-6 md:h-7 xl:h-8 2xl:h-9 w-auto object-contain transition-transform group-hover:scale-105"
-                  style={{ filter: 'brightness(0) saturate(100%) invert(61%) sepia(97%) saturate(1832%) hue-rotate(357deg) brightness(101%) contrast(93%)' }}
-                  onError={() => setImgError(true)}
-                />
-              ) : (
-                <div className="flex flex-col items-center">
-                  <div className="flex items-baseline gap-1">
-                    <span className="font-serif text-xl md:text-2xl font-bold text-white tracking-wider">CHOUHAN</span>
-                  </div>
-                  <div className="flex flex-col items-center -mt-1 w-full">
-                    <span className="text-[8px] md:text-[10px] text-amber-400 font-sans font-bold tracking-[0.3em] uppercase w-full text-center">Group</span>
-                  </div>
-                </div>
-              )}
-            </Link>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden xl:flex items-center h-full gap-3 xl:gap-4 2xl:gap-6">
-              {navData.map((item) => (
-                <div
-                  key={item.label}
-                  className="group h-full flex items-center relative"
-                  onMouseEnter={() => setActiveMenu(item.label)}
-                  onMouseLeave={() => setActiveMenu(null)}
-                >
-                  <Link
-                    to={item.path || '#'}
-                    className={`flex items-center gap-1 font-heading font-black text-[11px] xl:text-[11px] 2xl:text-[14px] tracking-wider 2xl:tracking-widest uppercase whitespace-nowrap transition-all duration-300 py-4 xl:py-6 border-b-2 border-transparent ${activeMenu === item.label ? 'text-amber-400 border-amber-400' : 'text-white hover:text-amber-400'
-                      }`}
-                  >
-                    {item.label}
-                    {item.columns && (
-                      <ChevronDown size={10} className={`ml-0.5 transition-transform duration-300 opacity-70 ${activeMenu === item.label ? 'rotate-180' : ''}`} />
-                    )}
-                  </Link>
-
-                  {/* Desktop Mega Menu Dropdown */}
-                  {activeMenu === item.label && item.columns && (
-                    <div className={`absolute top-full mt-0 w-max min-w-[220px] bg-white text-slate-800 shadow-xl rounded-b-lg border-t-2 border-amber-500 z-[100] flex animate-fadeIn max-w-[90vw] overflow-y-auto no-scrollbar scroll-smooth ${
-                      // Dynamically adjust position based on index to prevent overflow
-                      navData.indexOf(item) < 3 ? 'left-0' :
-                        navData.indexOf(item) > navData.length - 3 ? 'right-0' : 'left-1/2 -translate-x-1/2'
-                      }`}>
-                      <div className="flex h-full">
-                        {item.columns.map((col, idx) => (
-                          <div key={idx} className="p-4 md:p-5 min-w-[160px] lg:min-w-[190px] border-r border-slate-100 last:border-r-0 bg-white">
-                            {col.title && (
-                              <h4 className="text-[10px] md:text-[11px] font-black text-amber-600 uppercase mb-3 tracking-widest border-b border-amber-100 pb-1 inline-block">
-                                {col.title}
-                              </h4>
-                            )}
-                            <ul className="space-y-1.5">
-                              {col.links.length > 0 ? col.links.map((link, lIdx) => (
-                                <li key={lIdx}>
-                                  <Link
-                                    to={link.path}
-                                    className="text-[10px] md:text-[11px] font-semibold text-slate-500 hover:text-amber-600 hover:translate-x-0.5 transition-all block leading-tight uppercase tracking-wider"
-                                  >
-                                    {link.label}
-                                  </Link>
-                                </li>
-                              )) : (
-                                <li className="text-[9px] text-slate-400 italic">No current listings</li>
-                              )}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
+        {/* Main Navbar - Reverted Colors: Transparent, but kept height/logo changes */}
+        <div className={`w-full transition-all duration-300 ${scrolled ? 'h-20 lg:h-24' : 'h-20 lg:h-24'}`}>
+          <div className="container-fluid mx-auto px-4 md:px-8 h-full">
+            <div className="flex justify-between items-center h-full">
+              {/* Logo - Bigger */}
+              <Link to="/" className="flex items-center shrink-0 group z-50">
+                {!imgError ? (
+                  <img
+                    src="/new_images/Chouhan_Main_logo.png"
+                    alt="Chouhan Group"
+                    className="h-10 md:h-12 xl:h-10 2xl:h-14 w-auto object-contain transition-transform group-hover:scale-105"
+                    onError={() => setImgError(true)}
+                  />
+                ) : (
+                  <div className="flex flex-col items-center">
+                    <div className="flex items-baseline gap-1">
+                      <span className="font-serif text-2xl md:text-3xl font-bold text-white tracking-wider">CHOUHAN</span>
                     </div>
-                  )}
-                </div>
-              ))}
-            </nav>
+                    <div className="flex flex-col items-center -mt-1 w-full">
+                      <span className="text-[10px] md:text-xs text-amber-400 font-sans font-bold tracking-[0.3em] uppercase w-full text-center">Group</span>
+                    </div>
+                  </div>
+                )}
+              </Link>
 
-            {/* Mobile Menu Button - White */}
-            <button
-              className="xl:hidden text-white hover:text-amber-400 transition-colors p-2 z-50 relative"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            >
-              <Menu size={24} />
-            </button>
+              {/* Desktop Navigation - Compact Layout */}
+              <nav className="hidden xl:flex items-center h-full gap-4 2xl:gap-8">
+                {navData.map((item) => (
+                  <div
+                    key={item.label}
+                    className="group h-full flex items-center relative"
+                    onMouseEnter={() => setActiveMenu(item.label)}
+                    onMouseLeave={() => setActiveMenu(null)}
+                  >
+                    <Link
+                      to={item.path || '#'}
+                      className={`flex items-center gap-1.5 font-heading font-bold text-[11px] 2xl:text-[14px] tracking-widest uppercase whitespace-nowrap transition-all duration-300 py-2 ${activeMenu === item.label ? 'text-amber-400' : 'text-white hover:text-amber-400'
+                        }`}
+                    >
+                      {item.label}
+                      {item.columns && (
+                        <ChevronDown size={12} className={`stroke-[3px] transition-transform duration-300 ${activeMenu === item.label ? 'rotate-180' : ''}`} />
+                      )}
+                    </Link>
+
+                    {/* Desktop Mega Menu Dropdown */}
+                    {activeMenu === item.label && item.columns && (
+                      <div className={`absolute top-full mt-0 w-max min-w-[240px] bg-white text-slate-800 shadow-2xl rounded-b-sm border-t-4 border-amber-500 z-[100] flex animate-fadeIn max-w-[90vw] overflow-y-auto ${navData.indexOf(item) < 3 ? 'left-0' :
+                        navData.indexOf(item) > navData.length - 3 ? 'right-0' : 'left-1/2 -translate-x-1/2'
+                        }`}>
+                        <div className="flex p-2">
+                          {item.columns.map((col, idx) => (
+                            <div key={idx} className="p-6 min-w-[200px] border-r border-slate-100 last:border-r-0">
+                              {col.title && (
+                                <h4 className="text-xs font-black text-slate-900 uppercase mb-4 tracking-widest border-b-2 border-amber-500 pb-2 inline-block">
+                                  {col.title}
+                                </h4>
+                              )}
+                              <ul className="space-y-3">
+                                {col.links.length > 0 ? col.links.map((link, lIdx) => (
+                                  <li key={lIdx}>
+                                    <Link
+                                      to={link.path}
+                                      className="text-xs font-bold text-slate-500 hover:text-amber-600 hover:translate-x-1 transition-all block uppercase tracking-wide"
+                                    >
+                                      {link.label}
+                                    </Link>
+                                  </li>
+                                )) : (
+                                  <li className="text-[10px] text-slate-400 italic">No current listings</li>
+                                )}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </nav>
+
+              {/* Mobile Menu Button - White */}
+              <button
+                className="xl:hidden text-white hover:text-amber-400 transition-colors p-2 z-50 relative"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              >
+                <Menu size={28} />
+              </button>
+            </div>
           </div>
         </div>
       </header>

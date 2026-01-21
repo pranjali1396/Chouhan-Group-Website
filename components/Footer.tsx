@@ -11,9 +11,9 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-[#002b49] text-white font-sans text-sm relative">
       <div className="container mx-auto px-6 py-16">
-        
+
         {/* Scroll To Top Button (Absolute Top Right) */}
-        <button 
+        <button
           onClick={scrollToTop}
           className="absolute top-8 right-6 md:right-12 p-2 rounded-full border border-white/30 hover:bg-white hover:text-[#002b49] transition-all text-white"
           aria-label="Scroll to top"
@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
         </button>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-12 gap-x-8">
-          
+
           {/* Column 1: Our Offices */}
           <div className="col-span-2 md:col-span-1 lg:col-span-1">
             <h3 className="font-bold text-lg mb-6 text-white">Our Offices</h3>
@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
 
           {/* Column 2: Additional Offices (Visual Continuation) */}
           <div className="col-span-2 md:col-span-1 lg:col-span-1 lg:pt-[3.25rem]">
-             <div className="space-y-6 text-gray-300 text-xs">
+            <div className="space-y-6 text-gray-300 text-xs">
               <div>
                 <p className="text-white font-semibold mb-1">Hospitality Division</p>
                 <p className="opacity-80">T: +91 75666 60048</p>
@@ -53,11 +53,11 @@ const Footer: React.FC = () => {
                 <p className="text-white font-semibold mb-1">Automobile Division</p>
                 <p className="opacity-80">T: +91 72229 10055</p>
               </div>
-               <div>
+              <div>
                 <p className="text-white font-semibold mb-1">General Inquiry</p>
                 <p className="opacity-80">T: +91 95111 21113</p>
               </div>
-             </div>
+            </div>
           </div>
 
           {/* Column 3: New Homes */}
@@ -98,9 +98,9 @@ const Footer: React.FC = () => {
             </div>
             <div>
               <h3 className="font-bold text-lg mb-4 text-white">Hospitality</h3>
-               <ul className="space-y-3 text-gray-300 text-xs font-medium">
-                 <li><Link to="/hospitality" className="hover:text-white hover:underline transition-colors">Hotels & Resorts</Link></li>
-               </ul>
+              <ul className="space-y-3 text-gray-300 text-xs font-medium">
+                <li><Link to="/hospitality" className="hover:text-white hover:underline transition-colors">Hotels & Resorts</Link></li>
+              </ul>
             </div>
           </div>
         </div>
@@ -110,18 +110,18 @@ const Footer: React.FC = () => {
 
         {/* Bottom Bar */}
         <div className="flex flex-col items-center text-center gap-3 text-[11px] text-gray-400 font-medium">
-          
+
           <Link to="/" className="mb-1 block">
-             <img src="/logo.png" alt="Chouhan Group" className="h-6 w-auto brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+            <img src="/new_images/Chouhan_Main_logo.png" alt="Chouhan Group" className="h-6 w-auto opacity-70 hover:opacity-100 transition-opacity" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
           </Link>
 
           <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-             <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-             <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
-             <Link to="/sitemap" className="hover:text-white transition-colors">Site Map</Link>
-             <button className="hover:text-white transition-colors">Consent Preferences</button>
+            <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
+            <Link to="/sitemap" className="hover:text-white transition-colors">Site Map</Link>
+            <button className="hover:text-white transition-colors">Consent Preferences</button>
           </div>
-          
+
           <div className="flex flex-col gap-0.5 opacity-60">
             <p>© Chouhan Group {new Date().getFullYear()}</p>
             <p>The trade-mark CHOUHAN GROUP is owned by Chouhan Property Management Services Ltd.</p>
