@@ -162,7 +162,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 font-sans ${scrolled ? 'bg-[#002b49]/95 backdrop-blur-md shadow-lg' : 'bg-[#002b49]'
+      <header className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 font-sans ${scrolled ? 'bg-[#002b49]/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
         }`}>
 
         {/* Top Bar - Hidden on Mobile (Shows only when Desktop Nav is active at XL) */}

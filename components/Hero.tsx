@@ -1,29 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const SLIDES = [
   {
     id: 1,
     image: '/new_images/CAM-4_optimized.webp',
-    title: "Pioneering Infrastructure in Bhilai-Durg",
-    subtitle: "Choose from a range of flats, row houses, apartments, and commercial complex tailored to your needs and aspirations.",
+    title: "Find Your New Home",
     link: "/new-homes",
-    cta: "FIND YOUR PERFECT PLACE"
+    cta: "Explore Communities"
   },
   {
     id: 2,
     image: '/new_images/Parkview_complex_card_optimized.webp',
-    title: "Spaces Designed for Success",
-    subtitle: "Premium commercial properties offering the perfect environment for your business to thrive.",
+    title: "View Our Diverse Commercial Portfolio",
     link: "/commercial",
-    cta: "EXPLORE COMMERCIAL"
+    cta: "Browse Properties"
   },
   {
     id: 3,
     image: '/new_images/ELR_Balod_103_optimized.webp',
-    title: "Experience Unmatched Luxury",
-    subtitle: "From serene lake resorts to premium city hotels, experience hospitality at its finest.",
+    title: "Discover Level Hotels & Furnished Suites",
     link: "/hospitality",
     cta: "BOOK YOUR STAY"
   },
@@ -44,6 +41,13 @@ const Hero: React.FC = () => {
     setIsAutoPlaying(false);
   };
 
+  const handleScrollDown = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  };
+
   useEffect(() => {
     if (!isAutoPlaying) return;
     const timer = setInterval(() => {
@@ -53,7 +57,7 @@ const Hero: React.FC = () => {
   }, [isAutoPlaying]);
 
   return (
-    <div className="relative w-full h-[500px] lg:h-[90vh] 2xl:h-[100vh] bg-slate-900 overflow-hidden group touch-pan-y">
+    <div className="relative w-full h-[100dvh] lg:h-[90vh] 2xl:h-[100vh] bg-slate-900 overflow-hidden group touch-pan-y">
       {SLIDES.map((slide, index) => (
         <div
           key={slide.id}
@@ -83,12 +87,9 @@ const Hero: React.FC = () => {
               {/* Orange Line */}
               <div className="w-12 h-1 md:w-16 md:h-1 bg-amber-500 mx-auto mb-5 md:mb-8"></div>
 
-              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-heading font-black text-white leading-[1.1] drop-shadow-xl">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-heading font-light text-white leading-[1.1] drop-shadow-xl">
                 {slide.title}
               </h1>
-              <p className="text-sm md:text-base lg:text-lg xl:text-xl text-slate-200 font-light max-w-4xl mx-auto drop-shadow-md leading-relaxed px-4 md:px-0">
-                {slide.subtitle}
-              </p>
               <div className="pt-6 md:pt-8">
                 <Link
                   to={slide.link}
@@ -130,6 +131,14 @@ const Hero: React.FC = () => {
               }`}
           />
         ))}
+      </div>
+
+      {/* Scroll Down Indicator */}
+      <div
+        onClick={handleScrollDown}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce cursor-pointer text-white/80 hover:text-white transition-colors"
+      >
+        <ChevronDown size={32} />
       </div>
     </div>
   );
