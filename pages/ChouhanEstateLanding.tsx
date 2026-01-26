@@ -170,6 +170,8 @@ const ChouhanEstateLanding: React.FC = () => {
                         src="/images/chouhan_estate.webp"
                         alt="Chouhan Estate"
                         className="w-full h-full object-cover"
+                        loading="eager"
+                        {...{ fetchPriority: "high" } as any}
                     />
                 </div>
                 <div className="block md:hidden w-full aspect-[15/8]">
@@ -177,6 +179,8 @@ const ChouhanEstateLanding: React.FC = () => {
                         src="/images/chouhan_estate_mob.webp"
                         alt="Chouhan Estate"
                         className="w-full h-full object-cover"
+                        loading="eager"
+                        {...{ fetchPriority: "high" } as any}
                     />
                 </div>
             </section>
@@ -428,11 +432,11 @@ const ChouhanEstateLanding: React.FC = () => {
                                 </li>
                                 <li className="flex gap-4 items-center">
                                     <Phone size={18} className="text-amber-600 flex-shrink-0" />
-                                    <span className="text-sm">+91 91091 04005</span>
+                                    <span className="text-sm">+91 95111 21113</span>
                                 </li>
                                 <li className="flex gap-4 items-center">
                                     <Mail size={18} className="text-amber-600 flex-shrink-0" />
-                                    <span className="text-sm underline cursor-pointer hover:text-amber-600 transition-colors">chouhanhousing@gmail.com</span>
+                                    <span className="text-sm underline cursor-pointer hover:text-amber-600 transition-colors uppercase">CHOUHANHOUSING@GMAIL.COM</span>
                                 </li>
                             </ul>
                         </div>

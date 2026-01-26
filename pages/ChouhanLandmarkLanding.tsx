@@ -172,6 +172,8 @@ const ChouhanLandmarkLanding: React.FC = () => {
                             src="/images/vishal mega mart.jpg"
                             alt="Vishal Mega Mart at Chouhan Landmark"
                             className="w-full h-full object-cover"
+                            loading="eager"
+                            {...{ fetchPriority: "high" } as any}
                         />
                         <div className="absolute inset-0 bg-black/10"></div>
                     </div>
@@ -423,11 +425,11 @@ const ChouhanLandmarkLanding: React.FC = () => {
                                 </li>
                                 <li className="flex gap-4 items-center">
                                     <Phone size={18} className="text-amber-600 flex-shrink-0" />
-                                    <span className="text-sm">+91 91091 04005</span>
+                                    <span className="text-sm">+91 95111 21113</span>
                                 </li>
                                 <li className="flex gap-4 items-center">
                                     <Mail size={18} className="text-amber-600 flex-shrink-0" />
-                                    <span className="text-sm underline cursor-pointer hover:text-amber-600 transition-colors">chouhanhousing@gmail.com</span>
+                                    <span className="text-sm underline cursor-pointer hover:text-amber-600 transition-colors uppercase">CHOUHANHOUSING@GMAIL.COM</span>
                                 </li>
                             </ul>
                         </div>

@@ -227,7 +227,8 @@ const Commercial: React.FC = () => {
                 <div className="relative h-64 overflow-hidden">
                   <div className="absolute top-4 left-4 z-10 flex gap-2">
                     <span className={`backdrop-blur text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded ${property.status === 'Now Selling' ? 'bg-amber-500/80' :
-                      property.status === 'Upcoming' ? 'bg-blue-600/80' : 'bg-slate-500/80'
+                      property.status === 'Now Renting' ? 'bg-emerald-600/80' :
+                        property.status === 'Upcoming' ? 'bg-blue-600/80' : 'bg-slate-500/80'
                       }`}>
                       {property.status}
                     </span>
@@ -239,7 +240,7 @@ const Commercial: React.FC = () => {
                     src={property.image}
                     alt={property.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    loading="lazy"
+                    loading={filteredProperties.indexOf(property) < 3 ? "eager" : "lazy"}
                     decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>

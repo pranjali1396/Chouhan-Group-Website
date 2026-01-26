@@ -53,8 +53,16 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
               alt={`${data.title} ${idx + 1}`}
               className={`w-full h-full object-cover ${data.heroPositions && data.heroPositions[idx] ? data.heroPositions[idx] : 'object-center'}`}
               loading={idx === 0 ? "eager" : "lazy"}
+              {...(idx === 0 ? { fetchPriority: "high" } as any : {})}
               decoding="async"
             />
+            {/* Background color to prevent white flash */}
+            <div className="absolute inset-0 -z-10 bg-slate-100"></div>
+
+            {/* Preload Next Image for Slider */}
+            {heroImages.length > 1 && idx === currentHeroIndex && (
+              <link rel="preload" as="image" href={heroImages[(idx + 1) % heroImages.length]} />
+            )}
           </div>
         ))}
 
@@ -118,10 +126,17 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
               ))}
               {!isSold && (
                 <p className="text-[#555]">
-                  The final tower is now selling! {data.websiteUrl ? (
+                  {data.status === 'Now Renting' ? 'Units are now available for rent! ' :
+                    data.status === 'Now Selling' ? (data.title.toLowerCase().includes('parkview') ? 'The final tower is now selling! ' : 'Units are now available for sale! ') :
+                      data.status === 'Ready to Move' ? 'Project is ready for possession! Units are now available for sale! ' :
+                        data.status === 'Few Units Left' ? 'Only a few units remaining! Grab yours today. ' :
+                          data.status === 'New Launch' ? 'New phase is now launching! ' :
+                            data.status === 'Upcoming' || data.status === 'Coming Soon' ? 'Project is coming soon! ' : ''}
+                  {data.websiteUrl ? (
                     data.websiteUrl.startsWith('/') ? (
                       <Link to={`${data.websiteUrl}#contact`} className="text-[#002b49] underline font-medium hover:text-amber-600">
-                        {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Register today'}
+                        {data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? 'Call Now' :
+                          data.status === 'Now Renting' ? 'Register today for leasing inquiries' : 'Register today'}
                       </Link>
                     ) : (
                       <a
@@ -142,12 +157,14 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
                         rel={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? undefined : "noopener noreferrer"}
                         className="text-[#002b49] underline font-medium hover:text-amber-600"
                       >
-                        {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Register today'}
+                        {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' :
+                          data.status === 'Now Renting' ? 'Register today for leasing inquiries' : 'Register today'}
                       </a>
                     )
                   ) : (
                     <a href={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? `tel:${data.contact.phone}` : "#contact"} className="text-[#002b49] underline font-medium hover:text-amber-600">
-                      {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Register today'}
+                      {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' :
+                        data.status === 'Now Renting' ? 'Register today for leasing inquiries' : 'Register today'}
                     </a>
                   )} to stay informed.
                 </p>

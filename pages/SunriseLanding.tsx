@@ -353,7 +353,7 @@ const SunriseLanding: React.FC = () => {
             <div className="lg:w-1/2 space-y-8">
               <div>
                 <span className="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-[10px] font-bold uppercase tracking-widest rounded mb-4">
-                  Now Selling • Pre-Launch Offers Available
+                  New Launch • Pre-Launch Offers Available
                 </span>
                 <h1 className="text-4xl md:text-5xl font-heading font-black text-emerald-900 leading-tight mb-4">
                   A Premier Plot Investment Opportunity in Durg

@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
   }, [isAutoPlaying]);
 
   return (
-    <div className="relative w-full h-[100dvh] lg:h-[90vh] 2xl:h-[100vh] bg-slate-900 overflow-hidden group touch-pan-y">
+    <div className="relative w-full h-[100dvh] lg:h-[100dvh] 2xl:h-[100vh] bg-slate-900 overflow-hidden group touch-pan-y">
       {SLIDES.map((slide, index) => (
         <div
           key={slide.id}
@@ -74,6 +74,10 @@ const Hero: React.FC = () => {
               decoding="async"
               {...(index === 0 ? { fetchPriority: "high" } : {})}
             />
+            {/* Preload Next Image */}
+            {index === current && (
+              <link rel="preload" as="image" href={SLIDES[(index + 1) % SLIDES.length].image} />
+            )}
           </div>
 
           {/* Gradient Overlay */}

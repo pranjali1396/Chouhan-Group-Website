@@ -31,15 +31,29 @@ const HOSPITALITY_DATA = [
   },
   {
     id: 3,
-    name: "Empyrean Kendri",
-    location: "Near Airport, Raipur",
+    name: "Empyrean Tatibandh",
+    location: "Tatibandh, Raipur",
     type: "Transit Boutique Hotel",
     rating: "4.2",
     image: "/new_images/tatibandh.png",
-    link: "/hospitality/empyrean-kendri",
+    link: "/hospitality/empyrean-tatibandh",
     status: "Upcoming",
     category: "Boutique",
-    amenities: ["Airport Shuttle", "Business Hub", "Rooftop"]
+    amenities: ["Airport Shuttle", "Business Hub", "Rooftop"],
+    websiteUrl: "https://www.empyreanhotels.in/"
+  },
+  {
+    id: 7,
+    name: "Empyrean Kendri",
+    location: "Kendri, Raipur",
+    type: "Airport Luxury Hotel",
+    rating: "4.3",
+    image: "/new_images/tatibandh.png",
+    link: "/hospitality/empyrean-kendri",
+    status: "Upcoming",
+    category: "Hotel",
+    amenities: ["Airport Proximity", "Business Suites", "Fine Dining"],
+    websiteUrl: "https://www.empyreanhotels.in/"
   },
   {
     id: 4,
@@ -51,7 +65,8 @@ const HOSPITALITY_DATA = [
     link: "/hospitality/empyrean-tumdibod",
     status: "Upcoming",
     category: "Resort",
-    amenities: ["Food Court", "Drive-through", "Rooms"]
+    amenities: ["Food Court", "Drive-through", "Rooms"],
+    websiteUrl: "https://www.empyreanhotels.in/"
   },
   {
     id: 5,
@@ -63,7 +78,8 @@ const HOSPITALITY_DATA = [
     link: "/hospitality/palladio",
     status: "Upcoming",
     category: "Hotel",
-    amenities: ["Spa", "Banquet Hall", "Luxury Suites"]
+    amenities: ["Spa", "Banquet Hall", "Luxury Suites"],
+    websiteUrl: "https://www.empyreanhotels.in/"
   },
   {
     id: 6,
@@ -75,7 +91,8 @@ const HOSPITALITY_DATA = [
     link: "/hospitality/skypark",
     status: "Upcoming",
     category: "Hotel",
-    amenities: ["Centrally Located", "Business Rooms", "Dining"]
+    amenities: ["Centrally Located", "Business Rooms", "Dining"],
+    websiteUrl: "https://www.empyreanhotels.in/"
   }
 ];
 

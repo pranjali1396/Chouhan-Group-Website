@@ -175,8 +175,14 @@ const ShikharComplexLanding: React.FC = () => {
                             src={img}
                             alt={`Shikhar Complex View ${idx + 1}`}
                             className="w-full h-full object-cover"
+                            loading={idx === 0 ? "eager" : "lazy"}
+                            {...(idx === 0 ? { fetchPriority: "high" } as any : {})}
                         />
                         <div className="absolute inset-0 bg-black/30"></div>
+                        {/* Preload Next Image */}
+                        {HERO_IMAGES.length > 1 && idx === currentHeroSlide && (
+                            <link rel="preload" as="image" href={HERO_IMAGES[(idx + 1) % HERO_IMAGES.length]} />
+                        )}
                     </div>
                 ))}
 
@@ -390,14 +396,14 @@ const ShikharComplexLanding: React.FC = () => {
                                 </li>
                                 <li className="flex gap-3 items-start">
                                     <Phone size={18} className="text-emerald-600 flex-shrink-0 mt-1" />
-                                    <a href="tel:+919109104005" className="text-sm text-stone-600 hover:text-emerald-600 transition-colors">
-                                        +91 91091 04005
+                                    <a href="tel:+919511121113" className="text-sm text-stone-600 hover:text-emerald-600 transition-colors">
+                                        +91 95111 21113
                                     </a>
                                 </li>
                                 <li className="flex gap-3 items-start">
                                     <Mail size={18} className="text-emerald-600 flex-shrink-0 mt-1" />
-                                    <a href="mailto:chouhanhousing@gmail.com" className="text-sm text-stone-600 hover:text-emerald-600 transition-colors">
-                                        chouhanhousing@gmail.com
+                                    <a href="mailto:CHOUHANHOUSING@GMAIL.COM" className="text-sm text-stone-600 hover:text-emerald-600 transition-colors uppercase">
+                                        CHOUHANHOUSING@GMAIL.COM
                                     </a>
                                 </li>
                             </ul>
