@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Facebook, Twitter, Linkedin, Mail, Ban, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export interface ProjectData {
   title: string;
@@ -25,7 +25,9 @@ export interface ProjectData {
 }
 
 const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
+  const location = useLocation();
   const isSold = data.status.toLowerCase() === 'sold';
+  const isHospitality = location.pathname.includes('/hospitality/');
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
   const heroImages = Array.isArray(data.heroImage) ? data.heroImage : [data.heroImage];
 
@@ -207,7 +209,7 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
 
             {/* CTA Buttons - Hidden if Sold */}
             <div className="grid grid-cols-2 gap-3 mb-10">
-              {data.websiteUrl ? (
+              {data.websiteUrl && !((data.status.toLowerCase() === 'upcoming' || data.status.toLowerCase() === 'coming soon') && isHospitality) ? (
                 data.websiteUrl.startsWith('/') ? (
                   <Link to={data.websiteUrl} className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center">
                     View Website
