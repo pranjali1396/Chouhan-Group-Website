@@ -169,9 +169,6 @@ const CharitySponsorship: React.FC = () => {
               <button className="bg-white text-slate-900 px-10 py-4 rounded-full font-black uppercase tracking-widest text-[10px] hover:bg-amber-500 transition-all shadow-lg">
                 Sponsorship Request
               </button>
-              <button className="bg-transparent border-2 border-white/20 text-white px-10 py-4 rounded-full font-black uppercase tracking-widest text-[10px] hover:bg-white/10 transition-all">
-                Contact CSR Desk
-              </button>
             </div>
           </div>
         </div>
