@@ -28,6 +28,8 @@ import ChouhanCityCenterLanding from './pages/ChouhanCityCenterLanding';
 import ShikharComplexLanding from './pages/ShikharComplexLanding';
 import ChouhanDreamHomesLanding from './pages/ChouhanDreamHomesLanding';
 import ChouhanPlazaLanding from './pages/ChouhanPlazaLanding';
+import CharityProjectDetail from './pages/CharityProjectDetail';
+import { CHARITY_PROJECTS } from './pages/CharityData';
 
 import { NAVIGATION_DATA } from './types';
 
@@ -613,7 +615,8 @@ const AppContent: React.FC = () => {
         <Route path="/about/group" element={<AboutGroup />} />
         <Route path="/about/founder" element={<Founder />} />
         <Route path="/about/capital" element={<CapitalDivision />} />
-        <Route path="/about/charity" element={<CharitySponsorship />} />
+        <Route path="/about/charities" element={<CharitySponsorship />} />
+        <Route path="/about/charities/:slug" element={<CharityProjectDetail />} />
         <Route path="/about/constructions" element={<Construction />} />
         <Route path="/about/sustainable" element={<SustainableDesign />} />
         <Route path="/contact" element={<Contact />} />

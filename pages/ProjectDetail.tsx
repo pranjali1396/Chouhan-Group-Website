@@ -29,6 +29,7 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
   const isSold = data.status.toLowerCase() === 'sold';
   const isHospitality = location.pathname.includes('/hospitality/');
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const heroImages = Array.isArray(data.heroImage) ? data.heroImage : [data.heroImage];
 
   useEffect(() => {
@@ -369,8 +370,12 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
               <div className="mt-16">
                 <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#718096] mb-8 border-b border-slate-100 pb-2">Photo Gallery</h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  {data.gallery.slice(0, 6).map((img, idx) => (
-                    <div key={idx} className="aspect-[4/3] overflow-hidden bg-slate-100 group cursor-pointer border border-slate-50 shadow-sm rounded-sm">
+                  {data.gallery.map((img, idx) => (
+                    <div
+                      key={idx}
+                      onClick={() => setSelectedImage(img)}
+                      className="aspect-[4/3] overflow-hidden bg-slate-100 group cursor-pointer border border-slate-50 shadow-sm rounded-sm"
+                    >
                       <img
                         src={img}
                         alt={`${data.title} Gallery ${idx + 1}`}
@@ -383,11 +388,60 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
                 </div>
               </div>
             )}
-
           </div>
-
         </div>
       </div>
+
+      {/* Lightbox Overlay */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-12 cursor-default"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setSelectedImage(null);
+          }}
+        >
+          <button
+            className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors z-[110]"
+            onClick={() => setSelectedImage(null)}
+          >
+            <span className="text-5xl font-light">&times;</span>
+          </button>
+
+          {data.gallery && data.gallery.length > 1 && (
+            <>
+              <button
+                className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-colors p-4 z-[110]"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  const currentIndex = data.gallery!.indexOf(selectedImage);
+                  const prevIndex = (currentIndex - 1 + data.gallery!.length) % data.gallery!.length;
+                  setSelectedImage(data.gallery![prevIndex]);
+                }}
+              >
+                <ChevronLeft size={48} strokeWidth={1} />
+              </button>
+              <button
+                className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-colors p-4 z-[110]"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  const currentIndex = data.gallery!.indexOf(selectedImage);
+                  const nextIndex = (currentIndex + 1) % data.gallery!.length;
+                  setSelectedImage(data.gallery![nextIndex]);
+                }}
+              >
+                <ChevronRight size={48} strokeWidth={1} />
+              </button>
+            </>
+          )}
+
+          <img
+            src={selectedImage}
+            alt="Enlarged gallery view"
+            className="max-w-full max-h-full object-contain shadow-2xl transition-all duration-300"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
   );
 };

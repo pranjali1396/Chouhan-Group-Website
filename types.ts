@@ -190,7 +190,7 @@ export const NAVIGATION_DATA: NavItem[] = [
         links: [
           { label: "Capital Division", path: "/about/capital" },
           { label: "Sustainable Design", path: "/about/sustainable" },
-          { label: "Charities", path: "/about/charity" },
+          { label: "Charities", path: "/about/charities" },
         ]
       },
       {

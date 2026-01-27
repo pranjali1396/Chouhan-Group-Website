@@ -1,119 +1,178 @@
-import React from 'react';
-import { Heart, Ambulance, Trophy, Calendar, Users, HandHeart } from 'lucide-react';
-
-const INITIATIVES = [
-  {
-    title: "Gifting City Ambulance",
-    desc: "Ensuring rapid emergency response for our community by donating fully equipped ambulances to local hospitals.",
-    icon: <Ambulance size={32} />
-  },
-  {
-    title: "Sports Event Sponsor",
-    desc: "Promoting health and teamwork by sponsoring local and regional sports tournaments and athlete development programs.",
-    icon: <Trophy size={32} />
-  },
-  {
-    title: "Community Events",
-    desc: "Supporting cultural and social gatherings that bring people together and strengthen community bonds.",
-    icon: <Calendar size={32} />
-  }
-];
+import React, { useState } from 'react';
+import { Heart, Users, HandHeart, ChevronDown, Image as ImageIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { CHARITY_PROJECTS } from './CharityData';
 
 const CharitySponsorship: React.FC = () => {
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [visibleProjects, setVisibleProjects] = useState(12);
+  const categories = ['All', 'Infrastructure', 'Environment', 'Healthcare', 'Youth Development', 'Community Support'];
+
+  const filteredProjects = activeCategory === 'All'
+    ? CHARITY_PROJECTS
+    : CHARITY_PROJECTS.filter(p => getStatusDisplay(p.status) === activeCategory);
+
+  function getStatusDisplay(status: string) {
+    switch (status) {
+      case 'Community Infrastructure': return 'Infrastructure';
+      case 'Environment': return 'Environment';
+      case 'Healthcare': return 'Healthcare';
+      case 'Youth Development': return 'Youth Development';
+      case 'Community Support': return 'Community Support';
+      default: return status;
+    }
+  };
+
+  const handleLoadMore = () => {
+    setVisibleProjects(prev => prev + 12);
+  };
+
   return (
-    <div className="bg-white font-sans text-slate-800 pt-32 md:pt-48">
+    <div className="bg-white font-sans text-slate-800 pt-32 md:pt-48 pb-20">
 
       {/* Hero Section */}
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[40vh] md:h-[50vh] flex items-center justify-center overflow-hidden mb-20">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=2000")' }}></div>
-        <div className="absolute inset-0 bg-white/90"></div>
-        <div className="container mx-auto px-4 relative z-10 text-center text-slate-900">
-          <div className="inline-block border border-amber-500/30 bg-amber-50 px-4 py-1 rounded-full text-amber-600 font-bold tracking-widest text-xs uppercase mb-6">
+        <div className="absolute inset-0 bg-slate-900/50"></div>
+        <div className="container mx-auto px-4 relative z-10 text-center">
+          <div className="inline-flex items-center gap-2 border border-amber-500/30 bg-amber-500/10 backdrop-blur-xl px-4 py-2 rounded-full text-amber-200 font-bold tracking-[0.2em] text-[10px] uppercase mb-8">
+            <Heart size={12} className="fill-amber-500 text-amber-500" />
             Corporate Social Responsibility
           </div>
-          <h1 className="text-4xl md:text-6xl font-heading font-black mb-6 drop-shadow-sm">Charity & Sponsorship</h1>
-          <div className="h-1 w-24 bg-amber-500 mx-auto mb-8"></div>
-          <p className="text-xl md:text-2xl font-light tracking-wide text-slate-600 max-w-3xl mx-auto">
-            Helping communities thrive where we conduct business and beyond.
+          <h1 className="text-5xl md:text-8xl font-heading font-black mb-8 text-white tracking-tight">
+            Charity & <span className="text-amber-500">Sponsorship</span>
+          </h1>
+          <p className="text-lg md:text-2xl font-light tracking-wide text-slate-200 max-w-2xl mx-auto">
+            Making a positive impact in our communities through dedicated initiatives.
           </p>
         </div>
       </section>
 
-      {/* Mission Statement */}
-      <section className="py-24">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row gap-16 items-center">
-            <div className="lg:w-1/2">
-              <h2 className="text-sm font-bold text-amber-600 uppercase tracking-widest mb-4">Our Commitment</h2>
-              <h3 className="text-4xl font-heading font-black text-slate-900 mb-8">
-                Making a <span className="text-amber-500">Positive Impact</span>
-              </h3>
-              <div className="space-y-6 text-slate-600 leading-loose text-lg font-light">
-                <p>
-                  At <strong className="text-slate-900">CHOUHAN GROUP</strong>, we are committed to helping communities thrive where we conduct business and beyond. Being a good neighbour and making a positive impact is a part of what we stand for.
-                </p>
-                <p>
-                  We take pride in connecting with our local communities while supporting them and giving back. We believe that true corporate success is measured not just by profits, but by the lives we touch and the communities we uplift.
-                </p>
-              </div>
+      {/* Stats Summary */}
+      <section className="container mx-auto px-4 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="text-center p-8 bg-slate-50 rounded-2xl">
+            <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center text-amber-600 mx-auto mb-4">
+              <HandHeart size={32} />
             </div>
-
-            {/* Stat Card */}
-            <div className="lg:w-1/2">
-              <div className="bg-white text-slate-900 p-12 rounded-2xl shadow-xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-500 border border-slate-100">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-amber-100 rounded-full blur-3xl opacity-50 group-hover:opacity-60 transition-opacity"></div>
-                <div className="relative z-10">
-                  <div className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center mb-6 text-white shadow-md">
-                    <HandHeart size={36} />
-                  </div>
-                  <div className="text-5xl md:text-6xl font-black mb-2 text-slate-900">
-                    ₹ 5 CR+
-                  </div>
-                  <p className="text-amber-600 font-bold uppercase tracking-widest text-sm mb-6">Donated to Date</p>
-                  <p className="text-slate-600 leading-relaxed">
-                    Supporting local events, charitable foundations, and community-focused organizations across Chhattisgarh.
-                  </p>
-                </div>
-              </div>
+            <div className="text-4xl font-black text-slate-900 mb-2">₹5 CR+</div>
+            <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">Total Contributions</p>
+          </div>
+          <div className="text-center p-8 bg-slate-50 rounded-2xl">
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mx-auto mb-4">
+              <Users size={32} />
             </div>
+            <div className="text-4xl font-black text-slate-900 mb-2">50,000+</div>
+            <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">Lives Impacted</p>
+          </div>
+          <div className="text-center p-8 bg-slate-50 rounded-2xl">
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-600 mx-auto mb-4">
+              <ImageIcon size={32} />
+            </div>
+            <div className="text-4xl font-black text-slate-900 mb-2">20+</div>
+            <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">Active Projects</p>
           </div>
         </div>
       </section>
 
-      {/* Initiatives Grid */}
-      <section className="py-24 bg-slate-50 border-t border-slate-200">
+      {/* Thumbnail Gallery */}
+      <section className="py-16" id="gallery">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-heading font-bold text-slate-900 mb-4">Key Initiatives</h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              We actively sponsor charitable foundations and organizations that align with our values.
-            </p>
+          <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-8">
+            <div className="text-center md:text-left">
+              <h2 className="text-sm font-bold text-amber-600 uppercase tracking-[0.3em] mb-4">Our Initiatives</h2>
+              <h3 className="text-4xl md:text-5xl font-heading font-black text-slate-900">Project Gallery</h3>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-3">
+              {categories.map(cat => (
+                <button
+                  key={cat}
+                  onClick={() => {
+                    setActiveCategory(cat);
+                    setVisibleProjects(12);
+                  }}
+                  className={`px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all ${activeCategory === cat ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {INITIATIVES.map((item, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300 group hover:border-amber-200">
-                <div className="w-16 h-16 bg-amber-50 text-amber-600 rounded-full flex items-center justify-center mb-6 group-hover:bg-amber-500 group-hover:text-white transition-colors">
-                  {item.icon}
+          {/* Simple Thumbnail Grid - Matching Screenshot */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            {filteredProjects.slice(0, visibleProjects).map((project) => (
+              <Link
+                key={project.id}
+                to={`/about/charities/${project.slug}`}
+                className="group block"
+              >
+                {/* Thumbnail Image */}
+                <div className="relative aspect-[4/3] rounded-lg overflow-hidden mb-4 bg-slate-100 shadow-md group-hover:shadow-xl transition-shadow duration-300">
+                  <img
+                    src={Array.isArray(project.heroImage) ? project.heroImage[0] : project.heroImage}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
                 </div>
-                <h3 className="text-xl font-bold font-heading text-slate-900 mb-3">{item.title}</h3>
-                <p className="text-slate-600 leading-relaxed text-sm">
-                  {item.desc}
+
+                {/* Caption */}
+                <p className="text-sm md:text-base text-slate-700 font-medium leading-snug text-center px-4 group-hover:text-amber-600 transition-colors">
+                  {project.description.split('\n')[0]}
                 </p>
-              </div>
+              </Link>
             ))}
           </div>
 
-          {/* Additional Content Box */}
-          <div className="mt-16 bg-white border border-slate-200 rounded-xl p-8 md:p-12 text-center max-w-4xl mx-auto shadow-sm">
-            <Users className="mx-auto text-slate-400 mb-4" size={48} />
-            <h3 className="text-2xl font-bold font-heading text-slate-900 mb-4">Partner With Us</h3>
-            <p className="text-slate-600 mb-8 max-w-xl mx-auto">
-              Are you a local organization or charity looking for support? We are always looking for new ways to give back to the community.
+          {/* Load More Button */}
+          {filteredProjects.length > visibleProjects && (
+            <div className="text-center">
+              <button
+                onClick={handleLoadMore}
+                className="inline-flex items-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-full font-bold uppercase tracking-[0.2em] text-xs hover:bg-amber-600 transition-all duration-300 shadow-lg"
+              >
+                View More Projects
+                <ChevronDown size={16} />
+              </button>
+            </div>
+          )}
+
+          {filteredProjects.length === 0 && (
+            <div className="text-center py-20">
+              <ImageIcon className="mx-auto text-slate-200 mb-6" size={64} strokeWidth={1} />
+              <p className="text-slate-400 font-light text-xl">No projects found in this category.</p>
+              <button
+                onClick={() => setActiveCategory('All')}
+                className="mt-6 text-amber-600 font-bold uppercase tracking-widest text-[10px] underline hover:text-slate-900 transition-colors"
+              >
+                Clear Filters
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Partner CTA */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <div className="bg-slate-900 rounded-3xl p-12 md:p-20 text-center max-w-4xl mx-auto">
+            <h2 className="text-amber-500 font-black uppercase tracking-[0.4em] text-[10px] mb-6">Partnership</h2>
+            <h3 className="text-4xl md:text-6xl font-heading font-black text-white mb-8 leading-tight">
+              Support a <span className="text-amber-500">Cause</span>
+            </h3>
+            <p className="text-slate-300 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto">
+              We are always seeking meaningful ways to contribute to the community. Let's explore how we can make a difference together.
             </p>
-            <button className="bg-slate-900 text-white px-8 py-3 font-bold uppercase tracking-widest text-xs rounded hover:bg-amber-500 hover:text-black transition-colors shadow-lg">
-              Submit Sponsorship Request
-            </button>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button className="bg-white text-slate-900 px-10 py-4 rounded-full font-black uppercase tracking-widest text-[10px] hover:bg-amber-500 transition-all shadow-lg">
+                Sponsorship Request
+              </button>
+              <button className="bg-transparent border-2 border-white/20 text-white px-10 py-4 rounded-full font-black uppercase tracking-widest text-[10px] hover:bg-white/10 transition-all">
+                Contact CSR Desk
+              </button>
+            </div>
           </div>
         </div>
       </section>
