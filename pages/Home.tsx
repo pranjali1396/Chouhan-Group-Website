@@ -59,7 +59,7 @@ const PROJECTS = [
   {
     title: "Chouhan Park View",
     desc: "A prestigious project by Chouhan Group, is located on Junwani Road, Bhilai",
-    image: "/new_images/chouhan_park_view_4.webp",
+    image: "/new_images/DJI_0720.JPG",
     link: "/new-homes/parkview"
   },
   {

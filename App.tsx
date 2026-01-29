@@ -115,7 +115,7 @@ const PARKVIEW_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "CHOUHANHOUSING@GMAIL.COM"
   },
-  heroImage: "/new_images/chouhan_park_view_4.webp",
+  heroImage: "/new_images/DJI_0720.JPG",
   mapQuery: "Chouhan Parkview",
   websiteUrl: "https://chouhan-park-view-xi.vercel.app/"
 };

@@ -63,7 +63,7 @@ const PROPERTIES = [
     type: "High-Rise Apartments and Bungalows",
     price: "₹ 20L - ₹ 2.75Cr",
     priceVal: 2000000,
-    image: "/new_images/chouhan_park_view_4.webp",
+    image: "/new_images/DJI_0720.JPG",
     link: "/new-homes/parkview",
     status: "Now Selling",
     bhk: "2, 3, 4 and 5 BHK",
