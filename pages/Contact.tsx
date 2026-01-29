@@ -220,12 +220,12 @@ const Contact: React.FC = () => {
           <div>
             <div className="flex items-center gap-3 mb-8">
               <div className="p-2 bg-amber-100 text-amber-600 rounded"><Car size={24} /></div>
-              <h2 className="text-2xl font-bold font-heading text-slate-900">Automobiles</h2>
+              <h2 className="text-2xl font-bold font-heading text-slate-900">Automobiles Division - Chouhan Automobiles LLP</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Arena */}
+              {/* Arena - Bhilai */}
               <div className="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow">
-                <h3 className="text-lg font-bold text-slate-900 mb-4">Maruti Suzuki Arena</h3>
+                <h3 className="text-lg font-bold text-slate-900 mb-4">Maruti Suzuki Arena - Bhilai</h3>
                 <div className="space-y-4 text-sm text-slate-600">
                   <div className="flex items-start gap-3">
                     <MapPin className="shrink-0 text-amber-500 mt-0.5" size={16} />
@@ -233,7 +233,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-3">
                     <Phone className="shrink-0 text-amber-500" size={16} />
-                    <span className="font-bold">7222910055 / 7222910019</span>
+                    <span className="font-bold">72229 10019 / 72229 10022 / 72229 10013 / 72229 10033 / 72229 10073</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Mail className="shrink-0 text-amber-500" size={16} />
@@ -242,9 +242,28 @@ const Contact: React.FC = () => {
                 </div>
               </div>
 
-              {/* Nexa */}
+              {/* Arena - Pandariya */}
               <div className="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow">
-                <h3 className="text-lg font-bold text-slate-900 mb-4">Maruti Suzuki Nexa</h3>
+                <h3 className="text-lg font-bold text-slate-900 mb-4">Maruti Suzuki Arena - Pandariya</h3>
+                <div className="space-y-4 text-sm text-slate-600">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="shrink-0 text-amber-500 mt-0.5" size={16} />
+                    <span>Khasra number 24/7, Near Indian Oil Petrol Pump, Bilaspur Road, Pandariya, Kawardha, Dist Kabirdham, Chhattisgarh - 491559</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Phone className="shrink-0 text-amber-500" size={16} />
+                    <span className="font-bold">72229 10019 / 72229 100144</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Mail className="shrink-0 text-amber-500" size={16} />
+                    <span className="break-all">sm.sales@chouhanautomobiles.com</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Nexa - Bhilai */}
+              <div className="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow border-t-4 border-t-slate-800">
+                <h3 className="text-lg font-bold text-slate-900 mb-4">Maruti Suzuki Nexa - Bhilai</h3>
                 <div className="space-y-4 text-sm text-slate-600">
                   <div className="flex items-start gap-3">
                     <MapPin className="shrink-0 text-amber-500 mt-0.5" size={16} />
@@ -252,7 +271,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-3">
                     <Phone className="shrink-0 text-amber-500" size={16} />
-                    <span className="font-bold">7909999306 / 7909999309</span>
+                    <span className="font-bold">72229 10019 / 72229 10022 / 72229 10013 / 72229 10033 / 72229 10073</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Mail className="shrink-0 text-amber-500" size={16} />
@@ -261,9 +280,62 @@ const Contact: React.FC = () => {
                 </div>
               </div>
 
-              {/* True Value */}
+              {/* Nexa Studio - Bemetera */}
+              <div className="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow border-t-4 border-t-slate-800">
+                <h3 className="text-lg font-bold text-slate-900 mb-4">Nexa Studio - Bemetera</h3>
+                <div className="space-y-4 text-sm text-slate-600">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="shrink-0 text-amber-500 mt-0.5" size={16} />
+                    <span>In front of Krishna Vihar, Beside A K Hospital, Raipur Road, Bemetara - 491335</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Phone className="shrink-0 text-amber-500" size={16} />
+                    <span className="font-bold">72229 10019 / 72229 10025 / 72229 10078</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Mail className="shrink-0 text-amber-500" size={16} />
+                    <span className="break-all">nexabusinesshead@chouhanautomobiles.com</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Nexa Studio - Kawardha */}
+              <div className="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow border-t-4 border-t-slate-800">
+                <h3 className="text-lg font-bold text-slate-900 mb-4">Nexa Studio - Kawardha</h3>
+                <div className="space-y-4 text-sm text-slate-600">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="shrink-0 text-amber-500 mt-0.5" size={16} />
+                    <span>Khasra number 37/10, Chiraha Chowk, Raipur Road, Chhattisgarh - 491995</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Phone className="shrink-0 text-amber-500" size={16} />
+                    <span className="font-bold">72229 10019 / 72229 10025 / 72229 10078</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Mail className="shrink-0 text-amber-500" size={16} />
+                    <span className="break-all">nexabusinesshead@chouhanautomobiles.com</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Hero - Bhilai */}
               <div className="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow">
-                <h3 className="text-lg font-bold text-slate-900 mb-4">Maruti Suzuki True Value</h3>
+                <h3 className="text-lg font-bold text-slate-900 mb-4">Chouhan Hero - Bhilai</h3>
+                <div className="space-y-4 text-sm text-slate-600">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="shrink-0 text-amber-500 mt-0.5" size={16} />
+                    <span>NH-6, Durg-Rjn Bypass, Beside True Value Showroom, Bhilai, Chhattisgarh</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Phone className="shrink-0 text-amber-500" size={16} />
+                    <span className="font-bold">Sales: 99931 21213 / Service: 70241 20121</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* True Value - Bhilai */}
+              <div className="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow">
+                <h3 className="text-lg font-bold text-slate-900 mb-4">Maruti Suzuki True Value - Bhilai</h3>
                 <div className="space-y-4 text-sm text-slate-600">
                   <div className="flex items-start gap-3">
                     <MapPin className="shrink-0 text-amber-500 mt-0.5" size={16} />
@@ -271,11 +343,63 @@ const Contact: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-3">
                     <Phone className="shrink-0 text-amber-500" size={16} />
-                    <span className="font-bold">7222910005</span>
+                    <span className="font-bold">72229 10005</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Mail className="shrink-0 text-amber-500" size={16} />
                     <span className="break-all">edp.truevalue@chouhanautomobiles.com</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Arena - Balod */}
+              <div className="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow">
+                <h3 className="text-lg font-bold text-slate-900 mb-4">Maruti Suzuki Arena - Balod</h3>
+                <div className="space-y-4 text-sm text-slate-600">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="shrink-0 text-amber-500 mt-0.5" size={16} />
+                    <span>Near Shanti Traders, Jhamala Chowk, Balod, Chhattisgarh - 491226</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Phone className="shrink-0 text-amber-500" size={16} />
+                    <span className="font-bold">72229 10019 / 72229 10029</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Arena - Dalli Rajhara */}
+              <div className="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow">
+                <h3 className="text-lg font-bold text-slate-900 mb-4">Maruti Suzuki Arena - Dalli Rajhara</h3>
+                <div className="space-y-4 text-sm text-slate-600">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="shrink-0 text-amber-500 mt-0.5" size={16} />
+                    <span>Near Hero Showroom, Main Road, Dalli Rajhara, Chhattisgarh - 491228</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Phone className="shrink-0 text-amber-500" size={16} />
+                    <span className="font-bold">72229 10019 / 72229 10029</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Arena - Dondi */}
+              <div className="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow">
+                <h3 className="text-lg font-bold text-slate-900 mb-4">Maruti Suzuki Arena - Dondi</h3>
+                <div className="space-y-4 text-sm text-slate-600">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="shrink-0 text-amber-500 mt-0.5" size={16} />
+                    <span>Ward Number 13, Near St. Thomas School, Dondi Main Road, Dist Balod, Chhattisgarh - 491771</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Workshop - Bhilai */}
+              <div className="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow">
+                <h3 className="text-lg font-bold text-slate-900 mb-4">Maruti Suzuki Workshop - Bhilai</h3>
+                <div className="space-y-4 text-sm text-slate-600">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="shrink-0 text-amber-500 mt-0.5" size={16} />
+                    <span>Plot Number 1 and 34, Shivnath Complex, Behind Chouhan Estates, G.E Road Supela Bhilai - 490023</span>
                   </div>
                 </div>
               </div>

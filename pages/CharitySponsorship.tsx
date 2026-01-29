@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heart, Users, HandHeart, ChevronDown, Image as ImageIcon } from 'lucide-react';
+import { Heart, Users, HandHeart, ChevronDown, Image as ImageIcon, X, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { CHARITY_PROJECTS } from './CharityData';
 
@@ -7,13 +7,78 @@ const CharitySponsorship: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [visibleProjects, setVisibleProjects] = useState(12);
   const categories = ['All', 'Infrastructure', 'Environment', 'Healthcare', 'Youth Development', 'Community Support'];
+  const [showForm, setShowForm] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({
+    fullName: '',
+    organization: '',
+    email: '',
+    phone: '',
+    requestType: 'General Sponsorship',
+    message: ''
+  });
 
-  const filteredProjects = activeCategory === 'All'
-    ? CHARITY_PROJECTS
-    : CHARITY_PROJECTS.filter(p => getStatusDisplay(p.status) === activeCategory);
+  const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyizjWosoaNIsRol6zJjSvfrkR2OLZZxiXd4brXVZwgfADoBP7ODeJCrlkcT7lFDuar-w/exec'; // User needs to replace this
 
-  function getStatusDisplay(status: string) {
-    switch (status) {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus('submitting');
+
+    try {
+      // Build parameters for Google Apps Script
+      const params = new URLSearchParams();
+      params.append('fullName', formData.fullName);
+      params.append('organization', formData.organization);
+      params.append('email', formData.email);
+      params.append('phone', formData.phone);
+      params.append('requestType', formData.requestType);
+      params.append('message', formData.message);
+
+      // Submit using no-cors (Standard for Google Apps Script to bypass CORS limits)
+      // Note: 'no-cors' will always result in an 'opaque' response (status 0),
+      // so we assume success if no network error occurs.
+      await fetch(GOOGLE_SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: params.toString(),
+      });
+
+      // Since we use no-cors, we won't get a proper 'ok' status, 
+      // but if the fetch doesn't throw, the request was sent.
+      setFormStatus('success');
+
+      // Reset form after delay
+      setTimeout(() => {
+        setShowForm(false);
+        setFormStatus('idle');
+        setFormData({
+          fullName: '',
+          organization: '',
+          email: '',
+          phone: '',
+          requestType: 'General Sponsorship',
+          message: ''
+        });
+      }, 3000);
+    } catch (error) {
+      console.error('Submission error:', error);
+      setFormStatus('error');
+    }
+  };
+
+  // Helper function to map detailed status strings to simple category names
+  const getStatusDisplay = (status: string) => {
+    if (!status) return 'Other';
+    switch (status.trim()) {
       case 'Community Infrastructure': return 'Infrastructure';
       case 'Environment': return 'Environment';
       case 'Healthcare': return 'Healthcare';
@@ -22,6 +87,21 @@ const CharitySponsorship: React.FC = () => {
       default: return status;
     }
   };
+
+  // Filter projects based on active category
+  const filteredProjects = React.useMemo(() => {
+    if (!CHARITY_PROJECTS) return [];
+    return activeCategory === 'All'
+      ? CHARITY_PROJECTS
+      : CHARITY_PROJECTS.filter(p => getStatusDisplay(p.status) === activeCategory);
+  }, [activeCategory]);
+
+  // Debugging log - this will show in the browser console (F12)
+  React.useEffect(() => {
+    console.log("Active Category:", activeCategory);
+    console.log("Filtered Results Count:", filteredProjects.length);
+    if (CHARITY_PROJECTS.length === 0) console.warn("WARNING: CHARITY_PROJECTS array is empty!");
+  }, [activeCategory, filteredProjects]);
 
   const handleLoadMore = () => {
     setVisibleProjects(prev => prev + 12);
@@ -154,7 +234,142 @@ const CharitySponsorship: React.FC = () => {
         </div>
       </section>
 
-      {/* Partner CTA */}
+      {/* Sponsorship Request Modal */}
+      {showForm && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/90 backdrop-blur-md animate-fadeIn">
+          <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden animate-scaleUp">
+            {/* Modal Header */}
+            <div className="p-8 bg-slate-950 text-white flex justify-between items-center">
+              <div>
+                <h2 className="text-2xl font-heading font-black">Sponsorship Request</h2>
+                <p className="text-slate-400 text-sm mt-1">Please provide details about your proposal.</p>
+              </div>
+              <button
+                onClick={() => setShowForm(false)}
+                className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-all"
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            {/* Form Content */}
+            <div className="p-8 max-h-[70vh] overflow-y-auto">
+              {formStatus === 'success' ? (
+                <div className="text-center py-12 animate-fadeIn">
+                  <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-green-600">
+                    <CheckCircle2 size={40} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Request Submitted!</h3>
+                  <p className="text-slate-500">Thank you for Reaching out. Our CSR desk will review your proposal and get back to you shortly.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {formStatus === 'error' && (
+                    <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded flex items-center gap-3 text-red-700 text-sm">
+                      <AlertCircle size={18} />
+                      There was an error submitting your request. Please try again.
+                    </div>
+                  )}
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Full Name *</label>
+                      <input
+                        type="text"
+                        name="fullName"
+                        required
+                        value={formData.fullName}
+                        onChange={handleInputChange}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-amber-500 focus:outline-none focus:bg-white transition-all shadow-inner"
+                        placeholder="e.g. Rahul Sharma"
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Organization (If any)</label>
+                      <input
+                        type="text"
+                        name="organization"
+                        value={formData.organization}
+                        onChange={handleInputChange}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-amber-500 focus:outline-none focus:bg-white transition-all shadow-inner"
+                        placeholder="e.g. NGO Name"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Email Address *</label>
+                      <input
+                        type="email"
+                        name="email"
+                        required
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-amber-500 focus:outline-none focus:bg-white transition-all shadow-inner"
+                        placeholder="email@example.com"
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Phone Number *</label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        required
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-amber-500 focus:outline-none focus:bg-white transition-all shadow-inner"
+                        placeholder="+91 XXXXX XXXXX"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Nature of Request *</label>
+                    <select
+                      name="requestType"
+                      value={formData.requestType}
+                      onChange={handleInputChange}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-amber-500 focus:outline-none focus:bg-white transition-all shadow-inner"
+                    >
+                      <option>General Sponsorship</option>
+                      <option>Community Infrastructure</option>
+                      <option>Environment Initiative</option>
+                      <option>Healthcare Support</option>
+                      <option>Youth development</option>
+                      <option>Other Event</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Message / Proposal *</label>
+                    <textarea
+                      name="message"
+                      required
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 h-32 focus:border-amber-500 focus:outline-none focus:bg-white transition-all resize-none shadow-inner"
+                      placeholder="Briefly describe the cause or event..."
+                    ></textarea>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={formStatus === 'submitting'}
+                    className={`w-full py-4 rounded-xl flex items-center justify-center gap-3 font-bold uppercase tracking-[0.2em] text-xs transition-all shadow-lg ${formStatus === 'submitting' ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-slate-900 text-white hover:bg-amber-500 hover:text-black'}`}
+                  >
+                    {formStatus === 'submitting' ? (
+                      <div className="w-5 h-5 border-2 border-slate-400 border-t-transparent rounded-full animate-spin"></div>
+                    ) : (
+                      <>Submit Request <Send size={16} /></>
+                    )}
+                  </button>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="bg-slate-900 rounded-3xl p-12 md:p-20 text-center max-w-4xl mx-auto">
@@ -165,11 +380,12 @@ const CharitySponsorship: React.FC = () => {
             <p className="text-slate-300 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto">
               We are always seeking meaningful ways to contribute to the community. Let's explore how we can make a difference together.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <button className="bg-white text-slate-900 px-10 py-4 rounded-full font-black uppercase tracking-widest text-[10px] hover:bg-amber-500 transition-all shadow-lg">
-                Sponsorship Request
-              </button>
-            </div>
+            <button
+              onClick={() => setShowForm(true)}
+              className="bg-white text-slate-900 px-10 py-4 rounded-full font-black uppercase tracking-widest text-[10px] hover:bg-amber-500 transition-all shadow-lg"
+            >
+              Sponsorship Request
+            </button>
           </div>
         </div>
       </section>

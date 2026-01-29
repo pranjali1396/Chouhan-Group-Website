@@ -6,21 +6,21 @@ const AUTOMOBILE_DATA = [
   {
     id: 1,
     name: "Maruti Suzuki Arena",
-    location: "Bhilai & Raipur",
+    location: "Bhilai, Pandariya, Balod, Dalli Rajhara, Dondi",
     baseLocation: "Bhilai",
     type: "Authorized Dealership",
     brand: "Maruti Suzuki",
     image: "/new_images/MarutiCardImage.png",
     link: "/automobile/maruti",
     status: "Open Now",
-    feature: "Sales • Service • Spares",
+    feature: "Sales • Service • Spares • Multiple Locations",
     amenities: ["Large Showroom", "Service Center", "Insurance"],
     websiteUrl: "https://www.arenaofbhilai.com/"
   },
   {
     id: 2,
     name: "Nexa Bhilai",
-    location: "GE Road, Bhilai",
+    location: "Bhilai, Bemetara, Kawardha",
     baseLocation: "Bhilai",
     type: "Premium Dealership",
     brand: "Nexa",
@@ -34,8 +34,8 @@ const AUTOMOBILE_DATA = [
   {
     id: 3,
     name: "Hero MotoCorp",
-    location: "Durg",
-    baseLocation: "Durg",
+    location: "Bhilai",
+    baseLocation: "Bhilai",
     type: "Two Wheeler Dealer",
     brand: "Hero",
     image: "/new_images/herofinal.webp",
@@ -62,7 +62,7 @@ const AUTOMOBILE_DATA = [
   {
     id: 5,
     name: "True Value",
-    location: "Junwani Road, Bhilai",
+    location: "Bhilai Bypass",
     baseLocation: "Bhilai",
     type: "Pre-owned Cars",
     brand: "Maruti Suzuki",
@@ -95,7 +95,7 @@ const Automobile: React.FC = () => {
   }, [searchTerm, selectedBrand, selectedLocation, selectedStatus]);
 
   const brands = ['All', 'Maruti Suzuki', 'Nexa', 'Hero', 'Ashok Leyland'];
-  const locations = ['All', 'Bhilai', 'Raipur', 'Durg'];
+  const locations = ['All', 'Bhilai', 'Raipur', 'Durg', 'Bemetara', 'Kawardha', 'Balod', 'Pandariya'];
   const statuses = ['All', 'Open Now', 'Coming Soon'];
 
   const clearFilters = () => {

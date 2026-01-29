@@ -446,73 +446,73 @@ const SKYPARK_DATA: ProjectData = {
 
 const MARUTI_DATA: ProjectData = {
   title: "Maruti Suzuki Arena",
-  description: "Now Open – Your trusted destination for Maruti Suzuki vehicles. Experience the joy of mobility with our wide range of cars, state-of-the-art service center, and genuine spare parts availability. We ensure a seamless ownership experience.",
+  description: "Now Open – Chouhan Automobiles LLP is your trusted destination for Maruti Suzuki vehicles. Experience the joy of mobility with our wide range of cars, state-of-the-art service centers, and genuine spare parts availability across multiple locations including Bhilai, Pandariya, Balod, Dalli Rajhara, and Dondi.\n\nOur Commitment to Excellence ensures a seamless ownership experience, from purchase to long-term maintenance.",
   status: "Open Now",
-  address: "Service Lane, Pushpak Nagar, Smriti Nagar, Chhattisgarh 490020",
+  address: "NH-6, Durg – Rajnandgaon Bypass, Near Chouhan Town, Bhilai, Chhattisgarh - 490020",
   presentationCentre: {
-    address: "Service Lane, Pushpak Nagar, Smriti Nagar, Chhattisgarh 490020",
+    address: "Bhilai, Pandariya, Balod, Dalli Rajhara, Dondi",
     hours: "Open Daily 10AM - 8PM"
   },
   contact: {
-    phone: "+91 788 404 0000",
-    email: "info@chouhanmaruti.com"
+    phone: "7222910019, 7222910022, 7222910013, 7222910033",
+    email: "sm.sales@chouhanautomobiles.com"
   },
   heroImage: "/new_images/Arena.webp",
-  mapQuery: "Maruti Suzuki ARENA (Chouhan Automobiles, Bhilai, Durg Bypass",
+  mapQuery: "Chouhan Automobiles Maruti Suzuki ARENA, Bhilai",
   websiteUrl: "https://www.arenaofbhilai.com/"
 };
 
 const NEXA_DATA: ProjectData = {
   title: "Nexa Bhilai",
-  description: "Now Open – Step into a world of innovation and premium experiences at Nexa Bhilai. We bring you a range of sophisticated cars designed to inspire. Enjoy personalized attention, exclusive lounges, and a test drive experience like no other.",
+  description: "Now Open – Step into a world of innovation and premium experiences at Nexa Bhilai (Chouhan Automobiles LLP). We bring you a range of sophisticated cars designed to inspire across our locations in Bhilai, Bemetara, and Kawardha. Enjoy personalized attention, exclusive lounges, and a test drive experience like no other.",
   status: "Open Now",
-  address: "Service Lane, Pushpak Nagar, Smriti Nagar, Chhattisgarh 490020",
+  address: "NH-6, Durg Bypass, near D-Mart, Katulbod, Bhilai, Durg, Chhattisgarh - 490020",
   presentationCentre: {
-    address: "Service Lane, Pushpak Nagar, Smriti Nagar, Chhattisgarh 490020",
+    address: "Bhilai, Bemetara, Kawardha",
     hours: "Open Daily 10AM - 8PM"
   },
   contact: {
-    phone: "+91 788 404 0000",
-    email: "manager@chouhannexa.com"
+    phone: "7222910019, 7222910022, 7222910013, 7222910033",
+    email: "nexabusinesshead@chouhanautomobiles.com"
   },
   heroImage: "/new_images/maruti-suzuki.webp",
-  mapQuery: "Maruti Suzuki True Value (Chouhan Automobiles LLP, Bhilai, Nehru Nagar)",
+  mapQuery: "Nexa Bhilai Chouhan Automobiles",
   websiteUrl: "https://www.nexaofdurgbypass.com/"
 };
 
 const HERO_DATA: ProjectData = {
   title: "Hero MotoCorp",
-  description: "Now Open – Ride with confidence with the world's largest two-wheeler manufacturer. Our Durg showroom offers the complete range of Hero motorcycles and scooters, backed by efficient service and genuine parts. Your journey starts here.",
+  description: "Now Open – Ride with confidence with the world's largest two-wheeler manufacturer. Our Bhilai showroom (Chouhan Hero) offers the complete range of Hero motorcycles and scooters, backed by efficient service and genuine parts. Your journey starts here.",
   status: "Open Now",
-  address: "Service Lane, Pushpak Nagar, Smriti Nagar, Chhattisgarh 490020",
+  address: "NH-6, Durg-Rjn Bypass, Beside True Value Showroom, Bhilai, Dist - Durg (C.G.)",
   presentationCentre: {
-    address: "Service Lane, Pushpak Nagar, Smriti Nagar, Chhattisgarh 490020",
+    address: "NH-6, Durg-Rjn Bypass, Beside True Value Showroom, Bhilai",
     hours: "Open Daily 10AM - 8PM"
   },
   contact: {
-    phone: "+91 788 404 0000",
+    phone: "Sales 9993121213 | Service 7024120121",
     email: "sales@chouhanhero.com"
   },
   heroImage: "/new_images/herofinal.webp",
-  mapQuery: "Maruti Suzuki True Value (Chouhan Automobiles LLP, Bhilai, Nehru Nagar)",
+  mapQuery: "Chouhan Hero Bhilai",
   websiteUrl: "https://chouhanmotors.com"
 };
 
 const TRUE_VALUE_DATA: ProjectData = {
   title: "Maruti Suzuki True Value",
-  description: "Now Open – Trust and transparency in pre-owned cars. At True Value, every car goes through rigorous quality checks to ensure you get the best. Buy, sell, or exchange your car with complete peace of mind and excellent value.",
+  description: "Now Open – Trust and transparency in pre-owned cars at Chouhan Automobiles True Value. Every car goes through rigorous quality checks to ensure you get the best. Buy, sell, or exchange your car with complete peace of mind and excellent value.",
   status: "Open Now",
-  address: "Service Lane, Pushpak Nagar, Smriti Nagar, Chhattisgarh 490020",
+  address: "NH-6, Durg-Rjn Bypass, Infront of Hotel Empyrean, Bhilai, Chhattisgarh - 490020",
   presentationCentre: {
-    address: "Service Lane, Pushpak Nagar, Smriti Nagar, Chhattisgarh 490020",
+    address: "NH-6, Durg-Rjn Bypass, Infront of Hotel Empyrean, Bhilai",
     hours: "Open Daily 10AM - 8PM"
   },
   contact: {
-    phone: "+91 788 404 0000",
-    email: "truevalue@chouhan.com"
+    phone: "7222910005",
+    email: "edp.truevalue@chouhanautomobiles.com"
   },
   heroImage: "/new_images/trueshowroom.webp",
-  mapQuery: "Maruti Suzuki True Value (Chouhan Automobiles LLP, Bhilai, Nehru Nagar)",
+  mapQuery: "Maruti Suzuki True Value Chouhan Automobiles Bhilai",
   websiteUrl: "https://chouhangroup.com/truevalue"
 };
 
