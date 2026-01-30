@@ -255,7 +255,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
                                   <li key={lIdx}>
                                     <Link
                                       to={link.path}
-                                      className="text-xs font-bold text-slate-800 hover:text-amber-600 hover:translate-x-1 transition-all block uppercase tracking-wide"
+                                      className="text-[13px] font-medium text-slate-700 hover:text-amber-600 hover:translate-x-1 transition-all block uppercase tracking-wider antialiased"
                                     >
                                       {link.label}
                                     </Link>

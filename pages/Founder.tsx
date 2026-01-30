@@ -5,21 +5,21 @@ const TEAM = [
   {
     name: "Suraj Chouhan",
     role: "Director",
-    image: "/new_images/suraj_chouhan.png",
+    image: "/new_images/suraj_chouhan_high_res.png",
     bio: "Suraj leads the group's strategic expansion into new markets. With a keen eye for emerging trends, he has been pivotal in diversification strategies across the hospitality and automotive sectors.",
     linkedin: "#"
   },
   {
     name: "Sunny Chouhan",
     role: "Director",
-    image: "/new_images/sunny_chouhan.png",
+    image: "/new_images/sunny_chouhan_high_res.png",
     bio: "Focusing on operational excellence, Sunny ensures that the group's commitment to quality is met in every project. His management ensures seamless execution from conception to delivery.",
     linkedin: "#"
   },
   {
     name: "Saurabh Chouhan",
     role: "Director",
-    image: "/new_images/sourabh_chouhan.png",
+    image: "/new_images/sourabh_chouhan_high_res.png",
     bio: "Spearheading the brand's marketing and customer engagement, Saurabh brings a modern approach to the legacy business, driving digital transformation and brand loyalty.",
     linkedin: "#"
   }
@@ -38,7 +38,7 @@ const Founder: React.FC = () => {
             <div className="lg:w-1/2 relative">
               <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl border-4 border-white">
                 <img
-                  src="/new_images/ajay_chouhan.png"
+                  src="/new_images/ajay_chouhan_high_res.png"
                   alt="Mr. Ajay Chouhan"
                   className="w-full h-auto object-cover transition-all duration-700"
                 />
@@ -104,35 +104,25 @@ const Founder: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {TEAM.map((member, idx) => (
-              <div key={idx} className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-slate-100">
-                <div className="h-80 overflow-hidden relative">
-                  <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors z-10"></div>
+              <div key={idx} className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-slate-100 flex flex-col h-full">
+                <div className="h-[450px] overflow-hidden relative">
+                  <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/0 transition-colors z-10"></div>
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
-
-                  {/* Social Overlay */}
-                  <div className="absolute bottom-4 right-4 z-20 translate-y-12 group-hover:translate-y-0 transition-transform duration-300">
-                    <a href={member.linkedin} className="w-10 h-10 bg-amber-500 text-white rounded-full flex items-center justify-center hover:bg-amber-600">
-                      <Linkedin size={20} />
-                    </a>
-                  </div>
                 </div>
 
-                <div className="p-8">
-                  <h3 className="text-2xl font-heading font-bold text-slate-900">{member.name}</h3>
-                  <p className="text-amber-600 font-bold uppercase text-xs tracking-widest mt-1 mb-4">{member.role}</p>
-                  <p className="text-slate-600 leading-relaxed text-sm mb-6">
-                    {member.bio}
-                  </p>
-                  <div className="pt-6 border-t border-slate-100">
-                    <button className="text-slate-900 font-bold text-sm flex items-center gap-2 hover:text-amber-600 transition-colors group-hover:gap-3">
-                      View Profile <ArrowRight size={16} />
-                    </button>
+                <div className="p-8 flex-grow flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-3xl font-heading font-black text-slate-900 mb-2">{member.name}</h3>
+                    <p className="text-amber-600 font-bold uppercase text-xs tracking-[0.2em] mb-6">{member.role}</p>
+                    <p className="text-slate-600 leading-relaxed text-base mb-6 font-medium">
+                      {member.bio}
+                    </p>
                   </div>
                 </div>
               </div>

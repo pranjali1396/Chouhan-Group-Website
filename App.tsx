@@ -556,9 +556,10 @@ const CHOUHAN_DREAM_HOMES_DATA: ProjectData = {
 const AppContent: React.FC = () => {
   const location = useLocation();
   const hideHeaderFooter = location.pathname === '/commercial/estate-details' || location.pathname === '/commercial/landmark-details' || location.pathname === '/commercial/city-center' || location.pathname === '/new-homes/sunrise-city' || location.pathname === '/commercial/shikhar-complex' || location.pathname === '/new-homes/dream-homes' || location.pathname === '/commercial/plaza-details';
+  const isHomePage = location.pathname === '/';
 
   return (
-    <div className="flex flex-col min-h-screen font-sans text-slate-900 bg-white selection:bg-amber-100 selection:text-amber-900 overflow-x-hidden">
+    <div className={`flex flex-col min-h-screen ${isHomePage ? 'font-home' : 'font-sans'} text-slate-900 bg-white selection:bg-amber-100 selection:text-amber-900 overflow-x-hidden`}>
       {!hideHeaderFooter && <Header navData={NAVIGATION_DATA} />}
 
       <Routes>

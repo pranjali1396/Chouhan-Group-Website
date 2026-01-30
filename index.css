@@ -35,7 +35,7 @@
 
 @layer base {
   body {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Gotham', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -46,7 +46,7 @@
   h4,
   h5,
   h6 {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Gotham', sans-serif;
   }
 
   .font-heading {
@@ -83,7 +83,8 @@
 }
 
 @theme {
-  --font-sans: 'Raleway', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Gotham', ui-sans-serif, system-ui, sans-serif;
   --font-heading: 'Gotham', ui-sans-serif, system-ui, sans-serif;
+  --font-home: 'Raleway', ui-sans-serif, system-ui, sans-serif;
   --font-nav: 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
 }

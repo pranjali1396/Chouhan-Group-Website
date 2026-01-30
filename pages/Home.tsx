@@ -171,7 +171,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-white font-sans text-slate-800">
+    <div className="flex flex-col min-h-screen bg-white font-home text-slate-800">
       <Hero />
 
       <CategoryGrid />

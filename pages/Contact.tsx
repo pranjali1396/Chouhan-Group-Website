@@ -1,20 +1,14 @@
 
 import React from 'react';
 import { MapPin, Phone, Mail, MessageCircle, Send, Building, Car, Coffee, Home } from 'lucide-react';
+import WhatsAppFAB from '../components/WhatsAppFAB';
 
 const Contact: React.FC = () => {
   return (
     <div className="bg-white font-sans text-slate-800 pt-32 md:pt-48 pb-20">
 
-      {/* WhatsApp Float */}
-      <a
-        href="#"
-        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-xl hover:bg-[#20bd5a] transition-colors flex items-center gap-2 font-bold animate-bounce-slow"
-        aria-label="Contact via WhatsApp"
-      >
-        <MessageCircle size={24} />
-        <span className="hidden md:inline">WhatsApp</span>
-      </a>
+      {/* WhatsApp Float - Enhanced */}
+      <WhatsAppFAB />
 
       <div className="container mx-auto px-4">
 
