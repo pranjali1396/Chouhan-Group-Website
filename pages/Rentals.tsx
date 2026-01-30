@@ -90,7 +90,7 @@ const Rentals: React.FC = () => {
         <div className="absolute inset-0 bg-cover bg-center opacity-10 blur-sm" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2000")' }}></div>
         <div className="container mx-auto max-w-5xl relative z-10 text-center">
           <span className="text-amber-500 font-bold tracking-widest text-xs uppercase mb-4 block animate-fadeIn">Seamless Living</span>
-          <h1 className="text-4xl md:text-6xl font-heading font-black mb-6 animate-slideUp">
+          <h1 className="text-4xl md:text-6xl font-sans font-black mb-6 animate-slideUp">
             Leasing & Rentals
           </h1>
           <p className="text-slate-300 text-lg md:text-xl font-light max-w-2xl mx-auto mb-10 animate-slideUp delay-100">

@@ -154,9 +154,9 @@ const AboutGroup: React.FC = () => {
           <div className="inline-block border border-amber-500/30 bg-amber-50 px-4 py-1 rounded-full text-amber-600 font-bold tracking-widest text-xs uppercase mb-6">
             Est. 1998
           </div>
-          <h1 className="text-5xl md:text-7xl font-heading font-black mb-6 drop-shadow-sm">About Chouhan Group</h1>
+          <h1 className="text-5xl md:text-7xl font-heading font-black mb-6 drop-shadow-sm text-black">About Chouhan Group</h1>
           <div className="h-1 w-24 bg-amber-500 mx-auto mb-8"></div>
-          <p className="text-xl md:text-2xl font-light tracking-wide text-slate-600">
+          <p className="text-xl md:text-2xl font-medium tracking-wide text-slate-800">
             Innovating. Building. Driving Excellence.
           </p>
         </div>
@@ -168,12 +168,12 @@ const AboutGroup: React.FC = () => {
           <div className="flex flex-col lg:flex-row gap-16 items-start">
             <div className="lg:w-1/2">
               <h2 className="text-sm font-bold text-amber-600 uppercase tracking-widest mb-4">Our Story</h2>
-              <h3 className="text-4xl font-heading font-black text-slate-900 mb-8">
+              <h3 className="text-4xl font-heading font-black text-black mb-8">
                 A Legacy Rooted in <span className="text-amber-500">Vision & Dedication</span>
               </h3>
-              <div className="space-y-6 text-slate-600 leading-loose text-lg font-light">
+              <div className="space-y-6 text-slate-800 leading-loose text-lg font-medium">
                 <p>
-                  Founded in 1998 by <strong className="text-slate-900">Mr. Ajay Chouhan</strong>, the Chouhan Group stands as a multi-vertical enterprise with a legacy rooted in entrepreneurship. Over the years, the group has grown into a dynamic organization and emerged as a leader across diverse sectors—namely Real Estate, Automobile Dealerships, and Hospitality.
+                  Founded in 1998 by <strong className="text-black">Mr. Ajay Chouhan</strong>, the Chouhan Group stands as a multi-vertical enterprise with a legacy rooted in entrepreneurship. Over the years, the group has grown into a dynamic organization and emerged as a leader across diverse sectors—namely Real Estate, Automobile Dealerships, and Hospitality.
                 </p>
                 <p>
                   We pride ourselves on a strong foundation of trust, performance, and innovation, delivering impactful projects and experiences that shape communities and improve lives. Today, we continue to strive for excellence, bringing quality to all ventures while contributing actively to community development.
@@ -195,8 +195,8 @@ const AboutGroup: React.FC = () => {
                       <MapPin size={20} />
                     </div>
                     <div>
-                      <h4 className="font-bold text-slate-900 text-sm mb-1">Global Headquarters</h4>
-                      <p className="text-slate-500 text-xs leading-relaxed">Ground Floor, Chouhan Estate, Beside Chandra Maurya Talkies, NH53, Bhilai, Chhattisgarh</p>
+                      <h4 className="font-black text-black text-sm mb-1 uppercase tracking-tight">Global Headquarters</h4>
+                      <p className="text-slate-700 text-xs leading-relaxed font-medium">Ground Floor, Chouhan Estate, Beside Chandra Maurya Talkies, NH53, Bhilai, Chhattisgarh</p>
                     </div>
                   </div>
 
@@ -245,8 +245,8 @@ const AboutGroup: React.FC = () => {
               <div className="w-16 h-16 bg-amber-50 text-amber-500 rounded-full flex items-center justify-center mb-6">
                 <Eye size={32} />
               </div>
-              <h3 className="text-2xl font-bold font-heading mb-4 text-slate-900">Our Vision</h3>
-              <p className="text-slate-600 leading-relaxed">
+              <h3 className="text-2xl font-bold font-heading mb-4 text-black uppercase tracking-tight">Our Vision</h3>
+              <p className="text-slate-800 leading-relaxed font-medium">
                 Crossing boundaries and creating sustainable destinations that redefine life experiences globally. We aspire to be at the forefront of transformative solutions, shaping a future where every endeavor reflects our dedication to exceeding expectations.
               </p>
             </div>

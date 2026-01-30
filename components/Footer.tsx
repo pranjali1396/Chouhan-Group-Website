@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#002b49] text-white font-sans text-sm relative">
+    <footer className="bg-[#002b49] text-white font-heading text-sm relative">
       <div className="container mx-auto px-6 py-16">
 
         {/* Scroll To Top Button (Absolute Top Right) */}
@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
           <ChevronUp size={24} />
         </button>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-12 gap-x-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-12 gap-x-8">
 
           {/* Column 1: Our Offices */}
           <div className="col-span-2 md:col-span-1 lg:col-span-1">
@@ -86,7 +86,20 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Column 5: Customer Care & Hospitality */}
+          {/* Column 5: Automobiles */}
+          <div className="col-span-1">
+            <h3 className="font-bold text-lg mb-6 text-white">Automobiles</h3>
+            <ul className="space-y-3 text-gray-300 text-xs font-medium">
+              <li><Link to="/automobile" className="hover:text-white hover:underline transition-colors">Division Overview</Link></li>
+              <li><Link to="/automobile/maruti" className="hover:text-white hover:underline transition-colors">Maruti Suzuki Arena</Link></li>
+              <li><Link to="/automobile/nexa" className="hover:text-white hover:underline transition-colors">NEXA</Link></li>
+              <li><Link to="/automobile/hero" className="hover:text-white hover:underline transition-colors">Hero MotoCorp</Link></li>
+              <li><Link to="/automobile/ashok" className="hover:text-white hover:underline transition-colors">Ashok Leyland</Link></li>
+              <li><Link to="/automobile/true-value" className="hover:text-white hover:underline transition-colors">True Value</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 6: Customer Care & Hospitality */}
           <div className="col-span-1">
             <div className="mb-8">
               <h3 className="font-bold text-lg mb-6 text-white">Customer Care</h3>

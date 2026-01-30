@@ -132,10 +132,10 @@ const Commercial: React.FC = () => {
         <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{ backgroundImage: 'url("/new_images/Parkview_complex_card_optimized.webp")' }}></div>
         <div className="container mx-auto max-w-5xl relative z-10 text-center">
           <span className="text-amber-500 font-bold tracking-widest text-xs uppercase mb-4 block animate-fadeIn">For the Visionaries</span>
-          <h1 className="text-4xl md:text-6xl font-heading font-black mb-6 animate-slideUp">
+          <h1 className="text-4xl md:text-6xl font-sans font-black mb-6 animate-slideUp">
             Commercial Portfolio
           </h1>
-          <p className="text-slate-300 text-lg md:text-xl font-light max-w-2xl mx-auto mb-10 animate-slideUp delay-100">
+          <p className="text-white md:text-white/90 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-10 animate-slideUp delay-100 drop-shadow-md">
             Premium business environments, retail landmarks, and industrial spaces engineered for operational success and high returns.
           </p>
         </div>

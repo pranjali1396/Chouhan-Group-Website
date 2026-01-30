@@ -1,40 +1,46 @@
 
-import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import {
   Building2, Car, Coffee, MapPin, Phone, Mail,
-  MessageCircle, Send, HelpCircle, CheckCircle2
+  MessageCircle, Send, HelpCircle, CheckCircle2,
+  Home as HomeIcon, Building
 } from 'lucide-react';
 
 type CategoryKey = 'real-estate' | 'hospitality' | 'automobiles';
 
-const CARE_DATA: Record<CategoryKey, {
+interface CareData {
   title: string;
   subtitle: string;
   icon: React.ReactNode;
   colorClass: string;
   btnClass: string;
+  accentColor: string;
   locations: Array<{
     name: string;
     address: string;
     phones: string[];
-    email: string;
+    email?: string;
     isHead?: boolean;
+    hours?: string;
   }>
-}> = {
+}
+
+const CARE_DATA: Record<CategoryKey, CareData> = {
   'real-estate': {
     title: "Real Estate Support",
     subtitle: "Housing, Commercial & Construction Inquiries",
     icon: <Building2 size={24} />,
     colorClass: "bg-amber-50 text-amber-600 border-amber-200",
-    btnClass: "bg-amber-500 hover:bg-amber-600",
+    btnClass: "bg-slate-100 text-slate-500 hover:bg-slate-200 active:bg-amber-500 active:text-white",
+    accentColor: "amber",
     locations: [
       {
         name: "Head Office - Chouhan Group",
-        address: "Ground Floor, Chouhan Estate, Beside Chandra Maurya Talkies, NH53, Bhilai, Chhattisgarh - 490001",
+        address: "Beside Shankracharya Mahavidyalaya, Junwani Road, Bhilai, Chhattisgarh – 490020",
         phones: ["+91 95111 21113"],
         email: "chouhanhousing@gmail.com",
-        isHead: true
+        isHead: true,
+        hours: "10:00 AM - 7:00 PM"
       },
       {
         name: "Chouhan Park View Site Office",
@@ -55,7 +61,8 @@ const CARE_DATA: Record<CategoryKey, {
     subtitle: "Hotels, Resorts, Events & Bookings",
     icon: <Coffee size={24} />,
     colorClass: "bg-purple-50 text-purple-600 border-purple-200",
-    btnClass: "bg-purple-600 hover:bg-purple-700",
+    btnClass: "bg-slate-100 text-slate-500 hover:bg-slate-200 active:bg-purple-600 active:text-white",
+    accentColor: "purple",
     locations: [
       {
         name: "Empyrean Hotel & Resort",
@@ -76,211 +83,239 @@ const CARE_DATA: Record<CategoryKey, {
     subtitle: "Sales, Service, Insurance & Accessories",
     icon: <Car size={24} />,
     colorClass: "bg-blue-50 text-blue-600 border-blue-200",
-    btnClass: "bg-blue-600 hover:bg-blue-700",
+    btnClass: "bg-slate-100 text-slate-500 hover:bg-slate-200 active:bg-blue-600 active:text-white",
+    accentColor: "blue",
     locations: [
       {
-        name: "Maruti Suzuki Arena",
+        name: "Maruti Suzuki Arena - Bhilai",
         address: "NH-6, Durg – Rajnandgaon Bypass, Near Chouhan Town, Bhilai, Chhattisgarh - 490020",
-        phones: ["7222910055", "7222910019"],
+        phones: ["72229 10019", "72229 10022", "72229 10013", "72229 10033", "72229 10073"],
         email: "sm.sales@chouhanautomobiles.com"
       },
       {
-        name: "Maruti Suzuki Nexa",
+        name: "Maruti Suzuki Nexa - Bhilai",
         address: "NH-6, Durg Bypass, near D-Mart, Katulbod, Bhilai, Durg, Chhattisgarh - 490020",
-        phones: ["7909999306", "7909999309"],
+        phones: ["72229 10019", "72229 10022", "72229 10013", "72229 10033", "72229 10073"],
         email: "nexabusinesshead@chouhanautomobiles.com"
       },
       {
-        name: "Maruti Suzuki True Value",
+        name: "Maruti Suzuki True Value - Bhilai",
         address: "NH-6, Durg-Rjn Bypass, Infront of Hotel Empyrean, Bhilai, Chhattisgarh - 490020",
-        phones: ["7222910005"],
+        phones: ["72229 10005"],
         email: "edp.truevalue@chouhanautomobiles.com"
+      },
+      {
+        name: "Chouhan Hero - Bhilai",
+        address: "NH-6, Durg-Rjn Bypass, Beside True Value Showroom, Bhilai, Chhattisgarh",
+        phones: ["99931 21213", "70241 20121"],
+        email: "chouhanhousing@gmail.com"
+      },
+      {
+        name: "Maruti Suzuki Arena - Balod",
+        address: "Near Shanti Traders, Jhamala Chowk, Balod, Chhattisgarh - 491226",
+        phones: ["72229 10019", "72229 10029"],
+        email: "chouhanhousing@gmail.com"
       }
     ]
   }
 };
 
 const CustomerCare: React.FC = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState<CategoryKey>('real-estate');
-
-  useEffect(() => {
-    const path = location.pathname.split('/').pop();
-    if (path && (path === 'real-estate' || path === 'hospitality' || path === 'automobiles')) {
-      setActiveCategory(path as CategoryKey);
-    }
-  }, [location]);
-
-  const handleTabChange = (key: CategoryKey) => {
-    setActiveCategory(key);
-    navigate(`/care/${key}`);
-  };
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
 
   const currentData = CARE_DATA[activeCategory];
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus('submitting');
+    setTimeout(() => setFormStatus('success'), 1500);
+  };
 
   return (
     <div className="bg-white font-sans text-slate-800 pt-32 md:pt-48 pb-20">
 
       {/* WhatsApp Float */}
       <a
-        href="#"
-        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-xl hover:bg-[#20bd5a] transition-colors flex items-center gap-2 font-bold animate-bounce-slow"
-        aria-label="Contact via WhatsApp"
+        href="https://wa.me/919511121113"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-xl hover:bg-[#20bd5a] transition-all hover:scale-110 flex items-center gap-2 font-bold animate-bounce-slow"
+        aria-label="WhatsApp Support"
       >
         <MessageCircle size={24} />
-        <span className="hidden md:inline">WhatsApp</span>
+        <span className="hidden md:inline">WhatsApp Support</span>
       </a>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-7xl">
 
         {/* Header */}
         <div className="text-center mb-12">
-          <span className="text-slate-500 font-bold uppercase tracking-widest text-xs block mb-2">We're Here To Help</span>
-          <h1 className="text-4xl md:text-5xl font-heading font-black text-slate-900">Customer Care</h1>
-          <div className="h-1 w-24 bg-slate-900 mx-auto mt-6"></div>
-          <p className="mt-6 text-slate-600 max-w-2xl mx-auto text-lg font-light">
-            Dedicated support channels for every aspect of your experience with Chouhan Group.
+          <span className="text-slate-600 font-bold uppercase tracking-[0.3em] text-[10px] block mb-2">Support Channels</span>
+          <h1 className="text-4xl md:text-5xl font-heading font-black text-slate-900 leading-tight">Customer Care</h1>
+          <div className="h-1 w-24 bg-amber-500 mx-auto mt-6"></div>
+          <p className="mt-8 text-slate-700 max-w-2xl mx-auto text-lg md:text-xl font-medium leading-relaxed">
+            Need assistance? Reach out to our dedicated support teams across our Real Estate, Hospitality, and Automobile divisions.
           </p>
         </div>
 
         {/* Navigation Tabs */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
-          {(Object.keys(CARE_DATA) as CategoryKey[]).map((key) => (
-            <button
-              key={key}
-              onClick={() => handleTabChange(key)}
-              className={`flex items-center gap-2 px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs transition-all duration-300 shadow-sm ${activeCategory === key
-                  ? CARE_DATA[key].btnClass + " text-white shadow-lg transform scale-105"
-                  : "bg-slate-100 text-slate-500 hover:bg-slate-200"
-                }`}
-            >
-              {CARE_DATA[key].icon}
-              {key.replace('-', ' ')}
-            </button>
-          ))}
+        <div className="flex flex-wrap justify-center gap-4 mb-20 animate-fadeIn">
+          {(Object.keys(CARE_DATA) as CategoryKey[]).map((key) => {
+            const data = CARE_DATA[key];
+            const isActive = activeCategory === key;
+
+            let activeStyle = "";
+            if (key === 'real-estate') activeStyle = "bg-amber-500 text-white shadow-amber-200/50";
+            if (key === 'hospitality') activeStyle = "bg-purple-600 text-white shadow-purple-200/50";
+            if (key === 'automobiles') activeStyle = "bg-blue-600 text-white shadow-blue-200/50";
+
+            return (
+              <button
+                key={key}
+                onClick={() => setActiveCategory(key)}
+                className={`flex items-center gap-3 px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] md:text-xs transition-all duration-300 shadow-md transform hover:-translate-y-1 ${isActive ? activeStyle + " scale-105 shadow-xl" : "bg-slate-50 text-slate-600 hover:bg-slate-100"
+                  }`}
+              >
+                {data.icon}
+                {key.replace('-', ' ')}
+              </button>
+            );
+          })}
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-12 animate-fadeIn">
+        {/* Main Section */}
+        <div className="flex flex-col lg:flex-row gap-12 xl:gap-20">
 
-          {/* Contact Info List */}
-          <div className="lg:w-7/12 space-y-8">
-            <div className="mb-8">
-              <h2 className={`text-2xl font-bold font-heading text-slate-900 flex items-center gap-3`}>
-                <span className={`p-2 rounded-lg ${currentData.colorClass.split(' ')[0]} ${currentData.colorClass.split(' ')[1]}`}>
-                  {currentData.icon}
-                </span>
-                {currentData.title}
-              </h2>
-              <p className="text-slate-500 mt-2 ml-14">{currentData.subtitle}</p>
+          {/* Left Side: Contact Details */}
+          <div className="lg:w-7/12 space-y-8 animate-fadeIn" key={activeCategory}>
+            <div className="mb-8 pl-4 border-l-4" style={{ borderColor: activeCategory === 'real-estate' ? '#f59e0b' : activeCategory === 'hospitality' ? '#9333ea' : '#2563eb' }}>
+              <h2 className="text-3xl font-heading font-black text-slate-900 mb-2">{currentData.title}</h2>
+              <p className="text-slate-600 text-lg font-medium">{currentData.subtitle}</p>
             </div>
 
             <div className="grid grid-cols-1 gap-6">
               {currentData.locations.map((loc, idx) => (
-                <div key={idx} className={`p-8 rounded-xl border transition-all hover:shadow-md ${loc.isHead ? 'bg-slate-900 text-white border-slate-800' : 'bg-white border-slate-200 hover:border-slate-300'}`}>
-                  <div className="flex items-start justify-between mb-4">
-                    <h3 className={`text-lg font-bold ${loc.isHead ? 'text-amber-500' : 'text-slate-900'}`}>{loc.name}</h3>
-                    {loc.isHead && <span className="text-[10px] uppercase font-bold bg-amber-500 text-slate-900 px-2 py-1 rounded">Main HQ</span>}
+                <div key={idx} className="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-lg md:text-xl font-black text-slate-900 uppercase tracking-tight">{loc.name}</h3>
+                    {loc.isHead && (
+                      <span className="text-[9px] font-black bg-amber-500 text-slate-900 px-3 py-1 rounded-full uppercase tracking-widest">
+                        Main HQ
+                      </span>
+                    )}
                   </div>
 
                   <div className="space-y-4">
-                    <div className="flex items-start gap-4">
-                      <MapPin size={18} className={`shrink-0 mt-1 ${loc.isHead ? 'text-slate-400' : 'text-slate-400'}`} />
-                      <p className={`text-sm leading-relaxed ${loc.isHead ? 'text-slate-300' : 'text-slate-600'}`}>{loc.address}</p>
+                    <div className="flex items-start gap-3">
+                      <MapPin className="shrink-0 text-amber-500 mt-1" size={18} />
+                      <span className="text-sm font-bold text-slate-800 leading-relaxed">
+                        {loc.address}
+                      </span>
                     </div>
 
-                    <div className="flex items-center gap-4">
-                      <Phone size={18} className={`shrink-0 ${loc.isHead ? 'text-slate-400' : 'text-slate-400'}`} />
-                      <div className={`flex flex-col md:flex-row gap-2 md:gap-4 text-sm font-bold ${loc.isHead ? 'text-white' : 'text-slate-800'}`}>
+                    <div className="flex items-center gap-3">
+                      <Phone className="shrink-0 text-amber-500" size={18} />
+                      <div className="flex flex-wrap gap-x-4 gap-y-1">
                         {loc.phones.map((phone, pIdx) => (
-                          <span key={pIdx}>{phone}</span>
+                          <a
+                            key={pIdx}
+                            href={`tel:${phone.replace(/\s/g, '')}`}
+                            className="text-sm font-bold text-slate-900 hover:text-amber-600 transition-colors"
+                          >
+                            {phone}
+                          </a>
                         ))}
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-4">
-                      <Mail size={18} className={`shrink-0 ${loc.isHead ? 'text-slate-400' : 'text-slate-400'}`} />
-                      <span className={`text-sm break-all ${loc.isHead ? 'text-slate-300' : 'text-slate-600'}`}>{loc.email}</span>
-                    </div>
+                    {loc.email && (
+                      <div className="flex items-center gap-3">
+                        <Mail className="shrink-0 text-amber-500" size={18} />
+                        <a
+                          href={`mailto:${loc.email}`}
+                          className="text-sm font-bold text-slate-900 hover:text-amber-600 transition-colors break-all"
+                        >
+                          {loc.email}
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Inquiry Form */}
+          {/* Right Side: Shared Ticket Form */}
           <div className="lg:w-5/12">
-            <div className={`sticky top-32 p-8 rounded-2xl shadow-xl border-t-8 ${currentData.colorClass.includes('amber') ? 'border-amber-500' : currentData.colorClass.includes('purple') ? 'border-purple-600' : 'border-blue-600'} bg-white`}>
-              <div className="flex items-center gap-3 mb-6">
-                <HelpCircle className="text-slate-400" />
-                <h3 className="text-xl font-bold text-slate-900">Submit a Ticket</h3>
+            <div className="sticky top-32">
+              <div className={`p-10 rounded-[2.5rem] shadow-2xl border-t-8 bg-white transition-all duration-500 ${activeCategory === 'real-estate' ? 'border-amber-500' :
+                activeCategory === 'hospitality' ? 'border-purple-600' :
+                  'border-blue-600'
+                }`}>
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="p-3 bg-slate-50 rounded-2xl">
+                    <HelpCircle className="text-slate-600" size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-black font-heading">Support Ticket</h3>
+                    <p className="text-[10px] uppercase font-black text-slate-600 tracking-widest mt-1">24 Hour Response Time</p>
+                  </div>
+                </div>
+
+                <p className="text-sm text-slate-800 leading-relaxed mb-8 font-medium">
+                  Have a specific issue regarding <strong className="text-black uppercase tracking-tighter">{activeCategory.replace('-', ' ')}</strong>? Our dedicated team will get back to you within 24 hours.
+                </p>
+
+                {formStatus === 'success' ? (
+                  <div className="py-12 text-center animate-fadeIn">
+                    <div className="w-20 h-20 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <CheckCircle2 size={40} />
+                    </div>
+                    <h4 className="text-2xl font-black text-slate-900 mb-2">Request Sent</h4>
+                    <p className="text-sm text-slate-800 mb-8 max-w-xs mx-auto">We've received your inquiry and will assign a manager to assist you shortly.</p>
+                    <button onClick={() => setFormStatus('idle')} className="bg-slate-900 text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-amber-500 transition-all">
+                      Back to form
+                    </button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Full Name</label>
+                      <input required type="text" className="w-full bg-slate-50 border-none rounded-2xl p-4 text-sm focus:ring-4 focus:ring-slate-100 transition-all font-medium" placeholder="Your Name" />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Mobile</label>
+                        <input required type="tel" className="w-full bg-slate-50 border-none rounded-2xl p-4 text-sm focus:ring-4 focus:ring-slate-100 transition-all font-medium" placeholder="+91..." />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Email</label>
+                        <input required type="email" className="w-full bg-slate-50 border-none rounded-2xl p-4 text-sm focus:ring-4 focus:ring-slate-100 transition-all font-medium" placeholder="mail@example.com" />
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Message Detail</label>
+                      <textarea required className="w-full bg-slate-50 border-none rounded-2xl p-4 text-sm h-32 focus:ring-4 focus:ring-slate-100 transition-all font-medium resize-none" placeholder="Describe your request..."></textarea>
+                    </div>
+
+                    <button
+                      type="submit"
+                      className={`w-full text-white font-black uppercase tracking-[0.2em] py-5 rounded-2xl transition-all shadow-xl flex justify-center items-center gap-3 hover:-translate-y-1 active:scale-95 ${activeCategory === 'real-estate' ? 'bg-amber-500 shadow-amber-200' :
+                        activeCategory === 'hospitality' ? 'bg-purple-600 shadow-purple-200' :
+                          'bg-blue-600 shadow-blue-200'
+                        }`}
+                    >
+                      {formStatus === 'submitting' ? 'Processing...' : 'Submit Ticket'} <Send size={18} />
+                    </button>
+                  </form>
+                )}
               </div>
-              <p className="text-sm text-slate-500 mb-6">
-                Have a specific issue or inquiry regarding <strong className="text-slate-900">{activeCategory.replace('-', ' ')}</strong>? Fill out the details below and our dedicated support team will get back to you.
-              </p>
-
-              <form className="space-y-4">
-                <div className="space-y-1">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase">Full Name</label>
-                  <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 text-sm focus:outline-none focus:border-slate-400 transition-colors" placeholder="Your Name" />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-bold text-slate-400 uppercase">Phone</label>
-                    <input type="tel" className="w-full bg-slate-50 border border-slate-200 rounded p-3 text-sm focus:outline-none focus:border-slate-400 transition-colors" placeholder="+91..." />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-bold text-slate-400 uppercase">Email</label>
-                    <input type="email" className="w-full bg-slate-50 border border-slate-200 rounded p-3 text-sm focus:outline-none focus:border-slate-400 transition-colors" placeholder="you@example.com" />
-                  </div>
-                </div>
-
-                <div className="space-y-1">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase">Subject</label>
-                  <select className="w-full bg-slate-50 border border-slate-200 rounded p-3 text-sm focus:outline-none focus:border-slate-400 transition-colors text-slate-600">
-                    <option>General Inquiry</option>
-                    <option>Complaint / Feedback</option>
-                    <option>Service Request</option>
-                    <option>Booking Status</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-
-                <div className="space-y-1">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase">Description</label>
-                  <textarea className="w-full bg-slate-50 border border-slate-200 rounded p-3 text-sm h-28 focus:outline-none focus:border-slate-400 transition-colors resize-none" placeholder="Please describe your issue..."></textarea>
-                </div>
-
-                <button type="button" className={`w-full text-white font-bold uppercase tracking-widest py-4 rounded shadow-lg mt-2 flex justify-center items-center gap-2 transition-colors ${currentData.btnClass}`}>
-                  Submit Ticket <Send size={16} />
-                </button>
-              </form>
             </div>
           </div>
 
-        </div>
-
-        {/* FAQ Teaser */}
-        <div className="mt-24 pt-16 border-t border-slate-100 text-center">
-          <h3 className="text-2xl font-bold text-slate-900 mb-4">Frequently Asked Questions</h3>
-          <p className="text-slate-500 mb-8 max-w-2xl mx-auto">
-            Find quick answers to common questions about our properties, booking policies, and service centers.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <div className="p-6 bg-slate-50 rounded-lg text-left">
-              <h4 className="font-bold text-slate-800 mb-2 text-sm flex items-start gap-2"><CheckCircle2 size={16} className="text-green-500 mt-0.5 shrink-0" /> How do I schedule a site visit?</h4>
-              <p className="text-xs text-slate-500">You can call our site offices directly or use the inquiry form to request a preferred time slot.</p>
-            </div>
-            <div className="p-6 bg-slate-50 rounded-lg text-left">
-              <h4 className="font-bold text-slate-800 mb-2 text-sm flex items-start gap-2"><CheckCircle2 size={16} className="text-green-500 mt-0.5 shrink-0" /> What are the service center hours?</h4>
-              <p className="text-xs text-slate-500">Our automobile service centers are generally open from 9:00 AM to 7:00 PM, Monday through Saturday.</p>
-            </div>
-            <div className="p-6 bg-slate-50 rounded-lg text-left">
-              <h4 className="font-bold text-slate-800 mb-2 text-sm flex items-start gap-2"><CheckCircle2 size={16} className="text-green-500 mt-0.5 shrink-0" /> How do I book a hotel room?</h4>
-              <p className="text-xs text-slate-500">Direct bookings can be made via the hotel phone numbers listed above or through our hospitality partner sites.</p>
-            </div>
-          </div>
         </div>
 
       </div>

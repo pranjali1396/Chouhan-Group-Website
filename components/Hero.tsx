@@ -24,7 +24,13 @@ const SLIDES = [
     link: "/hospitality",
     cta: "BOOK YOUR STAY"
   },
-
+  {
+    id: 4,
+    image: '/new_images/maruti-suzuki.webp',
+    title: "India's Largest Automotive Network",
+    link: "/automobile",
+    cta: "Explore Brands"
+  },
 ];
 
 const Hero: React.FC = () => {
@@ -91,7 +97,7 @@ const Hero: React.FC = () => {
               {/* Orange Line */}
               <div className="w-12 h-1 md:w-16 md:h-1 bg-amber-500 mx-auto mb-5 md:mb-8"></div>
 
-              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-heading font-light text-white leading-[1.1] drop-shadow-xl">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-7xl 2xl:text-8xl font-sans font-bold text-white leading-[1.05] drop-shadow-2xl">
                 {slide.title}
               </h1>
               <div className="pt-6 md:pt-8">
@@ -111,14 +117,14 @@ const Hero: React.FC = () => {
       <div className="absolute bottom-8 right-4 md:bottom-12 md:right-12 z-20 flex gap-2 md:gap-4">
         <button
           onClick={prevSlide}
-          className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center border border-white/20 hover:border-amber-500 bg-white/5 hover:bg-amber-500 text-white transition-all rounded-full backdrop-blur-md"
+          className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center border border-white/50 hover:border-amber-500 bg-white/10 hover:bg-amber-500 text-white transition-all rounded-full backdrop-blur-md"
           aria-label="Previous Slide"
         >
           <ChevronLeft size={24} className="md:w-6 md:h-6" />
         </button>
         <button
           onClick={nextSlide}
-          className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center border border-white/20 hover:border-amber-500 bg-white/5 hover:bg-amber-500 text-white transition-all rounded-full backdrop-blur-md"
+          className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center border border-white/50 hover:border-amber-500 bg-white/10 hover:bg-amber-500 text-white transition-all rounded-full backdrop-blur-md"
           aria-label="Next Slide"
         >
           <ChevronRight size={24} className="md:w-6 md:h-6" />
@@ -131,7 +137,7 @@ const Hero: React.FC = () => {
           <button
             key={idx}
             onClick={() => { setCurrent(idx); setIsAutoPlaying(false); }}
-            className={`h-1 transition-all duration-500 rounded-full shadow-sm ${idx === current ? 'w-10 md:w-16 bg-amber-500' : 'w-3 md:w-6 bg-white/30 hover:bg-white'
+            className={`h-1 transition-all duration-500 rounded-full shadow-sm ${idx === current ? 'w-10 md:w-16 bg-amber-500' : 'w-3 md:w-6 bg-white/50 hover:bg-white'
               }`}
           />
         ))}

@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
-/* 1. Define Gotham Font Faces */
+/* 1. Define Gotham Rounded Font Faces */
 @font-face {
   font-family: 'Gotham';
-  src: url('/Gotham-Font-1/Gotham-Light.otf') format('opentype');
+  src: url('/Gotham-Font-1/GothamRnd-Light.otf') format('opentype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: 'Gotham';
-  src: url('/Gotham-Font-1/Gotham-Book.otf') format('opentype');
+  src: url('/Gotham-Font-1/GothamRnd-Book.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -19,7 +19,7 @@
 
 @font-face {
   font-family: 'Gotham';
-  src: url('/Gotham-Font-1/Gotham-Medium.otf') format('opentype');
+  src: url('/Gotham-Font-1/GothamRnd-Medium.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -27,23 +27,15 @@
 
 @font-face {
   font-family: 'Gotham';
-  src: url('/Gotham-Font-1/Gotham-Bold.otf') format('opentype');
+  src: url('/Gotham-Font-1/GothamRnd-Bold.otf') format('opentype');
   font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gotham';
-  src: url('/Gotham-Font-1/Gotham-Black.otf') format('opentype');
-  font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 
 @layer base {
   body {
-    font-family: 'Gotham', sans-serif;
+    font-family: 'Raleway', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -53,9 +45,16 @@
   h3,
   h4,
   h5,
-  h6,
+  h6 {
+    font-family: 'Raleway', sans-serif;
+  }
+
   .font-heading {
     font-family: 'Gotham', sans-serif;
+  }
+
+  .font-nav {
+    font-family: 'Source Sans 3', sans-serif;
   }
 }
 
@@ -84,6 +83,7 @@
 }
 
 @theme {
-  --font-sans: 'Gotham', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Raleway', ui-sans-serif, system-ui, sans-serif;
   --font-heading: 'Gotham', ui-sans-serif, system-ui, sans-serif;
+  --font-nav: 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
 }

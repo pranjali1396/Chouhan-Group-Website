@@ -620,7 +620,6 @@ const AppContent: React.FC = () => {
         <Route path="/about/constructions" element={<Construction />} />
         <Route path="/about/sustainable" element={<SustainableDesign />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/care/:category" element={<CustomerCare />} />
 
         {/* Generic routes for others */}
         <Route path="/:category/:sub" element={<GenericPage />} />

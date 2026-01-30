@@ -164,7 +164,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 w-full z-50 flex flex-col transition-all duration-300 font-sans ${(scrolled || !isHomePage) ? 'bg-[#002b49]/95 backdrop-blur-md shadow-2xl' : 'bg-transparent'
+      <header className={`fixed top-0 left-0 right-0 w-full z-50 flex flex-col transition-all duration-300 font-heading ${(scrolled || !isHomePage) ? 'bg-[#002b49]/95 backdrop-blur-md shadow-2xl text-shadow-md' : 'bg-transparent'
         }`}>
 
         {/* Top Bar - Reverted Colors: Transparent/Dark, White Text */}
@@ -211,7 +211,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
                       <span className="font-serif text-2xl md:text-3xl font-bold text-white tracking-wider">CHOUHAN</span>
                     </div>
                     <div className="flex flex-col items-center -mt-1 w-full">
-                      <span className="text-[10px] md:text-xs text-amber-400 font-sans font-bold tracking-[0.3em] uppercase w-full text-center">Group</span>
+                      <span className="text-[10px] md:text-xs text-amber-400 font-heading font-bold tracking-[0.3em] uppercase w-full text-center">Group</span>
                     </div>
                   </div>
                 )}
@@ -239,14 +239,14 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
 
                     {/* Desktop Mega Menu Dropdown */}
                     {activeMenu === item.label && item.columns && (
-                      <div className={`absolute top-full mt-0 w-max min-w-[240px] bg-white text-slate-800 shadow-2xl rounded-b-sm border-t-4 border-amber-500 z-[100] flex animate-fadeIn max-w-[90vw] overflow-y-auto ${navData.indexOf(item) < 3 ? 'left-0' :
+                      <div className={`absolute top-full mt-0 w-max min-w-[240px] bg-white text-black shadow-2xl rounded-b-sm border-t-4 border-amber-500 z-[100] flex animate-fadeIn max-w-[90vw] overflow-y-auto ${navData.indexOf(item) < 3 ? 'left-0' :
                         navData.indexOf(item) > navData.length - 3 ? 'right-0' : 'left-1/2 -translate-x-1/2'
                         }`}>
                         <div className="flex p-2">
                           {item.columns.map((col, idx) => (
                             <div key={idx} className="p-6 min-w-[200px] border-r border-slate-100 last:border-r-0">
                               {col.title && (
-                                <h4 className="text-xs font-black text-slate-900 uppercase mb-4 tracking-widest border-b-2 border-amber-500 pb-2 inline-block">
+                                <h4 className="text-xs font-black text-black uppercase mb-4 tracking-widest border-b-2 border-amber-500 pb-2 inline-block">
                                   {col.title}
                                 </h4>
                               )}
@@ -255,13 +255,13 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
                                   <li key={lIdx}>
                                     <Link
                                       to={link.path}
-                                      className="text-xs font-bold text-slate-500 hover:text-amber-600 hover:translate-x-1 transition-all block uppercase tracking-wide"
+                                      className="text-xs font-bold text-slate-800 hover:text-amber-600 hover:translate-x-1 transition-all block uppercase tracking-wide"
                                     >
                                       {link.label}
                                     </Link>
                                   </li>
                                 )) : (
-                                  <li className="text-[10px] text-slate-400 italic">No current listings</li>
+                                  <li className="text-[10px] text-slate-500 italic">No current listings</li>
                                 )}
                               </ul>
                             </div>

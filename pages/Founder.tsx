@@ -40,7 +40,7 @@ const Founder: React.FC = () => {
                 <img
                   src="/new_images/ajay_chouhan.png"
                   alt="Mr. Ajay Chouhan"
-                  className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-auto object-cover transition-all duration-700"
                 />
               </div>
               {/* Decorative Elements */}
@@ -49,13 +49,13 @@ const Founder: React.FC = () => {
             </div>
 
             {/* Founder Content */}
-            <div className="lg:w-1/2 text-slate-900">
+            <div className="lg:w-1/2 text-black">
               <div className="inline-flex items-center gap-2 text-amber-600 font-bold uppercase tracking-widest text-xs mb-4">
                 <span className="w-8 h-0.5 bg-amber-500"></span>
                 Our Founder
               </div>
-              <h1 className="text-5xl lg:text-6xl font-heading font-black mb-2 text-slate-900">Mr. Ajay Chouhan</h1>
-              <p className="text-2xl text-slate-500 font-light mb-8">Founder & Chairman</p>
+              <h1 className="text-5xl lg:text-6xl font-heading font-black mb-2 text-black">Mr. Ajay Chouhan</h1>
+              <p className="text-2xl text-slate-800 font-bold mb-8">Founder & Chairman</p>
 
               <div className="relative p-8 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg mb-8">
                 <Quote className="absolute top-4 left-4 text-amber-200 transform -scale-x-100" size={48} />
@@ -77,8 +77,8 @@ const Founder: React.FC = () => {
       {/* Biography Section */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl font-heading font-bold mb-8 border-b border-slate-100 pb-4 text-slate-900">The Journey</h2>
-          <div className="space-y-6 text-slate-600 leading-loose text-lg">
+          <h2 className="text-3xl font-heading font-black mb-8 border-b border-slate-100 pb-4 text-black uppercase tracking-tight">The Journey</h2>
+          <div className="space-y-6 text-slate-800 leading-loose text-lg font-medium">
             <p>
               Mr. Ajay Chouhan, a visionary entrepreneur, embarked on his journey in 1998 with a modest capital but an ambitious dream: to redefine the real estate landscape of Central India. Recognizing the potential of Bhilai and Durg, he established the Chouhan Group with a core philosophy centered on integrity and customer satisfaction.
             </p>

@@ -149,30 +149,7 @@ export const NAVIGATION_DATA: NavItem[] = [
   },
   {
     label: "Customer Care",
-    columns: [
-      {
-        title: "REAL ESTATE",
-        links: [
-          { label: "Maintenance Request", path: "/care/real-estate" },
-          { label: "Payment Portal", path: "/care/real-estate" },
-          { label: "Documentation", path: "/care/real-estate" },
-        ]
-      },
-      {
-        title: "DIVISION SUPPORT",
-        links: [
-          { label: "Hospitality Care", path: "/care/hospitality" },
-          { label: "Automobile Service", path: "/care/automobiles" },
-        ]
-      },
-      {
-        title: "FEEDBACK",
-        links: [
-          { label: "Submit Complaint", path: "/care/contact" },
-          { label: "General Inquiry", path: "/contact" },
-        ]
-      }
-    ]
+    path: "/care"
   },
   {
     label: "About",
