@@ -10,6 +10,7 @@ import {
 const SECTIONS = [
     { id: 'home', label: 'Home' },
     { id: 'discover', label: 'Discover' },
+    { id: 'phases', label: 'Phases' },
     { id: 'amenities', label: 'Experience' },
     { id: 'why-choose', label: 'Why Choose Us' },
     { id: 'location', label: 'Location' },
@@ -164,25 +165,14 @@ const ChouhanEstateLanding: React.FC = () => {
             </div>
 
             {/* Hero Section */}
-            <section id="home" className="relative w-full overflow-hidden">
-                <div className="hidden md:block w-full aspect-[32/13]">
-                    <img
-                        src="/images/chouhan_estate.webp"
-                        alt="Chouhan Estate"
-                        className="w-full h-full object-cover"
-                        loading="eager"
-                        {...{ fetchPriority: "high" } as any}
-                    />
-                </div>
-                <div className="block md:hidden w-full aspect-[15/8]">
-                    <img
-                        src="/images/chouhan_estate_mob.webp"
-                        alt="Chouhan Estate"
-                        className="w-full h-full object-cover"
-                        loading="eager"
-                        {...{ fetchPriority: "high" } as any}
-                    />
-                </div>
+            <section id="home" className="relative w-full bg-slate-100 overflow-hidden h-[350px] md:h-[600px] lg:h-[700px]">
+                <img
+                    src="/new_images/chouhan_estate_hero_main.png"
+                    alt="Chouhan Estate"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+                    loading="eager"
+                    {...{ fetchPriority: "high" } as any}
+                />
             </section>
 
             {/* Hero Text Content Below Image */}
@@ -230,6 +220,85 @@ const ChouhanEstateLanding: React.FC = () => {
                             <div className="bg-stone-50 p-8 rounded-2xl border border-stone-200 hover:shadow-lg transition-shadow">
                                 <h4 className="text-3xl font-black text-amber-600 mb-1">prime</h4>
                                 <p className="text-sm text-gray-500 uppercase tracking-wider">Highway Location</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Phases Section */}
+            <section id="phases" className="py-24 bg-stone-50 border-y border-stone-200">
+                <div className="container mx-auto px-4">
+                    <div className="text-center mb-16">
+                        <h2 className="text-sm font-bold text-amber-600 uppercase tracking-widest mb-2">Development Progress</h2>
+                        <h3 className="text-4xl font-heading font-bold text-stone-900">Project Phases</h3>
+                        <p className="text-stone-500 mt-4 max-w-2xl mx-auto">Chouhan Estate has been developed in strategic phases to ensure excellence in every square foot.</p>
+                    </div>
+
+                    <div className="space-y-24">
+                        {/* Phase 1 */}
+                        <div className="flex flex-col lg:flex-row gap-12 items-center">
+                            <div className="lg:w-1/2 grid grid-cols-2 gap-4">
+                                <div className="rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
+                                    <img src="/new_images/chouhan_estate_phase1_1.png" alt="Phase 1 Corner" className="w-full h-full object-cover" />
+                                </div>
+                                <div className="rounded-xl overflow-hidden shadow-lg aspect-[4/3] mt-8">
+                                    <img src="/new_images/chouhan_estate_phase1_2.png" alt="Phase 1 Street" className="w-full h-full object-cover" />
+                                </div>
+                            </div>
+                            <div className="lg:w-1/2">
+                                <span className="px-3 py-1 bg-amber-100 text-amber-700 text-[10px] font-bold uppercase tracking-widest rounded-full mb-4 inline-block">The Foundation</span>
+                                <h4 className="text-3xl font-heading font-bold text-stone-900 mb-6">Phase 1: The Original Legacy</h4>
+                                <p className="text-stone-600 leading-relaxed mb-6">
+                                    Phase 1 is the cornerstone of Chouhan Estate's success. It established the group's reputation for creating high-traffic commercial corridors. Currently hosting diverse retail outlets, financial institutions (SBI), and lifestyle centers.
+                                </p>
+                                <ul className="space-y-4">
+                                    <li className="flex items-start gap-3">
+                                        <CheckCircle2 className="text-amber-500 shrink-0 mt-1" size={18} />
+                                        <span className="text-stone-700 font-medium">Established Commercial Ecosystem</span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <CheckCircle2 className="text-amber-500 shrink-0 mt-1" size={18} />
+                                        <span className="text-stone-700 font-medium">Diversified Retail and Banking (SBI)</span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <CheckCircle2 className="text-amber-500 shrink-0 mt-1" size={18} />
+                                        <span className="text-stone-700 font-medium">The Ultimate Shopping Destination Hub</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Phase 2 */}
+                        <div className="flex flex-col lg:flex-row-reverse gap-12 items-center">
+                            <div className="lg:w-1/2 grid grid-cols-2 gap-4">
+                                <div className="rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
+                                    <img src="/new_images/chouhan_estate_phase2_1.png" alt="Phase 2 Detail" className="w-full h-full object-cover" />
+                                </div>
+                                <div className="rounded-xl overflow-hidden shadow-lg aspect-[4/3] mt-8">
+                                    <img src="/new_images/chouhan_estate_phase2_2.png" alt="Phase 2 Perspective" className="w-full h-full object-cover" />
+                                </div>
+                            </div>
+                            <div className="lg:w-1/2 text-right lg:text-left">
+                                <span className="px-3 py-1 bg-amber-100 text-amber-700 text-[10px] font-bold uppercase tracking-widest rounded-full mb-4 inline-block">Established Excellence</span>
+                                <h4 className="text-3xl font-heading font-bold text-stone-900 mb-6">Phase 2: Modern Landmarks</h4>
+                                <p className="text-stone-600 leading-relaxed mb-6 text-left">
+                                    Phase 2 represents the modern expansion of Chouhan Estate, featuring contemporary architecture and premium glass facades. This phase houses major institutional and retail anchors, including the renowned <strong>Allen Career Institute</strong>.
+                                </p>
+                                <ul className="space-y-4 text-left">
+                                    <li className="flex items-start gap-3">
+                                        <CheckCircle2 className="text-amber-500 shrink-0 mt-1" size={18} />
+                                        <span className="text-stone-700 font-medium">Modern Glass Facade Design</span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <CheckCircle2 className="text-amber-500 shrink-0 mt-1" size={18} />
+                                        <span className="text-stone-700 font-medium">Home to Major Educational Institutions</span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <CheckCircle2 className="text-amber-500 shrink-0 mt-1" size={18} />
+                                        <span className="text-stone-700 font-medium">Prime Road-Facing Visibility</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>

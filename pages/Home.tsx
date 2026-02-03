@@ -22,7 +22,7 @@ const SERVICE_HIGHLIGHTS = [
     title: "Commercial Projects",
     desc: "Premium commercial spaces designed for success. From retail outlets to office complexes, we build landmarks for businesses.",
     icon: <Building2 size={24} />,
-    image: "/new_images/chouhan_estate.webp",
+    image: "/new_images/parview.png",
     link: "/commercial"
   },
   {
@@ -197,15 +197,15 @@ const Home: React.FC = () => {
                 Know More <ArrowRight size={14} />
               </Link>
             </div>
-            <div className="lg:w-1/2 relative w-full mt-12 lg:mt-0 overflow-hidden lg:overflow-visible">
-              <div className="absolute -inset-4 bg-amber-50 rounded-2xl transform rotate-2"></div>
-              <img
-                src="/new_images/sunrixecity_04.webp"
-                alt="Chouhan Group Legacy"
-                className="relative rounded-xl shadow-2xl w-full h-[400px] md:h-[500px] lg:h-[550px] xl:h-[650px] object-cover"
-                loading="lazy"
-                decoding="async"
-              />
+            <div className="lg:w-1/2 mt-12 lg:mt-0">
+              <div className="relative group overflow-hidden rounded-2xl shadow-2xl">
+                <img
+                  src="/new_images/sunrixecity_04.webp"
+                  alt="Chouhan Group Landmark"
+                  className="w-full h-[400px] md:h-[600px] object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+              </div>
             </div>
           </div>
         </div>

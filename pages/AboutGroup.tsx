@@ -10,25 +10,25 @@ const TEAM = [
   {
     name: "Mr. Ajay Chouhan",
     role: "Founder & Chairman",
-    image: "/new_images/ajay_chouhan.png",
+    image: "/new_images/ajay_chouhan_high_res.png",
     desc: "The visionary force behind Chouhan Group, founding the organization in 1998 with a commitment to excellence."
   },
   {
     name: "Suraj Chouhan",
     role: "Director",
-    image: "/new_images/suraj_chouhan.png",
+    image: "/new_images/suraj_chouhan_high_res.png",
     desc: "Driving strategic growth and innovation across new verticals."
   },
   {
     name: "Sunny Chouhan",
     role: "Director",
-    image: "/new_images/sunny_chouhan.png",
+    image: "/new_images/sunny_chouhan_high_res.png",
     desc: "Overseeing operational excellence and customer satisfaction."
   },
   {
     name: "Saurabh Chouhan",
     role: "Director",
-    image: "/new_images/sourabh_chouhan.png",
+    image: "/new_images/sourabh_chouhan_high_res.png",
     desc: "Leading marketing initiatives and brand development."
   }
 ];

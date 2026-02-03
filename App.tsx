@@ -93,9 +93,9 @@ const SINGAPORE_DATA: ProjectData = {
     "/new_images/Singapore_P4_top_view.png"
   ],
   heroPositions: [
-    "object-bottom", // Focus on archway for 1st pic
-    "object-center", // Default for 2nd
-    "object-top"     // Focus on top for 3rd (top view)
+    "bottom", // Focus on archway for 1st pic
+    "center", // Default for 2nd
+    "top"     // Focus on top for 3rd (top view)
   ],
   mapQuery: "CHOUHAN SINGAPORE LIFE CITY PHASE 1",
   websiteUrl: "https://singapore-city.vercel.app/",
@@ -133,7 +133,7 @@ const BUSINESS_CENTER_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "CHOUHANHOUSING@GMAIL.COM"
   },
-  heroImage: "/new_images/Business_Center_Drone_view.png",
+  heroImage: "/new_images/chouhan_business_center.png",
   mapQuery: "Chouhan Business Center Phase-1",
   websiteUrl: "https://chouhan-business-center.vercel.app/"
 };
@@ -151,7 +151,7 @@ const BUSINESS_PARK_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "CHOUHANHOUSING@GMAIL.COM"
   },
-  heroImage: "/new_images/chouhan_business_park_ai.png",
+  heroImage: "/new_images/chouhan_business_park.png",
   mapQuery: "Chouhan Business Center Phase-1",
   websiteUrl: "https://chouhan-business-park.vercel.app/"
 };
@@ -193,7 +193,7 @@ const EMPYREAN_BHILAI_DATA: ProjectData = {
 };
 
 const EMPYREAN_BALOD_DATA: ProjectData = {
-  title: "Empyrean Resort Balod",
+  title: "The Empyrean Lake Resort, Balod",
   description: "Now Open – Escape to the serenity of Empyrean Resort Balod. Nestled by the lakeside, this resort offers a perfect blend of nature and luxury. Enjoy boating, infinity pools, and a tranquil atmosphere for a rejuvenating getaway.",
   status: "Now Open",
   address: "Tandula Dm Rd, Balod, Sivni, Chhattisgarh 491226",
@@ -202,7 +202,7 @@ const EMPYREAN_BALOD_DATA: ProjectData = {
     hours: "Open 24/7"
   },
   contact: {
-    phone: "+91 95111 21113",
+    phone: "+91 91091 04001 / 04002",
     email: "CHOUHANHOUSING@GMAIL.COM"
   },
   heroImage: "/new_images/ELR_Balod_104_optimized.webp",
@@ -241,7 +241,8 @@ const CHOUHAN_ESTATES_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "CHOUHANHOUSING@GMAIL.COM"
   },
-  heroImage: "/new_images/chouhan_estate.webp",
+  heroImage: "/new_images/chouhan_estate_hero_main.png",
+  heroPositions: ["center"],
   mapQuery: "Chouhan Estate, Bhilai",
   websiteUrl: "/commercial/estate-details"
 };
@@ -259,7 +260,7 @@ const SUNRISE_CITY_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "CHOUHANHOUSING@GMAIL.COM"
   },
-  heroImage: "/new_images/singapore_city_4_1.jpg",
+  heroImage: "/new_images/sunrise_city_drone.jpg",
   mapQuery: "Sunrise City, Bhilai",
   websiteUrl: "/new-homes/sunrise-city"
 };
@@ -277,7 +278,7 @@ const PARKVIEW_COMPLEX_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "CHOUHANHOUSING@GMAIL.COM"
   },
-  heroImage: "/new_images/Parkview_Hero_optimized.webp", // Reusing business center image as placeholder
+  heroImage: "/new_images/parview.png", // Reusing business center image as placeholder
   mapQuery: "Chouhan Parkview Complex, Junwani Road, Bhilai",
   websiteUrl: "https://chouhan-park-view-xi.vercel.app/commercial"
 };

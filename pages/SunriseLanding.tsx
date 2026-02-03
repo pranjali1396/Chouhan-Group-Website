@@ -72,6 +72,7 @@ const GALLERY_IMAGES = [
 ];
 
 const HERO_IMAGES = [
+  "/new_images/sunrise_city_drone.jpg",
   "/Sunrise City/Photos and Videos/sunrisecity_00.webp",
   "/Sunrise City/Photos and Videos/singapore_city_4_1.jpg",
   "/Sunrise City/Photos and Videos/singapore_city_4_2.jpg",

@@ -54,7 +54,7 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
             <img
               src={img}
               alt={`${data.title} ${idx + 1}`}
-              className={`w-full h-full object-cover ${data.heroPositions && data.heroPositions[idx] ? data.heroPositions[idx] : 'object-center'}`}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: data.heroPositions && data.heroPositions[idx] ? data.heroPositions[idx] as any : 'center' }}
               loading={idx === 0 ? "eager" : "lazy"}
               {...(idx === 0 ? { fetchPriority: "high" } as any : {})}
               decoding="async"
