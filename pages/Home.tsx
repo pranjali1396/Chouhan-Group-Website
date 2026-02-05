@@ -445,7 +445,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Automobile Showcase Section - New & Premium */}
-      <section className="py-16 md:py-24 bg-white text-slate-900 relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-blue-50 text-slate-900 relative overflow-hidden">
         <style>
           {`
             @keyframes slideCarIn {

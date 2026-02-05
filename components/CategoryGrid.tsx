@@ -58,7 +58,7 @@ const CategoryGrid: React.FC = () => {
             className="group relative w-full h-[250px] md:h-[300px] lg:h-full overflow-hidden block border-r border-white/10 last:border-r-0 border-b lg:border-b-0"
           >
             {/* Background Image */}
-            <div className={`absolute inset-0 ${cat.title === "AUTOMOBILES" ? "bg-white" : "bg-slate-100"}`}>
+            <div className={`absolute inset-0 ${cat.title === "AUTOMOBILES" ? "bg-blue-50" : "bg-slate-100"}`}>
               {cat.title !== "AUTOMOBILES" && (
                 <img
                   src={cat.image}
