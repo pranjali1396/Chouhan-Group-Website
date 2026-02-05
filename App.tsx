@@ -263,7 +263,7 @@ const SUNRISE_CITY_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "CHOUHANHOUSING@GMAIL.COM"
   },
-  heroImage: "/new_images/sunrise_city_drone.jpg",
+  heroImage: "/new_images/Sunrise.mp4",
   mapQuery: "Sunrise City, Bhilai",
   websiteUrl: "/new-homes/sunrise-city"
 };

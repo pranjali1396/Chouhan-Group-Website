@@ -36,7 +36,7 @@ const SERVICE_HIGHLIGHTS = [
     title: "Automobiles",
     desc: "Proud partners of Maruti Suzuki Arena, NEXA, Hero, and Ashok Leyland. Driving excellence in mobility.",
     icon: <Car size={24} />,
-    image: "/new_images/maruti-suzuki.webp",
+    image: "/new_images/NexaCardImage.png",
     link: "/automobile"
   },
   {
@@ -80,34 +80,47 @@ const AUTOMOBILE_PARTNERS = [
   {
     name: "Maruti Suzuki Arena",
     brand: "ARENA",
-    image: "/images/maruti-arena.png",
+    image: "/new_images/MarutiCardImage.png",
     link: "/automobile/maruti",
     desc: "India's most loved car destination",
-    tagline: "Experience the joy of mobility"
+    tagline: "Experience the joy of mobility",
+    position: "center"
   },
   {
     name: "Nexa",
     brand: "NEXA",
-    image: "/images/nexa-showroom.png",
+    image: "/new_images/NexaCardImage.png",
     link: "/automobile/nexa",
     desc: "Create. Inspire. Premium automotive experience",
-    tagline: "The premium side of driving"
+    tagline: "The premium side of driving",
+    position: "center"
   },
   {
     name: "Hero MotoCorp",
     brand: "HERO",
-    image: "/images/hero-showroom.png",
+    image: "/new_images/herofinal.webp",
     link: "/automobile/hero",
     desc: "The world's largest two-wheeler manufacturer",
-    tagline: "Be a Hero"
+    tagline: "Be a Hero",
+    position: "center"
   },
   {
     name: "True Value",
     brand: "TRUE VALUE",
-    image: "/images/truevalue-showroom-v2.png",
+    image: "/new_images/trueshowroom.webp",
     link: "/automobile/true-value",
     desc: "Pre-owned cars with trust and transparency",
-    tagline: "Certified pre-owned excellence"
+    tagline: "Certified pre-owned excellence",
+    position: "center"
+  },
+  {
+    name: "Ashok Leyland",
+    brand: "ASHOK LEYLAND",
+    image: "/new_images/ashok-leyland.webp",
+    link: "/automobile/ashok",
+    desc: "Leading name in commercial vehicles",
+    tagline: "Aapki Jeet, Hamari Maat",
+    position: "left"
   }
 ];
 
@@ -432,38 +445,63 @@ const Home: React.FC = () => {
       </section>
 
       {/* Automobile Showcase Section - New & Premium */}
-      <section className="py-16 md:py-24 bg-slate-950 text-white relative overflow-hidden">
-        {/* Abstract Background Decoration */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[120px] -mr-64 -mt-64"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] -ml-64 -mb-64"></div>
-
+      <section className="py-16 md:py-24 bg-white text-slate-900 relative overflow-hidden">
+        <style>
+          {`
+            @keyframes slideCarIn {
+              from { transform: translateX(100%); opacity: 0; }
+              to { transform: translateX(0); opacity: 1; }
+            }
+            .car-slide-animation {
+              animation: slideCarIn 1.5s ease-out forwards;
+            }
+          `}
+        </style>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
-          <div className="flex flex-col lg:flex-row justify-between items-end mb-20 gap-8">
-            <div className="max-w-3xl">
-              <span className="text-amber-500 font-bold tracking-[0.3em] text-[10px] uppercase mb-6 block">Automobile Division</span>
+          <div className="flex flex-col lg:flex-row justify-between items-center mb-20 gap-12">
+            <div className="max-w-xl">
+              <span className="text-amber-600 font-bold tracking-[0.3em] text-[10px] uppercase mb-6 block">Automobile Division</span>
               <h2 className="text-3xl md:text-5xl font-heading font-black mb-8 leading-tight">
-                India's <span className="text-amber-500">Largest</span> <br />
+                India's <span className="text-amber-600">Largest</span> <br />
                 Automotive Network
               </h2>
-              <p className="text-slate-400 text-lg md:text-xl font-light leading-relaxed">
+              <p className="text-slate-600 text-lg md:text-xl font-medium leading-relaxed mb-8">
                 As proud partners of the world's most iconic brands, we bring you excellence in mobility through state-of-the-art showrooms and elite service facilities across Chhattisgarh.
               </p>
+              <Link to="/automobile" className="group inline-flex items-center gap-4 bg-slate-100 border border-slate-200 px-8 py-4 rounded-full hover:bg-slate-900 transition-all duration-300 shadow-sm">
+                <span className="text-xs font-bold uppercase tracking-widest text-slate-900 group-hover:text-white">View All Showrooms</span>
+                <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-slate-950 group-hover:bg-white">
+                  <ArrowRight size={16} />
+                </div>
+              </Link>
             </div>
-            <Link to="/automobile" className="group flex items-center gap-4 bg-white/5 border border-white/10 px-8 py-4 rounded-full hover:bg-amber-500 hover:border-amber-500 transition-all duration-300">
-              <span className="text-xs font-bold uppercase tracking-widest group-hover:text-slate-950">View All Showrooms</span>
-              <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-slate-950 group-hover:bg-white">
-                <ArrowRight size={16} />
+
+            {/* Sliding Car Element */}
+            <div className="relative w-full lg:w-1/2 flex justify-center lg:justify-end py-10">
+              <div className="relative group">
+                {/* Subtle shadow glow for white bg */}
+                <div className="absolute -inset-10 bg-slate-200/50 rounded-full blur-[100px] pointer-events-none"></div>
+                <img
+                  src="/new_images/fronx_red_black.webp"
+                  alt="Fronx"
+                  className="w-full max-w-2xl h-auto object-contain car-slide-animation relative z-10"
+                />
               </div>
-            </Link>
+            </div>
           </div>
 
-          {/* Brands Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          {/* Brands Grid - Balanced 2+3 layout for 5 items */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
             {AUTOMOBILE_PARTNERS.map((partner, idx) => (
               <Link
                 key={idx}
                 to={partner.link}
-                className="group relative h-[500px] rounded-3xl overflow-hidden shadow-2xl block border border-white/5"
+                className={`group relative rounded-3xl overflow-hidden shadow-2xl block bg-slate-900 border border-white/5 ${idx < 2
+                  ? 'lg:col-span-3 h-[450px] md:h-[500px]'
+                  : idx === 4
+                    ? 'md:col-span-2 lg:col-span-2 h-[300px] md:h-[350px]'
+                    : 'lg:col-span-2 h-[300px] md:h-[350px]'
+                  }`}
               >
                 {/* Background Image */}
                 <div className="absolute inset-0">
@@ -471,19 +509,20 @@ const Home: React.FC = () => {
                     src={partner.image}
                     alt={partner.name}
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                    style={{ objectPosition: (partner as any).position || 'center' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
                 </div>
 
                 {/* Content Overlay */}
-                <div className="absolute inset-0 p-8 flex flex-col justify-between">
+                <div className="absolute inset-0 p-8 flex flex-col justify-between z-20">
                   {/* Top: Brand Logo/Text */}
                   <div className="flex justify-between items-start">
                     <div className="bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-xl">
-                      <span className="text-xl font-black tracking-tighter italic">{partner.brand}</span>
+                      <span className="text-xl font-black tracking-tighter italic text-white">{partner.brand}</span>
                     </div>
                     <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-y-4 group-hover:translate-y-0">
-                      <ArrowRight size={20} className="text-amber-500" />
+                      <ArrowRight size={20} className="text-white" />
                     </div>
                   </div>
 
@@ -492,10 +531,10 @@ const Home: React.FC = () => {
                     <span className="text-amber-500 text-[10px] font-bold uppercase tracking-[0.2em] mb-2 block">
                       {partner.tagline}
                     </span>
-                    <h3 className="text-3xl font-heading font-black mb-4 group-hover:text-amber-500 transition-colors">
+                    <h3 className="text-3xl font-heading font-black mb-4 text-white group-hover:text-amber-500 transition-colors">
                       {partner.name}
                     </h3>
-                    <p className="text-slate-400 text-sm font-light leading-relaxed mb-6 line-clamp-2">
+                    <p className="text-white/70 text-sm font-light leading-relaxed mb-6 line-clamp-2">
                       {partner.desc}
                     </p>
                     <div className="h-1 w-12 bg-amber-500 transition-all duration-500 group-hover:w-full"></div>

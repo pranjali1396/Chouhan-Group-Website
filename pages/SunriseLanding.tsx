@@ -71,12 +71,8 @@ const GALLERY_IMAGES = [
   "/Sunrise City/Photos and Videos/singapore_city_4_2.jpg",
 ];
 
-const HERO_IMAGES = [
-  "/new_images/sunrise_city_drone.jpg",
-  "/Sunrise City/Photos and Videos/sunrisecity_00.webp",
-  "/Sunrise City/Photos and Videos/singapore_city_4_1.jpg",
-  "/Sunrise City/Photos and Videos/singapore_city_4_2.jpg",
-  "/Sunrise City/Photos and Videos/sunrisecity.webp"
+const HERO_MEDIA = [
+  { type: 'video', src: "/new_images/Sunrise.mp4" }
 ];
 
 const SunriseLanding: React.FC = () => {
@@ -90,7 +86,7 @@ const SunriseLanding: React.FC = () => {
   // Hero Slider Autoplay
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentHeroSlide((prev) => (prev + 1) % HERO_IMAGES.length);
+      setCurrentHeroSlide((prev) => (prev + 1) % HERO_MEDIA.length);
     }, 5000); // 5 seconds per slide
     return () => clearInterval(timer);
   }, []);
@@ -319,23 +315,35 @@ const SunriseLanding: React.FC = () => {
         )}
       </div>
 
-      {/* Hero Section - Image Slider */}
+      {/* Hero Section - Media Slider (Images + Video) */}
       <section id="home" className="relative h-[85vh] w-full overflow-hidden">
-        {HERO_IMAGES.map((img, idx) => (
+        {HERO_MEDIA.map((media, idx) => (
           <div
             key={idx}
             className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === currentHeroSlide ? 'opacity-100' : 'opacity-0'}`}
           >
-            <img
-              src={img}
-              alt={`Sunrise City Slide ${idx + 1}`}
-              className="w-full h-full object-cover"
-              loading={idx === 0 ? "eager" : "lazy"}
-              decoding="async"
-              {...(idx === 0 ? { fetchpriority: "high" } as any : {})}
-            />
-            {/* Subtle gradient for depth */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
+            {media.type === 'video' ? (
+              <video
+                src={media.src}
+                poster="/new_images/sunrise_city_drone.jpg"
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+              />
+            ) : (
+              <img
+                src={media.src}
+                alt={`Sunrise City Slide ${idx + 1}`}
+                className="w-full h-full object-cover"
+                loading={idx === 0 ? "eager" : "lazy"}
+                decoding="async"
+                {...(idx === 0 ? { fetchpriority: "high" } as any : {})}
+              />
+            )}
+            {/* Gradient removed for video clarity */}
           </div>
         ))}
 
@@ -497,7 +505,7 @@ const SunriseLanding: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Video 1 */}
             <div className="space-y-4">
               <div className="aspect-video bg-black rounded-xl overflow-hidden shadow-2xl border border-stone-700 relative group">
@@ -529,6 +537,17 @@ const SunriseLanding: React.FC = () => {
                 </video>
               </div>
               <h3 className="text-xl font-bold text-center">Green Spaces Tour</h3>
+            </div>
+
+            {/* Video 4 - New Sunrise City Video */}
+            <div className="space-y-4">
+              <div className="aspect-video bg-black rounded-xl overflow-hidden shadow-2xl border border-stone-700 relative group">
+                <video controls className="w-full h-full object-cover" preload="metadata">
+                  <source src="/new_images/Sunrise.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <h3 className="text-xl font-bold text-center">Aerial View</h3>
             </div>
           </div>
 

@@ -110,7 +110,7 @@ const Automobile: React.FC = () => {
 
       {/* Hero Section */}
       <div className="bg-[#002b49] text-white pt-32 md:pt-48 pb-24 md:pb-32 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center opacity-10 blur-sm" style={{ backgroundImage: 'url("/new_images/maruti-suzuki-nexa_optimized.webp")' }}></div>
+        <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: 'url("/new_images/NexaCardImage.png")' }}></div>
         <div className="container mx-auto max-w-5xl relative z-10 text-center">
           <span className="text-amber-500 font-bold tracking-widest text-xs uppercase mb-4 block animate-fadeIn">Driven by Excellence</span>
           <h1 className="text-4xl md:text-6xl font-sans font-black mb-6 animate-slideUp">

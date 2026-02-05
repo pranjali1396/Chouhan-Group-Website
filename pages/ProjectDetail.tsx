@@ -46,30 +46,70 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
     <div className="bg-white font-sans text-slate-800 pt-32 md:pt-48">
       {/* Hero Section - Large image with simple white text overlay */}
       <div className="relative h-[35vh] md:h-[85vh] min-h-[220px] md:min-h-[500px] w-full overflow-hidden">
-        {heroImages.map((img, idx) => (
-          <div
-            key={idx}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === currentHeroIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-          >
-            <img
-              src={img}
-              alt={`${data.title} ${idx + 1}`}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: data.heroPositions && data.heroPositions[idx] ? data.heroPositions[idx] as any : 'center' }}
-              loading={idx === 0 ? "eager" : "lazy"}
-              {...(idx === 0 ? { fetchPriority: "high" } as any : {})}
-              decoding="async"
-            />
-            {/* Background color to prevent white flash */}
-            <div className="absolute inset-0 -z-10 bg-slate-100"></div>
-
-            {/* Preload Next Image for Slider */}
-            {heroImages.length > 1 && idx === currentHeroIndex && (
-              <link rel="preload" as="image" href={heroImages[(idx + 1) % heroImages.length]} />
+        {heroImages.length === 1 ? (
+          <div className="absolute inset-0 bg-slate-900">
+            {heroImages[0].toLowerCase().endsWith('.mp4') ? (
+              <video
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster="/new_images/sunrise_city_drone.jpg"
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              >
+                <source src={heroImages[0]} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <img
+                src={heroImages[0]}
+                alt={data.title}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: data.heroPositions && data.heroPositions[0] ? data.heroPositions[0] as any : 'center' }}
+                loading="eager"
+                {...(true ? { fetchPriority: "high" } as any : {})}
+                decoding="async"
+              />
             )}
           </div>
-        ))}
+        ) : (
+          heroImages.map((img, idx) => (
+            <div
+              key={idx}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === currentHeroIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+            >
+              {img.toLowerCase().endsWith('.mp4') ? (
+                <video
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  poster="/new_images/sunrise_city_drone.jpg"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                >
+                  <source src={img} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <img
+                  src={img}
+                  alt={`${data.title} ${idx + 1}`}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: data.heroPositions && data.heroPositions[idx] ? data.heroPositions[idx] as any : 'center' }}
+                  loading={idx === 0 ? "eager" : "lazy"}
+                  {...(idx === 0 ? { fetchPriority: "high" } as any : {})}
+                  decoding="async"
+                />
+              )}
+              {/* Background color to prevent white flash */}
+              <div className="absolute inset-0 -z-10 bg-slate-900"></div>
+            </div>
+          ))
+        )}
 
-        <div className="absolute inset-0 bg-black/10 z-10"></div>
+        {data.title !== "Sunrise City" && (
+          <div className="absolute inset-0 bg-black/20 z-10"></div>
+        )}
 
         {/* Navigation Arrows for Slider (only if multiple images) */}
         {heroImages.length > 1 && (
@@ -109,13 +149,15 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
           </div>
         )}
 
-        <div className="absolute bottom-0 left-0 w-full p-4 md:p-12">
-          <div className="container mx-auto px-4">
-            <h1 className="text-2xl md:text-6xl text-white font-heading font-light tracking-wide leading-tight max-w-4xl drop-shadow-lg">
-              {data.title}
-            </h1>
+        {data.title !== "Sunrise City" && (
+          <div className="absolute bottom-0 left-0 w-full p-4 md:p-12">
+            <div className="container mx-auto px-4">
+              <h1 className="text-2xl md:text-6xl text-white font-heading font-light tracking-wide leading-tight max-w-4xl drop-shadow-lg">
+                {data.title}
+              </h1>
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       <div className="container mx-auto px-4 py-16 max-w-6xl">

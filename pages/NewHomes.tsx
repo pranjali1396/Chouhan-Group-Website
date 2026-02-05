@@ -37,7 +37,7 @@ const PROPERTIES = [
     type: "Plotted Development",
     price: "₹ 11L - ₹ 1Cr",
     priceVal: 1100000,
-    image: "/chouhan_sunrise_city_img_3.webp",
+    image: "/new_images/sunrise_city_drone.jpg",
     link: "/new-homes/sunrise-city-details",
     status: "New Launch",
     bhk: "Residential Plots",
@@ -222,13 +222,26 @@ const NewHomes: React.FC = () => {
                       {property.status}
                     </span>
                   </div>
-                  <img
-                    src={property.image}
-                    alt={property.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    loading={filteredProperties.indexOf(property) < 3 ? "eager" : "lazy"}
-                    decoding="async"
-                  />
+                  {property.image.endsWith('.mp4') ? (
+                    <video
+                      src={property.image}
+                      poster="/new_images/sunrise_city_drone.jpg"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                    />
+                  ) : (
+                    <img
+                      src={property.image}
+                      alt={property.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading={filteredProperties.indexOf(property) < 3 ? "eager" : "lazy"}
+                      decoding="async"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
 
                   <div className="absolute bottom-4 left-4 text-white">
