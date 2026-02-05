@@ -181,27 +181,48 @@ const CharitySponsorship: React.FC = () => {
           </div>
 
           {/* Simple Thumbnail Grid - Matching Screenshot */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {filteredProjects.slice(0, visibleProjects).map((project) => (
               <Link
                 key={project.id}
                 to={`/about/charities/${project.slug}`}
-                className="group block"
+                className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100"
               >
-                {/* Thumbnail Image */}
-                <div className="relative aspect-[4/3] rounded-lg overflow-hidden mb-4 bg-slate-100 shadow-md group-hover:shadow-xl transition-shadow duration-300">
+                {/* Card Image */}
+                <div className="relative h-64 overflow-hidden">
                   <img
                     src={Array.isArray(project.heroImage) ? project.heroImage[0] : project.heroImage}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-amber-500 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full shadow-md">
+                      {getStatusDisplay(project.status)}
+                    </span>
+                  </div>
                 </div>
 
-                {/* Caption */}
-                <p className="text-sm md:text-base text-slate-700 font-medium leading-snug text-center px-4 group-hover:text-amber-600 transition-colors">
-                  {project.description.split('\n')[0]}
-                </p>
+                {/* Card Content */}
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl font-bold font-heading text-slate-900 mb-3 group-hover:text-amber-600 transition-colors line-clamp-2">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
+                    {project.description.split('\n')[0]}
+                  </p>
+
+                  <div className="pt-4 border-t border-slate-100 flex justify-between items-center mt-auto">
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                      Read More
+                    </span>
+                    <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-900 group-hover:bg-amber-500 group-hover:text-white transition-all group-hover:translate-x-1">
+                      <ChevronDown size={16} className="-rotate-90" />
+                    </div>
+                  </div>
+                </div>
               </Link>
             ))}
           </div>

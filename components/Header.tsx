@@ -82,13 +82,19 @@ const MobileNavItem = React.memo(({
                   <ul className="space-y-4">
                     {col.links.length > 0 ? col.links.map((link, lIdx) => (
                       <li key={lIdx}>
-                        <Link
-                          to={link.path}
-                          onClick={onLinkClick}
-                          className="text-xs font-semibold text-white/70 block hover:text-amber-400 transition-all hover:translate-x-1 uppercase tracking-widest"
-                        >
-                          {link.label}
-                        </Link>
+                        {link.path ? (
+                          <Link
+                            to={link.path}
+                            onClick={onLinkClick}
+                            className="text-xs font-semibold text-white/70 block hover:text-amber-400 transition-all hover:translate-x-1 uppercase tracking-widest"
+                          >
+                            {link.label}
+                          </Link>
+                        ) : (
+                          <span className="text-xs font-semibold text-white/50 block cursor-default uppercase tracking-widest">
+                            {link.label}
+                          </span>
+                        )}
                       </li>
                     )) : (
                       <li className="text-[10px] text-white/30 italic">No current listings</li>
@@ -172,7 +178,7 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
           <div className="container-fluid mx-auto px-8 h-full flex justify-end items-center gap-6 text-[13px] font-bold tracking-wider uppercase">
             <div className="flex gap-6 items-center">
               <Link to="/contact" className="hover:text-amber-400 transition-colors">Register for Updates</Link>
-              <Link to="/careers" className="hover:text-amber-400 transition-colors">Careers</Link>
+              <a href="https://in.linkedin.com/company/chouhangroups" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">Careers</a>
               <div className="flex gap-3 text-white/60 font-medium select-none border-l border-white/20 pl-6">
                 <span className="cursor-pointer hover:text-white transition-colors">EN</span>
                 <span className="cursor-pointer hover:text-white transition-colors">HI</span>
@@ -253,12 +259,18 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
                               <ul className="space-y-3">
                                 {col.links.length > 0 ? col.links.map((link, lIdx) => (
                                   <li key={lIdx}>
-                                    <Link
-                                      to={link.path}
-                                      className="text-[13px] font-medium text-slate-700 hover:text-amber-600 hover:translate-x-1 transition-all block uppercase tracking-wider antialiased"
-                                    >
-                                      {link.label}
-                                    </Link>
+                                    {link.path ? (
+                                      <Link
+                                        to={link.path}
+                                        className="text-[13px] font-medium text-slate-700 hover:text-amber-600 hover:translate-x-1 transition-all block uppercase tracking-wider antialiased"
+                                      >
+                                        {link.label}
+                                      </Link>
+                                    ) : (
+                                      <span className="text-[13px] font-medium text-slate-400 cursor-default block uppercase tracking-wider antialiased">
+                                        {link.label}
+                                      </span>
+                                    )}
                                   </li>
                                 )) : (
                                   <li className="text-[10px] text-slate-500 italic">No current listings</li>
@@ -369,13 +381,15 @@ const Header: React.FC<HeaderProps> = ({ navData }) => {
               >
                 Register for updates
               </Link>
-              <Link
-                to="/careers"
+              <a
+                href="https://in.linkedin.com/company/chouhangroups"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={closeMobileMenu}
                 className="block w-full py-4 px-6 text-center text-white/60 font-bold uppercase tracking-widest text-[10px] hover:text-amber-400 transition-colors"
               >
                 Careers
-              </Link>
+              </a>
 
               <div className="flex justify-center gap-6 pt-2 pb-4 text-[11px] font-bold text-white/40 border-t border-white/5 uppercase tracking-widest">
                 <span className="text-amber-500">English</span>

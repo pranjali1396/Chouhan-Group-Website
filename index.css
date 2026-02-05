@@ -33,6 +33,39 @@
   font-display: swap;
 }
 
+/* 2. Define Gotham Standard (Non-Rounded) */
+@font-face {
+  font-family: 'GothamStandard';
+  src: url('/Gotham-Font-1/Gotham-Book.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GothamStandard';
+  src: url('/Gotham-Font-1/Gotham-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GothamStandard';
+  src: url('/Gotham-Font-1/Gotham-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GothamStandard';
+  src: url('/Gotham-Font-1/Gotham-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   body {
     font-family: 'Gotham', sans-serif;
@@ -85,6 +118,7 @@
 @theme {
   --font-sans: 'Gotham', ui-sans-serif, system-ui, sans-serif;
   --font-heading: 'Gotham', ui-sans-serif, system-ui, sans-serif;
+  --font-gotham-std: 'GothamStandard', ui-sans-serif, system-ui, sans-serif;
   --font-home: 'Raleway', ui-sans-serif, system-ui, sans-serif;
   --font-nav: 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
 }

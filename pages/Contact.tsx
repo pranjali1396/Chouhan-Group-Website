@@ -35,14 +35,14 @@ const Contact: React.FC = () => {
                   <div className="flex items-start gap-4 mt-6 text-slate-800">
                     <MapPin className="shrink-0 text-amber-500 mt-1" size={20} />
                     <p className="leading-relaxed font-bold text-lg">
-                      Beside Shankracharya Mahavidyalaya, Junwani Road, Bhilai, Chhattisgarh – 490020
+                      Ground Floor, Chouhan Estate, Beside Chandra Maurya Talkies, NH53, Bhilai, Chhattisgarh - 490001
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4 text-slate-900">
                   <Phone className="shrink-0 text-amber-500" size={20} />
-                  <span className="font-bold text-xl tracking-tight">+91 95111 21113</span>
+                  <span className="font-bold text-xl tracking-tight">+91 91091 04005</span>
                 </div>
 
                 <div className="flex items-center gap-4 text-slate-800">

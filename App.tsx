@@ -30,6 +30,9 @@ import ChouhanDreamHomesLanding from './pages/ChouhanDreamHomesLanding';
 import ChouhanPlazaLanding from './pages/ChouhanPlazaLanding';
 import CharityProjectDetail from './pages/CharityProjectDetail';
 import { CHARITY_PROJECTS } from './pages/CharityData';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
+import ConsentPreferences from './pages/ConsentPreferences';
 
 import { NAVIGATION_DATA } from './types';
 
@@ -184,7 +187,7 @@ const EMPYREAN_BHILAI_DATA: ProjectData = {
     hours: "Open 24/7"
   },
   contact: {
-    phone: "+91 95111 21113",
+    phone: "+91 91091 04003",
     email: "CHOUHANHOUSING@GMAIL.COM"
   },
   heroImage: "/new_images/chouhan2.jpg",
@@ -368,7 +371,7 @@ const EMPYREAN_TATIBANDH_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "CHOUHANHOUSING@GMAIL.COM"
   },
-  heroImage: "https://images.unsplash.com/photo-1544124499-58912cbddaad?q=80&w=2000",
+  heroImage: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2000",
   mapQuery: "Tatibandh, Raipur",
   websiteUrl: "https://www.empyreanhotels.in/"
 };
@@ -404,7 +407,7 @@ const EMPYREAN_TUMDIBOD_DATA: ProjectData = {
     phone: "+91 95111 21113",
     email: "CHOUHANHOUSING@GMAIL.COM"
   },
-  heroImage: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2000",
+  heroImage: "https://images.unsplash.com/photo-1544124499-58912cbddaad?q=80&w=2000",
   mapQuery: "Empyrean Tumdibod, Rajnandgaon",
   websiteUrl: "https://www.empyreanhotels.in/"
 };
@@ -622,6 +625,11 @@ const AppContent: React.FC = () => {
         <Route path="/about/constructions" element={<Construction />} />
         <Route path="/about/sustainable" element={<SustainableDesign />} />
         <Route path="/contact" element={<Contact />} />
+
+        {/* Support Pages */}
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/consent-preferences" element={<ConsentPreferences />} />
 
         {/* Generic routes for others */}
         <Route path="/:category/:sub" element={<GenericPage />} />

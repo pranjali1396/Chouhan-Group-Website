@@ -75,7 +75,7 @@ export const TREE_PLANTATION_DATA: ProjectData = {
 
 export const CITY_BEAUTIFICATION_DATA: ProjectData = {
     title: "City Infrastructure & Beautification",
-    description: "Sponsoring and maintaining key city infrastructure and beautification projects. From the lighting of major overpasses and junctions to the creation of public monuments, Chouhan Group is dedicated to enhancing the aesthetic and functional appeal of Bhilai and Durg. This includes the 'Pandit Nehru Ke Sapno Ka Bhilai' initiative and other iconic landmarks.",
+    description: "Sponsoring key city infrastructure to enhance the beauty of Bhilai and Durg.\n\nFrom the lighting of major overpasses and junctions to the creation of public monuments, Chouhan Group is dedicated to enhancing the aesthetic and functional appeal of Bhilai and Durg. This includes the 'Pandit Nehru Ke Sapno Ka Bhilai' initiative and other iconic landmarks.",
     status: "Community Support",
     address: "Bhilai & Durg, Chhattisgarh",
     presentationCentre: {

@@ -97,7 +97,7 @@ const Hero: React.FC = () => {
               {/* Orange Line */}
               <div className="w-12 h-1 md:w-16 md:h-1 bg-amber-500 mx-auto mb-5 md:mb-8"></div>
 
-              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-7xl 2xl:text-8xl font-sans font-bold text-white leading-[1.05] drop-shadow-2xl">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-6xl 2xl:text-7xl font-gotham-std font-medium text-white leading-[1.05] drop-shadow-2xl">
                 {slide.title}
               </h1>
               <div className="pt-6 md:pt-8">

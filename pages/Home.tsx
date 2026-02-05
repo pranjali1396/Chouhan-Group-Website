@@ -129,16 +129,16 @@ const HOSPITALITY_PARTNERS = [
     tagline: "Nature's finest retreat"
   },
   {
-    name: "Hotel Palladio",
-    brand: "CLASSIC",
-    image: "/new_images/paladio.png",
-    link: "/hospitality/palladio",
-    desc: "Timeless luxury and sophisticated charm",
-    tagline: "Coming soon to Durg"
+    name: "Empyrean Tatibandh",
+    brand: "HOTEL",
+    image: "/new_images/tumdibod.png",
+    link: "/hospitality/empyrean-tatibandh",
+    desc: "A premium transit hotel in Raipur",
+    tagline: "Efficiency meets elegance"
   },
   {
     name: "Hotel Skypark",
-    brand: "BUSINESS",
+    brand: "HOTEL",
     image: "/new_images/skypark.png",
     link: "/hospitality/skypark",
     desc: "Modern luxury for the business traveler",
@@ -177,12 +177,12 @@ const Home: React.FC = () => {
       <CategoryGrid />
 
       {/* About Us Section */}
-      <section className="py-20 md:py-28 lg:py-32 xl:py-40 bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col lg:flex-row gap-12 xl:gap-24 items-center">
             <div className="lg:w-1/2">
               <span className="text-amber-600 font-bold tracking-[0.2em] text-xs uppercase mb-6 block">About Us</span>
-              <h2 className="text-3xl md:text-4xl xl:text-6xl 2xl:text-8xl font-heading font-black text-black mb-8 leading-[1.05]">
+              <h2 className="text-2xl md:text-3xl xl:text-5xl 2xl:text-6xl font-heading font-black text-black mb-8 leading-[1.05]">
                 CHOUHAN GROUP <br />
                 <span className="text-slate-500 font-medium text-xl md:text-2xl xl:text-4xl block mt-4">A Legacy of Trust, A Future of Innovation</span>
               </h2>
@@ -212,11 +212,11 @@ const Home: React.FC = () => {
       </section>
 
       {/* Service Highlights Slider */}
-      <section className="py-20 md:py-28 lg:py-32 bg-slate-50 relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-slate-50 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10 max-w-7xl">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 text-center md:text-left">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8 text-center md:text-left">
             <div className="max-w-3xl">
-              <h2 className="text-3xl md:text-4xl xl:text-6xl 2xl:text-8xl font-heading font-black text-black mb-6 leading-tight">Our Service Highlights</h2>
+              <h2 className="text-2xl md:text-3xl xl:text-5xl 2xl:text-6xl font-heading font-black text-black mb-6 leading-tight">Our Service Highlights</h2>
               <p className="text-slate-800 leading-relaxed text-base md:text-lg font-medium">
                 Chouhan Group excels in diverse sectors, delivering innovation and excellence across real estate, hospitality, automotive, and more.
               </p>
@@ -284,7 +284,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Impact Stats Section - Modern Split Layout */}
-      <section className="py-24 md:py-32 bg-white relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10 max-w-7xl">
           <div className="flex flex-col lg:flex-row items-center gap-12 xl:gap-24">
 
@@ -314,7 +314,7 @@ const Home: React.FC = () => {
                       {item.icon}
                     </div>
                     <div>
-                      <div className="text-3xl xl:text-4xl 2xl:text-5xl font-black text-black leading-none mb-1">
+                      <div className="text-2xl xl:text-3xl 2xl:text-4xl font-black text-black leading-none mb-1">
                         {item.count}
                       </div>
                       <div className="text-[9px] xl:text-[10px] font-black tracking-[0.2em] text-slate-600 uppercase">
@@ -331,14 +331,14 @@ const Home: React.FC = () => {
       </section>
 
       {/* Housing Project Feature */}
-      <section className="py-20 md:py-28 lg:py-32 xl:py-40 bg-slate-900 text-white relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-slate-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-cover bg-fixed" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000")' }}></div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 to-slate-900/80"></div>
         <div className="container mx-auto px-4 relative z-10 max-w-7xl">
           <div className="flex flex-col lg:flex-row gap-12 xl:gap-24 items-center">
-            <div className="lg:w-1/2">
+            <div className="lg:w-5/12">
               <span className="text-amber-500 font-bold tracking-[0.2em] text-xs uppercase mb-6 block">HOUSING PROJECT</span>
-              <h2 className="text-3xl md:text-5xl xl:text-6xl 2xl:text-7xl font-heading font-black mb-8 leading-tight">
+              <h2 className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-heading font-black mb-8 leading-tight">
                 Your Dream Abode Awaits at Chouhan Residences
               </h2>
               <div className="space-y-6 xl:space-y-8 text-slate-100 leading-loose font-medium text-base md:text-lg">
@@ -353,18 +353,32 @@ const Home: React.FC = () => {
                 Explore Your Dream Home <ArrowRight size={16} />
               </Link>
             </div>
-            <div className="lg:w-1/2 grid grid-cols-2 gap-4 xl:gap-6 w-full mt-12 lg:mt-0 overflow-hidden">
+            <div className="lg:w-7/12 grid grid-cols-2 gap-6 xl:gap-8 w-full mt-12 lg:mt-0 overflow-hidden">
               <img
                 src="/new_images/sunrisecity.webp"
-                className="rounded-xl shadow-2xl translate-y-6 md:translate-y-8 grayscale hover:grayscale-0 transition-all duration-500"
+                className="rounded-xl shadow-2xl translate-y-6 md:translate-y-8 transition-all duration-500 object-cover h-64 md:h-80 w-full"
                 alt="Interior 1"
                 loading="lazy"
                 decoding="async"
               />
               <img
-                src="/new_images/chouhan_town_img_4.jpg"
-                className="rounded-xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-500"
+                src="/new_images/Parkview_Hero_optimized.webp"
+                className="rounded-xl shadow-2xl transition-all duration-500 object-cover h-64 md:h-80 w-full"
                 alt="Interior 2"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="/new_images/chouhan_sunrise_city_img_3.webp"
+                className="rounded-xl shadow-2xl translate-y-6 md:translate-y-8 transition-all duration-500 object-cover h-64 md:h-80 w-full"
+                alt="Interior 3"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="/new_images/WhatsApp_Image_2025-10-02_at_05.47.15_1a2db32e.jpg"
+                className="rounded-xl shadow-2xl transition-all duration-500 object-cover h-64 md:h-80 w-full"
+                alt="Interior 4"
                 loading="lazy"
                 decoding="async"
               />
@@ -374,11 +388,11 @@ const Home: React.FC = () => {
       </section>
 
       {/* Our Projects */}
-      <section className="py-20 md:py-28 lg:py-32 bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16 md:mb-20 xl:mb-24">
             <span className="text-amber-600 font-bold tracking-[0.2em] text-xs uppercase mb-4 block">OUR PROJECTS</span>
-            <h2 className="text-3xl md:text-5xl xl:text-6xl font-heading font-black text-black mb-6">Exceptional Developments</h2>
+            <h2 className="text-2xl md:text-4xl xl:text-5xl font-heading font-black text-black mb-6">Exceptional Developments</h2>
             <p className="text-slate-800 max-w-3xl mx-auto text-base md:text-lg font-medium">
               Discover our visionary projects at Chouhan Group, seamlessly blending quality, innovation, and elegance. Each development is a testament to our commitment to transforming lifestyles.
             </p>
@@ -418,7 +432,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Automobile Showcase Section - New & Premium */}
-      <section className="py-24 md:py-32 lg:py-40 bg-slate-950 text-white relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-slate-950 text-white relative overflow-hidden">
         {/* Abstract Background Decoration */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[120px] -mr-64 -mt-64"></div>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] -ml-64 -mb-64"></div>
@@ -427,7 +441,7 @@ const Home: React.FC = () => {
           <div className="flex flex-col lg:flex-row justify-between items-end mb-20 gap-8">
             <div className="max-w-3xl">
               <span className="text-amber-500 font-bold tracking-[0.3em] text-[10px] uppercase mb-6 block">Automobile Division</span>
-              <h2 className="text-4xl md:text-6xl font-heading font-black mb-8 leading-tight">
+              <h2 className="text-3xl md:text-5xl font-heading font-black mb-8 leading-tight">
                 India's <span className="text-amber-500">Largest</span> <br />
                 Automotive Network
               </h2>
@@ -527,7 +541,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Hospitality Showcase Section - New & Premium */}
-      <section className="py-24 md:py-32 lg:py-40 bg-amber-50 relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-amber-50 relative overflow-hidden">
         {/* Subtle Decorative Elements */}
         <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-[120px] -ml-64 -mt-64"></div>
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-slate-900/5 rounded-full blur-[120px] -mr-64 -mb-64"></div>
@@ -536,7 +550,7 @@ const Home: React.FC = () => {
           <div className="flex flex-col lg:flex-row justify-between items-end mb-20 gap-8">
             <div className="max-w-3xl">
               <span className="text-amber-600 font-bold tracking-[0.3em] text-[10px] uppercase mb-6 block">Hospitality Division</span>
-              <h2 className="text-4xl md:text-6xl font-heading font-black text-slate-900 mb-8 leading-tight">
+              <h2 className="text-3xl md:text-5xl font-heading font-black text-slate-900 mb-8 leading-tight">
                 Where Every Stay <br />
                 Is An <span className="text-amber-600">Experience</span>
               </h2>
@@ -635,10 +649,10 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-24 md:py-32 bg-white text-center">
+      <section className="py-16 md:py-24 bg-white text-center">
         <div className="container mx-auto px-4">
           <span className="text-slate-600 font-bold tracking-[0.3em] text-[10px] uppercase mb-6 block">CHOUHAN GROUP</span>
-          <h2 className="text-4xl md:text-6xl font-heading font-black text-black mb-8 md:mb-10">
+          <h2 className="text-3xl md:text-5xl font-heading font-black text-black mb-8 md:mb-10">
             Reach Out, Let's Create Together.
           </h2>
           <p className="text-lg md:text-2xl text-slate-800 font-medium max-w-4xl mx-auto mb-12 md:mb-16 leading-relaxed">

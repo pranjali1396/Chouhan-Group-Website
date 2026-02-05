@@ -37,8 +37,8 @@ const CARE_DATA: Record<CategoryKey, CareData> = {
     locations: [
       {
         name: "Head Office - Chouhan Group",
-        address: "Beside Shankracharya Mahavidyalaya, Junwani Road, Bhilai, Chhattisgarh – 490020",
-        phones: ["+91 95111 21113"],
+        address: "Ground Floor, Chouhan Estate, Beside Chandra Maurya Talkies, NH53, Bhilai, Chhattisgarh - 490001",
+        phones: ["+91 91091 04005"],
         email: "chouhanhousing@gmail.com",
         isHead: true,
         hours: "10:00 AM - 7:00 PM"

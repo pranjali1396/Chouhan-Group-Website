@@ -54,8 +54,8 @@ const Footer: React.FC = () => {
                 <p className="opacity-80">T: +91 72229 10055</p>
               </div>
               <div>
-                <p className="text-white font-semibold mb-1">General Inquiry</p>
-                <p className="opacity-80">T: +91 95111 21113</p>
+                <p className="text-white font-semibold mb-1">Housing Division</p>
+                <p className="opacity-80">T: +91 91091 04005</p>
               </div>
             </div>
           </div>
@@ -64,12 +64,12 @@ const Footer: React.FC = () => {
           <div className="col-span-1">
             <h3 className="font-bold text-lg mb-6 text-white">New Homes</h3>
             <ul className="space-y-3 text-gray-300 text-xs font-medium">
-              <li><Link to="/new-homes" className="hover:text-white hover:underline transition-colors">Now Selling</Link></li>
-              <li><Link to="/new-homes/upcoming" className="hover:text-white hover:underline transition-colors">Coming Soon</Link></li>
-              <li><Link to="/new-homes/completed" className="hover:text-white hover:underline transition-colors">Past Communities</Link></li>
-              <li><Link to="/new-homes/map" className="hover:text-white hover:underline transition-colors">New Homes Map View</Link></li>
-              <li><Link to="/care/real-estate" className="hover:text-white hover:underline transition-colors">Homeowner Centre</Link></li>
-              <li><Link to="/contact" className="hover:text-white hover:underline transition-colors">Realtor Updates</Link></li>
+              <li><Link to="/new-homes/parkview" className="hover:text-white hover:underline transition-colors">Chouhan Parkview</Link></li>
+              <li><Link to="/new-homes/green-valley" className="hover:text-white hover:underline transition-colors">Chouhan Green Valley</Link></li>
+              <li><Link to="/new-homes/singapore-life" className="hover:text-white hover:underline transition-colors">Singapore Life City</Link></li>
+              <li><Link to="/new-homes/town" className="hover:text-white hover:underline transition-colors">Chouhan Town</Link></li>
+              <li><Link to="/new-homes/sunrise-city" className="hover:text-white hover:underline transition-colors">Sunrise City</Link></li>
+              <li><Link to="/new-homes/dream-homes" className="hover:text-white hover:underline transition-colors">Chouhan Dream Homes</Link></li>
             </ul>
           </div>
 
@@ -77,12 +77,14 @@ const Footer: React.FC = () => {
           <div className="col-span-1">
             <h3 className="font-bold text-lg mb-6 text-white">Commercial</h3>
             <ul className="space-y-3 text-gray-300 text-xs font-medium">
-              <li><Link to="/commercial" className="hover:text-white hover:underline transition-colors">Industrial</Link></li>
-              <li><Link to="/commercial" className="hover:text-white hover:underline transition-colors">Office</Link></li>
-              <li><Link to="/commercial" className="hover:text-white hover:underline transition-colors">Retail</Link></li>
-              <li><Link to="/commercial/leasing" className="hover:text-white hover:underline transition-colors">Tenant Snapshots</Link></li>
-              <li><Link to="/commercial/map" className="hover:text-white hover:underline transition-colors">Map View</Link></li>
-              <li><Link to="/contact" className="hover:text-white hover:underline transition-colors">Service Request</Link></li>
+              <li><Link to="/commercial/business-center" className="hover:text-white hover:underline transition-colors">Chouhan Business Center</Link></li>
+              <li><Link to="/commercial/business-park" className="hover:text-white hover:underline transition-colors">Chouhan Business Park</Link></li>
+              <li><Link to="/commercial/estates" className="hover:text-white hover:underline transition-colors">Chouhan Estates</Link></li>
+              <li><Link to="/commercial/plaza-details" className="hover:text-white hover:underline transition-colors">Chouhan Plaza</Link></li>
+              <li><Link to="/commercial/city-center" className="hover:text-white hover:underline transition-colors">Chouhan City Center</Link></li>
+              <li><Link to="/commercial/landmark-details" className="hover:text-white hover:underline transition-colors">Chouhan Landmark</Link></li>
+              <li><Link to="/commercial/parkview-complex" className="hover:text-white hover:underline transition-colors">Chouhan Parkview Complex</Link></li>
+              <li><Link to="/commercial/shikhar-complex" className="hover:text-white hover:underline transition-colors">Shikhar Complex</Link></li>
             </ul>
           </div>
 
@@ -90,7 +92,6 @@ const Footer: React.FC = () => {
           <div className="col-span-1">
             <h3 className="font-bold text-lg mb-6 text-white">Automobiles</h3>
             <ul className="space-y-3 text-gray-300 text-xs font-medium">
-              <li><Link to="/automobile" className="hover:text-white hover:underline transition-colors">Division Overview</Link></li>
               <li><Link to="/automobile/maruti" className="hover:text-white hover:underline transition-colors">Maruti Suzuki Arena</Link></li>
               <li><Link to="/automobile/nexa" className="hover:text-white hover:underline transition-colors">NEXA</Link></li>
               <li><Link to="/automobile/hero" className="hover:text-white hover:underline transition-colors">Hero MotoCorp</Link></li>
@@ -104,9 +105,9 @@ const Footer: React.FC = () => {
             <div className="mb-8">
               <h3 className="font-bold text-lg mb-6 text-white">Customer Care</h3>
               <ul className="space-y-3 text-gray-300 text-xs font-medium">
-                <li><Link to="/care/real-estate" className="hover:text-white hover:underline transition-colors">Real Estate Support</Link></li>
-                <li><Link to="/care/automobiles" className="hover:text-white hover:underline transition-colors">Automobile Support</Link></li>
-                <li><Link to="/care/hospitality" className="hover:text-white hover:underline transition-colors">Hospitality Support</Link></li>
+                <li><Link to="/care" className="hover:text-white hover:underline transition-colors">Real Estate Support</Link></li>
+                <li><Link to="/care" className="hover:text-white hover:underline transition-colors">Automobile Support</Link></li>
+                <li><Link to="/care" className="hover:text-white hover:underline transition-colors">Hospitality Support</Link></li>
               </ul>
             </div>
             <div>
@@ -131,8 +132,8 @@ const Footer: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-4 md:gap-6">
             <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
-            <Link to="/sitemap" className="hover:text-white transition-colors">Site Map</Link>
-            <button className="hover:text-white transition-colors">Consent Preferences</button>
+            <Link to="/contact" className="hover:text-white transition-colors">Site Map</Link>
+            <Link to="/consent-preferences" className="hover:text-white transition-colors">Consent Preferences</Link>
           </div>
 
           <div className="flex flex-col gap-0.5 opacity-60">

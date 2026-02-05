@@ -1,7 +1,7 @@
 
 export interface SubLink {
   label: string;
-  path: string;
+  path?: string;
 }
 
 export interface SubCategory {
@@ -173,9 +173,9 @@ export const NAVIGATION_DATA: NavItem[] = [
       {
         title: "LIFESTYLE",
         links: [
-          { label: "Tourism", path: "/about/tourism" },
-          { label: "Convention Centre", path: "/about/convention" },
-          { label: "Group Rewards", path: "/about/rewards" },
+          { label: "Tourism" },
+          { label: "Convention Centre" },
+          { label: "Group Rewards" },
         ]
       }
     ]
