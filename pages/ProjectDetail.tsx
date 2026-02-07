@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Facebook, Twitter, Linkedin, Mail, Ban, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Mail, Ban, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 export interface ProjectData {
@@ -180,8 +180,7 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
                   {data.websiteUrl ? (
                     data.websiteUrl.startsWith('/') ? (
                       <Link to={`${data.websiteUrl}#contact`} className="text-[#002b49] underline font-medium hover:text-amber-600">
-                        {data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? 'Call Now' :
-                          data.status === 'Now Renting' ? 'Register today for leasing inquiries' : 'Register today'}
+                        {data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? 'Call Now' : 'Enquire'}
                       </Link>
                     ) : (
                       <a
@@ -202,14 +201,12 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
                         rel={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? undefined : "noopener noreferrer"}
                         className="text-[#002b49] underline font-medium hover:text-amber-600"
                       >
-                        {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' :
-                          data.status === 'Now Renting' ? 'Register today for leasing inquiries' : 'Register today'}
+                        {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Enquire'}
                       </a>
                     )
                   ) : (
                     <a href={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? `tel:${data.contact.phone}` : "#contact"} className="text-[#002b49] underline font-medium hover:text-amber-600">
-                      {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' :
-                        data.status === 'Now Renting' ? 'Register today for leasing inquiries' : 'Register today'}
+                      {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Contact Us'}
                     </a>
                   )} to stay informed.
                 </p>
@@ -274,7 +271,7 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
                 data.websiteUrl ? (
                   data.websiteUrl.startsWith('/') ? (
                     <Link to={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? "tel:" + data.contact.phone : `${data.websiteUrl}#contact`} className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center">
-                      {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Register Today'}
+                      {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Contact Us'}
                     </Link>
                   ) : (
                     <a
@@ -295,12 +292,12 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
                       rel={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? undefined : "noopener noreferrer"}
                       className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center"
                     >
-                      {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Register Today'}
+                      {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Contact Us'}
                     </a>
                   )
                 ) : (
                   <a href={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? `tel:${data.contact.phone}` : "#contact"} className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center">
-                    {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Register Today'}
+                    {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Contact Us'}
                   </a>
                 )
               )}
@@ -376,24 +373,40 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
                 </div>
               </div>
 
-              {/* Registration Form (Only if not sold) */}
+              {/* Official Project Enquiry Card - SEO Optimized */}
               {!isSold && (
-                <div className="bg-slate-50 p-8 rounded-sm border border-slate-100 mt-12">
-                  <h4 className="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-6">Register Your Interest</h4>
-                  <form className="space-y-4">
-                    <div>
-                      <input type="text" className="w-full bg-white border border-slate-200 rounded-sm p-4 text-sm focus:outline-none focus:border-amber-500 transition-colors shadow-inner" placeholder="Full Name *" required />
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <input type="tel" className="w-full bg-white border border-slate-200 rounded-sm p-4 text-sm focus:outline-none focus:border-amber-500 transition-colors shadow-inner" placeholder="Phone Number *" required />
-                      <input type="email" className="w-full bg-white border border-slate-200 rounded-sm p-4 text-sm focus:outline-none focus:border-amber-500 transition-colors shadow-inner" placeholder="Email Address *" required />
-                    </div>
-                    <textarea className="w-full bg-white border border-slate-200 rounded-sm p-4 text-sm focus:outline-none focus:border-amber-500 transition-colors h-32 resize-none shadow-inner" placeholder="I'm interested in learning more..."></textarea>
-                    <button type="button" className="w-full bg-[#002b49] text-white py-4 font-bold uppercase tracking-[0.2em] text-xs hover:bg-slate-800 transition-all shadow-lg rounded-sm">
-                      Submit Enquiry
-                    </button>
-                    <p className="text-[10px] text-slate-400 text-center italic mt-4">Safe & Confidential: Your information is protected.</p>
-                  </form>
+                <div className="bg-white p-8 md:p-10 rounded-xl border border-slate-100 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.08)] mt-16 transition-all hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.12)]">
+                  <div className="mb-10 text-center">
+                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-amber-600 block mb-3">Priority Support</span>
+                    <h3 className="text-2xl font-heading font-black text-[#002b49] mb-4 uppercase tracking-tight">
+                      Official {data.title} Project Enquiry
+                    </h3>
+                    <div className="h-1 w-12 bg-amber-500 mx-auto rounded-full mb-6"></div>
+                    <p className="text-slate-500 text-sm leading-relaxed max-w-sm mx-auto">
+                      For floor plans, current pricing, or to schedule an exclusive site visit at <strong>{data.title}</strong>, please connect with our team.
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <Link
+                      to="/contact"
+                      className="flex items-center justify-center gap-3 bg-[#002b49] text-white py-5 px-6 font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-slate-800 transition-all rounded-sm shadow-lg group"
+                    >
+                      Contact Us <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                    <Link
+                      to="/care"
+                      className="flex items-center justify-center gap-3 bg-white border-2 border-slate-100 text-slate-500 py-5 px-6 font-bold uppercase tracking-[0.2em] text-[10px] hover:border-slate-300 hover:text-slate-800 transition-all rounded-sm"
+                    >
+                      Customer Care
+                    </Link>
+                  </div>
+
+                  <div className="mt-8 text-center">
+                    <p className="text-[10px] text-slate-400 font-medium italic">
+                      Safe & Confidential: Your information is managed directly by Chouhan Group.
+                    </p>
+                  </div>
                 </div>
               )}
 
