@@ -25,7 +25,7 @@ const CATEGORIES = [
   {
     title: "AUTOMOBILES",
     subtitle: "PROUD TO BE INDIA'S LARGEST AUTOMOTIVE NETWORK",
-    image: "/new_images/NexaCardImage.png",
+    image: "/new_images/Suzuki_car.jpeg",
     link: "/automobile"
   }
 ];
@@ -70,29 +70,27 @@ const CategoryGrid: React.FC = () => {
 
             {/* Animated Car Overlay for Automobiles */}
             {cat.title === "AUTOMOBILES" && (
-              <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none p-4">
+              <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
                 <img
-                  src="/new_images/fronx_red_black.webp"
-                  alt="Fronx Car"
-                  className="w-[90%] h-auto object-contain animate-slide-car drop-shadow-2xl"
+                  src={cat.image}
+                  alt="Suzuki Car"
+                  className="w-[180%] max-w-none h-auto object-contain object-bottom animate-slide-car drop-shadow-2xl"
                 />
               </div>
             )}
 
-            {/* Gradient Overlay - Hide for Automobiles on white bg */}
-            {cat.title !== "AUTOMOBILES" && (
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500 z-[5]"></div>
-            )}
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500 z-[5]"></div>
 
             {/* Content */}
             <div className="absolute bottom-0 left-0 w-full p-6 z-20">
               <div className="flex flex-col justify-end h-full">
                 {cat.subtitle && (
-                  <p className={`${cat.title === "AUTOMOBILES" ? "text-amber-600" : "text-amber-400"} text-[10px] md:text-[11px] font-bold tracking-widest uppercase mb-2 leading-tight max-w-[80%]`}>
+                  <p className="text-amber-400 text-[10px] md:text-[11px] font-bold tracking-widest uppercase mb-2 leading-tight max-w-[80%]">
                     {cat.subtitle}
                   </p>
                 )}
-                <h2 className={`${cat.title === "AUTOMOBILES" ? "text-slate-900" : "text-white"} font-heading font-black text-2xl uppercase tracking-tighter flex items-end gap-2`}>
+                <h2 className="text-white font-heading text-2xl uppercase tracking-tighter flex items-end gap-2">
                   {cat.title}
                 </h2>
                 <div className="h-1 w-0 bg-amber-500 mt-2 transition-all duration-500 group-hover:w-16"></div>
