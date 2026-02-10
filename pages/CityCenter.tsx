@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Building2, MapPin, Phone, Mail, CheckCircle2,
   Armchair, Utensils, ShoppingBag, Clapperboard,
@@ -7,6 +6,7 @@ import {
   ShieldCheck, Banknote, HardHat, Clock, Award,
   BellRing
 } from 'lucide-react';
+import { submitLead } from '../crmApi';
 
 const BRANDS = [
   "Reliance", "Tata", "Landmark", "KFC", "Pizza Hut",
@@ -60,6 +60,40 @@ const USPS = [
 ];
 
 const CityCenter: React.FC = () => {
+  // Form States
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    interest: 'Select Interest',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('submitting');
+    try {
+      await submitLead({
+        customerName: formData.name,
+        mobile: formData.phone,
+        email: formData.email,
+        interestedProject: 'Chouhan City Center',
+        remarks: `Interest: ${formData.interest} | Message: ${formData.message}`,
+        source: 'City Center Page - Enquiry Form'
+      });
+      setStatus('success');
+      setFormData({ name: '', phone: '', email: '', interest: 'Select Interest', message: '' });
+    } catch (err) {
+      console.error(err);
+      setStatus('error');
+    }
+  };
   return (
     <div className="bg-white font-sans text-slate-800 pt-32 md:pt-48">
 
@@ -249,24 +283,34 @@ const CityCenter: React.FC = () => {
             <div className="lg:w-1/2 w-full">
               <div className="bg-white rounded-[2rem] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.5)] p-8 md:p-12 text-slate-800 border border-white/10">
                 <h3 className="text-3xl font-black font-heading mb-8 text-slate-900 text-center">Enquire Now</h3>
-                <form className="space-y-5">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <input type="text" placeholder="Your Name" className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 focus:border-amber-500 focus:outline-none focus:bg-white transition-all font-medium" />
-                    <input type="tel" placeholder="Phone Number" className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 focus:border-amber-500 focus:outline-none focus:bg-white transition-all font-medium" />
+                {status === 'success' ? (
+                  <div className="text-center py-12">
+                    <CheckCircle2 size={64} className="text-amber-500 mx-auto mb-4" />
+                    <h4 className="text-2xl font-bold text-slate-900 mb-2">Thank You!</h4>
+                    <p className="text-slate-600 mb-8">Your enquiry has been received. Our team will contact you shortly.</p>
+                    <button onClick={() => setStatus('idle')} className="bg-[#002b49] text-white px-8 py-3 rounded-xl font-bold uppercase tracking-widest text-xs">Send Another Inquiry</button>
                   </div>
-                  <input type="email" placeholder="Email Address" className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 focus:border-amber-500 focus:outline-none focus:bg-white transition-all font-medium" />
-                  <select className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 focus:border-amber-500 focus:outline-none focus:bg-white transition-all font-bold text-slate-500 appearance-none">
-                    <option>Select Interest</option>
-                    <option>Retail Space</option>
-                    <option>Office Space</option>
-                    <option>Food Court</option>
-                    <option>Multiplex Partnership</option>
-                  </select>
-                  <textarea placeholder="Type your message here...." className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 h-32 focus:border-amber-500 focus:outline-none focus:bg-white transition-all resize-none font-medium"></textarea>
-                  <button className="w-full bg-amber-500 text-white font-black uppercase tracking-[0.2em] py-5 rounded-xl hover:bg-amber-400 transition-all shadow-2xl flex items-center justify-center gap-3 group">
-                    Register Now <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                  </button>
-                </form>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <input required name="name" value={formData.name} onChange={handleInputChange} type="text" placeholder="Your Name" className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 focus:border-amber-500 focus:outline-none focus:bg-white transition-all font-medium" />
+                      <input required name="phone" value={formData.phone} onChange={handleInputChange} type="tel" placeholder="Phone Number" className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 focus:border-amber-500 focus:outline-none focus:bg-white transition-all font-medium" />
+                    </div>
+                    <input name="email" value={formData.email} onChange={handleInputChange} type="email" placeholder="Email Address" className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 focus:border-amber-500 focus:outline-none focus:bg-white transition-all font-medium" />
+                    <select name="interest" value={formData.interest} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 focus:border-amber-500 focus:outline-none focus:bg-white transition-all font-bold text-slate-500 appearance-none">
+                      <option value="Select Interest">Select Interest</option>
+                      <option value="Retail Space">Retail Space</option>
+                      <option value="Office Space">Office Space</option>
+                      <option value="Food Court">Food Court</option>
+                      <option value="Multiplex Partnership">Multiplex Partnership</option>
+                    </select>
+                    <textarea name="message" value={formData.message} onChange={handleInputChange} placeholder="Type your message here...." className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 h-32 focus:border-amber-500 focus:outline-none focus:bg-white transition-all resize-none font-medium"></textarea>
+                    <button disabled={status === 'submitting'} className="w-full bg-amber-500 text-white font-black uppercase tracking-[0.2em] py-5 rounded-xl hover:bg-amber-400 transition-all shadow-2xl flex items-center justify-center gap-3 group disabled:opacity-50">
+                      {status === 'submitting' ? 'Registering...' : 'Register Now'} <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </button>
+                    {status === 'error' && <p className="text-red-500 text-xs text-center mt-2">Failed to submit. Please try again.</p>}
+                  </form>
+                )}
               </div>
             </div>
 

@@ -7,6 +7,7 @@ import {
     Facebook, Instagram, Youtube, Twitter, Film, Ticket,
     Palmtree, Layers, Clock, Store as StoreIcon, UtensilsCrossed
 } from 'lucide-react';
+import { submitLead } from '../crmApi';
 
 const SECTIONS = [
     { id: 'home', label: 'Home' },
@@ -99,6 +100,39 @@ const ChouhanCityCenterLanding: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
     const navigate = useNavigate();
+
+    // Form States
+    const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+    const [formData, setFormData] = useState({
+        name: '',
+        phone: '',
+        brand: '',
+        message: ''
+    });
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus('submitting');
+        try {
+            await submitLead({
+                customerName: formData.name,
+                mobile: formData.phone,
+                interestedProject: 'Chouhan City Center',
+                remarks: `Brand: ${formData.brand} | Message: ${formData.message}`,
+                source: 'Chouhan City Center Landing - Leasing Form'
+            });
+            setStatus('success');
+            setFormData({ name: '', phone: '', brand: '', message: '' });
+        } catch (err) {
+            console.error(err);
+            setStatus('error');
+        }
+    };
 
     // Scroll spy effect
     useEffect(() => {
@@ -434,32 +468,42 @@ const ChouhanCityCenterLanding: React.FC = () => {
                             <p className="text-gray-500">Become a part of Bhilai's next big landmark. Contact us for leasing opportunities.</p>
                         </div>
 
-                        <form className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-xs font-bold text-gray-500 uppercase">Full Name</label>
-                                    <input type="text" className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors" placeholder="John Doe" />
+                        {status === 'success' ? (
+                            <div className="text-center py-12">
+                                <CheckCircle2 size={64} className="text-amber-500 mx-auto mb-4" />
+                                <h3 className="text-2xl font-bold text-stone-900 mb-2">Thank You!</h3>
+                                <p className="text-stone-600 mb-8">Your enquiry has been received. Our team will contact you shortly.</p>
+                                <button onClick={() => setStatus('idle')} className="bg-stone-900 text-white px-8 py-3 rounded-lg font-bold uppercase tracking-widest text-xs">Send Another Inquiry</button>
+                            </div>
+                        ) : (
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-bold text-gray-500 uppercase">Full Name</label>
+                                        <input required name="name" value={formData.name} onChange={handleInputChange} type="text" className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors" placeholder="John Doe" />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-bold text-gray-500 uppercase">Phone Number</label>
+                                        <input required name="phone" value={formData.phone} onChange={handleInputChange} type="tel" className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors" placeholder="+91 00000 00000" />
+                                    </div>
                                 </div>
+
                                 <div className="space-y-2">
-                                    <label className="text-xs font-bold text-gray-500 uppercase">Phone Number</label>
-                                    <input type="tel" className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors" placeholder="+91 00000 00000" />
+                                    <label className="text-xs font-bold text-gray-500 uppercase">Brand / Business Name</label>
+                                    <input required name="brand" value={formData.brand} onChange={handleInputChange} type="text" className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors" placeholder="Your Brand" />
                                 </div>
-                            </div>
 
-                            <div className="space-y-2">
-                                <label className="text-xs font-bold text-gray-500 uppercase">Brand / Business Name</label>
-                                <input type="text" className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors" placeholder="Your Brand" />
-                            </div>
+                                <div className="space-y-2">
+                                    <label className="text-xs font-bold text-gray-500 uppercase">Message</label>
+                                    <textarea name="message" value={formData.message} onChange={handleInputChange} className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors h-32 resize-none" placeholder="Tell us about your requirements..."></textarea>
+                                </div>
 
-                            <div className="space-y-2">
-                                <label className="text-xs font-bold text-gray-500 uppercase">Message</label>
-                                <textarea className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors h-32 resize-none" placeholder="Tell us about your requirements..."></textarea>
-                            </div>
-
-                            <button type="button" className="w-full bg-stone-900 text-white font-bold text-sm uppercase tracking-widest py-4 rounded-lg hover:bg-stone-800 transition-colors shadow-lg mt-4">
-                                Submit Inquiry
-                            </button>
-                        </form>
+                                <button disabled={status === 'submitting'} type="submit" className="w-full bg-stone-900 text-white font-bold text-sm uppercase tracking-widest py-4 rounded-lg hover:bg-stone-800 transition-colors shadow-lg mt-4 disabled:opacity-50">
+                                    {status === 'submitting' ? 'Submitting...' : 'Submit Inquiry'}
+                                </button>
+                                {status === 'error' && <p className="text-red-500 text-xs text-center mt-2">Failed to submit. Please try again.</p>}
+                            </form>
+                        )}
                     </div>
                 </div>
             </div>

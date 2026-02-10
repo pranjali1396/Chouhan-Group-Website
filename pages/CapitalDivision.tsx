@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Briefcase, TrendingUp, DollarSign, PieChart,
-  Globe, Shield, FileText, Upload, CheckCircle, ArrowRight
+  Globe, Shield, FileText, Upload, CheckCircle, ArrowRight,
+  CheckCircle2
 } from 'lucide-react';
+import { submitLead } from '../crmApi';
 
 const TRANSACTIONS = [
   {
@@ -42,6 +44,60 @@ const CRITERIA = [
 ];
 
 const CapitalDivision: React.FC = () => {
+  // Form States
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({
+    contactName: '',
+    title: '',
+    phone: '',
+    email: '',
+    address: '',
+    city: '',
+    state: '',
+    zip: '',
+    companyName: '',
+    sector: 'Select Sector...',
+    website: '',
+    summary: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('submitting');
+    try {
+      await submitLead({
+        customerName: formData.contactName,
+        mobile: formData.phone,
+        email: formData.email,
+        interestedProject: 'Capital Division',
+        remarks: `Title: ${formData.title} | Company: ${formData.companyName} | Sector: ${formData.sector} | Website: ${formData.website} | Summary: ${formData.summary} | Address: ${formData.city}, ${formData.state} ${formData.zip}`,
+        source: 'Capital Division - Business Plan Submission'
+      });
+      setStatus('success');
+      setFormData({
+        contactName: '',
+        title: '',
+        phone: '',
+        email: '',
+        address: '',
+        city: '',
+        state: '',
+        zip: '',
+        companyName: '',
+        sector: 'Select Sector...',
+        website: '',
+        summary: ''
+      });
+    } catch (err) {
+      console.error(err);
+      setStatus('error');
+    }
+  };
   return (
     <div className="bg-white font-sans text-slate-800 pt-32 md:pt-48">
 
@@ -170,94 +226,106 @@ const CapitalDivision: React.FC = () => {
               <p className="text-slate-500 text-sm">Please provide detailed information for our review process.</p>
             </div>
 
-            <form className="p-8 md:p-12 space-y-8">
+            {status === 'success' ? (
+              <div className="p-12 text-center animate-fadeIn">
+                <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-green-600">
+                  <CheckCircle2 size={40} />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">Application Submitted!</h3>
+                <p className="text-slate-500 mb-8">Thank you for your interest. Our investment team will review your proposal and get back to you shortly.</p>
+                <button onClick={() => setStatus('idle')} className="bg-amber-500 text-white px-8 py-3 rounded font-bold uppercase tracking-widest text-xs hover:bg-amber-600 transition-colors">Submit Another Application</button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="p-8 md:p-12 space-y-8">
 
-              {/* Contact Info */}
-              <div className="space-y-6">
-                <h3 className="font-bold text-lg text-slate-900 border-b border-slate-100 pb-2 flex items-center gap-2">
-                  <FileText size={18} className="text-amber-500" /> Contact Information
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-500 uppercase">Contact Name *</label>
-                    <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-500 uppercase">Title</label>
-                    <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-500 uppercase">Phone *</label>
-                    <input type="tel" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-500 uppercase">Email *</label>
-                    <input type="email" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
-                  </div>
-                  <div className="space-y-1 md:col-span-2">
-                    <label className="text-xs font-bold text-slate-500 uppercase">Address *</label>
-                    <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors mb-2" placeholder="Street Address" />
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-                      <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="City" />
-                      <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="State / Province" />
-                      <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="Postal Code" />
+                {/* Contact Info */}
+                <div className="space-y-6">
+                  <h3 className="font-bold text-lg text-slate-900 border-b border-slate-100 pb-2 flex items-center gap-2">
+                    <FileText size={18} className="text-amber-500" /> Contact Information
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-slate-500 uppercase">Contact Name *</label>
+                      <input required name="contactName" value={formData.contactName} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-slate-500 uppercase">Title</label>
+                      <input name="title" value={formData.title} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-slate-500 uppercase">Phone *</label>
+                      <input required name="phone" value={formData.phone} onChange={handleInputChange} type="tel" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-slate-500 uppercase">Email *</label>
+                      <input required name="email" value={formData.email} onChange={handleInputChange} type="email" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
+                    </div>
+                    <div className="space-y-1 md:col-span-2">
+                      <label className="text-xs font-bold text-slate-500 uppercase">Address *</label>
+                      <input required name="address" value={formData.address} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors mb-2" placeholder="Street Address" />
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+                        <input required name="city" value={formData.city} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="City" />
+                        <input required name="state" value={formData.state} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="State / Province" />
+                        <input required name="zip" value={formData.zip} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="Postal Code" />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Business Info */}
-              <div className="space-y-6">
-                <h3 className="font-bold text-lg text-slate-900 border-b border-slate-100 pb-2 flex items-center gap-2">
-                  <TrendingUp size={18} className="text-amber-500" /> Business Details
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-500 uppercase">Company Name</label>
-                    <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-500 uppercase">Sector</label>
-                    <select className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors text-slate-600">
-                      <option>Select Sector...</option>
-                      <option>Real Estate</option>
-                      <option>Technology / Software</option>
-                      <option>Manufacturing</option>
-                      <option>Healthcare</option>
-                      <option>Retail</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                  <div className="space-y-1 md:col-span-2">
-                    <label className="text-xs font-bold text-slate-500 uppercase">Website</label>
-                    <input type="url" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="https://" />
-                  </div>
-                  <div className="space-y-1 md:col-span-2">
-                    <label className="text-xs font-bold text-slate-500 uppercase">Executive Summary</label>
-                    <textarea className="w-full bg-slate-50 border border-slate-200 rounded p-3 h-32 focus:border-amber-500 focus:outline-none transition-colors resize-none" placeholder="Brief overview of the business..."></textarea>
+                {/* Business Info */}
+                <div className="space-y-6">
+                  <h3 className="font-bold text-lg text-slate-900 border-b border-slate-100 pb-2 flex items-center gap-2">
+                    <TrendingUp size={18} className="text-amber-500" /> Business Details
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-slate-500 uppercase">Company Name</label>
+                      <input name="companyName" value={formData.companyName} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-slate-500 uppercase">Sector</label>
+                      <select name="sector" value={formData.sector} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors text-slate-600">
+                        <option value="Select Sector...">Select Sector...</option>
+                        <option value="Real Estate">Real Estate</option>
+                        <option value="Technology / Software">Technology / Software</option>
+                        <option value="Manufacturing">Manufacturing</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Retail">Retail</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+                    <div className="space-y-1 md:col-span-2">
+                      <label className="text-xs font-bold text-slate-500 uppercase">Website</label>
+                      <input name="website" value={formData.website} onChange={handleInputChange} type="url" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="https://" />
+                    </div>
+                    <div className="space-y-1 md:col-span-2">
+                      <label className="text-xs font-bold text-slate-500 uppercase">Executive Summary</label>
+                      <textarea name="summary" value={formData.summary} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded p-3 h-32 focus:border-amber-500 focus:outline-none transition-colors resize-none" placeholder="Brief overview of the business..."></textarea>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* File Upload */}
-              <div className="space-y-4">
-                <h3 className="font-bold text-lg text-slate-900 border-b border-slate-100 pb-2 flex items-center gap-2">
-                  <Upload size={18} className="text-amber-500" /> Business Plan Document
-                </h3>
-                <div className="border-2 border-dashed border-slate-300 rounded-lg p-8 text-center hover:bg-slate-50 transition-colors cursor-pointer group">
-                  <Upload className="mx-auto h-12 w-12 text-slate-400 group-hover:text-amber-500 transition-colors mb-3" />
-                  <p className="text-sm text-slate-600 font-medium">Click to upload or drag and drop</p>
-                  <p className="text-xs text-slate-400 mt-1">PDF, DOCX, PPTX (Max 9 MB)</p>
+                {/* File Upload */}
+                <div className="space-y-4">
+                  <h3 className="font-bold text-lg text-slate-900 border-b border-slate-100 pb-2 flex items-center gap-2">
+                    <Upload size={18} className="text-amber-500" /> Business Plan Document
+                  </h3>
+                  <div className="border-2 border-dashed border-slate-300 rounded-lg p-8 text-center hover:bg-slate-50 transition-colors cursor-pointer group">
+                    <Upload className="mx-auto h-12 w-12 text-slate-400 group-hover:text-amber-500 transition-colors mb-3" />
+                    <p className="text-sm text-slate-600 font-medium">Click to upload or drag and drop</p>
+                    <p className="text-xs text-slate-400 mt-1">PDF, DOCX, PPTX (Max 9 MB)</p>
+                  </div>
                 </div>
-              </div>
 
-              <div className="pt-4">
-                <button className="w-full bg-gradient-to-r from-amber-500 to-amber-600 text-white font-bold uppercase tracking-widest py-4 rounded hover:from-amber-400 hover:to-amber-500 hover:shadow-lg transition-all flex justify-center items-center gap-2">
-                  Submit Application <ArrowRight size={20} />
-                </button>
-              </div>
+                <div className="pt-4">
+                  <button disabled={status === 'submitting'} type="submit" className="w-full bg-gradient-to-r from-amber-500 to-amber-600 text-white font-bold uppercase tracking-widest py-4 rounded hover:from-amber-400 hover:to-amber-500 hover:shadow-lg transition-all flex justify-center items-center gap-2 disabled:opacity-50">
+                    {status === 'submitting' ? 'Submitting...' : 'Submit Application'} <ArrowRight size={20} />
+                  </button>
+                  {status === 'error' && <p className="text-red-500 text-xs text-center mt-2">Failed to submit. Please try again.</p>}
+                </div>
 
-            </form>
+              </form>
+            )}
           </div>
         </div>
       </section>

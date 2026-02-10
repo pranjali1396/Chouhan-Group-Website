@@ -7,6 +7,7 @@ import {
   Play, Maximize2, X, ChevronRight, Layout, Download,
   Layers, Zap, Droplet, Monitor, ZoomIn, Ban, BellRing, Send, Facebook, Twitter, Instagram, Linkedin
 } from 'lucide-react';
+import { submitLead } from '../crmApi';
 
 const PROPERTY_DATA = {
   amenities: [
@@ -56,15 +57,79 @@ const GenericPage: React.FC = () => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState('overview');
 
-  // Lightbox State
-  const [lightboxImages, setLightboxImages] = useState<string[]>([]);
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  // Form States
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    interest: 'Buying'
+  });
+
+  const [rentalStatus, setRentalStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [rentalData, setRentalData] = useState({
+    name: '',
+    phone: ''
+  });
 
   // Extract readable title from path
   const pathParts = location.pathname.split('/').filter(Boolean);
   const rawTitle = pathParts[pathParts.length - 1];
   const title = rawTitle?.replace(/-/g, ' ').toUpperCase() || 'LUXURY LIVING';
   const category = pathParts[0]?.replace(/-/g, ' ').toUpperCase();
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleRentalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setRentalData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleEnquirySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('submitting');
+    try {
+      await submitLead({
+        customerName: formData.name,
+        mobile: formData.phone,
+        email: formData.email,
+        interestedProject: title,
+        remarks: `Interest Type: ${formData.interest}`,
+        source: `Generic Page - ${title}`
+      });
+      setStatus('success');
+      setFormData({ name: '', email: '', phone: '', interest: 'Buying' });
+    } catch (err) {
+      console.error(err);
+      setStatus('error');
+    }
+  };
+
+  const handleRentalSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setRentalStatus('submitting');
+    try {
+      await submitLead({
+        customerName: rentalData.name,
+        mobile: rentalData.phone,
+        interestedProject: title,
+        remarks: 'Rental Inquiry (Coming Soon)',
+        source: `Rentals Page - ${title}`
+      });
+      setRentalStatus('success');
+      setRentalData({ name: '', phone: '' });
+    } catch (err) {
+      console.error(err);
+      setRentalStatus('error');
+    }
+  };
+
+  // Lightbox State
+  const [lightboxImages, setLightboxImages] = useState<string[]>([]);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   // Logic for Coming Soon / Sold
   const isRentals = category === 'RENTALS';
@@ -157,24 +222,47 @@ const GenericPage: React.FC = () => {
 
             {/* Notify Form */}
             <div className="bg-white/5 backdrop-blur-xl p-8 md:p-12 rounded-[2rem] border border-white/10 shadow-2xl max-w-xl mx-auto">
-              <h3 className="text-white font-bold text-xl mb-6 flex items-center justify-center gap-2">
-                <BellRing className="text-amber-500 animate-pulse" /> Get Priority Notification
-              </h3>
-              <form className="space-y-4">
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full bg-white/10 border border-white/10 rounded-xl p-4 text-white placeholder:text-white/40 focus:outline-none focus:border-amber-500 transition-all font-medium"
-                />
-                <input
-                  type="tel"
-                  placeholder="Phone Number"
-                  className="w-full bg-white/10 border border-white/10 rounded-xl p-4 text-white placeholder:text-white/40 focus:outline-none focus:border-amber-500 transition-all font-medium"
-                />
-                <button className="w-full bg-amber-500 text-slate-900 font-black uppercase tracking-widest py-4 rounded-xl hover:bg-white hover:text-slate-900 transition-all flex items-center justify-center gap-2 group">
-                  Notify Me <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </button>
-              </form>
+              {rentalStatus === 'success' ? (
+                <div className="text-white py-8">
+                  <CheckCircle2 size={48} className="text-amber-500 mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold mb-2">Thank You!</h3>
+                  <p className="text-slate-300">We'll notify you as soon as this project is available.</p>
+                  <button onClick={() => setRentalStatus('idle')} className="mt-6 text-amber-500 underline text-sm">Send another notification</button>
+                </div>
+              ) : (
+                <>
+                  <h3 className="text-white font-bold text-xl mb-6 flex items-center justify-center gap-2">
+                    <BellRing className="text-amber-500 animate-pulse" /> Get Priority Notification
+                  </h3>
+                  <form onSubmit={handleRentalSubmit} className="space-y-4">
+                    <input
+                      required
+                      name="name"
+                      value={rentalData.name}
+                      onChange={handleRentalChange}
+                      type="text"
+                      placeholder="Your Name"
+                      className="w-full bg-white/10 border border-white/10 rounded-xl p-4 text-white placeholder:text-white/40 focus:outline-none focus:border-amber-500 transition-all font-medium"
+                    />
+                    <input
+                      required
+                      name="phone"
+                      value={rentalData.phone}
+                      onChange={handleRentalChange}
+                      type="tel"
+                      placeholder="Phone Number"
+                      className="w-full bg-white/10 border border-white/10 rounded-xl p-4 text-white placeholder:text-white/40 focus:outline-none focus:border-amber-500 transition-all font-medium"
+                    />
+                    <button
+                      disabled={rentalStatus === 'submitting'}
+                      className="w-full bg-amber-500 text-slate-900 font-black uppercase tracking-widest py-4 rounded-xl hover:bg-white hover:text-slate-900 transition-all flex items-center justify-center gap-2 group disabled:opacity-50"
+                    >
+                      {rentalStatus === 'submitting' ? 'Processing...' : 'Notify Me'} <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </button>
+                    {rentalStatus === 'error' && <p className="text-red-400 text-sm mt-2">Something went wrong. Please try again.</p>}
+                  </form>
+                </>
+              )}
             </div>
 
             {/* Back Link */}
@@ -479,36 +567,51 @@ const GenericPage: React.FC = () => {
               <div className="sticky top-28 space-y-8" id="contact">
                 {/* Form Card */}
                 <div className="bg-white p-8 rounded-xl shadow-2xl border border-slate-100">
-                  <div className="mb-6">
-                    <span className="text-amber-500 font-bold tracking-widest text-xs uppercase block mb-2">Interested?</span>
-                    <h3 className="text-2xl font-bold font-heading text-slate-900">Request a Callback</h3>
-                  </div>
+                  {status === 'success' ? (
+                    <div className="text-center py-12">
+                      <CheckCircle2 size={64} className="text-amber-500 mx-auto mb-4" />
+                      <h3 className="text-2xl font-bold text-slate-900 mb-2">Thank You!</h3>
+                      <p className="text-slate-600 mb-8">Your enquiry has been received. Our team will contact you shortly.</p>
+                      <button onClick={() => setStatus('idle')} className="bg-slate-900 text-white px-8 py-3 rounded font-bold uppercase tracking-widest text-xs">Send Another Enquiry</button>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="mb-6">
+                        <span className="text-amber-500 font-bold tracking-widest text-xs uppercase block mb-2">Interested?</span>
+                        <h3 className="text-2xl font-bold font-heading text-slate-900">Request a Callback</h3>
+                      </div>
 
-                  <form className="space-y-4">
-                    <div>
-                      <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-4 text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400" placeholder="Full Name *" />
-                    </div>
-                    <div>
-                      <input type="email" className="w-full bg-slate-50 border border-slate-200 rounded p-4 text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400" placeholder="Email Address *" />
-                    </div>
-                    <div>
-                      <input type="tel" className="w-full bg-slate-50 border border-slate-200 rounded p-4 text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400" placeholder="Phone Number *" />
-                    </div>
-                    <div>
-                      <select className="w-full bg-slate-50 border border-slate-200 rounded p-4 text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition-all text-slate-500">
-                        <option>Interested In</option>
-                        <option>Buying</option>
-                        <option>Renting</option>
-                        <option>Site Visit</option>
-                      </select>
-                    </div>
+                      <form onSubmit={handleEnquirySubmit} className="space-y-4">
+                        <div>
+                          <input required name="name" value={formData.name} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-4 text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400" placeholder="Full Name *" />
+                        </div>
+                        <div>
+                          <input required name="email" value={formData.email} onChange={handleInputChange} type="email" className="w-full bg-slate-50 border border-slate-200 rounded p-4 text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400" placeholder="Email Address *" />
+                        </div>
+                        <div>
+                          <input required name="phone" value={formData.phone} onChange={handleInputChange} type="tel" className="w-full bg-slate-50 border border-slate-200 rounded p-4 text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400" placeholder="Phone Number *" />
+                        </div>
+                        <div>
+                          <select name="interest" value={formData.interest} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded p-4 text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition-all text-slate-500">
+                            <option value="Buying">Buying</option>
+                            <option value="Renting">Renting</option>
+                            <option value="Site Visit">Site Visit</option>
+                          </select>
+                        </div>
 
-                    <button type="button" className="w-full bg-gradient-to-r from-slate-900 to-slate-800 text-white font-bold uppercase tracking-widest py-4 rounded hover:from-amber-500 hover:to-amber-600 hover:text-white transition-all mt-4 flex justify-center items-center gap-2 group shadow-md">
-                      Submit Enquiry
-                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                    </button>
-                    <p className="text-[10px] text-center text-slate-400 mt-4">By submitting this form, you agree to our Terms of Service.</p>
-                  </form>
+                        <button
+                          disabled={status === 'submitting'}
+                          type="submit"
+                          className="w-full bg-gradient-to-r from-slate-900 to-slate-800 text-white font-bold uppercase tracking-widest py-4 rounded hover:from-amber-500 hover:to-amber-600 hover:text-white transition-all mt-4 flex justify-center items-center gap-2 group shadow-md disabled:opacity-50"
+                        >
+                          {status === 'submitting' ? 'Submitting...' : 'Submit Enquiry'}
+                          <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                        </button>
+                        {status === 'error' && <p className="text-red-500 text-xs text-center mt-2">Failed to submit. Please try again.</p>}
+                        <p className="text-[10px] text-center text-slate-400 mt-4">By submitting this form, you agree to our Terms of Service.</p>
+                      </form>
+                    </>
+                  )}
                 </div>
 
                 {/* Brochure Download */}

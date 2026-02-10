@@ -1,13 +1,42 @@
-
 import React, { useState } from 'react';
 import { Truck, MapPin, Calendar, Bell, Send, CheckCircle2 } from 'lucide-react';
+import { submitLead } from '../crmApi';
 
 const AshokLeyland: React.FC = () => {
     const [submitted, setSubmitted] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        interest: 'Buying a Vehicle'
+    });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setSubmitted(true);
+        setSubmitting(true);
+        try {
+            await submitLead({
+                customerName: formData.name,
+                mobile: formData.phone,
+                email: formData.email,
+                interestedProject: 'Ashok Leyland',
+                remarks: `Interest: ${formData.interest}`,
+                source: 'Ashok Leyland Page - Registration form'
+            });
+            setSubmitted(true);
+            setSubmitting(false);
+            setFormData({ name: '', email: '', phone: '', interest: 'Buying a Vehicle' });
+        } catch (err) {
+            console.error(err);
+            setSubmitting(false);
+            alert('Failed to register. Please try again.');
+        }
     };
 
     return (
@@ -82,27 +111,27 @@ const AshokLeyland: React.FC = () => {
                                 <form onSubmit={handleSubmit} className="space-y-4">
                                     <div>
                                         <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Full Name</label>
-                                        <input type="text" required className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none" placeholder="Enter your name" />
+                                        <input name="name" value={formData.name} onChange={handleInputChange} type="text" required className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none" placeholder="Enter your name" />
                                     </div>
                                     <div>
                                         <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Email Address</label>
-                                        <input type="email" required className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none" placeholder="Enter your email" />
+                                        <input name="email" value={formData.email} onChange={handleInputChange} type="email" required className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none" placeholder="Enter your email" />
                                     </div>
                                     <div>
                                         <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Phone Number</label>
-                                        <input type="tel" required className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none" placeholder="Enter your mobile number" />
+                                        <input name="phone" value={formData.phone} onChange={handleInputChange} type="tel" required className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none" placeholder="Enter your mobile number" />
                                     </div>
                                     <div>
                                         <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Interest Type</label>
-                                        <select className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none text-slate-600">
-                                            <option>Buying a Vehicle</option>
-                                            <option>Fleet Inquiry</option>
-                                            <option>Service / Parts</option>
-                                            <option>Job Application</option>
+                                        <select name="interest" value={formData.interest} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none text-slate-600">
+                                            <option value="Buying a Vehicle">Buying a Vehicle</option>
+                                            <option value="Fleet Inquiry">Fleet Inquiry</option>
+                                            <option value="Service / Parts">Service / Parts</option>
+                                            <option value="Job Application">Job Application</option>
                                         </select>
                                     </div>
-                                    <button type="submit" className="w-full bg-amber-500 text-white font-bold uppercase tracking-widest py-4 rounded hover:bg-amber-600 transition-colors mt-4 flex items-center justify-center gap-2">
-                                        Register For Updates <Send size={18} />
+                                    <button disabled={submitting} type="submit" className="w-full bg-amber-500 text-white font-bold uppercase tracking-widest py-4 rounded hover:bg-amber-600 transition-colors mt-4 flex items-center justify-center gap-2 disabled:opacity-50">
+                                        {submitting ? 'Registering...' : 'Register For Updates'} <Send size={18} />
                                     </button>
                                 </form>
                             </>

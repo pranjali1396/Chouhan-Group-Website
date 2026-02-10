@@ -36,7 +36,7 @@ const SERVICE_HIGHLIGHTS = [
     title: "Automobiles",
     desc: "Proud partners of Maruti Suzuki Arena, NEXA, Hero, and Ashok Leyland. Driving excellence in mobility.",
     icon: <Car size={24} />,
-    image: "/new_images/NexaCardImage.png",
+    image: "/new_images/Maruti-suzuki_showroom2.jpeg",
     link: "/automobile"
   },
   {
@@ -80,7 +80,7 @@ const AUTOMOBILE_PARTNERS = [
   {
     name: "Maruti Suzuki Arena",
     brand: "ARENA",
-    image: "/new_images/MarutiCardImage.png",
+    image: "/new_images/Arena.webp",
     link: "/automobile/maruti",
     desc: "India's most loved car destination",
     tagline: "Experience the joy of mobility",
@@ -89,7 +89,7 @@ const AUTOMOBILE_PARTNERS = [
   {
     name: "Nexa",
     brand: "NEXA",
-    image: "/new_images/NexaCardImage.png",
+    image: "/new_images/Nexa_card_new.jpeg",
     link: "/automobile/nexa",
     desc: "Create. Inspire. Premium automotive experience",
     tagline: "The premium side of driving",
@@ -98,7 +98,7 @@ const AUTOMOBILE_PARTNERS = [
   {
     name: "Hero MotoCorp",
     brand: "HERO",
-    image: "/new_images/herofinal.webp",
+    image: "/new_images/Hero_showroom_new.jpeg",
     link: "/automobile/hero",
     desc: "The world's largest two-wheeler manufacturer",
     tagline: "Be a Hero",
@@ -107,7 +107,7 @@ const AUTOMOBILE_PARTNERS = [
   {
     name: "True Value",
     brand: "TRUE VALUE",
-    image: "/new_images/trueshowroom.webp",
+    image: "/new_images/true_value.webp",
     link: "/automobile/true-value",
     desc: "Pre-owned cars with trust and transparency",
     tagline: "Certified pre-owned excellence",
@@ -491,53 +491,55 @@ const Home: React.FC = () => {
           </div>
 
           {/* Brands Grid - Balanced 2+3 layout for 5 items */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
             {AUTOMOBILE_PARTNERS.map((partner, idx) => (
               <Link
                 key={idx}
                 to={partner.link}
-                className={`group relative rounded-3xl overflow-hidden shadow-2xl block bg-slate-900 border border-white/5 ${idx < 2
-                  ? 'lg:col-span-3 h-[450px] md:h-[500px]'
+                className={`group relative flex flex-col rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 bg-white border border-slate-100 ${idx < 2
+                  ? 'lg:col-span-3'
                   : idx === 4
-                    ? 'md:col-span-2 lg:col-span-2 h-[300px] md:h-[350px]'
-                    : 'lg:col-span-2 h-[300px] md:h-[350px]'
+                    ? 'md:col-span-2 lg:col-span-2'
+                    : 'lg:col-span-2'
                   }`}
               >
-                {/* Background Image */}
-                <div className="absolute inset-0">
+                {/* Image Section */}
+                <div className="relative h-64 md:h-72 lg:h-80 overflow-hidden">
                   <img
                     src={partner.image}
                     alt={partner.name}
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                     style={{ objectPosition: (partner as any).position || 'center' }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
-                </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 
-                {/* Content Overlay */}
-                <div className="absolute inset-0 p-8 flex flex-col justify-between z-20">
-                  {/* Top: Brand Logo/Text */}
-                  <div className="flex justify-between items-start">
-                    <div className="bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-xl">
-                      <span className="text-xl font-black tracking-tighter italic text-white">{partner.brand}</span>
-                    </div>
-                    <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-y-4 group-hover:translate-y-0">
-                      <ArrowRight size={20} className="text-white" />
+                  {/* Brand Tag */}
+                  <div className="absolute top-6 left-6">
+                    <div className="bg-white/95 backdrop-blur-md border border-white px-4 py-2 rounded-2xl shadow-xl">
+                      <span className="text-sm font-black tracking-tight italic text-slate-900">{partner.brand}</span>
                     </div>
                   </div>
+                </div>
 
-                  {/* Bottom: Info */}
+                {/* Content Section */}
+                <div className="p-8 flex flex-col justify-between flex-grow">
                   <div>
-                    <span className="text-amber-500 text-[10px] font-bold uppercase tracking-[0.2em] mb-2 block">
+                    <span className="text-amber-600 text-[10px] font-bold uppercase tracking-[0.2em] mb-3 block">
                       {partner.tagline}
                     </span>
-                    <h3 className="text-3xl font-heading font-black mb-4 text-white group-hover:text-amber-500 transition-colors">
+                    <h3 className="text-2xl font-heading font-black mb-4 text-slate-900 group-hover:text-amber-600 transition-colors">
                       {partner.name}
                     </h3>
-                    <p className="text-white/70 text-sm font-light leading-relaxed mb-6 line-clamp-2">
+                    <p className="text-slate-500 text-sm font-normal leading-relaxed mb-6 line-clamp-2">
                       {partner.desc}
                     </p>
-                    <div className="h-1 w-12 bg-amber-500 transition-all duration-500 group-hover:w-full"></div>
+                  </div>
+
+                  <div className="flex items-center justify-between mt-auto">
+                    <div className="h-[2px] w-12 bg-slate-100 group-hover:w-full group-hover:bg-amber-500 transition-all duration-500"></div>
+                    <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition-all duration-300 ml-4 flex-shrink-0">
+                      <ArrowRight size={18} />
+                    </div>
                   </div>
                 </div>
               </Link>

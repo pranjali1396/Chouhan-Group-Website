@@ -1,9 +1,52 @@
 
-import React from 'react';
-import { MapPin, Phone, Mail, MessageCircle, Send, Building, Car, Coffee, Home } from 'lucide-react';
+import React, { useState } from 'react';
+import { MapPin, Phone, Mail, MessageCircle, Send, Building, Car, Coffee, Home, CheckCircle2 } from 'lucide-react';
 import WhatsAppFAB from '../components/WhatsAppFAB';
+import { submitLead } from '../crmApi';
 
 const Contact: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    project: '',
+    message: ''
+  });
+
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.phone) {
+      alert("Name and Phone are required.");
+      return;
+    }
+
+    setStatus('submitting');
+    try {
+      await submitLead({
+        customerName: formData.name,
+        mobile: formData.phone,
+        email: formData.email,
+        interestedProject: formData.project,
+        remarks: formData.message,
+        source: 'Chouhan Group - Contact Us'
+      });
+      setStatus('success');
+      setFormData({ name: '', email: '', phone: '', project: '', message: '' });
+    } catch (err: any) {
+      console.error(err);
+      setStatus('error');
+      setErrorMessage(err.message || 'Something went wrong. Please try again later.');
+    }
+  };
+
   return (
     <div className="bg-white font-sans text-slate-800 pt-32 md:pt-48 pb-20">
 
@@ -71,44 +114,99 @@ const Contact: React.FC = () => {
               <h2 className="text-2xl md:text-3xl font-black font-heading text-slate-900 mb-2 uppercase tracking-tight">Let's Connect</h2>
               <p className="text-slate-700 mb-8 text-sm font-medium">Fill in the form below and we will contact you shortly.</p>
 
-              <form className="space-y-5">
-                <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-500 uppercase">Your Name</label>
-                  <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-4 focus:border-amber-500 focus:outline-none transition-colors" placeholder="Enter your full name" />
+              {status === 'success' ? (
+                <div className="py-12 text-center animate-fadeIn">
+                  <div className="w-20 h-20 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <CheckCircle2 size={40} />
+                  </div>
+                  <h4 className="text-2xl font-black text-slate-900 mb-2">Message Sent</h4>
+                  <p className="text-sm text-slate-800 mb-8 max-w-xs mx-auto">We've received your enquiry and our team will contact you shortly.</p>
+                  <button onClick={() => setStatus('idle')} className="bg-slate-900 text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-amber-500 transition-all">
+                    Send another message
+                  </button>
                 </div>
+              ) : (
+                <form onSubmit={handleFormSubmit} className="space-y-5">
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-slate-500 uppercase">Your Name</label>
+                    <input
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      type="text"
+                      className="w-full bg-slate-50 border border-slate-200 rounded p-4 focus:border-amber-500 focus:outline-none transition-colors"
+                      placeholder="Enter your full name"
+                    />
+                  </div>
 
-                <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-500 uppercase">Your Email Address</label>
-                  <input type="email" className="w-full bg-slate-50 border border-slate-200 rounded p-4 focus:border-amber-500 focus:outline-none transition-colors" placeholder="email@example.com" />
-                </div>
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-slate-500 uppercase">Your Email Address</label>
+                    <input
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      type="email"
+                      className="w-full bg-slate-50 border border-slate-200 rounded p-4 focus:border-amber-500 focus:outline-none transition-colors"
+                      placeholder="email@example.com"
+                    />
+                  </div>
 
-                <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-500 uppercase">Your Phone Number</label>
-                  <input type="tel" className="w-full bg-slate-50 border border-slate-200 rounded p-4 focus:border-amber-500 focus:outline-none transition-colors" placeholder="+91 XXXXX XXXXX" />
-                </div>
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-slate-500 uppercase">Your Phone Number</label>
+                    <input
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      required
+                      type="tel"
+                      className="w-full bg-slate-50 border border-slate-200 rounded p-4 focus:border-amber-500 focus:outline-none transition-colors"
+                      placeholder="+91 XXXXX XXXXX"
+                    />
+                  </div>
 
-                <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-500 uppercase">Select Project / Model</label>
-                  <select className="w-full bg-slate-50 border border-slate-200 rounded p-4 focus:border-amber-500 focus:outline-none transition-colors text-slate-600">
-                    <option>Select Option...</option>
-                    <option>Real Estate - New Homes</option>
-                    <option>Real Estate - Commercial</option>
-                    <option>Automobile - Maruti Suzuki</option>
-                    <option>Automobile - Nexa</option>
-                    <option>Hospitality - Hotel Booking</option>
-                    <option>Other Inquiry</option>
-                  </select>
-                </div>
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-slate-500 uppercase">Select Project / Model</label>
+                    <select
+                      name="project"
+                      value={formData.project}
+                      onChange={handleInputChange}
+                      className="w-full bg-slate-50 border border-slate-200 rounded p-4 focus:border-amber-500 focus:outline-none transition-colors text-slate-600"
+                    >
+                      <option value="">Select Option...</option>
+                      <option>Real Estate - New Homes</option>
+                      <option>Real Estate - Commercial</option>
+                      <option>Automobile - Maruti Suzuki</option>
+                      <option>Automobile - Nexa</option>
+                      <option>Hospitality - Hotel Booking</option>
+                      <option>Other Inquiry</option>
+                    </select>
+                  </div>
 
-                <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-500 uppercase">Message</label>
-                  <textarea className="w-full bg-slate-50 border border-slate-200 rounded p-4 h-32 focus:border-amber-500 focus:outline-none transition-colors resize-none" placeholder="Type your message here...."></textarea>
-                </div>
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-slate-500 uppercase">Message</label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      className="w-full bg-slate-50 border border-slate-200 rounded p-4 h-32 focus:border-amber-500 focus:outline-none transition-colors resize-none"
+                      placeholder="Type your message here...."
+                    ></textarea>
+                  </div>
 
-                <button type="button" className="w-full bg-slate-900 text-white font-bold uppercase tracking-widest py-4 rounded hover:bg-amber-600 transition-colors shadow-lg mt-4 flex justify-center items-center gap-2">
-                  Send Message <Send size={18} />
-                </button>
-              </form>
+                  {status === 'error' && (
+                    <p className="text-red-500 text-xs font-bold">{errorMessage}</p>
+                  )}
+
+                  <button
+                    disabled={status === 'submitting'}
+                    type="submit"
+                    className="w-full bg-slate-900 text-white font-bold uppercase tracking-widest py-4 rounded hover:bg-amber-600 transition-colors shadow-lg mt-4 flex justify-center items-center gap-2 disabled:opacity-50"
+                  >
+                    {status === 'submitting' ? 'Sending...' : 'Send Message'} <Send size={18} />
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>

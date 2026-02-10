@@ -6,6 +6,7 @@ import {
   Home as HomeIcon, Building
 } from 'lucide-react';
 import WhatsAppFAB from '../components/WhatsAppFAB';
+import { submitLead } from '../crmApi';
 
 type CategoryKey = 'real-estate' | 'hospitality' | 'automobiles';
 
@@ -45,7 +46,7 @@ const CARE_DATA: Record<CategoryKey, CareData> = {
       },
       {
         name: "Chouhan Park View Site Office",
-        address: "4th floor, beside Shankracharya Mahavidyalaya, Junwani Road, Bhilai, Chhattisgarh - 490020",
+        address: "4th floor, beside Shankracharya Mahavidyalaya, Junwani Road, Bhilai, Chhattisgarh - 49020",
         phones: ["9109104783", "7222909449"],
         email: "chouhanhousing@gmail.com"
       },
@@ -123,14 +124,43 @@ const CARE_DATA: Record<CategoryKey, CareData> = {
 
 const CustomerCare: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<CategoryKey>('real-estate');
-  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const [formData, setFormData] = useState({
+    name: '',
+    mobile: '',
+    email: '',
+    message: ''
+  });
 
   const currentData = CARE_DATA[activeCategory];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus('submitting');
-    setTimeout(() => setFormStatus('success'), 1500);
+
+    try {
+      await submitLead({
+        customerName: formData.name,
+        mobile: formData.mobile,
+        email: formData.email,
+        remarks: formData.message,
+        interestedProject: activeCategory.replace('-', ' '),
+        source: `Customer Care - ${activeCategory}`
+      });
+      setFormStatus('success');
+      setFormData({ name: '', mobile: '', email: '', message: '' });
+    } catch (err: any) {
+      console.error(err);
+      setFormStatus('error');
+      setErrorMessage(err.message || 'Failed to submit request. Please try again.');
+    }
   };
 
   return (
@@ -165,7 +195,10 @@ const CustomerCare: React.FC = () => {
             return (
               <button
                 key={key}
-                onClick={() => setActiveCategory(key)}
+                onClick={() => {
+                  setActiveCategory(key);
+                  if (formStatus === 'success') setFormStatus('idle');
+                }}
                 className={`flex items-center gap-3 px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] md:text-xs transition-all duration-300 shadow-md transform hover:-translate-y-1 ${isActive ? activeStyle + " scale-105 shadow-xl" : "bg-slate-50 text-slate-600 hover:bg-slate-100"
                   }`}
               >
@@ -274,26 +307,62 @@ const CustomerCare: React.FC = () => {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-1">
                       <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Full Name</label>
-                      <input required type="text" className="w-full bg-slate-50 border-none rounded-2xl p-4 text-sm focus:ring-4 focus:ring-slate-100 transition-all font-medium" placeholder="Your Name" />
+                      <input
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        type="text"
+                        className="w-full bg-slate-50 border-none rounded-2xl p-4 text-sm focus:ring-4 focus:ring-slate-100 transition-all font-medium"
+                        placeholder="Your Name"
+                      />
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Mobile</label>
-                        <input required type="tel" className="w-full bg-slate-50 border-none rounded-2xl p-4 text-sm focus:ring-4 focus:ring-slate-100 transition-all font-medium" placeholder="+91..." />
+                        <input
+                          name="mobile"
+                          value={formData.mobile}
+                          onChange={handleInputChange}
+                          required
+                          type="tel"
+                          className="w-full bg-slate-50 border-none rounded-2xl p-4 text-sm focus:ring-4 focus:ring-slate-100 transition-all font-medium"
+                          placeholder="+91..."
+                        />
                       </div>
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Email</label>
-                        <input required type="email" className="w-full bg-slate-50 border-none rounded-2xl p-4 text-sm focus:ring-4 focus:ring-slate-100 transition-all font-medium" placeholder="mail@example.com" />
+                        <input
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          required
+                          type="email"
+                          className="w-full bg-slate-50 border-none rounded-2xl p-4 text-sm focus:ring-4 focus:ring-slate-100 transition-all font-medium"
+                          placeholder="mail@example.com"
+                        />
                       </div>
                     </div>
 
                     <div className="space-y-1">
                       <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Message Detail</label>
-                      <textarea required className="w-full bg-slate-50 border-none rounded-2xl p-4 text-sm h-32 focus:ring-4 focus:ring-slate-100 transition-all font-medium resize-none" placeholder="Describe your request..."></textarea>
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full bg-slate-50 border-none rounded-2xl p-4 text-sm h-32 focus:ring-4 focus:ring-slate-100 transition-all font-medium resize-none"
+                        placeholder="Describe your request..."
+                      ></textarea>
                     </div>
 
+                    {formStatus === 'error' && (
+                      <p className="text-red-500 text-xs font-bold">{errorMessage}</p>
+                    )}
+
                     <button
+                      disabled={formStatus === 'submitting'}
                       type="submit"
                       className={`w-full text-white font-black uppercase tracking-[0.2em] py-5 rounded-2xl transition-all shadow-xl flex justify-center items-center gap-3 hover:-translate-y-1 active:scale-95 ${activeCategory === 'real-estate' ? 'bg-amber-500 shadow-amber-200' :
                         activeCategory === 'hospitality' ? 'bg-purple-600 shadow-purple-200' :

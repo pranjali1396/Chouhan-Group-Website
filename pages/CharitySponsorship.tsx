@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Heart, Users, HandHeart, ChevronDown, Image as ImageIcon, X, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { CHARITY_PROJECTS } from './CharityData';
+import { submitLead } from '../crmApi';
 
 const CharitySponsorship: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -18,7 +19,6 @@ const CharitySponsorship: React.FC = () => {
     message: ''
   });
 
-  const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyizjWosoaNIsRol6zJjSvfrkR2OLZZxiXd4brXVZwgfADoBP7ODeJCrlkcT7lFDuar-w/exec'; // User needs to replace this
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -30,30 +30,14 @@ const CharitySponsorship: React.FC = () => {
     setFormStatus('submitting');
 
     try {
-      // Build parameters for Google Apps Script
-      const params = new URLSearchParams();
-      params.append('fullName', formData.fullName);
-      params.append('organization', formData.organization);
-      params.append('email', formData.email);
-      params.append('phone', formData.phone);
-      params.append('requestType', formData.requestType);
-      params.append('message', formData.message);
-
-      // Submit using no-cors (Standard for Google Apps Script to bypass CORS limits)
-      // Note: 'no-cors' will always result in an 'opaque' response (status 0),
-      // so we assume success if no network error occurs.
-      await fetch(GOOGLE_SHEET_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        cache: 'no-cache',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: params.toString(),
+      await submitLead({
+        customerName: formData.fullName,
+        mobile: formData.phone,
+        email: formData.email,
+        interestedProject: 'Charity & Sponsorship',
+        remarks: `Organization: ${formData.organization} | Request Type: ${formData.requestType} | Message: ${formData.message}`,
+        source: 'Website - Charity Sponsorship Request'
       });
-
-      // Since we use no-cors, we won't get a proper 'ok' status, 
-      // but if the fetch doesn't throw, the request was sent.
       setFormStatus('success');
 
       // Reset form after delay
@@ -69,8 +53,8 @@ const CharitySponsorship: React.FC = () => {
           message: ''
         });
       }, 3000);
-    } catch (error) {
-      console.error('Submission error:', error);
+    } catch (err: any) {
+      console.error(err);
       setFormStatus('error');
     }
   };

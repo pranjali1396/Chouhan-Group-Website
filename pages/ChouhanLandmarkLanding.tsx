@@ -6,6 +6,7 @@ import {
     Coffee, Users, Landmark, Search, Store, Car, Utensils,
     Facebook, Instagram, Youtube, Twitter, Shirt, Home, Tags, ShoppingBasket
 } from 'lucide-react';
+import { submitLead } from '../crmApi';
 
 const SECTIONS = [
     { id: 'home', label: 'Home' },
@@ -39,6 +40,41 @@ const ChouhanLandmarkLanding: React.FC = () => {
     const [activeTab, setActiveTab] = useState('home');
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const navigate = useNavigate();
+
+    // Form States
+    const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+    const [formData, setFormData] = useState({
+        name: '',
+        phone: '',
+        email: '',
+        reason: 'General Inquiry',
+        message: ''
+    });
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus('submitting');
+        try {
+            await submitLead({
+                customerName: formData.name,
+                mobile: formData.phone,
+                email: formData.email,
+                interestedProject: 'Chouhan Landmark',
+                remarks: `Reason: ${formData.reason} | Message: ${formData.message}`,
+                source: 'Chouhan Landmark Landing - Inquiry Form'
+            });
+            setStatus('success');
+            setFormData({ name: '', phone: '', email: '', reason: 'General Inquiry', message: '' });
+        } catch (err) {
+            console.error(err);
+            setStatus('error');
+        }
+    };
 
     // Scroll spy effect
     useEffect(() => {
@@ -340,42 +376,52 @@ const ChouhanLandmarkLanding: React.FC = () => {
                             <p className="text-gray-500">Interested in retail space or have a general inquiry? Reach out to our management team.</p>
                         </div>
 
-                        <form className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-xs font-bold text-gray-500 uppercase">Full Name</label>
-                                    <input type="text" className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors" placeholder="John Doe" />
+                        {status === 'success' ? (
+                            <div className="text-center py-12">
+                                <CheckCircle2 size={64} className="text-amber-500 mx-auto mb-4" />
+                                <h3 className="text-2xl font-bold text-stone-900 mb-2">Thank You!</h3>
+                                <p className="text-stone-600 mb-8">Your enquiry has been received. our team will contact you shortly.</p>
+                                <button onClick={() => setStatus('idle')} className="bg-stone-900 text-white px-8 py-3 rounded-lg font-bold uppercase tracking-widest text-xs">Send Another Inquiry</button>
+                            </div>
+                        ) : (
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-bold text-gray-500 uppercase">Full Name</label>
+                                        <input required name="name" value={formData.name} onChange={handleInputChange} type="text" className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors" placeholder="John Doe" />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-bold text-gray-500 uppercase">Phone Number</label>
+                                        <input required name="phone" value={formData.phone} onChange={handleInputChange} type="tel" className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors" placeholder="+91 00000 00000" />
+                                    </div>
                                 </div>
+
                                 <div className="space-y-2">
-                                    <label className="text-xs font-bold text-gray-500 uppercase">Phone Number</label>
-                                    <input type="tel" className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors" placeholder="+91 00000 00000" />
+                                    <label className="text-xs font-bold text-gray-500 uppercase">Email Address</label>
+                                    <input name="email" value={formData.email} onChange={handleInputChange} type="email" className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors" placeholder="john@example.com" />
                                 </div>
-                            </div>
 
-                            <div className="space-y-2">
-                                <label className="text-xs font-bold text-gray-500 uppercase">Email Address</label>
-                                <input type="email" className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors" placeholder="john@example.com" />
-                            </div>
+                                <div className="space-y-2">
+                                    <label className="text-xs font-bold text-gray-500 uppercase">Reason for Inquiry</label>
+                                    <select name="reason" value={formData.reason} onChange={handleInputChange} className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors">
+                                        <option value="General Inquiry">General Inquiry</option>
+                                        <option value="Retail Space Leasing">Retail Space Leasing</option>
+                                        <option value="Advertising Opportunities">Advertising Opportunities</option>
+                                        <option value="Feedback/Suggestions">Feedback/Suggestions</option>
+                                    </select>
+                                </div>
 
-                            <div className="space-y-2">
-                                <label className="text-xs font-bold text-gray-500 uppercase">Reason for Inquiry</label>
-                                <select className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors">
-                                    <option>General Inquiry</option>
-                                    <option>Retail Space Leasing</option>
-                                    <option>Advertising Opportunities</option>
-                                    <option>Feedback/Suggestions</option>
-                                </select>
-                            </div>
+                                <div className="space-y-2">
+                                    <label className="text-xs font-bold text-gray-500 uppercase">Message</label>
+                                    <textarea name="message" value={formData.message} onChange={handleInputChange} className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors" rows={4} placeholder="How can we help you?"></textarea>
+                                </div>
 
-                            <div className="space-y-2">
-                                <label className="text-xs font-bold text-gray-500 uppercase">Message</label>
-                                <textarea className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors" rows={4} placeholder="How can we help you?"></textarea>
-                            </div>
-
-                            <button type="button" className="w-full bg-stone-900 text-white font-bold text-sm uppercase tracking-widest py-4 rounded-lg hover:bg-stone-800 transition-colors shadow-lg mt-4">
-                                Submit Inquiry
-                            </button>
-                        </form>
+                                <button disabled={status === 'submitting'} type="submit" className="w-full bg-stone-900 text-white font-bold text-sm uppercase tracking-widest py-4 rounded-lg hover:bg-stone-800 transition-colors shadow-lg mt-4 disabled:opacity-50">
+                                    {status === 'submitting' ? 'Submitting...' : 'Submit Inquiry'}
+                                </button>
+                                {status === 'error' && <p className="text-red-500 text-xs text-center mt-2">Failed to submit. Please try again.</p>}
+                            </form>
+                        )}
                     </div>
                 </div>
             </div>

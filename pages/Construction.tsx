@@ -3,6 +3,7 @@ import {
   HardHat, Truck, Ruler, CheckCircle2, ClipboardList,
   Building, Hammer, ArrowRight, Briefcase
 } from 'lucide-react';
+import { submitLead } from '../crmApi';
 
 const PORTFOLIO_ITEMS = [
   { label: "Master-Planned Communities", icon: <Building size={24} /> },
@@ -14,6 +15,62 @@ const PORTFOLIO_ITEMS = [
 
 const Construction: React.FC = () => {
   const [activeForm, setActiveForm] = useState<'contractor' | 'supplier'>('contractor');
+
+  // Form States
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({
+    companyName: '',
+    contactPerson: '',
+    email: '',
+    phone: '',
+    trade: 'Select Trade...',
+    license: '',
+    materialType: '',
+    capacity: '',
+    address: '',
+    details: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('submitting');
+    try {
+      const type = activeForm === 'contractor' ? 'Contractor' : 'Supplier';
+      const specificField = activeForm === 'contractor'
+        ? `Trade: ${formData.trade} | License: ${formData.license}`
+        : `Material: ${formData.materialType} | Capacity: ${formData.capacity}`;
+
+      await submitLead({
+        customerName: formData.contactPerson,
+        mobile: formData.phone,
+        email: formData.email,
+        interestedProject: 'Construction Division',
+        remarks: `Company: ${formData.companyName} | Type: ${type} | ${specificField} | Details: ${formData.details} | Address: ${formData.address}`,
+        source: `Construction Page - ${type} Registration`
+      });
+      setStatus('success');
+      setFormData({
+        companyName: '',
+        contactPerson: '',
+        email: '',
+        phone: '',
+        trade: 'Select Trade...',
+        license: '',
+        materialType: '',
+        capacity: '',
+        address: '',
+        details: ''
+      });
+    } catch (err) {
+      console.error(err);
+      setStatus('error');
+    }
+  };
 
   return (
     <div className="bg-white font-sans text-slate-800 pt-32 md:pt-48">
@@ -122,86 +179,89 @@ const Construction: React.FC = () => {
             </div>
 
             <div className="p-8 md:p-12">
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">
-                  {activeForm === 'contractor' ? 'Contractor Registration' : 'Supplier Registration'}
-                </h3>
-                <p className="text-slate-500 text-sm">Please complete the form below to be considered for upcoming projects.</p>
-              </div>
-
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-500 uppercase">Company Name *</label>
-                    <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-500 uppercase">Contact Person *</label>
-                    <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-500 uppercase">Email Address *</label>
-                    <input type="email" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-500 uppercase">Phone Number *</label>
-                    <input type="tel" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
-                  </div>
-
-                  {activeForm === 'contractor' ? (
-                    <>
-                      <div className="space-y-1">
-                        <label className="text-xs font-bold text-slate-500 uppercase">Trade / Specialty *</label>
-                        <select className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors text-slate-600">
-                          <option>Select Trade...</option>
-                          <option>Civil Works</option>
-                          <option>Electrical</option>
-                          <option>Plumbing</option>
-                          <option>Carpentry</option>
-                          <option>Painting</option>
-                          <option>HVAC</option>
-                        </select>
-                      </div>
-                      <div className="space-y-1">
-                        <label className="text-xs font-bold text-slate-500 uppercase">License Number</label>
-                        <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="space-y-1">
-                        <label className="text-xs font-bold text-slate-500 uppercase">Material / Product Type *</label>
-                        <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="e.g. Cement, Steel, Tiles" />
-                      </div>
-                      <div className="space-y-1">
-                        <label className="text-xs font-bold text-slate-500 uppercase">Delivery Capacity</label>
-                        <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="e.g. Statewide" />
-                      </div>
-                    </>
-                  )}
-
-                  <div className="space-y-1 md:col-span-2">
-                    <label className="text-xs font-bold text-slate-500 uppercase">Address</label>
-                    <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="Head Office Address" />
-                  </div>
-
-                  <div className="space-y-1 md:col-span-2">
-                    <label className="text-xs font-bold text-slate-500 uppercase">
-                      {activeForm === 'contractor' ? 'Experience / Past Projects' : 'Product Catalog / Additional Details'}
-                    </label>
-                    <textarea className="w-full bg-slate-50 border border-slate-200 rounded p-3 h-32 focus:border-amber-500 focus:outline-none transition-colors resize-none"></textarea>
-                  </div>
+              {status === 'success' ? (
+                <div className="text-center py-12">
+                  <CheckCircle2 size={64} className="text-green-500 mx-auto mb-4" />
+                  <h4 className="text-2xl font-bold text-slate-900 mb-2">Application Received!</h4>
+                  <p className="text-slate-600 mb-8">Thank you for your interest. Our construction team will review your application and contact you if there is a requirement.</p>
+                  <button onClick={() => setStatus('idle')} className="bg-[#002b49] text-white px-8 py-3 rounded font-bold uppercase tracking-widest text-xs">Submit Another Application</button>
                 </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-slate-500 uppercase">Company Name *</label>
+                      <input required name="companyName" value={formData.companyName} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-slate-500 uppercase">Contact Person *</label>
+                      <input required name="contactPerson" value={formData.contactPerson} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-slate-500 uppercase">Email Address *</label>
+                      <input required name="email" value={formData.email} onChange={handleInputChange} type="email" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-slate-500 uppercase">Phone Number *</label>
+                      <input required name="phone" value={formData.phone} onChange={handleInputChange} type="tel" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
+                    </div>
 
-                <div className="pt-6 border-t border-slate-100 flex flex-col md:flex-row gap-4 items-center justify-between">
-                  <p className="text-xs text-slate-400 text-center md:text-left">
-                    By submitting this form, you certify that the information provided is accurate.
-                  </p>
-                  <button className={`px-8 py-3 font-bold uppercase tracking-widest text-sm rounded transition-all shadow-lg flex items-center gap-2 ${activeForm === 'contractor' ? 'bg-amber-500 text-white hover:bg-amber-400' : 'bg-slate-800 text-white hover:bg-slate-700'}`}>
-                    Submit Application <ArrowRight size={18} />
-                  </button>
-                </div>
-              </form>
+                    {activeForm === 'contractor' ? (
+                      <>
+                        <div className="space-y-1">
+                          <label className="text-xs font-bold text-slate-500 uppercase">Trade / Specialty *</label>
+                          <select name="trade" value={formData.trade} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors text-slate-600">
+                            <option value="Select Trade...">Select Trade...</option>
+                            <option value="Civil Works">Civil Works</option>
+                            <option value="Electrical">Electrical</option>
+                            <option value="Plumbing">Plumbing</option>
+                            <option value="Carpentry">Carpentry</option>
+                            <option value="Painting">Painting</option>
+                            <option value="HVAC">HVAC</option>
+                          </select>
+                        </div>
+                        <div className="space-y-1">
+                          <label className="text-xs font-bold text-slate-500 uppercase">License Number</label>
+                          <input name="license" value={formData.license} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="space-y-1">
+                          <label className="text-xs font-bold text-slate-500 uppercase">Material / Product Type *</label>
+                          <input required name="materialType" value={formData.materialType} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="e.g. Cement, Steel, Tiles" />
+                        </div>
+                        <div className="space-y-1">
+                          <label className="text-xs font-bold text-slate-500 uppercase">Delivery Capacity</label>
+                          <input name="capacity" value={formData.capacity} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="e.g. Statewide" />
+                        </div>
+                      </>
+                    )}
+
+                    <div className="space-y-1 md:col-span-2">
+                      <label className="text-xs font-bold text-slate-500 uppercase">Address</label>
+                      <input name="address" value={formData.address} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="Head Office Address" />
+                    </div>
+
+                    <div className="space-y-1 md:col-span-2">
+                      <label className="text-xs font-bold text-slate-500 uppercase">
+                        {activeForm === 'contractor' ? 'Experience / Past Projects' : 'Product Catalog / Additional Details'}
+                      </label>
+                      <textarea name="details" value={formData.details} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded p-3 h-32 focus:border-amber-500 focus:outline-none transition-colors resize-none"></textarea>
+                    </div>
+                  </div>
+
+                  <div className="pt-6 border-t border-slate-100 flex flex-col md:flex-row gap-4 items-center justify-between">
+                    <p className="text-xs text-slate-400 text-center md:text-left">
+                      By submitting this form, you certify that the information provided is accurate.
+                    </p>
+                    <button disabled={status === 'submitting'} type="submit" className={`px-8 py-3 font-bold uppercase tracking-widest text-sm rounded transition-all shadow-lg flex items-center gap-2 disabled:opacity-50 ${activeForm === 'contractor' ? 'bg-amber-500 text-white hover:bg-amber-400' : 'bg-slate-800 text-white hover:bg-slate-700'}`}>
+                      {status === 'submitting' ? 'Submitting...' : 'Submit Application'} <ArrowRight size={18} />
+                    </button>
+                    {status === 'error' && <p className="text-red-500 text-xs text-center mt-2">Failed to submit. Please try again.</p>}
+                  </div>
+                </form>
+              )}
             </div>
           </div>
         </div>
