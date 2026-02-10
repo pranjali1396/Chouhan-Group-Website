@@ -355,7 +355,7 @@ const CHOUHAN_COMPLEX_DATA: ProjectData = {
   },
   heroImage: "/new_images/kmart.webp",
   mapQuery: "Shubham K Mart,junwani road",
-  websiteUrl: "https://chouhan-complex.vercel.app/"
+  websiteUrl: "https://chouhan-complex.chouhangroup.com"
 };
 
 const EMPYREAN_TATIBANDH_DATA: ProjectData = {
