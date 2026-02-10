@@ -101,7 +101,7 @@ const SINGAPORE_DATA: ProjectData = {
     "top"     // Focus on top for 3rd (top view)
   ],
   mapQuery: "CHOUHAN SINGAPORE LIFE CITY PHASE 1",
-  websiteUrl: "https://singapore-city.vercel.app/",
+  websiteUrl: "https://singapore-city.chouhangroup.com",
 
 };
 
@@ -120,7 +120,7 @@ const PARKVIEW_DATA: ProjectData = {
   },
   heroImage: "/new_images/DJI_0720.JPG",
   mapQuery: "Chouhan Parkview",
-  websiteUrl: "https://chouhan-park-view-xi.vercel.app/"
+  websiteUrl: "https://chouhan-parkview.chouhangroup.com"
 };
 
 const BUSINESS_CENTER_DATA: ProjectData = {
@@ -138,7 +138,7 @@ const BUSINESS_CENTER_DATA: ProjectData = {
   },
   heroImage: "/new_images/chouhan_business_center.png",
   mapQuery: "Chouhan Business Center Phase-1",
-  websiteUrl: "https://chouhan-business-center.vercel.app/"
+  websiteUrl: "https://chouhan-businesscenter.chouhangroup.com"
 };
 
 const BUSINESS_PARK_DATA: ProjectData = {
@@ -156,7 +156,7 @@ const BUSINESS_PARK_DATA: ProjectData = {
   },
   heroImage: "/new_images/chouhan_business_park.png",
   mapQuery: "Chouhan Business Center Phase-1",
-  websiteUrl: "https://chouhan-business-park.vercel.app/"
+  websiteUrl: "https://chouhan-businesspark.chouhangroup.com"
 };
 
 const GREEN_VALLEY_DATA: ProjectData = {
@@ -174,7 +174,7 @@ const GREEN_VALLEY_DATA: ProjectData = {
   },
   heroImage: "/new_images/chouhan-green-valley-4_(1).webp",
   mapQuery: "Chouhan Green Valley Rd",
-  websiteUrl: "https://green-valley-sage.vercel.app/"
+  websiteUrl: "https://chouhan-greenvalley.chouhangroup.com"
 };
 
 const EMPYREAN_BHILAI_DATA: ProjectData = {
@@ -228,7 +228,7 @@ const CHOUHAN_TOWN_DATA: ProjectData = {
   },
   heroImage: "/new_images/chouhan_town_overview.webp",
   mapQuery: "Chouhan Town, Bhilai",
-  websiteUrl: "https://chouhan-town.vercel.app/"
+  websiteUrl: "https://chouhantown.chouhangroup.com"
 };
 
 const CHOUHAN_ESTATES_DATA: ProjectData = {
@@ -283,7 +283,7 @@ const PARKVIEW_COMPLEX_DATA: ProjectData = {
   },
   heroImage: "/new_images/parview.png", // Reusing business center image as placeholder
   mapQuery: "Chouhan Parkview Complex, Junwani Road, Bhilai",
-  websiteUrl: "https://chouhan-park-view-xi.vercel.app/commercial"
+  websiteUrl: "https://chouhan-parkview.chouhangroup.com/commercial"
 };
 
 const CHOUHAN_LANDMARK_DATA: ProjectData = {

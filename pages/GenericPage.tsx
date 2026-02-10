@@ -49,8 +49,8 @@ const SECTIONS = [
 ];
 
 const EXTERNAL_SITES: Record<string, string> = {
-  'business-park': 'https://chouhan-business-park.vercel.app/',
-  'green-valley': 'https://green-valley-sage.vercel.app/'
+  'business-park': 'https://chouhan-businesspark.chouhangroup.com',
+  'green-valley': 'https://chouhan-greenvalley.chouhangroup.com'
 };
 
 const GenericPage: React.FC = () => {
