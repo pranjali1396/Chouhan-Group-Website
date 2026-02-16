@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import { MapPin, Phone, Mail, MessageCircle, Send, Building, Car, Coffee, Home, CheckCircle2 } from 'lucide-react';
 import WhatsAppFAB from '../components/WhatsAppFAB';
-import { submitLead } from '../crmApi';
+
+
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -29,22 +30,12 @@ const Contact: React.FC = () => {
     }
 
     setStatus('submitting');
-    try {
-      await submitLead({
-        customerName: formData.name,
-        mobile: formData.phone,
-        email: formData.email,
-        interestedProject: formData.project,
-        remarks: formData.message,
-        source: 'Chouhan Group - Contact Us'
-      });
+    // CRMIntegration in App.tsx will automatically capture this form submission
+    setTimeout(() => {
       setStatus('success');
       setFormData({ name: '', email: '', phone: '', project: '', message: '' });
-    } catch (err: any) {
-      console.error(err);
-      setStatus('error');
-      setErrorMessage(err.message || 'Something went wrong. Please try again later.');
-    }
+    }, 600);
+
   };
 
   return (

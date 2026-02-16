@@ -6,7 +6,8 @@ import {
   ShieldCheck, Banknote, HardHat, Clock, Award,
   BellRing
 } from 'lucide-react';
-import { submitLead } from '../crmApi';
+
+
 
 const BRANDS = [
   "Reliance", "Tata", "Landmark", "KFC", "Pizza Hut",
@@ -78,21 +79,12 @@ const CityCenter: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
-    try {
-      await submitLead({
-        customerName: formData.name,
-        mobile: formData.phone,
-        email: formData.email,
-        interestedProject: 'Chouhan City Center',
-        remarks: `Interest: ${formData.interest} | Message: ${formData.message}`,
-        source: 'City Center Page - Enquiry Form'
-      });
+    // CRMIntegration will automatically capture this form submission
+    setTimeout(() => {
       setStatus('success');
       setFormData({ name: '', phone: '', email: '', interest: 'Select Interest', message: '' });
-    } catch (err) {
-      console.error(err);
-      setStatus('error');
-    }
+    }, 600);
+
   };
   return (
     <div className="bg-white font-sans text-slate-800 pt-32 md:pt-48">

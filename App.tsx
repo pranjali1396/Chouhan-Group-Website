@@ -35,6 +35,8 @@ import Terms from './pages/Terms';
 import ConsentPreferences from './pages/ConsentPreferences';
 
 import { NAVIGATION_DATA } from './types';
+import { CRMIntegration } from './components/ReactIntegration';
+
 
 // Scroll to top or to specific hash on route change
 const ScrollToTop = () => {
@@ -448,39 +450,165 @@ const SKYPARK_DATA: ProjectData = {
   websiteUrl: "https://www.empyreanhotels.in/"
 };
 
-const MARUTI_DATA: ProjectData = {
-  title: "Maruti Suzuki Arena",
-  description: "Now Open – Chouhan Automobiles LLP is your trusted destination for Maruti Suzuki vehicles. Experience the joy of mobility with our wide range of cars, state-of-the-art service centers, and genuine spare parts availability across multiple locations including Bhilai, Pandariya, Balod, Dalli Rajhara, and Dondi.\n\nOur Commitment to Excellence ensures a seamless ownership experience, from purchase to long-term maintenance.",
+const MARUTI_BHILAI_DATA: ProjectData = {
+  title: "Maruti Suzuki Arena - Bhilai",
+  description: "Now Open – Chouhan Automobiles LLP is your trusted destination for Maruti Suzuki vehicles in Bhilai (Supela). Experience the joy of mobility with our wide range of cars, state-of-the-art service centers, and genuine spare parts.",
   status: "Open Now",
   address: "NH-6, Durg – Rajnandgaon Bypass, Near Chouhan Town, Bhilai, Chhattisgarh - 490020",
   presentationCentre: {
-    address: "Bhilai, Pandariya, Balod, Dalli Rajhara, Dondi",
+    address: "Bhilai (Supela)",
     hours: "Open Daily 10AM - 8PM"
   },
   contact: {
-    phone: "7222910019, 7222910022, 7222910013, 7222910033",
+    phone: "7222910019, 7222910022",
     email: "sm.sales@chouhanautomobiles.com"
   },
-  heroImage: "/new_images/Arena.webp",
+  heroImage: "/new_images/Maruti_suzuki_supela.jpeg",
   mapQuery: "Chouhan Automobiles Maruti Suzuki ARENA, Bhilai",
   websiteUrl: "https://www.arenaofbhilai.com/"
 };
 
-const NEXA_DATA: ProjectData = {
-  title: "Nexa Bhilai",
-  description: "Now Open – Step into a world of innovation and premium experiences at Nexa Bhilai (Chouhan Automobiles LLP). We bring you a range of sophisticated cars designed to inspire across our locations in Bhilai, Bemetara, and Kawardha. Enjoy personalized attention, exclusive lounges, and a test drive experience like no other.",
+const MARUTI_PANDARIYA_DATA: ProjectData = {
+  title: "Maruti Suzuki Arena - Pandariya",
+  description: "Now Open – Chouhan Automobiles LLP is your trusted destination for Maruti Suzuki vehicles in Pandariya. Experience our dedicated showroom and expert service team.",
+  status: "Open Now",
+  address: "Pandariya, Chhattisgarh",
+  presentationCentre: {
+    address: "Pandariya Showroom",
+    hours: "Open Daily 10AM - 7PM"
+  },
+  contact: {
+    phone: "7222910013",
+    email: "sm.sales@chouhanautomobiles.com"
+  },
+  heroImage: "/new_images/Maruti_suzuki_Pandariya.jpeg",
+  mapQuery: "Maruti Suzuki Arena, Pandariya",
+  websiteUrl: "https://www.arenaofbhilai.com/"
+};
+
+const MARUTI_BALOD_DATA: ProjectData = {
+  title: "Maruti Suzuki Arena - Balod",
+  description: "Now Open – Chouhan Automobiles LLP is your trusted destination for Maruti Suzuki vehicles in Balod. Visit our premier showroom for all your automotive needs.",
+  status: "Open Now",
+  address: "Balod, Chhattisgarh",
+  presentationCentre: {
+    address: "Balod Showroom",
+    hours: "Open Daily 10AM - 7PM"
+  },
+  contact: {
+    phone: "7222910013",
+    email: "sm.sales@chouhanautomobiles.com"
+  },
+  heroImage: "/new_images/Maruti_suzuki_balod.jpeg",
+  mapQuery: "Maruti Suzuki Arena, Balod",
+  websiteUrl: "https://www.arenaofbhilai.com/"
+};
+
+const MARUTI_DALLI_DATA: ProjectData = {
+  title: "Maruti Suzuki Arena - Dalli Rajhara",
+  description: "Now Open – Chouhan Automobiles LLP is your trusted destination for Maruti Suzuki vehicles in Dalli Rajhara. Elite automotive experiences in the heart of Dalli Rajhara.",
+  status: "Open Now",
+  address: "Dalli Rajhara, Chhattisgarh",
+  presentationCentre: {
+    address: "Dalli Rajhara Showroom",
+    hours: "Open Daily 10AM - 7PM"
+  },
+  contact: {
+    phone: "7222910033",
+    email: "sm.sales@chouhanautomobiles.com"
+  },
+  heroImage: "/new_images/Maruti_suzuki_Dalli Rajhara.jpeg",
+  mapQuery: "Maruti Suzuki Arena, Dalli Rajhara",
+  websiteUrl: "https://www.arenaofbhilai.com/"
+};
+
+const MARUTI_DONDI_DATA: ProjectData = {
+  title: "Maruti Suzuki Arena - Dondi",
+  description: "Now Open – Chouhan Automobiles LLP is your trusted destination for Maruti Suzuki vehicles in Dondi. Dedicated branch serving the Dondi region with excellence.",
+  status: "Open Now",
+  address: "Dondi, Chhattisgarh",
+  presentationCentre: {
+    address: "Dondi Branch",
+    hours: "Open Daily 10AM - 7PM"
+  },
+  contact: {
+    phone: "7222910033",
+    email: "sm.sales@chouhanautomobiles.com"
+  },
+  heroImage: "/new_images/Arena.webp",
+  mapQuery: "Maruti Suzuki Arena, Dondi",
+  websiteUrl: "https://www.arenaofbhilai.com/"
+};
+
+const MARUTI_BEMETARA_DATA: ProjectData = {
+  title: "Maruti Suzuki Arena - Bemetara",
+  description: "Now Open – Chouhan Automobiles LLP is your trusted destination for Maruti Suzuki vehicles in Bemetara. Modern facility bringing Maruti's best to Bemetara.",
+  status: "Open Now",
+  address: "Bemetara, Chhattisgarh",
+  presentationCentre: {
+    address: "Bemetara Showroom",
+    hours: "Open Daily 10AM - 7PM"
+  },
+  contact: {
+    phone: "7222910013",
+    email: "sm.sales@chouhanautomobiles.com"
+  },
+  heroImage: "/new_images/Maruti_suzuki_bemetra.jpeg",
+  mapQuery: "Maruti Suzuki Arena, Bemetara",
+  websiteUrl: "https://www.arenaofbhilai.com/"
+};
+
+const NEXA_BHILAI_DATA: ProjectData = {
+  title: "Nexa - Bhilai",
+  description: "Now Open – Step into a world of innovation and premium experiences at Nexa Bhilai (Chouhan Automobiles LLP). Enjoy personalized attention and exclusive lounges.",
   status: "Open Now",
   address: "NH-6, Durg Bypass, near D-Mart, Katulbod, Bhilai, Durg, Chhattisgarh - 490020",
   presentationCentre: {
-    address: "Bhilai, Bemetara, Kawardha",
+    address: "Bhilai NEXA Showroom",
     hours: "Open Daily 10AM - 8PM"
   },
   contact: {
-    phone: "7222910019, 7222910022, 7222910013, 7222910033",
+    phone: "7222910019, 7222910022",
     email: "nexabusinesshead@chouhanautomobiles.com"
   },
-  heroImage: "/new_images/maruti-suzuki.webp",
+  heroImage: "/new_images/Nexa_showroom_new.jpeg",
   mapQuery: "Nexa Bhilai Chouhan Automobiles",
+  websiteUrl: "https://www.nexaofdurgbypass.com/"
+};
+
+const NEXA_BEMETARA_DATA: ProjectData = {
+  title: "Nexa - Bemetara",
+  description: "Now Open – Premium automotive experiences at Nexa Bemetara (Chouhan Automobiles LLP). Redefining luxury for the Bemetara region.",
+  status: "Open Now",
+  address: "Bemetara, Chhattisgarh",
+  presentationCentre: {
+    address: "Bemetara NEXA Lounge",
+    hours: "Open Daily 10AM - 8PM"
+  },
+  contact: {
+    phone: "7222910013",
+    email: "nexabusinesshead@chouhanautomobiles.com"
+  },
+  heroImage: "/new_images/Nexa_bemetara.jpeg",
+  mapQuery: "Nexa Bemetara Chouhan Automobiles",
+  websiteUrl: "https://www.nexaofdurgbypass.com/"
+};
+
+const NEXA_KAWARDHA_DATA: ProjectData = {
+  title: "Nexa - Kawardha",
+  description: "Now Open – Premium automotive experiences at Nexa Kawardha (Chouhan Automobiles LLP). Experience the NEXA life in Kawardha.",
+  status: "Open Now",
+  address: "Kawardha, Chhattisgarh",
+  presentationCentre: {
+    address: "Kawardha NEXA Lounge",
+    hours: "Open Daily 10AM - 8PM"
+  },
+  contact: {
+    phone: "7222910013",
+    email: "nexabusinesshead@chouhanautomobiles.com"
+  },
+  heroImage: "/new_images/Nexa_kawardha.jpeg",
+  mapQuery: "Nexa Kawardha Chouhan Automobiles",
   websiteUrl: "https://www.nexaofdurgbypass.com/"
 };
 
@@ -608,8 +736,16 @@ const AppContent: React.FC = () => {
         <Route path="/commercial/landmark-details" element={<ChouhanLandmarkLanding />} />
 
         <Route path="/automobile" element={<Automobile />} />
-        <Route path="/automobile/maruti" element={<ProjectDetail data={MARUTI_DATA} />} />
-        <Route path="/automobile/nexa" element={<ProjectDetail data={NEXA_DATA} />} />
+        <Route path="/automobile/maruti-bhilai" element={<ProjectDetail data={MARUTI_BHILAI_DATA} />} />
+        <Route path="/automobile/maruti-pandariya" element={<ProjectDetail data={MARUTI_PANDARIYA_DATA} />} />
+        <Route path="/automobile/maruti-balod" element={<ProjectDetail data={MARUTI_BALOD_DATA} />} />
+        <Route path="/automobile/maruti-dalli-rajhara" element={<ProjectDetail data={MARUTI_DALLI_DATA} />} />
+        <Route path="/automobile/maruti-dondi" element={<ProjectDetail data={MARUTI_DONDI_DATA} />} />
+        <Route path="/automobile/maruti-bemetara" element={<ProjectDetail data={MARUTI_BEMETARA_DATA} />} />
+
+        <Route path="/automobile/nexa-bhilai" element={<ProjectDetail data={NEXA_BHILAI_DATA} />} />
+        <Route path="/automobile/nexa-bemetara" element={<ProjectDetail data={NEXA_BEMETARA_DATA} />} />
+        <Route path="/automobile/nexa-kawardha" element={<ProjectDetail data={NEXA_KAWARDHA_DATA} />} />
         <Route path="/automobile/hero" element={<ProjectDetail data={HERO_DATA} />} />
         <Route path="/automobile/true-value" element={<ProjectDetail data={TRUE_VALUE_DATA} />} />
         <Route path="/automobile/ashok" element={<AshokLeyland />} />
@@ -646,9 +782,11 @@ const AppContent: React.FC = () => {
 const App: React.FC = () => {
   return (
     <Router>
+      <CRMIntegration />
       <ScrollToTop />
       <AppContent />
     </Router>
+
   );
 };
 

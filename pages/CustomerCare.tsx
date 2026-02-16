@@ -6,7 +6,8 @@ import {
   Home as HomeIcon, Building
 } from 'lucide-react';
 import WhatsAppFAB from '../components/WhatsAppFAB';
-import { submitLead } from '../crmApi';
+
+
 
 type CategoryKey = 'real-estate' | 'hospitality' | 'automobiles';
 
@@ -145,22 +146,12 @@ const CustomerCare: React.FC = () => {
     e.preventDefault();
     setFormStatus('submitting');
 
-    try {
-      await submitLead({
-        customerName: formData.name,
-        mobile: formData.mobile,
-        email: formData.email,
-        remarks: formData.message,
-        interestedProject: activeCategory.replace('-', ' '),
-        source: `Customer Care - ${activeCategory}`
-      });
+    // CRMIntegration will automatically capture this form submission
+    setTimeout(() => {
       setFormStatus('success');
       setFormData({ name: '', mobile: '', email: '', message: '' });
-    } catch (err: any) {
-      console.error(err);
-      setFormStatus('error');
-      setErrorMessage(err.message || 'Failed to submit request. Please try again.');
-    }
+    }, 600);
+
   };
 
   return (

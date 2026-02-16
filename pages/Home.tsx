@@ -81,7 +81,7 @@ const AUTOMOBILE_PARTNERS = [
     name: "Maruti Suzuki Arena",
     brand: "ARENA",
     image: "/new_images/Arena.webp",
-    link: "/automobile/maruti",
+    link: "/automobile#network-grid",
     desc: "India's most loved car destination",
     tagline: "Experience the joy of mobility",
     position: "center"
@@ -90,7 +90,7 @@ const AUTOMOBILE_PARTNERS = [
     name: "Nexa",
     brand: "NEXA",
     image: "/new_images/Nexa_card_new.jpeg",
-    link: "/automobile/nexa",
+    link: "/automobile#network-grid",
     desc: "Create. Inspire. Premium automotive experience",
     tagline: "The premium side of driving",
     position: "center"
@@ -99,7 +99,7 @@ const AUTOMOBILE_PARTNERS = [
     name: "Hero MotoCorp",
     brand: "HERO",
     image: "/new_images/Hero_showroom_new.jpeg",
-    link: "/automobile/hero",
+    link: "/automobile#network-grid",
     desc: "The world's largest two-wheeler manufacturer",
     tagline: "Be a Hero",
     position: "center"
@@ -108,7 +108,7 @@ const AUTOMOBILE_PARTNERS = [
     name: "True Value",
     brand: "TRUE VALUE",
     image: "/new_images/true_value.webp",
-    link: "/automobile/true-value",
+    link: "/automobile#network-grid",
     desc: "Pre-owned cars with trust and transparency",
     tagline: "Certified pre-owned excellence",
     position: "center"
@@ -117,12 +117,13 @@ const AUTOMOBILE_PARTNERS = [
     name: "Ashok Leyland",
     brand: "ASHOK LEYLAND",
     image: "/new_images/ashok-leyland.webp",
-    link: "/automobile/ashok",
+    link: "/automobile#network-grid",
     desc: "Leading name in commercial vehicles",
     tagline: "Aapki Jeet, Hamari Maat",
     position: "left"
   }
 ];
+
 
 const HOSPITALITY_PARTNERS = [
   {
@@ -468,7 +469,7 @@ const Home: React.FC = () => {
               <p className="text-slate-600 text-lg md:text-xl font-medium leading-relaxed mb-8">
                 As proud partners of the world's most iconic brands, we bring you excellence in mobility through state-of-the-art showrooms and elite service facilities across Chhattisgarh.
               </p>
-              <Link to="/automobile" className="group inline-flex items-center gap-4 bg-slate-100 border border-slate-200 px-8 py-4 rounded-full hover:bg-slate-900 transition-all duration-300 shadow-sm">
+              <Link to="/automobile#network-grid" className="group inline-flex items-center gap-4 bg-slate-100 border border-slate-200 px-8 py-4 rounded-full hover:bg-slate-900 transition-all duration-300 shadow-sm">
                 <span className="text-xs font-bold uppercase tracking-widest text-slate-900 group-hover:text-white">View All Showrooms</span>
                 <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-slate-950 group-hover:bg-white">
                   <ArrowRight size={16} />
@@ -545,6 +546,8 @@ const Home: React.FC = () => {
               </Link>
             ))}
           </div>
+
+
 
           {/* Stats Bar */}
           <div className="mt-20 py-10 border-t border-white/5 flex flex-wrap justify-center md:justify-between items-center gap-8">

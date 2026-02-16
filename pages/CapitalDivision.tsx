@@ -4,7 +4,8 @@ import {
   Globe, Shield, FileText, Upload, CheckCircle, ArrowRight,
   CheckCircle2
 } from 'lucide-react';
-import { submitLead } from '../crmApi';
+
+
 
 const TRANSACTIONS = [
   {
@@ -69,15 +70,8 @@ const CapitalDivision: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
-    try {
-      await submitLead({
-        customerName: formData.contactName,
-        mobile: formData.phone,
-        email: formData.email,
-        interestedProject: 'Capital Division',
-        remarks: `Title: ${formData.title} | Company: ${formData.companyName} | Sector: ${formData.sector} | Website: ${formData.website} | Summary: ${formData.summary} | Address: ${formData.city}, ${formData.state} ${formData.zip}`,
-        source: 'Capital Division - Business Plan Submission'
-      });
+    // CRMIntegration will automatically capture this form submission
+    setTimeout(() => {
       setStatus('success');
       setFormData({
         contactName: '',
@@ -93,10 +87,8 @@ const CapitalDivision: React.FC = () => {
         website: '',
         summary: ''
       });
-    } catch (err) {
-      console.error(err);
-      setStatus('error');
-    }
+    }, 600);
+
   };
   return (
     <div className="bg-white font-sans text-slate-800 pt-32 md:pt-48">

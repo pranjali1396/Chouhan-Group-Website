@@ -7,7 +7,8 @@ import {
   Coffee, Users, Landmark, Search, Play, ChevronLeft, ChevronRight,
   Facebook, Instagram, Twitter, Youtube, HeartPulse, ShoppingBag
 } from 'lucide-react';
-import { submitLead } from '../crmApi';
+
+
 
 const SECTIONS = [
   { id: 'home', label: 'Home' },
@@ -116,44 +117,25 @@ const SunriseLanding: React.FC = () => {
   const handleMainSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
-    try {
-      await submitLead({
-        customerName: formData.name,
-        mobile: formData.phone,
-        email: formData.email,
-        city: formData.city,
-        remarks: `Broker: ${formData.isBroker}`,
-        interestedProject: 'Chouhan Sunrise City',
-        source: 'Sunrise City Landing - Contact Form'
-      });
+    // CRMIntegration will automatically capture this form submission
+    setTimeout(() => {
       setStatus('success');
       setFormData({ name: '', phone: '', email: '', city: '', isBroker: 'No' });
-    } catch (err) {
-      console.error(err);
-      setStatus('error');
-    }
+    }, 600);
+
   };
 
   const handleBrochureSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setBrochureStatus('submitting');
-    try {
-      await submitLead({
-        customerName: brochureData.name,
-        mobile: brochureData.phone,
-        email: brochureData.email,
-        remarks: 'Requested Brochure',
-        interestedProject: 'Chouhan Sunrise City',
-        source: 'Sunrise City Landing - Brochure Download'
-      });
+    // CRMIntegration will automatically capture this form submission
+    setTimeout(() => {
       setBrochureStatus('success');
       setBrochureData({ name: '', email: '', phone: '' });
       // Trigger download
       window.open('/Sunrise City/Layout Plan/Sunrise_City_plan.pdf', '_blank');
-    } catch (err) {
-      console.error(err);
-      setBrochureStatus('error');
-    }
+    }, 800);
+
   };
 
   // Hero Slider Autoplay

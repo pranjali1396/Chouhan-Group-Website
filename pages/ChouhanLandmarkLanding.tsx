@@ -6,7 +6,8 @@ import {
     Coffee, Users, Landmark, Search, Store, Car, Utensils,
     Facebook, Instagram, Youtube, Twitter, Shirt, Home, Tags, ShoppingBasket
 } from 'lucide-react';
-import { submitLead } from '../crmApi';
+
+
 
 const SECTIONS = [
     { id: 'home', label: 'Home' },
@@ -59,21 +60,11 @@ const ChouhanLandmarkLanding: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus('submitting');
-        try {
-            await submitLead({
-                customerName: formData.name,
-                mobile: formData.phone,
-                email: formData.email,
-                interestedProject: 'Chouhan Landmark',
-                remarks: `Reason: ${formData.reason} | Message: ${formData.message}`,
-                source: 'Chouhan Landmark Landing - Inquiry Form'
-            });
+        // CRMIntegration will automatically capture this form submission
+        setTimeout(() => {
             setStatus('success');
-            setFormData({ name: '', phone: '', email: '', reason: 'General Inquiry', message: '' });
-        } catch (err) {
-            console.error(err);
-            setStatus('error');
-        }
+            setFormData({ name: '', email: '', phone: '', reason: 'General Inquiry', message: '' });
+        }, 600);
     };
 
     // Scroll spy effect

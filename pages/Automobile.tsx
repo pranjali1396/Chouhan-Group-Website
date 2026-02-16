@@ -5,30 +5,128 @@ import { Link } from 'react-router-dom';
 const AUTOMOBILE_DATA = [
   {
     id: 1,
-    name: "Maruti Suzuki Arena",
-    location: "Bhilai, Pandariya, Balod, Dalli Rajhara, Dondi",
+    name: "Maruti Suzuki Arena - Bhilai",
+    location: "Supela, Bhilai",
     baseLocation: "Bhilai",
     type: "Authorized Dealership",
     brand: "Maruti Suzuki",
-    image: "/new_images/MarutiCardImage.png",
-    link: "/automobile/maruti",
+    image: "/new_images/Maruti_suzuki_supela.jpeg",
+    link: "/automobile/maruti-bhilai",
     status: "Open Now",
-    feature: "Sales • Service • Spares • Multiple Locations",
+    feature: "Sales • Service • Spares",
     amenities: ["Large Showroom", "Service Center", "Insurance"],
     websiteUrl: "https://www.arenaofbhilai.com/"
   },
   {
+    id: 101,
+    name: "Maruti Suzuki Arena - Pandariya",
+    location: "Pandariya",
+    baseLocation: "Pandariya",
+    type: "Authorized Dealership",
+    brand: "Maruti Suzuki",
+    image: "/new_images/Maruti_suzuki_Pandariya.jpeg",
+    link: "/automobile/maruti-pandariya",
+    status: "Open Now",
+    feature: "Sales • Service • Spares",
+    amenities: ["Showroom", "Service Center"],
+    websiteUrl: "https://www.arenaofbhilai.com/"
+  },
+  {
+    id: 102,
+    name: "Maruti Suzuki Arena - Balod",
+    location: "Balod",
+    baseLocation: "Balod",
+    type: "Authorized Dealership",
+    brand: "Maruti Suzuki",
+    image: "/new_images/Maruti_suzuki_balod.jpeg",
+    link: "/automobile/maruti-balod",
+    status: "Open Now",
+    feature: "Sales • Service • Spares",
+    amenities: ["Showroom", "Service Center"],
+    websiteUrl: "https://www.arenaofbhilai.com/"
+  },
+  {
+    id: 103,
+    name: "Maruti Suzuki Arena - Dalli Rajhara",
+    location: "Dalli Rajhara",
+    baseLocation: "Dalli Rajhara",
+    type: "Authorized Dealership",
+    brand: "Maruti Suzuki",
+    image: "/new_images/Maruti_suzuki_Dalli Rajhara.jpeg",
+    link: "/automobile/maruti-dalli-rajhara",
+    status: "Open Now",
+    feature: "Sales • Service • Spares",
+    amenities: ["Showroom", "Service Center"],
+    websiteUrl: "https://www.arenaofbhilai.com/"
+  },
+  {
+    id: 104,
+    name: "Maruti Suzuki Arena - Dondi",
+    location: "Dondi",
+    baseLocation: "Dondi",
+    type: "Authorized Dealership",
+    brand: "Maruti Suzuki",
+    image: "/new_images/Arena.webp",
+    link: "/automobile/maruti-dondi",
+    status: "Open Now",
+    feature: "Sales • Service • Spares",
+    amenities: ["Showroom", "Service Center"],
+    websiteUrl: "https://www.arenaofbhilai.com/"
+  },
+  {
+    id: 105,
+    name: "Maruti Suzuki Arena - Bemetara",
+    location: "Bemetara",
+    baseLocation: "Bemetara",
+    type: "Authorized Dealership",
+    brand: "Maruti Suzuki",
+    image: "/new_images/Maruti_suzuki_bemetra.jpeg",
+    link: "/automobile/maruti-bemetara",
+    status: "Open Now",
+    feature: "Sales • Service • Spares",
+    amenities: ["Showroom", "Service Center"],
+    websiteUrl: "https://www.arenaofbhilai.com/"
+  },
+  {
     id: 2,
-    name: "Nexa Bhilai",
-    location: "Bhilai, Bemetara, Kawardha",
+    name: "Nexa - Bhilai",
+    location: "Supela, Bhilai",
     baseLocation: "Bhilai",
     type: "Premium Dealership",
     brand: "Nexa",
-    image: "/new_images/NexaCardImage.png",
-    link: "/automobile/nexa",
+    image: "/new_images/Nexa_showroom_new.jpeg",
+    link: "/automobile/nexa-bhilai",
     status: "Open Now",
     feature: "Premium Car Experience",
     amenities: ["Lounge", "Personal relationship manager", "Test Drive"],
+    websiteUrl: "https://www.nexaofdurgbypass.com/"
+  },
+  {
+    id: 201,
+    name: "Nexa - Bemetara",
+    location: "Bemetara",
+    baseLocation: "Bemetara",
+    type: "Premium Dealership",
+    brand: "Nexa",
+    image: "/new_images/Nexa_bemetara.jpeg",
+    link: "/automobile/nexa-bemetara",
+    status: "Open Now",
+    feature: "Premium Car Experience",
+    amenities: ["Lounge", "Test Drive"],
+    websiteUrl: "https://www.nexaofdurgbypass.com/"
+  },
+  {
+    id: 202,
+    name: "Nexa - Kawardha",
+    location: "Kawardha",
+    baseLocation: "Kawardha",
+    type: "Premium Dealership",
+    brand: "Nexa",
+    image: "/new_images/Nexa_kawardha.jpeg",
+    link: "/automobile/nexa-kawardha",
+    status: "Open Now",
+    feature: "Premium Car Experience",
+    amenities: ["Lounge", "Test Drive"],
     websiteUrl: "https://www.nexaofdurgbypass.com/"
   },
   {
@@ -201,7 +299,7 @@ const Automobile: React.FC = () => {
       </div>
 
       {/* Results Section */}
-      <div className="container mx-auto px-4 py-16">
+      <div id="network-grid" className="container mx-auto px-4 py-16">
         <div className="flex justify-between items-end mb-8 max-w-6xl mx-auto">
           <div>
             <h2 className="text-2xl font-bold font-heading text-slate-900">Our Network</h2>
@@ -212,9 +310,13 @@ const Automobile: React.FC = () => {
         {filteredItems.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {filteredItems.map((item) => (
-              <div key={item.id} className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col">
+              <Link
+                key={item.id}
+                to={item.link}
+                className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col cursor-pointer"
+              >
                 {/* Image */}
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-64 overflow-hidden bg-slate-100 flex items-center justify-center">
                   <div className="absolute top-4 left-4 z-10 flex gap-2">
                     <span className="bg-slate-900/80 backdrop-blur text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded">
                       {item.status}
@@ -223,11 +325,11 @@ const Automobile: React.FC = () => {
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-contain transition-all duration-700 group-hover:scale-105"
                     loading="lazy"
                     decoding="async"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent opacity-40 group-hover:opacity-20 transition-opacity pointer-events-none"></div>
                 </div>
 
                 {/* Content */}
@@ -252,15 +354,12 @@ const Automobile: React.FC = () => {
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1">
                       <Settings size={12} className="animate-spin-slow" /> {item.brand}
                     </span>
-                    <Link
-                      to={item.link}
-                      className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-900 hover:bg-amber-500 hover:text-white transition-all group-hover:translate-x-1"
-                    >
+                    <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-900 group-hover:bg-amber-500 group-hover:text-white transition-all group-hover:translate-x-1">
                       <ArrowRight size={18} />
-                    </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         ) : (

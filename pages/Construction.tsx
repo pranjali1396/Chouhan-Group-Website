@@ -3,7 +3,8 @@ import {
   HardHat, Truck, Ruler, CheckCircle2, ClipboardList,
   Building, Hammer, ArrowRight, Briefcase
 } from 'lucide-react';
-import { submitLead } from '../crmApi';
+
+
 
 const PORTFOLIO_ITEMS = [
   { label: "Master-Planned Communities", icon: <Building size={24} /> },
@@ -39,20 +40,8 @@ const Construction: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
-    try {
-      const type = activeForm === 'contractor' ? 'Contractor' : 'Supplier';
-      const specificField = activeForm === 'contractor'
-        ? `Trade: ${formData.trade} | License: ${formData.license}`
-        : `Material: ${formData.materialType} | Capacity: ${formData.capacity}`;
-
-      await submitLead({
-        customerName: formData.contactPerson,
-        mobile: formData.phone,
-        email: formData.email,
-        interestedProject: 'Construction Division',
-        remarks: `Company: ${formData.companyName} | Type: ${type} | ${specificField} | Details: ${formData.details} | Address: ${formData.address}`,
-        source: `Construction Page - ${type} Registration`
-      });
+    // CRMIntegration will automatically capture this form submission
+    setTimeout(() => {
       setStatus('success');
       setFormData({
         companyName: '',
@@ -66,10 +55,8 @@ const Construction: React.FC = () => {
         address: '',
         details: ''
       });
-    } catch (err) {
-      console.error(err);
-      setStatus('error');
-    }
+    }, 600);
+
   };
 
   return (

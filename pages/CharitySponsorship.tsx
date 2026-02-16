@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Heart, Users, HandHeart, ChevronDown, Image as ImageIcon, X, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { CHARITY_PROJECTS } from './CharityData';
-import { submitLead } from '../crmApi';
+
+
 
 const CharitySponsorship: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -29,15 +30,8 @@ const CharitySponsorship: React.FC = () => {
     e.preventDefault();
     setFormStatus('submitting');
 
-    try {
-      await submitLead({
-        customerName: formData.fullName,
-        mobile: formData.phone,
-        email: formData.email,
-        interestedProject: 'Charity & Sponsorship',
-        remarks: `Organization: ${formData.organization} | Request Type: ${formData.requestType} | Message: ${formData.message}`,
-        source: 'Website - Charity Sponsorship Request'
-      });
+    // CRMIntegration will automatically capture this form submission
+    setTimeout(() => {
       setFormStatus('success');
 
       // Reset form after delay
@@ -53,10 +47,8 @@ const CharitySponsorship: React.FC = () => {
           message: ''
         });
       }, 3000);
-    } catch (err: any) {
-      console.error(err);
-      setFormStatus('error');
-    }
+    }, 600);
+
   };
 
   // Helper function to map detailed status strings to simple category names

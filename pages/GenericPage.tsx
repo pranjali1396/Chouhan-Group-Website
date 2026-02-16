@@ -7,7 +7,8 @@ import {
   Play, Maximize2, X, ChevronRight, Layout, Download,
   Layers, Zap, Droplet, Monitor, ZoomIn, Ban, BellRing, Send, Facebook, Twitter, Instagram, Linkedin
 } from 'lucide-react';
-import { submitLead } from '../crmApi';
+
+
 
 const PROPERTY_DATA = {
   amenities: [
@@ -91,40 +92,23 @@ const GenericPage: React.FC = () => {
   const handleEnquirySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
-    try {
-      await submitLead({
-        customerName: formData.name,
-        mobile: formData.phone,
-        email: formData.email,
-        interestedProject: title,
-        remarks: `Interest Type: ${formData.interest}`,
-        source: `Generic Page - ${title}`
-      });
+    // CRMIntegration will automatically capture this form submission
+    setTimeout(() => {
       setStatus('success');
       setFormData({ name: '', email: '', phone: '', interest: 'Buying' });
-    } catch (err) {
-      console.error(err);
-      setStatus('error');
-    }
+    }, 600);
+
   };
 
   const handleRentalSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setRentalStatus('submitting');
-    try {
-      await submitLead({
-        customerName: rentalData.name,
-        mobile: rentalData.phone,
-        interestedProject: title,
-        remarks: 'Rental Inquiry (Coming Soon)',
-        source: `Rentals Page - ${title}`
-      });
+    // CRMIntegration will automatically capture this form submission
+    setTimeout(() => {
       setRentalStatus('success');
       setRentalData({ name: '', phone: '' });
-    } catch (err) {
-      console.error(err);
-      setRentalStatus('error');
-    }
+    }, 600);
+
   };
 
   // Lightbox State

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Truck, MapPin, Calendar, Bell, Send, CheckCircle2 } from 'lucide-react';
-import { submitLead } from '../crmApi';
+
+
 
 const AshokLeyland: React.FC = () => {
     const [submitted, setSubmitted] = useState(false);
@@ -20,23 +21,13 @@ const AshokLeyland: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setSubmitting(true);
-        try {
-            await submitLead({
-                customerName: formData.name,
-                mobile: formData.phone,
-                email: formData.email,
-                interestedProject: 'Ashok Leyland',
-                remarks: `Interest: ${formData.interest}`,
-                source: 'Ashok Leyland Page - Registration form'
-            });
+        // CRMIntegration will automatically capture this form submission
+        setTimeout(() => {
             setSubmitted(true);
             setSubmitting(false);
             setFormData({ name: '', email: '', phone: '', interest: 'Buying a Vehicle' });
-        } catch (err) {
-            console.error(err);
-            setSubmitting(false);
-            alert('Failed to register. Please try again.');
-        }
+        }, 600);
+
     };
 
     return (
