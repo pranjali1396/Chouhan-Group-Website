@@ -35,13 +35,13 @@ const TRANSACTIONS = [
 ];
 
 const CRITERIA = [
-  "Annual revenues of between $10 million – $100 million.",
-  "Sustainable EBITDA of between $2.5 million and $50 million.",
-  "Established business with a profitable track record and stable cash flows.",
-  "Recurring revenues stemming from long-term customer relationships.",
-  "Strong management teams willing to partner with CHOUHAN GROUP.",
-  "Sustainable competitive advantage in an attractive industry.",
-  "Prefer businesses with a diversified supplier and customer base."
+  "Established businesses with consistent revenue performance and demonstrated financial stability.",
+  "Sustainable profitability supported by healthy operating margins and predictable cash flow generation.",
+  "Proven operating history with a strong track record of performance and resilience across market cycles.",
+  "Recurring revenue streams driven by long-term customer relationships and contractual visibility.",
+  "Experienced management teams open to collaborating and partnering with CHOUHAN GROUP for continued growth.",
+  "Clear competitive positioning within an attractive industry supported by durable barriers to entry.",
+  "Preference for businesses maintaining diversified customer and supplier relationships to reduce concentration risk."
 ];
 
 const CapitalDivision: React.FC = () => {
