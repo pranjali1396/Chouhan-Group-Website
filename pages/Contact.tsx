@@ -308,7 +308,7 @@ const Contact: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-slate-900 font-bold">
               {/* Arena - Bhilai */}
               <div className="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow">
-                <h3 className="text-lg font-black text-slate-900 mb-4 uppercase tracking-tight">Maruti Suzuki Arena - Bhilai</h3>
+                <h3 className="text-lg font-black text-slate-900 mb-4 uppercase tracking-tight">Maruti Suzuki Service center - Bhilai supela</h3>
                 <div className="space-y-4 text-sm font-black">
                   <div className="flex items-start gap-3">
                     <MapPin className="shrink-0 text-amber-500 mt-0.5" size={16} />
@@ -336,6 +336,25 @@ const Contact: React.FC = () => {
                   <div className="flex items-center gap-3">
                     <Phone className="shrink-0 text-amber-500" size={16} />
                     <span className="font-black">72229 10019 / 72229 100144</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Mail className="shrink-0 text-amber-500" size={16} />
+                    <span className="break-all">sm.sales@chouhanautomobiles.com</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Arena - Kawardha */}
+              <div className="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow">
+                <h3 className="text-lg font-black text-slate-900 mb-4 uppercase tracking-tight">Maruti Suzuki Arena - Kawardha</h3>
+                <div className="space-y-4 text-sm font-black text-black">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="shrink-0 text-amber-500 mt-0.5" size={16} />
+                    <span className="leading-relaxed">Bilaspur Road, Kawardha, Dist Kabirdham, Chhattisgarh - 491995</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Phone className="shrink-0 text-amber-500" size={16} />
+                    <span className="font-black">72229 10019 / 72229 10013</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Mail className="shrink-0 text-amber-500" size={16} />

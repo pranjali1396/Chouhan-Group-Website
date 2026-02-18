@@ -451,7 +451,7 @@ const SKYPARK_DATA: ProjectData = {
 };
 
 const MARUTI_BHILAI_DATA: ProjectData = {
-  title: "Maruti Suzuki Arena - Bhilai",
+  title: "Maruti Suzuki Service center - Bhilai supela",
   description: "Now Open – Chouhan Automobiles LLP is your trusted destination for Maruti Suzuki vehicles in Bhilai (Supela). Experience the joy of mobility with our wide range of cars, state-of-the-art service centers, and genuine spare parts.",
   status: "Open Now",
   address: "NH-6, Durg – Rajnandgaon Bypass, Near Chouhan Town, Bhilai, Chhattisgarh - 490020",
@@ -505,7 +505,7 @@ const MARUTI_BALOD_DATA: ProjectData = {
 };
 
 const MARUTI_DALLI_DATA: ProjectData = {
-  title: "Maruti Suzuki Arena - Dalli Rajhara",
+  title: "Maruti Suzuki Service Center - Dalli Rajhara",
   description: "Now Open – Chouhan Automobiles LLP is your trusted destination for Maruti Suzuki vehicles in Dalli Rajhara. Elite automotive experiences in the heart of Dalli Rajhara.",
   status: "Open Now",
   address: "Dalli Rajhara, Chhattisgarh",
@@ -535,8 +535,26 @@ const MARUTI_DONDI_DATA: ProjectData = {
     phone: "7222910033",
     email: "sm.sales@chouhanautomobiles.com"
   },
-  heroImage: "/new_images/Arena.webp",
+  heroImage: "/new_images/Maruti_suzuki_dondi.PNG",
   mapQuery: "Maruti Suzuki Arena, Dondi",
+  websiteUrl: "https://www.arenaofbhilai.com/"
+};
+
+const MARUTI_KAWARDHA_DATA: ProjectData = {
+  title: "Maruti Suzuki Arena - Kawardha",
+  description: "Now Open – Chouhan Automobiles LLP is your trusted destination for Maruti Suzuki vehicles in Kawardha. Modern facility bringing Maruti's best to Kawardha.",
+  status: "Open Now",
+  address: "Kawardha, Chhattisgarh",
+  presentationCentre: {
+    address: "Kawardha Showroom",
+    hours: "Open Daily 10AM - 7PM"
+  },
+  contact: {
+    phone: "7222910013",
+    email: "sm.sales@chouhanautomobiles.com"
+  },
+  heroImage: "/new_images/Maruti_suzuki_kawardha.jpg",
+  mapQuery: "Maruti Suzuki Arena, Kawardha",
   websiteUrl: "https://www.arenaofbhilai.com/"
 };
 
@@ -589,7 +607,7 @@ const NEXA_BEMETARA_DATA: ProjectData = {
     phone: "7222910013",
     email: "nexabusinesshead@chouhanautomobiles.com"
   },
-  heroImage: "/new_images/Nexa_bemetara.jpeg",
+  heroImage: "/new_images/Nexa_bemetara.PNG",
   mapQuery: "Nexa Bemetara Chouhan Automobiles",
   websiteUrl: "https://www.nexaofdurgbypass.com/"
 };
@@ -742,6 +760,7 @@ const AppContent: React.FC = () => {
         <Route path="/automobile/maruti-dalli-rajhara" element={<ProjectDetail data={MARUTI_DALLI_DATA} />} />
         <Route path="/automobile/maruti-dondi" element={<ProjectDetail data={MARUTI_DONDI_DATA} />} />
         <Route path="/automobile/maruti-bemetara" element={<ProjectDetail data={MARUTI_BEMETARA_DATA} />} />
+        <Route path="/automobile/maruti-kawardha" element={<ProjectDetail data={MARUTI_KAWARDHA_DATA} />} />
 
         <Route path="/automobile/nexa-bhilai" element={<ProjectDetail data={NEXA_BHILAI_DATA} />} />
         <Route path="/automobile/nexa-bemetara" element={<ProjectDetail data={NEXA_BEMETARA_DATA} />} />

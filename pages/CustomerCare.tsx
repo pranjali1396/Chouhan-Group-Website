@@ -90,7 +90,7 @@ const CARE_DATA: Record<CategoryKey, CareData> = {
     accentColor: "blue",
     locations: [
       {
-        name: "Maruti Suzuki Arena - Bhilai",
+        name: "Maruti Suzuki Service center - Bhilai supela",
         address: "NH-6, Durg – Rajnandgaon Bypass, Near Chouhan Town, Bhilai, Chhattisgarh - 490020",
         phones: ["72229 10019", "72229 10022", "72229 10013", "72229 10033", "72229 10073"],
         email: "sm.sales@chouhanautomobiles.com"

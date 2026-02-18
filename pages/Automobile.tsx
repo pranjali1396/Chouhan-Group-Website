@@ -1,11 +1,11 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Search, MapPin, Filter, ArrowRight, Car, Gauge, Settings, ShieldCheck, Zap } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 const AUTOMOBILE_DATA = [
   {
     id: 1,
-    name: "Maruti Suzuki Arena - Bhilai",
+    name: "Maruti Suzuki Service center - Bhilai supela",
     location: "Supela, Bhilai",
     baseLocation: "Bhilai",
     type: "Authorized Dealership",
@@ -66,7 +66,7 @@ const AUTOMOBILE_DATA = [
     baseLocation: "Dondi",
     type: "Authorized Dealership",
     brand: "Maruti Suzuki",
-    image: "/new_images/Arena.webp",
+    image: "/new_images/Maruti_suzuki_dondi.PNG",
     link: "/automobile/maruti-dondi",
     status: "Open Now",
     feature: "Sales • Service • Spares",
@@ -82,6 +82,20 @@ const AUTOMOBILE_DATA = [
     brand: "Maruti Suzuki",
     image: "/new_images/Maruti_suzuki_bemetra.jpeg",
     link: "/automobile/maruti-bemetara",
+    status: "Open Now",
+    feature: "Sales • Service • Spares",
+    amenities: ["Showroom", "Service Center"],
+    websiteUrl: "https://www.arenaofbhilai.com/"
+  },
+  {
+    id: 106,
+    name: "Maruti Suzuki Arena - Kawardha",
+    location: "Kawardha",
+    baseLocation: "Kawardha",
+    type: "Authorized Dealership",
+    brand: "Maruti Suzuki",
+    image: "/new_images/Maruti_suzuki_kawardha.jpg",
+    link: "/automobile/maruti-kawardha",
     status: "Open Now",
     feature: "Sales • Service • Spares",
     amenities: ["Showroom", "Service Center"],
@@ -108,7 +122,7 @@ const AUTOMOBILE_DATA = [
     baseLocation: "Bemetara",
     type: "Premium Dealership",
     brand: "Nexa",
-    image: "/new_images/Nexa_bemetara.jpeg",
+    image: "/new_images/Nexa_bemetara.PNG",
     link: "/automobile/nexa-bemetara",
     status: "Open Now",
     feature: "Premium Car Experience",
@@ -174,10 +188,18 @@ const AUTOMOBILE_DATA = [
 ];
 
 const Automobile: React.FC = () => {
+  const [searchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('All');
   const [selectedLocation, setSelectedLocation] = useState('All');
   const [selectedStatus, setSelectedStatus] = useState('All');
+
+  useEffect(() => {
+    const brandParam = searchParams.get('brand');
+    if (brandParam) {
+      setSelectedBrand(brandParam);
+    }
+  }, [searchParams]);
 
   const filteredItems = useMemo(() => {
     return AUTOMOBILE_DATA.filter(item => {

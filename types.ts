@@ -107,8 +107,8 @@ export const NAVIGATION_DATA: NavItem[] = [
       {
         title: "SHOWROOMS",
         links: [
-          { label: "Maruti Suzuki Arena", path: "/automobile/maruti" },
-          { label: "Nexa", path: "/automobile/nexa" },
+          { label: "Maruti Suzuki Arena", path: "/automobile?brand=Maruti%20Suzuki" },
+          { label: "Nexa", path: "/automobile?brand=Nexa" },
           { label: "Hero", path: "/automobile/hero" },
           { label: "True Value", path: "/automobile/true-value" },
         ]

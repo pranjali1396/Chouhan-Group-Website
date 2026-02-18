@@ -92,8 +92,8 @@ const Footer: React.FC = () => {
           <div className="col-span-1">
             <h3 className="font-bold text-lg mb-6 text-white">Automobiles</h3>
             <ul className="space-y-3 text-gray-300 text-xs font-medium">
-              <li><Link to="/automobile/maruti" className="hover:text-white hover:underline transition-colors">Maruti Suzuki Arena</Link></li>
-              <li><Link to="/automobile/nexa" className="hover:text-white hover:underline transition-colors">NEXA</Link></li>
+              <li><Link to="/automobile?brand=Maruti%20Suzuki" className="hover:text-white hover:underline transition-colors">Maruti Suzuki Arena</Link></li>
+              <li><Link to="/automobile?brand=Nexa" className="hover:text-white hover:underline transition-colors">NEXA</Link></li>
               <li><Link to="/automobile/hero" className="hover:text-white hover:underline transition-colors">Hero MotoCorp</Link></li>
               <li><Link to="/automobile/ashok" className="hover:text-white hover:underline transition-colors">Ashok Leyland</Link></li>
               <li><Link to="/automobile/true-value" className="hover:text-white hover:underline transition-colors">True Value</Link></li>
