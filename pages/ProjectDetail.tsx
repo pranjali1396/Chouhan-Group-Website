@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Facebook, Twitter, Linkedin, Mail, Ban, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Mail, Ban, ChevronLeft, ChevronRight, ArrowRight, Send, CheckCircle2 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 export interface ProjectData {
@@ -30,7 +30,49 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
   const isHospitality = location.pathname.includes('/hospitality/');
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
   const heroImages = Array.isArray(data.heroImage) ? data.heroImage : [data.heroImage];
+
+  const getContactUrl = () => {
+    const title = data.title.toLowerCase();
+    const webUrl = (data.websiteUrl || '').toLowerCase();
+
+    if (title.match(/maruti|nexa|hero|true value/)) {
+      return `tel:${data.contact.phone}`;
+    }
+
+    // Real Estate Specific Microsites
+    if (title.includes('singapore') || webUrl.includes('singapore-city')) {
+      return "https://singapore-city.chouhangroup.com/contact.html";
+    }
+    if (title.includes('parkview') || webUrl.includes('parkview')) {
+      return "https://chouhan-parkview.chouhangroup.com/contact-us.html";
+    }
+    if (title.includes('green valley') || webUrl.includes('greenvalley')) {
+      return "https://chouhan-greenvalley.chouhangroup.com/#contact";
+    }
+    if (title.includes('town') || webUrl.includes('chouhantown')) {
+      return "https://chouhantown.chouhangroup.com/#contact";
+    }
+
+    // Generic Website contact fallback
+    if (data.websiteUrl && data.websiteUrl.startsWith('http')) {
+      return `${data.websiteUrl.replace(/\/$/, '')}/contact`;
+    }
+
+    return "#contact";
+  };
+
+  const contactUrl = getContactUrl();
+
+  const isExternalContact = contactUrl.startsWith('http') || contactUrl.startsWith('tel:');
 
   useEffect(() => {
     if (heroImages.length <= 1) return;
@@ -41,6 +83,40 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
 
     return () => clearInterval(interval);
   }, [heroImages.length]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus('submitting');
+    // CRMIntegration will automatically capture this form submission
+    setTimeout(() => {
+      setFormStatus('success');
+      setFormData({ name: '', email: '', phone: '', message: '' });
+    }, 600);
+  };
+  const scrollToContact = (e: React.MouseEvent) => {
+    if (contactUrl === "#contact") {
+      e.preventDefault();
+      const element = document.getElementById('contact');
+      if (element) {
+        const offset = 120;
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = element.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - offset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
+
 
   return (
     <div className="bg-white font-sans text-slate-800 pt-32 md:pt-48">
@@ -177,36 +253,22 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
                         data.status === 'Few Units Left' ? 'Only a few units remaining! Grab yours today. ' :
                           data.status === 'New Launch' ? 'New phase is now launching! ' :
                             data.status === 'Upcoming' || data.status === 'Coming Soon' ? 'Project is coming soon! ' : ''}
-                  {data.websiteUrl ? (
-                    data.websiteUrl.startsWith('/') ? (
-                      <Link to={`${data.websiteUrl}#contact`} className="text-[#002b49] underline font-medium hover:text-amber-600">
-                        {data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? 'Call Now' : 'Enquire'}
-                      </Link>
-                    ) : (
-                      <a
-                        href={
-                          data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value')
-                            ? `tel:${data.contact.phone}`
-                            : data.title.toLowerCase().includes('green valley') || data.title.toLowerCase().includes('town')
-                              ? `${data.websiteUrl.endsWith('/') ? data.websiteUrl : data.websiteUrl + '/'}#contact`
-                              : data.title.toLowerCase().includes('empyrean') || data.title.toLowerCase().includes('balod')
-                                ? `https://www.empyreanhotels.in/contact`
-                                : data.title.toLowerCase().includes('parkview')
-                                  ? data.title.toLowerCase().includes('complex') || data.title.toLowerCase().includes('commercial')
-                                    ? `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact`
-                                    : `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact-us`
-                                  : `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact`
-                        }
-                        target={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? undefined : "_blank"}
-                        rel={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? undefined : "noopener noreferrer"}
-                        className="text-[#002b49] underline font-medium hover:text-amber-600"
-                      >
-                        {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Enquire'}
-                      </a>
-                    )
+                  {isExternalContact ? (
+                    <a
+                      href={contactUrl}
+                      target={contactUrl.startsWith('tel:') ? undefined : "_blank"}
+                      rel={contactUrl.startsWith('tel:') ? undefined : "noopener noreferrer"}
+                      className="text-[#002b49] underline font-medium hover:text-amber-600"
+                    >
+                      {data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? 'Call Now' : 'Contact Us'}
+                    </a>
                   ) : (
-                    <a href={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? `tel:${data.contact.phone}` : "#contact"} className="text-[#002b49] underline font-medium hover:text-amber-600">
-                      {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Contact Us'}
+                    <a
+                      href={contactUrl}
+                      onClick={scrollToContact}
+                      className="text-[#002b49] underline font-medium hover:text-amber-600"
+                    >
+                      {data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? 'Call Now' : 'Contact Us'}
                     </a>
                   )} to stay informed.
                 </p>
@@ -261,50 +323,36 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
                 )
               ) : (
                 !isSold && (
-                  <button className="bg-slate-300 text-slate-500 py-3 px-2 text-[11px] font-bold uppercase tracking-wider cursor-not-allowed shadow-sm rounded-sm">
+                  <button className="bg-slate-300 text-slate-500 py-3 px-2 text-[11px] font-bold uppercase tracking-wider cursor-not-allowed shadow-sm rounded-sm text-center flex items-center justify-center">
                     View Website
                   </button>
                 )
               )}
 
               {!isSold && (
-                data.websiteUrl ? (
-                  data.websiteUrl.startsWith('/') ? (
-                    <Link to={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? "tel:" + data.contact.phone : `${data.websiteUrl}#contact`} className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center">
-                      {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Contact Us'}
-                    </Link>
-                  ) : (
-                    <a
-                      href={
-                        data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value')
-                          ? `tel:${data.contact.phone}`
-                          : data.title.toLowerCase().includes('green valley') || data.title.toLowerCase().includes('town')
-                            ? `${data.websiteUrl.endsWith('/') ? data.websiteUrl : data.websiteUrl + '/'}#contact`
-                            : data.title.toLowerCase().includes('empyrean') || data.title.toLowerCase().includes('balod')
-                              ? `https://www.empyreanhotels.in/contact`
-                              : data.title.toLowerCase().includes('parkview')
-                                ? data.title.toLowerCase().includes('complex') || data.title.toLowerCase().includes('commercial')
-                                  ? `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact`
-                                  : `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact-us`
-                                : `${data.websiteUrl.endsWith('/') ? data.websiteUrl.slice(0, -1) : data.websiteUrl}/contact`
-                      }
-                      target={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? undefined : "_blank"}
-                      rel={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? undefined : "noopener noreferrer"}
-                      className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center"
-                    >
-                      {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Contact Us'}
-                    </a>
-                  )
+                isExternalContact ? (
+                  <a
+                    href={contactUrl}
+                    target={contactUrl.startsWith('tel:') ? undefined : "_blank"}
+                    rel={contactUrl.startsWith('tel:') ? undefined : "noopener noreferrer"}
+                    className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center"
+                  >
+                    {data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? 'Call Now' : 'Contact Us'}
+                  </a>
                 ) : (
-                  <a href={data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? `tel:${data.contact.phone}` : "#contact"} className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center">
-                    {data.title.toLowerCase().includes('maruti') || data.title.toLowerCase().includes('nexa') || data.title.toLowerCase().includes('hero') || data.title.toLowerCase().includes('true value') ? 'Call Now' : 'Contact Us'}
+                  <a
+                    href={contactUrl}
+                    onClick={scrollToContact}
+                    className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center"
+                  >
+                    {data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? 'Call Now' : 'Contact Us'}
                   </a>
                 )
               )}
             </div>
 
             {/* Project Details Section */}
-            <div id="contact" className="scroll-mt-32 space-y-10">
+            <div id="project-sidebar" className="scroll-mt-32 space-y-10">
               <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#718096] mb-6 border-b border-slate-100 pb-2">Project Details</h3>
 
               <div className="space-y-6 text-[13px] text-[#4a5568]">
@@ -373,38 +421,106 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
                 </div>
               </div>
 
-              {/* Official Project Enquiry Card - SEO Optimized */}
+              {/* Official Project Enquiry Form */}
               {!isSold && (
-                <div className="bg-white p-8 md:p-10 rounded-xl border border-slate-100 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.08)] mt-16 transition-all hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.12)]">
-                  <div className="mb-10 text-center">
-                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-amber-600 block mb-3">Priority Support</span>
-                    <h3 className="text-2xl font-heading font-black text-[#002b49] mb-4 uppercase tracking-tight">
-                      Official {data.title} Project Enquiry
-                    </h3>
-                    <div className="h-1 w-12 bg-amber-500 mx-auto rounded-full mb-6"></div>
-                    <p className="text-slate-500 text-sm leading-relaxed max-w-sm mx-auto">
-                      For floor plans, current pricing, or to schedule an exclusive site visit at <strong>{data.title}</strong>, please connect with our team.
-                    </p>
-                  </div>
+                <div id="contact" className="bg-white p-8 md:p-10 rounded-xl border border-slate-100 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.08)] mt-16 transition-all hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.12)] scroll-mt-32">
+                  {isExternalContact && !contactUrl.startsWith('tel:') ? (
+                    <div className="text-center py-12">
+                      <div className="mb-8">
+                        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-amber-600 block mb-3">Register Interest</span>
+                        <h3 className="text-2xl font-heading font-black text-[#002b49] mb-4 uppercase tracking-tight">
+                          Official {data.title} Registration
+                        </h3>
+                        <div className="h-1 w-12 bg-amber-500 mx-auto rounded-full mb-6"></div>
+                        <p className="text-slate-500 text-sm leading-relaxed max-w-sm mx-auto">
+                          Click below to open the official registration form for <strong>{data.title}</strong> and receive exclusive project details, floor plans, and pricing.
+                        </p>
+                      </div>
+                      <a
+                        href={contactUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-3 bg-[#002b49] text-white py-5 px-10 font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-slate-800 transition-all rounded-sm shadow-lg group"
+                      >
+                        Contact Us <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    </div>
+                  ) : formStatus === 'success' ? (
+                    <div className="text-center py-8">
+                      <div className="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <CheckCircle2 size={32} />
+                      </div>
+                      <h3 className="text-2xl font-black text-[#002b49] mb-2">Request Sent</h3>
+                      <p className="text-slate-500 text-sm mb-8">We've received your enquiry for <strong>{data.title}</strong> and will contact you shortly.</p>
+                      <button onClick={() => setFormStatus('idle')} className="bg-[#002b49] text-white px-8 py-3 rounded-sm font-bold uppercase tracking-widest text-[10px] hover:bg-slate-800 transition-all">
+                        Send another enquiry
+                      </button>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="mb-10 text-center">
+                        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-amber-600 block mb-3">Priority Support</span>
+                        <h3 className="text-2xl font-heading font-black text-[#002b49] mb-4 uppercase tracking-tight">
+                          Official {data.title} Project Enquiry
+                        </h3>
+                        <div className="h-1 w-12 bg-amber-500 mx-auto rounded-full mb-6"></div>
+                        <p className="text-slate-500 text-sm leading-relaxed max-w-sm mx-auto">
+                          Fill out the form below to receive floor plans, pricing, and project details directly from our sales team.
+                        </p>
+                      </div>
 
-                  <div className="space-y-4">
-                    <Link
-                      to="/contact"
-                      className="flex items-center justify-center gap-3 bg-[#002b49] text-white py-5 px-6 font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-slate-800 transition-all rounded-sm shadow-lg group"
-                    >
-                      Contact Us <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                    <Link
-                      to="/care"
-                      className="flex items-center justify-center gap-3 bg-white border-2 border-slate-100 text-slate-500 py-5 px-6 font-bold uppercase tracking-[0.2em] text-[10px] hover:border-slate-300 hover:text-slate-800 transition-all rounded-sm"
-                    >
-                      Customer Care
-                    </Link>
-                  </div>
-
+                      <form onSubmit={handleFormSubmit} className="space-y-4">
+                        <input type="hidden" name="project" value={data.title} />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <input
+                            required
+                            name="name"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            type="text"
+                            placeholder="Full Name *"
+                            className="w-full bg-slate-50 border border-slate-100 rounded-sm p-4 text-sm focus:border-[#002b49] focus:outline-none transition-all"
+                          />
+                          <input
+                            required
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleInputChange}
+                            type="tel"
+                            placeholder="Phone Number *"
+                            className="w-full bg-slate-50 border border-slate-100 rounded-sm p-4 text-sm focus:border-[#002b49] focus:outline-none transition-all"
+                          />
+                        </div>
+                        <input
+                          required
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          type="email"
+                          placeholder="Email Address *"
+                          className="w-full bg-slate-50 border border-slate-100 rounded-sm p-4 text-sm focus:border-[#002b49] focus:outline-none transition-all"
+                        />
+                        <textarea
+                          required
+                          name="message"
+                          value={formData.message}
+                          onChange={handleInputChange}
+                          placeholder="Tell us about your interest (e.g., 2 BHK, Investment, etc.)"
+                          className="w-full bg-slate-50 border border-slate-100 rounded-sm p-4 text-sm focus:border-[#002b49] focus:outline-none transition-all min-h-[100px] resize-none"
+                        ></textarea>
+                        <button
+                          disabled={formStatus === 'submitting'}
+                          type="submit"
+                          className="w-full flex items-center justify-center gap-3 bg-[#002b49] text-white py-5 px-6 font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-slate-800 transition-all rounded-sm shadow-lg group disabled:opacity-50"
+                        >
+                          {formStatus === 'submitting' ? 'Processing...' : 'Submit Enquiry'} <Send size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </button>
+                      </form>
+                    </>
+                  )}
                   <div className="mt-8 text-center">
                     <p className="text-[10px] text-slate-400 font-medium italic">
-                      Safe & Confidential: Your information is managed directly by Chouhan Group.
+                      Safe & Confidential: Your information is managed directly by Chouhan Group and sent to our CRM.
                     </p>
                   </div>
                 </div>

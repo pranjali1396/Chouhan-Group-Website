@@ -450,8 +450,26 @@ const SKYPARK_DATA: ProjectData = {
   websiteUrl: "https://www.empyreanhotels.in/"
 };
 
+const MARUTI_ARENA_BHILAI_DATA: ProjectData = {
+  title: "Maruti Suzuki Arena - Bhilai",
+  description: "Now Open – Chouhan Automobiles LLP is your trusted destination for Maruti Suzuki vehicles in Bhilai. Experience the joy of mobility with our wide range of cars at our state-of-the-art Arena showroom.",
+  status: "Open Now",
+  address: "NH-6, Durg – Rajnandgaon Bypass, Near Chouhan Town, Bhilai, Chhattisgarh - 490020",
+  presentationCentre: {
+    address: "Bhilai Arena Showroom",
+    hours: "Open Daily 10AM - 8PM"
+  },
+  contact: {
+    phone: "7222910019, 7222910022",
+    email: "sm.sales@chouhanautomobiles.com"
+  },
+  heroImage: "/new_images/Arena.webp",
+  mapQuery: "Chouhan Automobiles Maruti Suzuki ARENA, Bhilai",
+  websiteUrl: "https://www.arenaofbhilai.com/"
+};
+
 const MARUTI_BHILAI_DATA: ProjectData = {
-  title: "Maruti Suzuki Service center - Bhilai supela",
+  title: "Maruti Suzuki Service center - supela",
   description: "Now Open – Chouhan Automobiles LLP is your trusted destination for Maruti Suzuki vehicles in Bhilai (Supela). Experience the joy of mobility with our wide range of cars, state-of-the-art service centers, and genuine spare parts.",
   status: "Open Now",
   address: "NH-6, Durg – Rajnandgaon Bypass, Near Chouhan Town, Bhilai, Chhattisgarh - 490020",
@@ -630,6 +648,24 @@ const NEXA_KAWARDHA_DATA: ProjectData = {
   websiteUrl: "https://www.nexaofdurgbypass.com/"
 };
 
+const NEXA_RISALI_DATA: ProjectData = {
+  title: "Nexa Service Center - Risali",
+  description: "Now Open – Premium Nexa service experience at Risali, Bhilai. Dedicated service facility for your premium Nexa vehicles.",
+  status: "Open Now",
+  address: "Krishna talkies road, Risali Bhilai, Chhattisgarh",
+  presentationCentre: {
+    address: "Risali Service Center",
+    hours: "Open Daily 10AM - 7PM"
+  },
+  contact: {
+    phone: "7222910019",
+    email: "sm.sales@chouhanautomobiles.com"
+  },
+  heroImage: "/new_images/Nexa_Risali.jpeg",
+  mapQuery: "Nexa Service Center Risali Bhilai",
+  websiteUrl: "https://www.nexaofdurgbypass.com/"
+};
+
 const HERO_DATA: ProjectData = {
   title: "Hero MotoCorp",
   description: "Now Open – Ride with confidence with the world's largest two-wheeler manufacturer. Our Bhilai showroom (Chouhan Hero) offers the complete range of Hero motorcycles and scooters, backed by efficient service and genuine parts. Your journey starts here.",
@@ -754,6 +790,7 @@ const AppContent: React.FC = () => {
         <Route path="/commercial/landmark-details" element={<ChouhanLandmarkLanding />} />
 
         <Route path="/automobile" element={<Automobile />} />
+        <Route path="/automobile/maruti-arena-bhilai" element={<ProjectDetail data={MARUTI_ARENA_BHILAI_DATA} />} />
         <Route path="/automobile/maruti-bhilai" element={<ProjectDetail data={MARUTI_BHILAI_DATA} />} />
         <Route path="/automobile/maruti-pandariya" element={<ProjectDetail data={MARUTI_PANDARIYA_DATA} />} />
         <Route path="/automobile/maruti-balod" element={<ProjectDetail data={MARUTI_BALOD_DATA} />} />
@@ -765,6 +802,7 @@ const AppContent: React.FC = () => {
         <Route path="/automobile/nexa-bhilai" element={<ProjectDetail data={NEXA_BHILAI_DATA} />} />
         <Route path="/automobile/nexa-bemetara" element={<ProjectDetail data={NEXA_BEMETARA_DATA} />} />
         <Route path="/automobile/nexa-kawardha" element={<ProjectDetail data={NEXA_KAWARDHA_DATA} />} />
+        <Route path="/automobile/nexa-risali" element={<ProjectDetail data={NEXA_RISALI_DATA} />} />
         <Route path="/automobile/hero" element={<ProjectDetail data={HERO_DATA} />} />
         <Route path="/automobile/true-value" element={<ProjectDetail data={TRUE_VALUE_DATA} />} />
         <Route path="/automobile/ashok" element={<AshokLeyland />} />

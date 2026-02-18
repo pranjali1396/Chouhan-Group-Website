@@ -5,7 +5,21 @@ import { Link, useSearchParams } from 'react-router-dom';
 const AUTOMOBILE_DATA = [
   {
     id: 1,
-    name: "Maruti Suzuki Service center - Bhilai supela",
+    name: "Maruti Suzuki Arena - Bhilai",
+    location: "NH6, Durg-Rajnandgaon Bypass road",
+    baseLocation: "Bhilai",
+    type: "Authorized Dealership",
+    brand: "Maruti Suzuki",
+    image: "/new_images/Arena.webp",
+    link: "/automobile/maruti-arena-bhilai",
+    status: "Open Now",
+    feature: "Sales • Service • Spares",
+    amenities: ["Large Showroom", "Service Center", "Insurance"],
+    websiteUrl: "https://www.arenaofbhilai.com/"
+  },
+  {
+    id: 107,
+    name: "Maruti Suzuki Service center - supela",
     location: "Supela, Bhilai",
     baseLocation: "Bhilai",
     type: "Authorized Dealership",
@@ -62,8 +76,8 @@ const AUTOMOBILE_DATA = [
   {
     id: 104,
     name: "Maruti Suzuki Arena - Dondi",
-    location: "Dondi",
-    baseLocation: "Dondi",
+    location: "Dondi Lohara",
+    baseLocation: "dondi Lohara",
     type: "Authorized Dealership",
     brand: "Maruti Suzuki",
     image: "/new_images/Maruti_suzuki_dondi.PNG",
@@ -104,7 +118,7 @@ const AUTOMOBILE_DATA = [
   {
     id: 2,
     name: "Nexa - Bhilai",
-    location: "Supela, Bhilai",
+    location: "NH6,Durg-Rajnandgaon Bypass road",
     baseLocation: "Bhilai",
     type: "Premium Dealership",
     brand: "Nexa",
@@ -144,9 +158,23 @@ const AUTOMOBILE_DATA = [
     websiteUrl: "https://www.nexaofdurgbypass.com/"
   },
   {
+    id: 203,
+    name: "Nexa Service Center - Bhilai",
+    location: "Krishna talkies road, Risali Bhilai",
+    baseLocation: "Bhilai",
+    type: "Premium Service Center",
+    brand: "Nexa",
+    image: "/new_images/Nexa_Risali.jpeg",
+    link: "/automobile/nexa-risali",
+    status: "Open Now",
+    feature: "Expert Nexa Service",
+    amenities: ["Premium Lounge", "Genuine Parts", "Expert Mechanics"],
+    websiteUrl: "https://www.nexaofdurgbypass.com/"
+  },
+  {
     id: 3,
     name: "Hero MotoCorp",
-    location: "Bhilai",
+    location: "NH6, Durg-Rajnandgaon Bypass road",
     baseLocation: "Bhilai",
     type: "Two Wheeler Dealer",
     brand: "Hero",
@@ -174,7 +202,7 @@ const AUTOMOBILE_DATA = [
   {
     id: 5,
     name: "True Value",
-    location: "Bhilai Bypass",
+    location: "NH6, Durg-Rajnandgaon Bypass road",
     baseLocation: "Bhilai",
     type: "Pre-owned Cars",
     brand: "Maruti Suzuki",
@@ -347,7 +375,7 @@ const Automobile: React.FC = () => {
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-full h-full object-contain transition-all duration-700 group-hover:scale-105"
+                    className={`w-full h-full ${item.name.toLowerCase().includes('dalli rajhara') ? 'object-contain' : 'object-cover'} transition-all duration-700 group-hover:scale-105`}
                     loading="lazy"
                     decoding="async"
                   />
