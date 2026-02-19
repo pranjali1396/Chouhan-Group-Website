@@ -166,7 +166,7 @@ const AUTOMOBILE_DATA = [
     brand: "Nexa",
     image: "/new_images/Nexa_Risali.jpeg",
     link: "/automobile/nexa-risali",
-    status: "Open Now",
+    status: "Coming Soon",
     feature: "Expert Nexa Service",
     amenities: ["Premium Lounge", "Genuine Parts", "Expert Mechanics"],
     websiteUrl: "https://www.nexaofdurgbypass.com/"

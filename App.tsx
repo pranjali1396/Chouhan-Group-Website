@@ -650,8 +650,8 @@ const NEXA_KAWARDHA_DATA: ProjectData = {
 
 const NEXA_RISALI_DATA: ProjectData = {
   title: "Nexa Service Center - Risali",
-  description: "Now Open – Premium Nexa service experience at Risali, Bhilai. Dedicated service facility for your premium Nexa vehicles.",
-  status: "Open Now",
+  description: "Coming Soon – Premium Nexa service experience at Risali, Bhilai. Dedicated service facility for your premium Nexa vehicles.",
+  status: "Coming Soon",
   address: "Krishna talkies road, Risali Bhilai, Chhattisgarh",
   presentationCentre: {
     address: "Risali Service Center",
