@@ -75,6 +75,15 @@ const ScrollToTop = () => {
     }
   }, [pathname, hash]);
 
+  // Google Analytics Page View Tracking
+  useEffect(() => {
+    if (typeof (window as any).gtag === 'function') {
+      (window as any).gtag('config', 'G-BN2TT4LYXZ', {
+        page_path: pathname + hash,
+      });
+    }
+  }, [pathname, hash]);
+
   return null;
 };
 
