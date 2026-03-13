@@ -16,7 +16,7 @@ const CharitySponsorship: React.FC = () => {
     organization: '',
     email: '',
     phone: '',
-    requestType: 'General Sponsorship',
+    requestType: '',
     message: ''
   });
 
@@ -43,7 +43,7 @@ const CharitySponsorship: React.FC = () => {
           organization: '',
           email: '',
           phone: '',
-          requestType: 'General Sponsorship',
+          requestType: '',
           message: ''
         });
       }, 3000);
@@ -282,10 +282,11 @@ const CharitySponsorship: React.FC = () => {
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Organization (If any)</label>
+                      <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Organization (If any) *</label>
                       <input
                         type="text"
                         name="organization"
+                        required
                         value={formData.organization}
                         onChange={handleInputChange}
                         className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-amber-500 focus:outline-none focus:bg-white transition-all shadow-inner"
@@ -324,11 +325,13 @@ const CharitySponsorship: React.FC = () => {
                   <div className="space-y-1">
                     <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Nature of Request *</label>
                     <select
+                      required
                       name="requestType"
                       value={formData.requestType}
                       onChange={handleInputChange}
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-amber-500 focus:outline-none focus:bg-white transition-all shadow-inner"
                     >
+                      <option value="">Select Option *</option>
                       <option>General Sponsorship</option>
                       <option>Community Infrastructure</option>
                       <option>Environment Initiative</option>

@@ -488,7 +488,7 @@ const ChouhanCityCenterLanding: React.FC = () => {
 
                                 <div className="space-y-2">
                                     <label className="text-xs font-bold text-gray-500 uppercase">Message</label>
-                                    <textarea name="message" value={formData.message} onChange={handleInputChange} className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors h-32 resize-none" placeholder="Tell us about your requirements..."></textarea>
+                                    <textarea required name="message" value={formData.message} onChange={handleInputChange} className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors h-32 resize-none" placeholder="Tell us about your requirements..."></textarea>
                                 </div>
 
                                 <button disabled={status === 'submitting'} type="submit" className="w-full bg-stone-900 text-white font-bold text-sm uppercase tracking-widest py-4 rounded-lg hover:bg-stone-800 transition-colors shadow-lg mt-4 disabled:opacity-50">

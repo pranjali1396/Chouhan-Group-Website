@@ -389,12 +389,12 @@ const ChouhanLandmarkLanding: React.FC = () => {
 
                                 <div className="space-y-2">
                                     <label className="text-xs font-bold text-gray-500 uppercase">Email Address</label>
-                                    <input name="email" value={formData.email} onChange={handleInputChange} type="email" className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors" placeholder="john@example.com" />
+                                    <input required name="email" value={formData.email} onChange={handleInputChange} type="email" className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors" placeholder="john@example.com" />
                                 </div>
 
                                 <div className="space-y-2">
                                     <label className="text-xs font-bold text-gray-500 uppercase">Reason for Inquiry</label>
-                                    <select name="reason" value={formData.reason} onChange={handleInputChange} className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors">
+                                    <select required name="reason" value={formData.reason} onChange={handleInputChange} className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors">
                                         <option value="General Inquiry">General Inquiry</option>
                                         <option value="Retail Space Leasing">Retail Space Leasing</option>
                                         <option value="Advertising Opportunities">Advertising Opportunities</option>
@@ -404,7 +404,7 @@ const ChouhanLandmarkLanding: React.FC = () => {
 
                                 <div className="space-y-2">
                                     <label className="text-xs font-bold text-gray-500 uppercase">Message</label>
-                                    <textarea name="message" value={formData.message} onChange={handleInputChange} className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors" rows={4} placeholder="How can we help you?"></textarea>
+                                    <textarea required name="message" value={formData.message} onChange={handleInputChange} className="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-sm focus:border-amber-500 focus:outline-none transition-colors" rows={4} placeholder="How can we help you?"></textarea>
                                 </div>
 
                                 <button disabled={status === 'submitting'} type="submit" className="w-full bg-stone-900 text-white font-bold text-sm uppercase tracking-widest py-4 rounded-lg hover:bg-stone-800 transition-colors shadow-lg mt-4 disabled:opacity-50">

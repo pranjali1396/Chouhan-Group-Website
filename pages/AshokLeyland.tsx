@@ -10,7 +10,7 @@ const AshokLeyland: React.FC = () => {
         name: '',
         email: '',
         phone: '',
-        interest: 'Buying a Vehicle'
+        interest: ''
     });
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -25,7 +25,7 @@ const AshokLeyland: React.FC = () => {
         setTimeout(() => {
             setSubmitted(true);
             setSubmitting(false);
-            setFormData({ name: '', email: '', phone: '', interest: 'Buying a Vehicle' });
+            setFormData({ name: '', email: '', phone: '', interest: '' });
         }, 600);
 
     };
@@ -114,7 +114,8 @@ const AshokLeyland: React.FC = () => {
                                     </div>
                                     <div>
                                         <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Interest Type</label>
-                                        <select name="interest" value={formData.interest} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none text-slate-600">
+                                        <select required name="interest" value={formData.interest} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none text-slate-600">
+                                            <option value="">Select Interest... *</option>
                                             <option value="Buying a Vehicle">Buying a Vehicle</option>
                                             <option value="Fleet Inquiry">Fleet Inquiry</option>
                                             <option value="Service / Parts">Service / Parts</option>

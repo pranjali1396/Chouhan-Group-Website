@@ -67,7 +67,7 @@ const CityCenter: React.FC = () => {
     name: '',
     phone: '',
     email: '',
-    interest: 'Select Interest',
+    interest: '',
     message: ''
   });
 
@@ -82,7 +82,7 @@ const CityCenter: React.FC = () => {
     // CRMIntegration will automatically capture this form submission
     setTimeout(() => {
       setStatus('success');
-      setFormData({ name: '', phone: '', email: '', interest: 'Select Interest', message: '' });
+      setFormData({ name: '', phone: '', email: '', interest: '', message: '' });
     }, 600);
 
   };
@@ -288,15 +288,15 @@ const CityCenter: React.FC = () => {
                       <input required name="name" value={formData.name} onChange={handleInputChange} type="text" placeholder="Your Name" className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 focus:border-amber-500 focus:outline-none focus:bg-white transition-all font-medium" />
                       <input required name="phone" value={formData.phone} onChange={handleInputChange} type="tel" placeholder="Phone Number" className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 focus:border-amber-500 focus:outline-none focus:bg-white transition-all font-medium" />
                     </div>
-                    <input name="email" value={formData.email} onChange={handleInputChange} type="email" placeholder="Email Address" className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 focus:border-amber-500 focus:outline-none focus:bg-white transition-all font-medium" />
-                    <select name="interest" value={formData.interest} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 focus:border-amber-500 focus:outline-none focus:bg-white transition-all font-bold text-slate-500 appearance-none">
-                      <option value="Select Interest">Select Interest</option>
+                    <input required name="email" value={formData.email} onChange={handleInputChange} type="email" placeholder="Email Address *" className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 focus:border-amber-500 focus:outline-none focus:bg-white transition-all font-medium" />
+                    <select required name="interest" value={formData.interest} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 focus:border-amber-500 focus:outline-none focus:bg-white transition-all font-bold text-slate-500 appearance-none">
+                      <option value="">Select Interest *</option>
                       <option value="Retail Space">Retail Space</option>
                       <option value="Office Space">Office Space</option>
                       <option value="Food Court">Food Court</option>
                       <option value="Multiplex Partnership">Multiplex Partnership</option>
                     </select>
-                    <textarea name="message" value={formData.message} onChange={handleInputChange} placeholder="Type your message here...." className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 h-32 focus:border-amber-500 focus:outline-none focus:bg-white transition-all resize-none font-medium"></textarea>
+                    <textarea required name="message" value={formData.message} onChange={handleInputChange} placeholder="Type your message here... *" className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 h-32 focus:border-amber-500 focus:outline-none focus:bg-white transition-all resize-none font-medium"></textarea>
                     <button disabled={status === 'submitting'} className="w-full bg-amber-500 text-white font-black uppercase tracking-[0.2em] py-5 rounded-xl hover:bg-amber-400 transition-all shadow-2xl flex items-center justify-center gap-3 group disabled:opacity-50">
                       {status === 'submitting' ? 'Registering...' : 'Register Now'} <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     </button>

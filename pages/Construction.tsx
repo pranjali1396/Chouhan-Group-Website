@@ -24,7 +24,7 @@ const Construction: React.FC = () => {
     contactPerson: '',
     email: '',
     phone: '',
-    trade: 'Select Trade...',
+    trade: '',
     license: '',
     materialType: '',
     capacity: '',
@@ -48,7 +48,7 @@ const Construction: React.FC = () => {
         contactPerson: '',
         email: '',
         phone: '',
-        trade: 'Select Trade...',
+        trade: '',
         license: '',
         materialType: '',
         capacity: '',
@@ -197,8 +197,8 @@ const Construction: React.FC = () => {
                       <>
                         <div className="space-y-1">
                           <label className="text-xs font-bold text-slate-500 uppercase">Trade / Specialty *</label>
-                          <select name="trade" value={formData.trade} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors text-slate-600">
-                            <option value="Select Trade...">Select Trade...</option>
+                          <select required name="trade" value={formData.trade} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors text-slate-600">
+                            <option value="">Select Trade...</option>
                             <option value="Civil Works">Civil Works</option>
                             <option value="Electrical">Electrical</option>
                             <option value="Plumbing">Plumbing</option>
@@ -208,8 +208,8 @@ const Construction: React.FC = () => {
                           </select>
                         </div>
                         <div className="space-y-1">
-                          <label className="text-xs font-bold text-slate-500 uppercase">License Number</label>
-                          <input name="license" value={formData.license} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
+                          <label className="text-xs font-bold text-slate-500 uppercase">License Number *</label>
+                          <input required name="license" value={formData.license} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
                         </div>
                       </>
                     ) : (
@@ -219,22 +219,22 @@ const Construction: React.FC = () => {
                           <input required name="materialType" value={formData.materialType} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="e.g. Cement, Steel, Tiles" />
                         </div>
                         <div className="space-y-1">
-                          <label className="text-xs font-bold text-slate-500 uppercase">Delivery Capacity</label>
-                          <input name="capacity" value={formData.capacity} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="e.g. Statewide" />
+                          <label className="text-xs font-bold text-slate-500 uppercase">Delivery Capacity *</label>
+                          <input required name="capacity" value={formData.capacity} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="e.g. Statewide" />
                         </div>
                       </>
                     )}
 
                     <div className="space-y-1 md:col-span-2">
-                      <label className="text-xs font-bold text-slate-500 uppercase">Address</label>
-                      <input name="address" value={formData.address} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="Head Office Address" />
+                      <label className="text-xs font-bold text-slate-500 uppercase">Address *</label>
+                      <input required name="address" value={formData.address} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="Head Office Address" />
                     </div>
 
                     <div className="space-y-1 md:col-span-2">
                       <label className="text-xs font-bold text-slate-500 uppercase">
-                        {activeForm === 'contractor' ? 'Experience / Past Projects' : 'Product Catalog / Additional Details'}
+                        {activeForm === 'contractor' ? 'Experience / Past Projects *' : 'Product Catalog / Additional Details *'}
                       </label>
-                      <textarea name="details" value={formData.details} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded p-3 h-32 focus:border-amber-500 focus:outline-none transition-colors resize-none"></textarea>
+                      <textarea required name="details" value={formData.details} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded p-3 h-32 focus:border-amber-500 focus:outline-none transition-colors resize-none"></textarea>
                     </div>
                   </div>
 

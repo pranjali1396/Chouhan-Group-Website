@@ -2,27 +2,33 @@ import { useEffect } from 'react';
 
 /**
  * Chouhan Group CRM Integration for React (Vite / CRA)
- * 
- * INSTRUCTIONS:
- * 1. Copy this component into your components folder.
- * 2. Include <CRMIntegration /> in your main App.tsx file.
- * 3. Update SOURCE_NAME and DEFAULT_PROJECT for each website.
  */
+
+const SOURCE_NAME = 'Chouhan Group Official Website';
+const DEFAULT_PROJECT = 'Chouhan Group';
 
 export const CRMIntegration = () => {
     useEffect(() => {
-        const handleCapture = async (e) => {
-            const form = e.target;
-            if (form.tagName !== 'FORM') return;
+        const handleCapture = async (e: Event) => {
+            const form = e.target as HTMLFormElement;
+            if (!form || form.tagName !== 'FORM') return;
 
             const formData = new FormData(form);
+
+            const firstName = (formData.get('firstName') as string) || '';
+            const lastName = (formData.get('lastName') as string) || '';
+            const combinedName = (firstName + ' ' + lastName).trim();
+
             const payload = {
-                customerName: formData.get('name') || formData.get('your-name') || formData.get('userName') || 'Website Lead',
-                mobile: formData.get('phone') || formData.get('your-tel') || formData.get('mobile') || '',
-                email: formData.get('email') || formData.get('your-email') || '',
-                source: 'Chouhan Group Website', // CHANGE THIS for each site
-                interestedProject: 'General Inquiry', // CHANGE THIS for each site
-                remarks: 'Captured from React App: ' + window.location.hostname
+                customerName: combinedName || (formData.get('name') as string) || (formData.get('your-name') as string) || 'Website Lead',
+                mobile: (formData.get('phone') as string) || (formData.get('your-tel') as string) || (formData.get('mobile') as string) || '',
+                email: (formData.get('email') as string) || (formData.get('your-email') as string) || '',
+                source: SOURCE_NAME,
+                interestedProject: DEFAULT_PROJECT,
+                isBroker: (formData.get('broker') as string) || (formData.get('Are you a broker?') as string) || '',
+                platform: (formData.get('source') as string) || (formData.get('How did you hear about us?') as string) || '',
+                interestedUnit: (formData.get('homeType') as string) || (formData.get('project') as string) || (formData.get('Home type interested in?') as string) || '',
+                remarks: 'Captured from React App: ' + window.location.pathname
             };
 
             if (payload.mobile || payload.customerName !== 'Website Lead') {

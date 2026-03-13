@@ -22,12 +22,14 @@ export interface ProjectData {
   logoText?: string; // For the script-style logo in the sidebar
   gallery?: string[];
   websiteUrl?: string;
+  availabilityPdf?: string | { label: string; url: string }[];
 }
 
 const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
   const location = useLocation();
   const isSold = data.status.toLowerCase() === 'sold';
   const isHospitality = location.pathname.includes('/hospitality/');
+  const isAutomobile = data.title.toLowerCase().match(/maruti|nexa|hero|true value/);
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [formData, setFormData] = useState({
@@ -37,6 +39,8 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
     message: ''
   });
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [showPdfModal, setShowPdfModal] = useState(false);
+  const [activePdf, setActivePdf] = useState<string | null>(null);
 
   const heroImages = Array.isArray(data.heroImage) ? data.heroImage : [data.heroImage];
 
@@ -67,7 +71,11 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
       return `${data.websiteUrl.replace(/\/$/, '')}/contact`;
     }
 
-    return "#contact";
+    if (isHospitality) {
+      return "#contact";
+    }
+
+    return "#availability";
   };
 
   const contactUrl = getContactUrl();
@@ -98,10 +106,11 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
       setFormData({ name: '', email: '', phone: '', message: '' });
     }, 600);
   };
-  const scrollToContact = (e: React.MouseEvent) => {
-    if (contactUrl === "#contact") {
+  const scrollToAvailability = (e: React.MouseEvent) => {
+    if (contactUrl === "#availability" || contactUrl === "#contact") {
       e.preventDefault();
-      const element = document.getElementById('contact');
+      const targetId = contactUrl.replace('#', '');
+      const element = document.getElementById(targetId);
       if (element) {
         const offset = 120;
         const bodyRect = document.body.getBoundingClientRect().top;
@@ -265,7 +274,7 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
                   ) : (
                     <a
                       href={contactUrl}
-                      onClick={scrollToContact}
+                      onClick={scrollToAvailability}
                       className="text-[#002b49] underline font-medium hover:text-amber-600"
                     >
                       {data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? 'Call Now' : 'Contact Us'}
@@ -342,7 +351,7 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
                 ) : (
                   <a
                     href={contactUrl}
-                    onClick={scrollToContact}
+                    onClick={scrollToAvailability}
                     className="bg-[#002b49] text-white py-3 px-2 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-sm rounded-sm text-center flex items-center justify-center"
                   >
                     {data.title.toLowerCase().match(/maruti|nexa|hero|true value/) ? 'Call Now' : 'Contact Us'}
@@ -421,8 +430,63 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
                 </div>
               </div>
 
-              {/* Official Project Enquiry Form */}
-              {!isSold && (
+              {/* Availability or Contact Section */}
+              {!isSold && !isHospitality && !isAutomobile ? (
+                <div id="availability" className="bg-white p-8 md:p-10 rounded-xl border border-slate-100 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.08)] mt-16 transition-all hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.12)] scroll-mt-32">
+                  <div className="text-center">
+                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-amber-600 block mb-3">Project Status</span>
+                    <h3 className="text-2xl font-heading font-black text-[#002b49] mb-4 uppercase tracking-tight">
+                      Check Real-Time Availability
+                    </h3>
+                    <div className="h-1 w-12 bg-amber-500 mx-auto rounded-full mb-6"></div>
+                    <p className="text-slate-500 text-sm leading-relaxed max-w-sm mx-auto mb-8">
+                      Click below to view the current availability, floor plans, and unit status for <strong>{data.title}</strong>.
+                    </p>
+
+                    {data.availabilityPdf ? (
+                      <div className="flex flex-col gap-3 items-center">
+                        {Array.isArray(data.availabilityPdf) ? (
+                          data.availabilityPdf.map((pdf, idx) => (
+                            <button
+                              key={idx}
+                              onClick={() => {
+                                setActivePdf(pdf.url);
+                                setShowPdfModal(true);
+                              }}
+                              className="w-full max-w-xs flex items-center justify-center gap-3 bg-[#002b49] text-white py-4 px-6 font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-slate-800 transition-all rounded-sm shadow-md group"
+                            >
+                              Check Availability - {pdf.label} <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                            </button>
+                          ))
+                        ) : (
+                          <button
+                            onClick={() => {
+                              setActivePdf(data.availabilityPdf as string);
+                              setShowPdfModal(true);
+                            }}
+                            className="w-full max-w-xs flex items-center justify-center gap-3 bg-[#002b49] text-white py-4 px-6 font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-slate-800 transition-all rounded-sm shadow-md group"
+                          >
+                            Check Availability <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                          </button>
+                        )}
+                      </div>
+                    ) : (
+                      <button
+                        disabled
+                        className="w-full max-w-xs flex items-center justify-center gap-3 bg-slate-200 text-slate-400 py-4 px-6 font-bold uppercase tracking-[0.2em] text-[10px] rounded-sm cursor-not-allowed"
+                      >
+                        Availability PDF Coming Soon
+                      </button>
+                    )}
+
+                    <div className="mt-8">
+                      <p className="text-[10px] text-slate-400 font-medium italic">
+                        Interactive Plan: You can zoom and navigate the layout once opened.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ) : !isSold && (
                 <div id="contact" className="bg-white p-8 md:p-10 rounded-xl border border-slate-100 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.08)] mt-16 transition-all hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.12)] scroll-mt-32">
                   {isExternalContact && !contactUrl.startsWith('tel:') ? (
                     <div className="text-center py-12">
@@ -611,6 +675,49 @@ const ProjectDetail: React.FC<{ data: ProjectData }> = ({ data }) => {
             className="max-w-full max-h-full object-contain shadow-2xl transition-all duration-300"
             onClick={(e) => e.stopPropagation()}
           />
+        </div>
+      )}
+      {/* PDF Modal */}
+      {showPdfModal && activePdf && (
+        <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/95 backdrop-blur-md p-0 md:p-4 animate-fadeIn">
+          <div className="relative w-full h-full max-w-[98vw] max-h-[98vh] bg-white rounded-lg overflow-hidden flex flex-col shadow-2xl">
+            {/* Modal Header */}
+            <div className="bg-[#002b49] text-white p-4 flex items-center justify-between">
+              <h3 className="text-sm font-bold uppercase tracking-widest">{data.title} - Real Time Plan</h3>
+              <button
+                onClick={() => {
+                  setShowPdfModal(false);
+                  setActivePdf(null);
+                }}
+                className="w-8 h-8 flex items-center justify-center text-white/70 hover:text-white transition-colors"
+              >
+                <span className="text-2xl">&times;</span>
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="flex-grow bg-slate-100 relative">
+              <iframe
+                src={`${activePdf}#toolbar=1&navpanes=1&scrollbar=1&view=FitH`}
+                className="w-full h-full border-none"
+                title={`${data.title} Availability`}
+              ></iframe>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-4 bg-white border-t border-slate-100 flex justify-between items-center">
+              <p className="text-[10px] text-slate-400 font-medium">Use the toolbar to zoom or download the plan.</p>
+              <button
+                onClick={() => {
+                  setShowPdfModal(false);
+                  setActivePdf(null);
+                }}
+                className="px-6 py-2 bg-slate-100 text-[#002b49] text-[10px] font-bold uppercase tracking-widest hover:bg-slate-200 transition-all rounded-sm"
+              >
+                Close
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

@@ -57,7 +57,7 @@ const CapitalDivision: React.FC = () => {
     state: '',
     zip: '',
     companyName: '',
-    sector: 'Select Sector...',
+    sector: '',
     website: '',
     summary: ''
   });
@@ -83,7 +83,7 @@ const CapitalDivision: React.FC = () => {
         state: '',
         zip: '',
         companyName: '',
-        sector: 'Select Sector...',
+        sector: '',
         website: '',
         summary: ''
       });
@@ -241,8 +241,8 @@ const CapitalDivision: React.FC = () => {
                       <input required name="contactName" value={formData.contactName} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-xs font-bold text-slate-500 uppercase">Title</label>
-                      <input name="title" value={formData.title} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
+                      <label className="text-xs font-bold text-slate-500 uppercase">Title *</label>
+                      <input required name="title" value={formData.title} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
                     </div>
                     <div className="space-y-1">
                       <label className="text-xs font-bold text-slate-500 uppercase">Phone *</label>
@@ -271,13 +271,13 @@ const CapitalDivision: React.FC = () => {
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-1">
-                      <label className="text-xs font-bold text-slate-500 uppercase">Company Name</label>
-                      <input name="companyName" value={formData.companyName} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
+                      <label className="text-xs font-bold text-slate-500 uppercase">Company Name *</label>
+                      <input required name="companyName" value={formData.companyName} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-xs font-bold text-slate-500 uppercase">Sector</label>
-                      <select name="sector" value={formData.sector} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors text-slate-600">
-                        <option value="Select Sector...">Select Sector...</option>
+                      <label className="text-xs font-bold text-slate-500 uppercase">Sector *</label>
+                      <select required name="sector" value={formData.sector} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors text-slate-600">
+                        <option value="">Select Sector... *</option>
                         <option value="Real Estate">Real Estate</option>
                         <option value="Technology / Software">Technology / Software</option>
                         <option value="Manufacturing">Manufacturing</option>
@@ -287,12 +287,12 @@ const CapitalDivision: React.FC = () => {
                       </select>
                     </div>
                     <div className="space-y-1 md:col-span-2">
-                      <label className="text-xs font-bold text-slate-500 uppercase">Website</label>
-                      <input name="website" value={formData.website} onChange={handleInputChange} type="url" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="https://" />
+                      <label className="text-xs font-bold text-slate-500 uppercase">Website *</label>
+                      <input required name="website" value={formData.website} onChange={handleInputChange} type="url" className="w-full bg-slate-50 border border-slate-200 rounded p-3 focus:border-amber-500 focus:outline-none transition-colors" placeholder="https://" />
                     </div>
                     <div className="space-y-1 md:col-span-2">
-                      <label className="text-xs font-bold text-slate-500 uppercase">Executive Summary</label>
-                      <textarea name="summary" value={formData.summary} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded p-3 h-32 focus:border-amber-500 focus:outline-none transition-colors resize-none" placeholder="Brief overview of the business..."></textarea>
+                      <label className="text-xs font-bold text-slate-500 uppercase">Executive Summary *</label>
+                      <textarea required name="summary" value={formData.summary} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded p-3 h-32 focus:border-amber-500 focus:outline-none transition-colors resize-none" placeholder="Brief overview of the business..."></textarea>
                     </div>
                   </div>
                 </div>

@@ -64,7 +64,7 @@ const GenericPage: React.FC = () => {
     name: '',
     email: '',
     phone: '',
-    interest: 'Buying'
+    interest: ''
   });
 
   const [rentalStatus, setRentalStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -95,7 +95,7 @@ const GenericPage: React.FC = () => {
     // CRMIntegration will automatically capture this form submission
     setTimeout(() => {
       setStatus('success');
-      setFormData({ name: '', email: '', phone: '', interest: 'Buying' });
+      setFormData({ name: '', email: '', phone: '', interest: '' });
     }, 600);
 
   };
@@ -576,7 +576,8 @@ const GenericPage: React.FC = () => {
                           <input required name="phone" value={formData.phone} onChange={handleInputChange} type="tel" className="w-full bg-slate-50 border border-slate-200 rounded p-4 text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400" placeholder="Phone Number *" />
                         </div>
                         <div>
-                          <select name="interest" value={formData.interest} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded p-4 text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition-all text-slate-500">
+                          <select required name="interest" value={formData.interest} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 rounded p-4 text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition-all text-slate-500">
+                            <option value="">Select Interest *</option>
                             <option value="Buying">Buying</option>
                             <option value="Renting">Renting</option>
                             <option value="Site Visit">Site Visit</option>

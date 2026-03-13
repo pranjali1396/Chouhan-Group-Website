@@ -113,7 +113,10 @@ const SINGAPORE_DATA: ProjectData = {
   ],
   mapQuery: "CHOUHAN SINGAPORE LIFE CITY PHASE 1",
   websiteUrl: "https://singapore-city.chouhangroup.com",
-
+  availabilityPdf: [
+    { label: "Phase 1", url: "/Singapore Life City Phase 1 Availability March 2026 (1).pdf" },
+    { label: "Phase 4", url: "/Singapore Life City Phase 4 Availability March 2026 (1).pdf" }
+  ]
 };
 
 const PARKVIEW_DATA: ProjectData = {
@@ -149,7 +152,8 @@ const BUSINESS_CENTER_DATA: ProjectData = {
   },
   heroImage: "/new_images/chouhan_business_center.png",
   mapQuery: "Chouhan Business Center Phase-1",
-  websiteUrl: "https://chouhan-businesscenter.chouhangroup.com"
+  websiteUrl: "https://chouhan-businesscenter.chouhangroup.com",
+  availabilityPdf: "/Chouhan Business Centre Availability March 2026.pdf"
 };
 
 const BUSINESS_PARK_DATA: ProjectData = {
@@ -276,7 +280,11 @@ const SUNRISE_CITY_DATA: ProjectData = {
   },
   heroImage: "/new_images/Sunrise.mp4",
   mapQuery: "Sunrise City, Bhilai",
-  websiteUrl: "/new-homes/sunrise-city"
+  websiteUrl: "/new-homes/sunrise-city",
+  availabilityPdf: [
+    { label: "Layout Plan 1", url: "/Sunrise City/Layout Plan/Sunrise_City_plan.pdf" },
+    { label: "Layout Plan 2", url: "/Sunrise City/Layout Plan/Sunrise_City_plan_2.pdf" }
+  ]
 };
 
 const PARKVIEW_COMPLEX_DATA: ProjectData = {
@@ -492,7 +500,7 @@ const MARUTI_BHILAI_DATA: ProjectData = {
   },
   heroImage: "/new_images/Maruti_suzuki_supela.jpeg",
   mapQuery: "Chouhan Automobiles Maruti Suzuki ARENA, Bhilai",
-  websiteUrl: "https://www.arenaofbhilai.com/"
+  websiteUrl: "https://www.arenaofbhilai.com/maruti-suzuki-service"
 };
 
 const MARUTI_PANDARIYA_DATA: ProjectData = {
@@ -546,7 +554,7 @@ const MARUTI_DALLI_DATA: ProjectData = {
   },
   heroImage: "/new_images/Maruti_suzuki_Dalli Rajhara.jpeg",
   mapQuery: "Maruti Suzuki Arena, Dalli Rajhara",
-  websiteUrl: "https://www.arenaofbhilai.com/"
+  websiteUrl: "https://www.arenaofbhilai.com/maruti-suzuki-service"
 };
 
 const MARUTI_DONDI_DATA: ProjectData = {

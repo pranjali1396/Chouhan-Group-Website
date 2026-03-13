@@ -29,7 +29,7 @@ const AUTOMOBILE_DATA = [
     status: "Open Now",
     feature: "Sales • Service • Spares",
     amenities: ["Large Showroom", "Service Center", "Insurance"],
-    websiteUrl: "https://www.arenaofbhilai.com/"
+    websiteUrl: "https://www.arenaofbhilai.com/maruti-suzuki-service"
   },
   {
     id: 101,
@@ -71,7 +71,7 @@ const AUTOMOBILE_DATA = [
     status: "Open Now",
     feature: "Sales • Service • Spares",
     amenities: ["Showroom", "Service Center"],
-    websiteUrl: "https://www.arenaofbhilai.com/"
+    websiteUrl: "https://www.arenaofbhilai.com/maruti-suzuki-service"
   },
   {
     id: 104,

@@ -630,8 +630,8 @@ const SunriseLanding: React.FC = () => {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-xs font-bold text-gray-500 uppercase">Email</label>
-                    <input name="email" value={formData.email} onChange={handleInputChange} type="email" className="w-full bg-stone-50 border border-stone-200 rounded p-3 text-sm focus:border-emerald-500 focus:outline-none" />
+                    <label className="text-xs font-bold text-gray-500 uppercase">Email *</label>
+                    <input required name="email" value={formData.email} onChange={handleInputChange} type="email" className="w-full bg-stone-50 border border-stone-200 rounded p-3 text-sm focus:border-emerald-500 focus:outline-none" />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -640,10 +640,11 @@ const SunriseLanding: React.FC = () => {
                       <input required name="city" value={formData.city} onChange={handleInputChange} type="text" className="w-full bg-stone-50 border border-stone-200 rounded p-3 text-sm focus:border-emerald-500 focus:outline-none" />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-xs font-bold text-gray-500 uppercase">Are you a Broker?</label>
-                      <select name="isBroker" value={formData.isBroker} onChange={handleInputChange} className="w-full bg-stone-50 border border-stone-200 rounded p-3 text-sm focus:border-emerald-500 focus:outline-none">
-                        <option>No</option>
-                        <option>Yes</option>
+                      <label className="text-xs font-bold text-gray-500 uppercase">Are you a Broker? *</label>
+                      <select required name="isBroker" value={formData.isBroker} onChange={handleInputChange} className="w-full bg-stone-50 border border-stone-200 rounded p-3 text-sm focus:border-emerald-500 focus:outline-none">
+                        <option value="">Select...</option>
+                        <option value="No">No</option>
+                        <option value="Yes">Yes</option>
                       </select>
                     </div>
                   </div>

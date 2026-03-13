@@ -24,8 +24,8 @@ const Contact: React.FC = () => {
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone) {
-      alert("Name and Phone are required.");
+    if (!formData.name || !formData.phone || !formData.email || !formData.project || !formData.message) {
+      alert("All fields are required.");
       return;
     }
 
@@ -137,6 +137,7 @@ const Contact: React.FC = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
+                      required
                       type="email"
                       className="w-full bg-slate-50 border border-slate-200 rounded p-4 focus:border-amber-500 focus:outline-none transition-colors"
                       placeholder="email@example.com"
@@ -162,6 +163,7 @@ const Contact: React.FC = () => {
                       name="project"
                       value={formData.project}
                       onChange={handleInputChange}
+                      required
                       className="w-full bg-slate-50 border border-slate-200 rounded p-4 focus:border-amber-500 focus:outline-none transition-colors text-slate-600"
                     >
                       <option value="">Select Option...</option>
@@ -180,6 +182,7 @@ const Contact: React.FC = () => {
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
+                      required
                       className="w-full bg-slate-50 border border-slate-200 rounded p-4 h-32 focus:border-amber-500 focus:outline-none transition-colors resize-none"
                       placeholder="Type your message here...."
                     ></textarea>
