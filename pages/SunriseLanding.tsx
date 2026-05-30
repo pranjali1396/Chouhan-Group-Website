@@ -278,6 +278,7 @@ const SunriseLanding: React.FC = () => {
               </div>
             ) : (
               <form onSubmit={handleBrochureSubmit} className="space-y-4">
+                <input type="hidden" name="project" value="Sunrise City - Brochure" />
                 <input required name="name" value={brochureData.name} onChange={handleBrochureChange} type="text" placeholder="Full Name" className="w-full border border-gray-300 rounded p-3 text-sm focus:border-emerald-500 focus:outline-none" />
                 <input required name="email" value={brochureData.email} onChange={handleBrochureChange} type="email" placeholder="Email Address" className="w-full border border-gray-300 rounded p-3 text-sm focus:border-emerald-500 focus:outline-none" />
                 <input required name="phone" value={brochureData.phone} onChange={handleBrochureChange} type="tel" placeholder="Phone Number" className="w-full border border-gray-300 rounded p-3 text-sm focus:border-emerald-500 focus:outline-none" />
@@ -618,6 +619,7 @@ const SunriseLanding: React.FC = () => {
                 </div>
               ) : (
                 <form onSubmit={handleMainSubmit} className="space-y-5">
+                  <input type="hidden" name="project" value="Sunrise City" />
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div className="space-y-1">
                       <label className="text-xs font-bold text-gray-500 uppercase">Name *</label>

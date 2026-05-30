@@ -470,6 +470,7 @@ const ChouhanCityCenterLanding: React.FC = () => {
                             </div>
                         ) : (
                             <form onSubmit={handleSubmit} className="space-y-6">
+                                <input type="hidden" name="project" value="Chouhan City Center" />
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="space-y-2">
                                         <label className="text-xs font-bold text-gray-500 uppercase">Full Name</label>
