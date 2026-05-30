@@ -10,7 +10,9 @@ const Contact: React.FC = () => {
     name: '',
     email: '',
     phone: '',
+    interestCategory: '',
     project: '',
+    homeType: '',
     message: ''
   });
 
@@ -24,8 +26,13 @@ const Contact: React.FC = () => {
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone || !formData.email || !formData.project || !formData.message) {
-      alert("All fields are required.");
+    if (!formData.name || !formData.phone || !formData.email || !formData.interestCategory || !formData.message) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    if (formData.interestCategory !== 'Other' && !formData.project) {
+      alert("Please select a project/hotel/division.");
       return;
     }
 
@@ -33,7 +40,7 @@ const Contact: React.FC = () => {
     // CRMIntegration in App.tsx will automatically capture this form submission
     setTimeout(() => {
       setStatus('success');
-      setFormData({ name: '', email: '', phone: '', project: '', message: '' });
+      setFormData({ name: '', email: '', phone: '', interestCategory: '', project: '', homeType: '', message: '' });
     }, 600);
 
   };
@@ -158,23 +165,124 @@ const Contact: React.FC = () => {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-500 uppercase">Select Project / Model</label>
+                    <label className="text-xs font-bold text-slate-500 uppercase">I am interested in</label>
                     <select
-                      name="project"
-                      value={formData.project}
+                      name="interestCategory"
+                      value={formData.interestCategory}
                       onChange={handleInputChange}
                       required
-                      className="w-full bg-slate-50 border border-slate-200 rounded p-4 focus:border-amber-500 focus:outline-none transition-colors text-slate-600"
+                      className="w-full bg-slate-50 border border-slate-200 rounded p-4 focus:border-amber-500 focus:outline-none transition-colors text-slate-600 font-bold"
                     >
-                      <option value="">Select Option...</option>
-                      <option>Real Estate - New Homes</option>
-                      <option>Real Estate - Commercial</option>
-                      <option>Automobile - Maruti Suzuki</option>
-                      <option>Automobile - Nexa</option>
-                      <option>Hospitality - Hotel Booking</option>
-                      <option>Other Inquiry</option>
+                      <option value="">Select Category...</option>
+                      <option value="New Homes">Real Estate - New Homes / Plots</option>
+                      <option value="Commercial">Real Estate - Commercial</option>
+                      <option value="Automobile">Automobile (Maruti/Nexa/Hero)</option>
+                      <option value="Hospitality">Hospitality - Hotel Booking</option>
+                      <option value="Other">Other Inquiry</option>
                     </select>
                   </div>
+
+                  {/* Dynamic Real Estate Fields */}
+                  {formData.interestCategory === 'New Homes' && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 animate-fadeIn">
+                      <div className="space-y-1">
+                        <label className="text-xs font-bold text-slate-500 uppercase">Select Project *</label>
+                        <select
+                          name="project"
+                          value={formData.project}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full bg-slate-50 border border-slate-200 rounded p-4 focus:border-amber-500 focus:outline-none transition-colors text-slate-600"
+                        >
+                          <option value="">Select Project...</option>
+                          <option>Singapore Life City</option>
+                          <option>Sunrise City</option>
+                          <option>Chouhan Parkview</option>
+                          <option>Chouhan Green Valley</option>
+                          <option>Chouhan Town</option>
+                          <option>Chouhan Dream Homes</option>
+                        </select>
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-xs font-bold text-slate-500 uppercase">Unit Type *</label>
+                        <select
+                          name="homeType"
+                          value={formData.homeType}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full bg-slate-50 border border-slate-200 rounded p-4 focus:border-amber-500 focus:outline-none transition-colors text-slate-600"
+                        >
+                          <option value="">Select Type...</option>
+                          <option>Plot</option>
+                          <option>Bungalow</option>
+                          <option>Row House</option>
+                          <option>Flat / Apartment</option>
+                        </select>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Dynamic Commercial Fields */}
+                  {formData.interestCategory === 'Commercial' && (
+                    <div className="space-y-1 animate-fadeIn">
+                      <label className="text-xs font-bold text-slate-500 uppercase">Select Project *</label>
+                      <select
+                        name="project"
+                        value={formData.project}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full bg-slate-50 border border-slate-200 rounded p-4 focus:border-amber-500 focus:outline-none transition-colors text-slate-600"
+                      >
+                        <option value="">Select Project...</option>
+                        <option>Chouhan Business Center</option>
+                        <option>Chouhan Business Park</option>
+                        <option>Chouhan Estate</option>
+                        <option>Chouhan Landmark</option>
+                        <option>Chouhan City Center</option>
+                        <option>Shikhar Complex</option>
+                        <option>Chouhan Plaza</option>
+                      </select>
+                    </div>
+                  )}
+
+                  {/* Dynamic Hospitality Fields */}
+                  {formData.interestCategory === 'Hospitality' && (
+                    <div className="space-y-1 animate-fadeIn">
+                      <label className="text-xs font-bold text-slate-500 uppercase">Select Hotel *</label>
+                      <select
+                        name="project"
+                        value={formData.project}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full bg-slate-50 border border-slate-200 rounded p-4 focus:border-amber-500 focus:outline-none transition-colors text-slate-600"
+                      >
+                        <option value="">Select Hotel...</option>
+                        <option>Empyrean Hotel & Resort, Bhilai</option>
+                        <option>Empyrean Lake Resort, Balod</option>
+                      </select>
+                    </div>
+                  )}
+
+                  {/* Dynamic Automobile Fields */}
+                  {formData.interestCategory === 'Automobile' && (
+                    <div className="space-y-1 animate-fadeIn">
+                      <label className="text-xs font-bold text-slate-500 uppercase">Select Division *</label>
+                      <select
+                        name="project"
+                        value={formData.project}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full bg-slate-50 border border-slate-200 rounded p-4 focus:border-amber-500 focus:outline-none transition-colors text-slate-600"
+                      >
+                        <option value="">Select Division...</option>
+                        <option>Maruti Suzuki Arena</option>
+                        <option>Maruti Suzuki Nexa</option>
+                        <option>Hero MotoCorp</option>
+                        <option>Maruti Suzuki True Value</option>
+                        <option>Service & Workshop</option>
+                      </select>
+                    </div>
+                  )}
 
                   <div className="space-y-1">
                     <label className="text-xs font-bold text-slate-500 uppercase">Message</label>

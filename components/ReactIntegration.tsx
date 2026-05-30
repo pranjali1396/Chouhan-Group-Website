@@ -32,6 +32,11 @@ export const CRMIntegration = () => {
             const projectFromForm = (formData.get('project') as string) || (formData.get('interestedProject') as string);
             const homeType = (formData.get('homeType') as string) || (formData.get('Home type interested in?') as string);
 
+            const message = (formData.get('message') as string) || (formData.get('your-message') as string) || '';
+            const city = (formData.get('city') as string) || '';
+            const brand = (formData.get('brand') as string) || '';
+            const reason = (formData.get('reason') as string) || '';
+
             const payload = {
                 customerName: combinedName || (formData.get('name') as string) || (formData.get('your-name') as string) || 'Website Lead',
                 mobile: (formData.get('phone') as string) || (formData.get('your-tel') as string) || (formData.get('mobile') as string) || '',
@@ -41,7 +46,7 @@ export const CRMIntegration = () => {
                 isBroker: (formData.get('isBroker') as string) || (formData.get('broker') as string) || (formData.get('Are you a broker?') as string) || '',
                 platform: (formData.get('source') as string) || (formData.get('How did you hear about us?') as string) || '',
                 interestedUnit: homeType || projectFromForm || '',
-                remarks: 'Captured from React App: ' + window.location.pathname
+                remarks: `Message: ${message}${city ? ` | City: ${city}` : ''}${brand ? ` | Brand: ${brand}` : ''}${reason ? ` | Reason: ${reason}` : ''} | Captured from: ${window.location.pathname}`
             };
 
             if (payload.mobile || payload.customerName !== 'Website Lead') {
